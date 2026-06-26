@@ -35,8 +35,8 @@ export function TopNav({ onOpenBooking }: TopNavProps) {
         className={[
           "fixed top-0 left-0 right-0 z-[100] transition-all duration-500",
           transparent
-            ? "py-5 bg-transparent translate-y-0 opacity-100"
-            : "py-3 -translate-y-full opacity-0 pointer-events-none",
+            ? "py-3 bg-transparent translate-y-0 opacity-100"
+            : "py-2 -translate-y-full opacity-0 pointer-events-none",
         ].join(" ")}
       >
         <div className="flex items-center justify-between max-w-[1600px] mx-auto px-6 md:px-10 2xl:px-24">
