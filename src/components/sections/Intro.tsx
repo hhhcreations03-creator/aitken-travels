@@ -30,6 +30,7 @@ export function Intro() {
                   <img
                     src="/about.JPG"
                     alt="Aitken Travels team — four founders"
+                    loading="lazy"
                     className="w-full aspect-[16/10] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent" />

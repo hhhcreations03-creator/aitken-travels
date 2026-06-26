@@ -56,6 +56,7 @@ export function Services({ onBookService }: ServicesProps) {
                 <img
                   src={service.image}
                   alt={service.title}
+                  loading="lazy"
                   className="w-[110px] h-[110px] rounded-l-2xl object-cover flex-shrink-0"
                 />
 
@@ -213,7 +214,7 @@ function ServiceModal({
             {/* Hero */}
             <div className="relative h-[220px] md:h-[300px] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+              <img src={service.image} alt={service.title} loading="lazy" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
                 <span className="inline-flex items-center gap-2 backdrop-blur-md bg-white/15 border border-white/10 text-white rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.1em] uppercase mb-3">

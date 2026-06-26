@@ -121,6 +121,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
                 <img
                   src={t.avatar}
                   alt={t.name}
+                  loading="lazy"
                   className="w-14 h-14 rounded-full object-cover border-2 border-primary-100 flex-shrink-0"
                 />
                 <div className="flex-1 min-w-0">
@@ -207,6 +208,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
                 <img
                   src={t.avatar}
                   alt={t.name}
+                  loading="lazy"
                   className="w-14 h-14 rounded-full object-cover border-2 border-primary-100 flex-shrink-0"
                 />
                 <div className="flex-1 min-w-0">

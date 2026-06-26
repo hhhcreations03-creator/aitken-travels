@@ -103,9 +103,8 @@ export function TourGallery() {
                       muted
                       loop
                       playsInline
+                      preload="none"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      onMouseEnter={(e) => (e.target as HTMLVideoElement).play()}
-                      onMouseLeave={(e) => { const v = e.target as HTMLVideoElement; v.pause(); v.currentTime = 0; }}
                     />
                     {/* Play icon */}
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -128,6 +127,7 @@ export function TourGallery() {
                     <img
                       src={item.src}
                       alt={item.caption}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
@@ -210,7 +210,7 @@ export function TourGallery() {
                 <video
                   src={selected.src}
                   controls
-                  autoPlay
+                  playsInline
                   className="w-full max-h-[70vh] object-contain"
                 />
               ) : (
@@ -218,6 +218,7 @@ export function TourGallery() {
                 <img
                   src={selected.src}
                   alt={selected.caption}
+                  loading="lazy"
                   className="w-full max-h-[70vh] object-contain"
                 />
               )}
