@@ -12,9 +12,26 @@ interface ModalProps {
 
 export function Modal({ open, onClose, children, width = 1100 }: ModalProps) {
   useEffect(() => {
-    if (open) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
-    return () => { document.body.style.overflow = ""; };
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      // Delay restoring scroll to avoid conflict when transitioning between modals
+      const timer = setTimeout(() => {
+        // Only restore if no other modal is open
+        if (!document.querySelector("[data-modal-open]")) {
+          document.body.style.overflow = "";
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+    return () => {
+      // Only restore on unmount if no other modal is open
+      setTimeout(() => {
+        if (!document.querySelector("[data-modal-open]")) {
+          document.body.style.overflow = "";
+        }
+      }, 100);
+    };
   }, [open]);
 
   return (
@@ -26,6 +43,7 @@ export function Modal({ open, onClose, children, width = 1100 }: ModalProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           onClick={onClose}
+          data-modal-open
           className="fixed inset-0 z-[1000] bg-slate-900/60 backdrop-blur-[12px] flex items-center justify-center p-4 md:p-10"
         >
           <motion.div
@@ -34,8 +52,8 @@ export function Modal({ open, onClose, children, width = 1100 }: ModalProps) {
             exit={{ opacity: 0, scale: 0.96, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl overflow-auto relative shadow-elevation-3"
-            style={{ width: "100%", maxWidth: width, maxHeight: "90vh" }}
+            className="bg-white rounded-2xl overflow-auto relative shadow-elevation-3 overscroll-contain"
+            style={{ width: "100%", maxWidth: width, maxHeight: "90dvh" }}
           >
             <button
               onClick={onClose}

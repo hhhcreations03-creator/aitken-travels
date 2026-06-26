@@ -107,15 +107,18 @@ export default function Home() {
           const v = vehicleOpen;
           setVehicleOpen(null);
           if (v) {
-            // Detect service based on vehicle category
-            const selfDrive = ["Scooter", "Royal Enfield", "Tuk-Tuk"];
-            const serviceName = selfDrive.includes(v.category) ? "Vehicle Rental" : "Round Island Tour";
-            onSearch({
-              service: serviceName,
-              vehicle: v.name,
-              date: "",
-              pickup: "",
-            });
+            // Small delay to let the VehicleDetail modal fully close
+            // before opening BookingFlow (prevents body overflow conflict)
+            setTimeout(() => {
+              const selfDrive = ["Scooter", "Royal Enfield", "Tuk-Tuk"];
+              const serviceName = selfDrive.includes(v.category) ? "Vehicle Rental" : "Round Island Tour";
+              onSearch({
+                service: serviceName,
+                vehicle: v.name,
+                date: "",
+                pickup: "",
+              });
+            }, 350);
           }
         }}
       />

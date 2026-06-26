@@ -606,8 +606,9 @@ function FL({ label, children }: { label: string; children: React.ReactNode }) {
       <label className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-600 font-medium">{label}</label>
       {children}
       <style jsx>{`
-        .fi { padding: 10px 14px; border: 1.5px solid var(--line-strong); border-radius: 10px; background: white; font-size: 14px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; min-height: 42px; font-family: var(--font-inter), Inter, sans-serif; width: 100%; }
+        .fi { padding: 10px 14px; border: 1.5px solid var(--line-strong); border-radius: 10px; background: white; font-size: 16px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; min-height: 44px; font-family: var(--font-inter), Inter, sans-serif; width: 100%; -webkit-appearance: none; }
         .fi:focus { border-color: var(--primary-500); box-shadow: 0 0 0 3px rgba(21, 176, 248, 0.1); }
+        @media (min-width: 768px) { .fi { font-size: 14px; } }
       `}</style>
     </div>
   );
