@@ -36,6 +36,13 @@ export const metadata: Metadata = {
     "motorbike rental",
     "chauffeur service",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "Aitken Travels \u2014 Reliable Transport Services Across Sri Lanka",
     description:
