@@ -19,7 +19,7 @@ export function BlogNav() {
   return (
     <>
       <nav className="absolute top-0 left-0 right-0 z-[100] py-5">
-        <div className="flex items-center justify-between max-w-[1440px] mx-auto px-6 md:px-10">
+        <div className="flex items-center justify-between max-w-[1600px] mx-auto px-6 md:px-10 2xl:px-24">
           {/* Logo */}
           <Link href="/" className="flex items-center min-h-[44px] -mt-6">
             <Logo light />

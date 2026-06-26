@@ -94,7 +94,7 @@ export default function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Back Link */}
-      <div className="px-6 md:px-10 lg:px-16 pb-0 pt-20 relative z-[101]">
+      <div className="px-6 md:px-10 lg:px-16 2xl:px-24 pb-0 pt-20 relative z-[101]">
         <div className="content-max">
           <Link
             href="/blog"
@@ -121,7 +121,7 @@ export default function BlogPostPage({
       </div>
 
       {/* Hero Image */}
-      <section className="px-6 md:px-10 lg:px-16 pt-8">
+      <section className="px-6 md:px-10 lg:px-16 2xl:px-24 pt-8">
         <div className="content-max">
           <div className="relative rounded-3xl overflow-hidden aspect-[21/9] md:aspect-[21/8]">
             {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -39,7 +39,7 @@ export function TopNav({ onOpenBooking }: TopNavProps) {
             : "py-3 -translate-y-full opacity-0 pointer-events-none",
         ].join(" ")}
       >
-        <div className="flex items-center justify-between max-w-[1440px] mx-auto px-6 md:px-10">
+        <div className="flex items-center justify-between max-w-[1600px] mx-auto px-6 md:px-10 2xl:px-24">
           <a href="#" className="cursor-pointer min-h-[44px] flex items-center -mt-6">
             <Logo light={transparent} />
           </a>

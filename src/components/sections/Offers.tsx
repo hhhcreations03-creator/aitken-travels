@@ -16,8 +16,8 @@ interface OffersProps {
 
 export function Offers({ onApplyOffer }: OffersProps) {
   return (
-    <section className="pb-[100px] md:pb-[140px] px-6 md:px-10 lg:px-16 bg-white">
-      <div className="content-max grid grid-cols-1 md:grid-cols-2 gap-6">
+    <section className="pb-[100px] md:pb-[140px] px-6 md:px-10 lg:px-16 2xl:px-24 bg-white">
+      <div className="content-max grid grid-cols-1 md:grid-cols-2 gap-6 xl:gap-8">
         {OFFERS.map((o, i) => (
           <motion.div
             key={i}

@@ -65,7 +65,7 @@ export default function ContactPage() {
       />
       {/* Nav */}
       <nav className="absolute top-0 left-0 right-0 z-[100] py-5">
-        <div className="flex items-center justify-between max-w-[1440px] mx-auto px-6 md:px-10">
+        <div className="flex items-center justify-between max-w-[1600px] mx-auto px-6 md:px-10 2xl:px-24">
           <Link href="/" className="flex items-center min-h-[44px] -mt-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.png" alt="Aitken Travels" className="h-32 md:h-44 w-auto object-contain" />
@@ -86,8 +86,8 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950" />
           <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
 
-          <div className="relative z-10 w-full px-6 md:px-10 lg:px-16 pb-12 md:pb-16 pt-32">
-            <div className="max-w-[1360px] mx-auto text-center">
+          <div className="relative z-10 w-full px-6 md:px-10 lg:px-16 2xl:px-24 pb-12 md:pb-16 pt-32">
+            <div className="max-w-[1600px] mx-auto text-center">
               <div className="flex items-center justify-center gap-3 mb-5">
                 <span className="w-8 h-[2px] rounded-full bg-gradient-to-r from-primary-400 to-primary-300" />
                 <span className="font-mono text-[12px] tracking-[0.16em] uppercase font-semibold text-primary-300">Get in touch</span>

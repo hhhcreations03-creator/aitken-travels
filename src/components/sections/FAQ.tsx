@@ -50,8 +50,8 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-[80px] md:py-[120px] px-6 md:px-10 lg:px-16 bg-gradient-to-b from-white to-primary-50/30">
-      <div className="max-w-[900px] mx-auto">
+    <section id="faq" className="py-[80px] md:py-[120px] px-6 md:px-10 lg:px-16 2xl:px-24 bg-gradient-to-b from-white to-primary-50/30">
+      <div className="max-w-[960px] mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}

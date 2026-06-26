@@ -14,7 +14,7 @@ const steps = [
 
 export function ClosingCTA({ onOpenBooking }: ClosingCTAProps) {
   return (
-    <section id="contact" className="py-[80px] md:py-[120px] px-6 md:px-10 lg:px-16 bg-gradient-to-b from-white via-primary-50/30 to-primary-50/60 overflow-hidden">
+    <section id="contact" className="py-[80px] md:py-[120px] px-6 md:px-10 lg:px-16 2xl:px-24 bg-gradient-to-b from-white via-primary-50/30 to-primary-50/60 overflow-hidden">
       <div className="content-max">
         {/* Top — centered headline */}
         <motion.div

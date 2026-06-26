@@ -112,7 +112,7 @@ export function Fleet({ onOpenVehicle }: FleetProps) {
         </div>
 
         {/* Desktop: Vehicle grid */}
-        <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-5 xl:gap-6 2xl:gap-8">
           <AnimatePresence mode="popLayout">
             {filtered.map((v, i) => (
               <FleetCard

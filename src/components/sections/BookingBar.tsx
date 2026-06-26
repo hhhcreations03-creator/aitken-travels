@@ -36,7 +36,7 @@ export function SearchSection({ onSearch }: SearchSectionProps) {
   };
 
   return (
-    <section className="py-5 md:py-14 px-5 md:px-10 lg:px-16 bg-transparent">
+    <section className="py-5 md:py-14 px-5 md:px-10 lg:px-16 2xl:px-24 bg-transparent">
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="content-max">
         <div className="hidden md:flex items-center gap-3 mb-6 md:mb-8">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-600)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>

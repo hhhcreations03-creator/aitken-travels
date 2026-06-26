@@ -108,8 +108,8 @@ To exercise any of these rights, please contact us at **travelsaitken@gmail.com*
 export default function PrivacyPage() {
   return (
     <>
-      <nav className="bg-slate-900 py-4 px-6 md:px-10">
-        <div className="max-w-[1440px] mx-auto flex items-center justify-between">
+      <nav className="bg-slate-900 py-4 px-6 md:px-10 lg:px-16 2xl:px-24">
+        <div className="max-w-[1600px] mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center min-h-[44px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.png" alt="Aitken Travels" className="h-32 md:h-44 w-auto object-contain" />

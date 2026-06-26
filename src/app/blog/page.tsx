@@ -66,8 +66,8 @@ export default function BlogPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/40 to-slate-900/80" />
 
         {/* Content */}
-        <div className="relative z-10 w-full px-6 md:px-10 lg:px-16 pb-12 md:pb-16 pt-32">
-          <div className="max-w-[1360px] mx-auto text-center">
+        <div className="relative z-10 w-full px-6 md:px-10 lg:px-16 2xl:px-24 pb-12 md:pb-16 pt-32">
+          <div className="max-w-[1600px] mx-auto text-center">
             <div className="flex items-center justify-center gap-3 mb-5">
               <span className="w-8 h-[2px] rounded-full bg-gradient-to-r from-primary-400 to-primary-300" />
               <span className="font-mono text-[12px] tracking-[0.16em] uppercase font-semibold text-primary-300">

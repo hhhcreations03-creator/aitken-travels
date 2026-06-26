@@ -62,9 +62,9 @@ export function Footer() {
   return (
     <footer className="relative">
       {/* Main footer */}
-      <div className="bg-slate-900 pt-16 pb-10 px-6 md:px-10">
-        <div className="max-w-[1320px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-[60px] pb-[60px]">
+      <div className="bg-slate-900 pt-16 pb-10 px-6 md:px-10 lg:px-16 2xl:px-24">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-[60px] 2xl:gap-[80px] pb-[60px]">
             {/* Logo column */}
             <div className="lg:col-span-1">
               <Logo light />

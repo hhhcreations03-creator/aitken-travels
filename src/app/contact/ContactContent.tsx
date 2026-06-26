@@ -44,8 +44,8 @@ export function ContactContent() {
   };
 
   return (
-    <section className="py-[60px] md:py-[100px] px-6 md:px-10 lg:px-16 bg-[#FFFBF5]">
-      <div className="max-w-[1360px] mx-auto">
+    <section className="py-[60px] md:py-[100px] px-6 md:px-10 lg:px-16 2xl:px-24 bg-[#FFFBF5]">
+      <div className="max-w-[1600px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20">
 
           {/* Left — contact info */}

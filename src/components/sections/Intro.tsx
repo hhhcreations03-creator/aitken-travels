@@ -13,7 +13,7 @@ export function Intro() {
   return (
     <section id="about" className="overflow-hidden">
       {/* ─── Main about section ─── */}
-      <div className="py-[60px] md:py-[80px] px-6 md:px-10 lg:px-16 bg-gradient-to-b from-primary-50/50 to-white">
+      <div className="py-[60px] md:py-[80px] px-6 md:px-10 lg:px-16 2xl:px-24 bg-gradient-to-b from-primary-50/50 to-white">
         <div className="content-max">
           {/* ─── Mobile layout ─── */}
           <div className="lg:hidden">
@@ -117,7 +117,7 @@ export function Intro() {
           </div>
 
           {/* ─── Desktop layout ─── */}
-          <div className="hidden lg:grid lg:grid-cols-2 gap-20 items-center">
+          <div className="hidden lg:grid lg:grid-cols-2 gap-20 xl:gap-24 2xl:gap-32 items-center">
 
             {/* Left — text content */}
             <motion.div

@@ -30,7 +30,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
 
   return (
     <section className="py-[80px] md:py-[120px] overflow-hidden bg-gradient-to-b from-primary-50/40 to-white">
-      <div className="content-max px-6 md:px-10 lg:px-16">
+      <div className="content-max px-6 md:px-10 lg:px-16 2xl:px-24">
         {/* Header row */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 md:mb-14">
           <motion.div
@@ -198,7 +198,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="flex-shrink-0 w-[340px] md:w-[400px] snap-start bg-white rounded-2xl border border-slate-100 shadow-elevation-1 hover:shadow-elevation-2 hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
+            className="flex-shrink-0 w-[340px] md:w-[400px] 2xl:w-[440px] snap-start bg-white rounded-2xl border border-slate-100 shadow-elevation-1 hover:shadow-elevation-2 hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
           >
             {/* Top section — avatar + info */}
             <div className="p-6 pb-0">
@@ -267,7 +267,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="hidden md:flex flex-shrink-0 w-[400px] snap-start rounded-2xl bg-gradient-to-br from-primary-600 to-primary-700 p-8 flex-col justify-center items-center text-center"
+          className="hidden md:flex flex-shrink-0 w-[400px] 2xl:w-[440px] snap-start rounded-2xl bg-gradient-to-br from-primary-600 to-primary-700 p-8 flex-col justify-center items-center text-center"
         >
           <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-6">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

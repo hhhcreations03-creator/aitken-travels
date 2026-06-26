@@ -13,7 +13,7 @@ export function SriLankaMap({ onOpenBooking }: SriLankaMapProps) {
   const [active, setActive] = useState<Region | null>(null);
 
   return (
-    <section id="destinations" className="py-[80px] md:py-[120px] px-6 md:px-10 lg:px-16 bg-gradient-to-b from-primary-50/50 to-white overflow-hidden">
+    <section id="destinations" className="py-[80px] md:py-[120px] px-6 md:px-10 lg:px-16 2xl:px-24 bg-gradient-to-b from-primary-50/50 to-white overflow-hidden">
       <div className="content-max">
         {/* Header */}
         <motion.div
@@ -40,7 +40,7 @@ export function SriLankaMap({ onOpenBooking }: SriLankaMapProps) {
         </motion.div>
 
         {/* Photo grid — 4-column masonry */}
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 space-y-3 md:space-y-4">
+        <div className="columns-2 md:columns-3 lg:columns-4 2xl:columns-5 gap-3 md:gap-4 space-y-3 md:space-y-4">
           {REGIONS.map((region, i) => (
             <motion.div
               key={region.id}

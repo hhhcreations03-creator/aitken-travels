@@ -34,7 +34,7 @@ export function TourGallery() {
   const filtered = filter === "all" ? GALLERY : GALLERY.filter((g) => g.type === filter);
 
   return (
-    <section className="py-[80px] md:py-[120px] px-6 md:px-10 lg:px-16 bg-white overflow-hidden">
+    <section className="py-[80px] md:py-[120px] px-6 md:px-10 lg:px-16 2xl:px-24 bg-white overflow-hidden">
       <div className="content-max">
         {/* Header */}
         <motion.div
@@ -83,7 +83,7 @@ export function TourGallery() {
         </div>
 
         {/* Masonry gallery grid */}
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 space-y-3 md:space-y-4">
+        <div className="columns-2 md:columns-3 lg:columns-4 2xl:columns-5 gap-3 md:gap-4 space-y-3 md:space-y-4">
           <AnimatePresence>
             {filtered.map((item, i) => (
               <motion.div

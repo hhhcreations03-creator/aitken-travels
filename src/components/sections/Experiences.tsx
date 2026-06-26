@@ -77,7 +77,7 @@ export function Services({ onBookService }: ServicesProps) {
         </div>
 
         {/* Desktop: 2x2 Card Grid */}
-        <div className="hidden md:grid md:grid-cols-2 gap-6">
+        <div className="hidden md:grid md:grid-cols-2 gap-6 xl:gap-8">
           {SERVICES.map((service, i) => (
             <motion.div
               key={service.id}

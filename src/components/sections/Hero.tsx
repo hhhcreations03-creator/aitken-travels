@@ -171,7 +171,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
         }} />
 
         {/* Main content */}
-        <div className="relative z-[3] h-full flex flex-col justify-center px-6 md:px-10 lg:px-16">
+        <div className="relative z-[3] h-full flex flex-col justify-center px-6 md:px-10 lg:px-16 2xl:px-24">
           <div className="content-max w-full">
             <div className="max-w-[680px]">
               {/* Eyebrow */}
@@ -235,7 +235,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
         </div>
 
         {/* Bottom bar — slide info + indicators */}
-        <div className="absolute bottom-0 left-0 right-0 z-[4] px-6 md:px-10 lg:px-16 pb-8">
+        <div className="absolute bottom-0 left-0 right-0 z-[4] px-6 md:px-10 lg:px-16 2xl:px-24 pb-8">
           <div className="content-max flex items-center gap-5">
             {/* Slide indicators */}
             <div className="flex items-center gap-3">

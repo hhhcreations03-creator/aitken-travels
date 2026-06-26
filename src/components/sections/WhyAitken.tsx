@@ -49,7 +49,7 @@ const reasons = [
 
 export function WhyAitken() {
   return (
-    <section className="py-[80px] md:py-[120px] px-6 md:px-10 lg:px-16 bg-gradient-to-b from-white to-primary-50/40 overflow-hidden">
+    <section className="py-[80px] md:py-[120px] px-6 md:px-10 lg:px-16 2xl:px-24 bg-gradient-to-b from-white to-primary-50/40 overflow-hidden">
       <div className="content-max">
         {/* Header */}
         <motion.div
@@ -181,7 +181,7 @@ export function WhyAitken() {
         </div>
 
         {/* Bottom row — 4 compact cards */}
-        <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4 gap-5 xl:gap-6 2xl:gap-8">
           {reasons.slice(2).map((r, i) => (
             <motion.div
               key={r.title}
