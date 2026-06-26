@@ -4,7 +4,22 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Aitken Travels",
-  description: "Learn how Aitken Travels collects, uses, and protects your personal information.",
+  description:
+    "Learn how Aitken Travels collects, uses, and protects your personal information. Read about our data practices, cookies, your rights, and how to contact us regarding privacy concerns.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | Aitken Travels",
+    description:
+      "Learn how Aitken Travels collects, uses, and protects your personal information when you use our website and transport services across Sri Lanka.",
+    type: "website",
+    siteName: "Aitken Travels",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const SECTIONS = [

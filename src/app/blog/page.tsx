@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     "Sri Lanka transport guide",
     "Aitken Travels blog",
   ],
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
     title: "Blog | Aitken Travels — Sri Lanka Travel Guides & Tips",
     description:
@@ -20,11 +23,38 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Aitken Travels",
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@aitkentravels",
+  },
 };
 
 export default function BlogPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.aitkentravels.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://www.aitkentravels.com/blog",
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-[#FFFBF5]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative min-h-[420px] md:min-h-[480px] flex items-end overflow-hidden">
         {/* Background image — Sri Lanka scenic */}

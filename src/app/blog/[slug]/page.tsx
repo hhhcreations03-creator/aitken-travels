@@ -23,6 +23,9 @@ export function generateMetadata({
     title: `${post.title} | Aitken Travels Blog`,
     description: post.excerpt,
     keywords: post.tags,
+    alternates: {
+      canonical: `/blog/${params.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -31,6 +34,14 @@ export function generateMetadata({
       siteName: "Aitken Travels",
       publishedTime: post.publishedAt,
       authors: [post.author],
+      tags: post.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@aitkentravels",
+      title: post.title,
+      description: post.excerpt,
+      images: [{ url: post.image, alt: post.title }],
     },
   };
 }
@@ -55,8 +66,33 @@ export default function BlogPostPage({
 
   const related = getRelatedPosts(post.slug, 3);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image,
+    datePublished: post.publishedAt,
+    author: {
+      "@type": "Person",
+      name: post.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Aitken Travels",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.aitkentravels.com/logo.png",
+      },
+    },
+  };
+
   return (
     <main className="min-h-screen bg-surface">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Back Link */}
       <div className="px-6 md:px-10 lg:px-16 pb-0 pt-20 relative z-[101]">
         <div className="content-max">

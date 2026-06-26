@@ -4,7 +4,22 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions | Aitken Travels",
-  description: "Read the terms and conditions for using Aitken Travels\u2019 transport and rental services across Sri Lanka.",
+  description:
+    "Read the terms and conditions for using Aitken Travels\u2019 transport and rental services across Sri Lanka, including booking, cancellation, payment, and vehicle rental policies.",
+  alternates: {
+    canonical: "/terms",
+  },
+  openGraph: {
+    title: "Terms & Conditions | Aitken Travels",
+    description:
+      "Terms and conditions for Aitken Travels\u2019 transport, vehicle rental, airport transfer, and tour services across Sri Lanka.",
+    type: "website",
+    siteName: "Aitken Travels",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const SECTIONS = [

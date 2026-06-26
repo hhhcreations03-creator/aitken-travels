@@ -6,17 +6,63 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Contact Us | Aitken Travels — Get in Touch",
   description: "Contact Aitken Travels for transport services across Sri Lanka. Reach us via WhatsApp, email, or phone. We respond within 1 hour.",
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
     title: "Contact Us | Aitken Travels",
     description: "Get in touch with Aitken Travels for bookings, inquiries, and support.",
     type: "website",
     siteName: "Aitken Travels",
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@aitkentravels",
+  },
 };
 
 export default function ContactPage() {
+  const contactJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      name: "Contact Aitken Travels",
+      description:
+        "Contact Aitken Travels for transport services across Sri Lanka. Reach us via WhatsApp, email, or phone.",
+      url: "https://www.aitkentravels.com/contact",
+      mainEntity: {
+        "@type": "Organization",
+        name: "Aitken Travels",
+        telephone: "+94770813690",
+        email: "travelsaitken@gmail.com",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://www.aitkentravels.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Contact",
+          item: "https://www.aitkentravels.com/contact",
+        },
+      ],
+    },
+  ];
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
       {/* Nav */}
       <nav className="absolute top-0 left-0 right-0 z-[100] py-5">
         <div className="flex items-center justify-between max-w-[1440px] mx-auto px-6 md:px-10">
