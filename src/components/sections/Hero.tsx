@@ -84,7 +84,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
         }} />
 
         {/* Content — vertically distributed */}
-        <div className="absolute inset-0 z-[3] flex flex-col justify-between px-5 pt-20 pb-6">
+        <div className="absolute inset-0 z-[3] flex flex-col justify-between px-5 pt-32 pb-6">
 
           {/* Top: Season + Weather badge */}
           <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.4 }}>
