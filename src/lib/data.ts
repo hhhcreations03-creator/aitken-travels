@@ -435,3 +435,114 @@ export const HERO_SLIDES = [
     sub: "Tea Plantations \u00b7 Hill Country",
   },
 ];
+
+// ─── Seasonal Travel Data ───────────────────────────────────────
+
+export interface SeasonDestination {
+  regionId: string;
+  whyNow: string;
+  highlights: string[];
+}
+
+export interface Season {
+  id: string;
+  name: string;
+  months: number[];
+  monthLabel: string;
+  tagline: string;
+  description: string;
+  weather: {
+    condition: string;
+    icon: "sun" | "cloud-sun" | "cloud-rain" | "cloud-drizzle";
+    tempHigh: number;
+    tempLow: number;
+    humidity: string;
+    rainfall: string;
+  };
+  heroSlideIndices: number[];
+  destinations: SeasonDestination[];
+  activities: string[];
+  tips: string[];
+}
+
+export const SEASONAL_DATA: Season[] = [
+  {
+    id: "golden-coast",
+    name: "Golden Coast Season",
+    months: [12, 1, 2, 3],
+    monthLabel: "December \u2013 March",
+    tagline: "Sun-soaked beaches and ancient wonders await.",
+    description: "Sri Lanka\u2019s southwest coast basks in dry, sunny weather \u2014 ideal for golden beaches, whale watching off Mirissa, exploring Galle Fort, and sunrise safaris in Yala.",
+    weather: { condition: "Sunny & Dry", icon: "sun", tempHigh: 32, tempLow: 28, humidity: "Low", rainfall: "Minimal" },
+    heroSlideIndices: [1, 0, 2],
+    destinations: [
+      { regionId: "mirissa", whyNow: "Peak whale watching season \u2014 spot blue whales just offshore.", highlights: ["Blue whale tours", "Coconut Tree Hill", "Stilt fishermen"] },
+      { regionId: "galle", whyNow: "Dry, golden light makes the fort magical for walking and photography.", highlights: ["Fort rampart walks", "Boutique galleries", "Sunset lighthouse"] },
+      { regionId: "bentota", whyNow: "Calm seas and warm sun \u2014 perfect beach resort weather.", highlights: ["Water sports", "River safaris", "Turtle hatchery"] },
+      { regionId: "yala", whyNow: "Dry conditions push wildlife to waterholes \u2014 best leopard sighting odds.", highlights: ["Dawn safari drives", "Elephant herds", "Bird watching"] },
+      { regionId: "sigiriya", whyNow: "Cool mornings and clear skies for climbing the rock fortress.", highlights: ["Lion Rock climb", "Pidurangala sunrise", "Ancient frescoes"] },
+      { regionId: "kandy", whyNow: "Pleasant hill-country weather for temple visits and botanical gardens.", highlights: ["Temple of the Tooth", "Royal Botanical Gardens", "Kandyan dance"] },
+    ],
+    activities: ["Beach hopping along the south coast", "Whale & dolphin watching", "Yala safari at dawn", "Galle Fort heritage walk", "Sigiriya rock fortress climb", "Surf lessons in Weligama"],
+    tips: ["Book whale watching tours at least 2 days ahead \u2014 boats fill fast.", "Start Yala safaris before 6 AM for the best leopard sightings.", "Carry reef-safe sunscreen for beach days.", "This is peak season \u2014 book vehicles and hotels early."],
+  },
+  {
+    id: "festival-hills",
+    name: "Festival & Hills Season",
+    months: [4, 5],
+    monthLabel: "April \u2013 May",
+    tagline: "Hill country magic and cultural celebrations.",
+    description: "Experience Sri Lanka\u2019s vibrant Sinhala & Tamil New Year, lush tea plantations at their greenest, and the cool embrace of the hill country before the east coast season begins.",
+    weather: { condition: "Warm Showers", icon: "cloud-sun", tempHigh: 30, tempLow: 24, humidity: "Moderate", rainfall: "Moderate" },
+    heroSlideIndices: [4, 3, 0],
+    destinations: [
+      { regionId: "nuwaraeliya", whyNow: "Tea fields at peak green \u2014 cool weather perfect for hiking.", highlights: ["Tea factory tours", "Horton Plains trek", "Gregory Lake"] },
+      { regionId: "ella", whyNow: "Waterfalls in full flow after early rains \u2014 spectacular views.", highlights: ["Nine Arch Bridge", "Ravana Falls", "Little Adam\u2019s Peak"] },
+      { regionId: "kandy", whyNow: "New Year festivities bring the city alive with colour and tradition.", highlights: ["Sinhala New Year celebrations", "Temple ceremonies", "Local markets"] },
+      { regionId: "sigiriya", whyNow: "Fewer crowds and dramatic cloud formations over the rock.", highlights: ["Lion Rock at dawn", "Dambulla Cave Temple", "Village cycling"] },
+    ],
+    activities: ["Sinhala & Tamil New Year celebrations", "Tea plantation walks & tasting", "Scenic train ride (Kandy\u2013Ella)", "Waterfall chasing in hill country", "Temple & heritage trail", "Cooking classes with locals"],
+    tips: ["April is New Year \u2014 some shops close for 2\u20133 days, plan accordingly.", "Pack a light rain jacket for afternoon showers.", "The Kandy\u2013Ella train is iconic \u2014 book 1st class seats in advance.", "Shoulder season means better hotel rates and fewer tourists."],
+  },
+  {
+    id: "east-coast",
+    name: "East Coast Season",
+    months: [6, 7, 8, 9],
+    monthLabel: "June \u2013 September",
+    tagline: "Untouched east coast beaches and wild safaris.",
+    description: "While the southwest gets monsoon rain, Sri Lanka\u2019s east coast shines with crystal-clear waters, world-class surf, and pristine beaches that most tourists never see.",
+    weather: { condition: "Dry & Breezy", icon: "sun", tempHigh: 31, tempLow: 27, humidity: "Low", rainfall: "Minimal" },
+    heroSlideIndices: [2, 0, 4],
+    destinations: [
+      { regionId: "trincomalee", whyNow: "Calm turquoise seas \u2014 best snorkelling and diving conditions.", highlights: ["Pigeon Island snorkelling", "Nilaveli Beach", "Whale watching"] },
+      { regionId: "wilpattu", whyNow: "Dry season wildlife concentrations around natural lakes.", highlights: ["Leopard tracking", "Sloth bear sightings", "Bird watching"] },
+      { regionId: "ella", whyNow: "Clear skies in the hills while the coast stays dry.", highlights: ["Ella Rock hike", "Nine Arch Bridge", "Local caf\u00e9 culture"] },
+      { regionId: "nuwaraeliya", whyNow: "Cool hill-country escape from the coastal heat.", highlights: ["Tea estate stays", "Horton Plains", "Pedro Tea Estate"] },
+    ],
+    activities: ["Snorkelling at Pigeon Island", "Surfing in Arugam Bay", "Wilpattu dawn safari", "East coast beach camping", "Hill country trekking", "Trincomalee whale watching"],
+    tips: ["The east coast is less developed \u2014 carry cash as ATMs are sparse.", "Arugam Bay is a 6-hour drive from Colombo \u2014 consider a multi-day trip.", "Book Wilpattu safaris through us for experienced tracker-guides.", "Evenings cool down quickly in the hills \u2014 bring layers."],
+  },
+  {
+    id: "emerald-mist",
+    name: "Emerald Mist Season",
+    months: [10, 11],
+    monthLabel: "October \u2013 November",
+    tagline: "Misty mountains and emerald landscapes.",
+    description: "Short rains transform Sri Lanka into an emerald paradise. Waterfalls thunder, tea fields glow impossibly green, and you\u2019ll find the best deals of the year with fewer crowds.",
+    weather: { condition: "Showers & Mist", icon: "cloud-drizzle", tempHigh: 28, tempLow: 23, humidity: "High", rainfall: "Heavy" },
+    heroSlideIndices: [4, 3, 1],
+    destinations: [
+      { regionId: "nuwaraeliya", whyNow: "Dramatic mist rolling through tea plantations \u2014 magical photography.", highlights: ["Misty tea walks", "Horton Plains clouds", "Cozy hill stays"] },
+      { regionId: "ella", whyNow: "Waterfalls at their most powerful \u2014 Ravana and Bambarakanda thunder.", highlights: ["Waterfall viewing", "Train through mist", "Ella Rock in clouds"] },
+      { regionId: "kandy", whyNow: "Temple visits in cool weather \u2014 serene atmosphere with fewer tourists.", highlights: ["Temple of the Tooth", "Botanical Gardens", "Udawattakele forest"] },
+      { regionId: "colombo", whyNow: "The capital\u2019s food scene, museums, and shopping are rain-proof.", highlights: ["Food tours", "Gangaramaya Temple", "Galle Face sunset"] },
+    ],
+    activities: ["Waterfall trail in the hills", "Tea plantation morning walks", "Temple & meditation retreats", "Colombo street food tours", "Photography in the mist", "Ayurvedic spa experiences"],
+    tips: ["Rain is mostly afternoon bursts \u2014 mornings are often clear and beautiful.", "This is the best time for budget travel \u2014 rates drop 20\u201340%.", "Waterproof bags are essential for electronics.", "Leeches are active on forest trails \u2014 wear closed shoes and carry salt."],
+  },
+];
+
+export function getCurrentSeason(): Season {
+  const month = new Date().getMonth() + 1;
+  return SEASONAL_DATA.find((s) => s.months.includes(month)) || SEASONAL_DATA[0];
+}
