@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { TopNav } from "@/components/TopNav";
 import { Hero } from "@/components/sections/Hero";
-import { SearchSection } from "@/components/sections/BookingBar";
+import { SearchSection, SearchData } from "@/components/sections/BookingBar";
 import { Marquee } from "@/components/sections/Marquee";
 import { Intro } from "@/components/sections/Intro";
 import { Services } from "@/components/sections/Experiences";
@@ -14,6 +14,7 @@ import { WhyAitken } from "@/components/sections/WhyAitken";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Offers } from "@/components/sections/Offers";
 import { Stories } from "@/components/sections/Stories";
+import { FAQ } from "@/components/sections/FAQ";
 import { ClosingCTA } from "@/components/sections/ClosingCTA";
 import { Footer } from "@/components/Footer";
 import { BookingFlow } from "@/components/modals/BookingFlow";
@@ -25,9 +26,17 @@ export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [vehicleOpen, setVehicleOpen] = useState<Vehicle | null>(null);
   const [prefillVehicle, setPrefillVehicle] = useState<Vehicle | null>(null);
+  const [searchData, setSearchData] = useState<SearchData | null>(null);
 
   const onOpenBooking = (vehicle?: Vehicle) => {
     setPrefillVehicle(vehicle || null);
+    setSearchData(null);
+    setBookingOpen(true);
+  };
+
+  const onSearch = (data: SearchData) => {
+    setSearchData(data);
+    setPrefillVehicle(null);
     setBookingOpen(true);
   };
 
@@ -37,17 +46,35 @@ export default function Home() {
 
       <main>
         <Hero onOpenBooking={() => onOpenBooking()} />
-        <SearchSection onOpenBooking={() => onOpenBooking()} />
+        <SearchSection onSearch={onSearch} />
         <Marquee />
         <Intro />
-        <Services />
+        <Services onBookService={(serviceId: string) => {
+          const serviceMap: Record<string, string> = {
+            "airport-transfers": "Airport Transfer",
+            "round-tours": "Round Island Tour",
+            "day-trips": "Day Excursion",
+            "self-drive": "Vehicle Rental",
+          };
+          onSearch({ service: serviceMap[serviceId] || "", vehicle: "", date: "", pickup: "" });
+        }} />
         <Fleet onOpenVehicle={setVehicleOpen} />
         <SriLankaMap onOpenBooking={() => onOpenBooking()} />
         <TourGallery />
         <WhyAitken />
-        <Testimonials />
-        <Offers />
+        <Testimonials onOpenBooking={() => onOpenBooking()} />
+        <Offers onApplyOffer={(offerIndex: number) => {
+          // Offer 0 = 15% off multi-day (Round Tour), Offer 1 = Free meet & greet (Airport Transfer)
+          const serviceMap = ["Round Island Tour", "Airport Transfer"];
+          onSearch({
+            service: serviceMap[offerIndex] || "",
+            vehicle: "",
+            date: "",
+            pickup: offerIndex === 1 ? "Airport (CMB)" : "",
+          });
+        }} />
         <Stories />
+        <FAQ />
         <ClosingCTA onOpenBooking={() => onOpenBooking()} />
       </main>
 
@@ -60,8 +87,10 @@ export default function Home() {
         onClose={() => {
           setBookingOpen(false);
           setPrefillVehicle(null);
+          setSearchData(null);
         }}
         prefillVehicle={prefillVehicle}
+        prefillSearch={searchData}
       />
       <VehicleDetail
         vehicle={vehicleOpen}
@@ -70,7 +99,17 @@ export default function Home() {
         onBook={() => {
           const v = vehicleOpen;
           setVehicleOpen(null);
-          onOpenBooking(v || undefined);
+          if (v) {
+            // Detect service based on vehicle category
+            const selfDrive = ["Scooter", "Royal Enfield", "Tuk-Tuk"];
+            const serviceName = selfDrive.includes(v.category) ? "Vehicle Rental" : "Round Island Tour";
+            onSearch({
+              service: serviceName,
+              vehicle: v.name,
+              date: "",
+              pickup: "",
+            });
+          }
         }}
       />
     </>

@@ -75,8 +75,73 @@ export function WhyAitken() {
           </p>
         </motion.div>
 
+        {/* === MOBILE LAYOUT === */}
+        <div className="md:hidden">
+          {/* Featured card — first item, full-width */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="group relative rounded-2xl bg-white border border-slate-100 p-8 shadow-elevation-1 overflow-hidden mb-5"
+          >
+            <div className="absolute -top-4 -right-2 font-display text-[120px] font-bold leading-none text-primary-50 pointer-events-none select-none">
+              {reasons[0].stat}
+            </div>
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-primary-50 text-primary-600 flex items-center justify-center">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={reasons[0].icon} />
+                  </svg>
+                </div>
+                <div>
+                  <div className="font-display text-[28px] font-bold gradient-text leading-none">{reasons[0].stat}</div>
+                  <div className="font-mono text-[10px] tracking-[0.1em] uppercase text-slate-400 mt-0.5">{reasons[0].statLabel}</div>
+                </div>
+              </div>
+              <h3 className="font-display text-[22px] font-semibold text-slate-900 mb-3">
+                {reasons[0].title}
+              </h3>
+              <p className="text-[14px] text-slate-500 leading-relaxed">
+                {reasons[0].description}
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Remaining items — stacked cards */}
+          <div className="grid grid-cols-1 gap-3 mt-4">
+            {reasons.slice(1).map((r, i) => (
+              <motion.div
+                key={r.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-20px" }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="flex items-start gap-3 bg-white rounded-xl border border-slate-100 shadow-sm p-4"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center flex-shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={r.icon} />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[20px] font-bold gradient-text leading-none">{r.stat}</div>
+                  <h3 className="text-[15px] font-semibold text-slate-900 mt-1">
+                    {r.title}
+                  </h3>
+                  <p className="text-[12px] text-slate-500 leading-relaxed line-clamp-2 mt-0.5">
+                    {r.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* === DESKTOP LAYOUT === */}
         {/* Top row — 2 featured cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div className="hidden md:grid grid-cols-2 gap-5 mb-5">
           {reasons.slice(0, 2).map((r, i) => (
             <motion.div
               key={r.title}
@@ -116,7 +181,7 @@ export function WhyAitken() {
         </div>
 
         {/* Bottom row — 4 compact cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {reasons.slice(2).map((r, i) => (
             <motion.div
               key={r.title}

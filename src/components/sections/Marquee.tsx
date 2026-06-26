@@ -12,7 +12,7 @@ const ITEMS: MarqueeItem[] = [
   },
   {
     icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4V8.5L10.5 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    label: "15+ Years of Service",
+    label: "2+ Years of Service",
   },
   {
     icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 13.5C2.5 10 5 8 8 8C11 8 13.5 10 13.5 13.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>`,
@@ -25,10 +25,6 @@ const ITEMS: MarqueeItem[] = [
   {
     icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="5" r="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M3 14C3 11.2 5.2 9 8 9C10.8 9 13 11.2 13 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>`,
     label: "Professional Drivers",
-  },
-  {
-    icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L9.8 5.6L14.8 6.1L11 9.5L12 14.4L8 12L4 14.4L5 9.5L1.2 6.1L6.2 5.6L8 1Z" fill="currentColor"/></svg>`,
-    label: "4.9 \u2605 on Google \u00b7 800+ reviews",
   },
   {
     icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1.5" y="4" width="13" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="4.5" cy="12" r="1.5" stroke="currentColor" stroke-width="1"/><circle cx="11.5" cy="12" r="1.5" stroke="currentColor" stroke-width="1"/><path d="M1.5 7H14.5" stroke="currentColor" stroke-width="1"/></svg>`,

@@ -10,7 +10,11 @@ const gradients = {
 
 const decorativeText = ["15%", "FREE"] as const;
 
-export function Offers() {
+interface OffersProps {
+  onApplyOffer?: (offerIndex: number) => void;
+}
+
+export function Offers({ onApplyOffer }: OffersProps) {
   return (
     <section className="pb-[100px] md:pb-[140px] px-6 md:px-10 lg:px-16 bg-white">
       <div className="content-max grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -41,9 +45,12 @@ export function Offers() {
                 {o.sub}
               </p>
 
-              <div className="mt-8 inline-flex glass-card rounded-full px-6 py-3 text-white text-[13px] font-medium items-center gap-2 hover:bg-white/20 transition-colors duration-200 min-h-[44px]">
+              <button
+                onClick={() => onApplyOffer?.(i)}
+                className="mt-8 inline-flex glass-card rounded-full px-6 py-3 text-white text-[13px] font-medium items-center gap-2 hover:bg-white/20 transition-colors duration-200 min-h-[44px] cursor-pointer"
+              >
                 Apply this offer &rarr;
-              </div>
+              </button>
             </div>
           </motion.div>
         ))}

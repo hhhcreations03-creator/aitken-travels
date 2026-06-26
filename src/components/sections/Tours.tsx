@@ -81,7 +81,7 @@ export function Fleet({ onOpenVehicle }: FleetProps) {
                   onClick={() => setFilter(cat.key)}
                   className={`relative flex-shrink-0 px-5 py-2.5 rounded-full text-[13px] font-medium cursor-pointer transition-all duration-300 min-h-[44px] flex items-center gap-2 border ${
                     isActive
-                      ? "bg-primary-500 border-primary-400 text-white shadow-[0_0_20px_rgba(45,212,191,0.25)]"
+                      ? "bg-primary-500 border-primary-400 text-white shadow-[0_0_20px_rgba(21,176,248,0.25)]"
                       : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white/90"
                   }`}
                 >
@@ -97,8 +97,22 @@ export function Fleet({ onOpenVehicle }: FleetProps) {
           </div>
         </div>
 
-        {/* Vehicle grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Mobile: Single column horizontal cards */}
+        <div className="md:hidden flex flex-col gap-4">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((v, i) => (
+              <MobileFleetCard
+                key={v.id}
+                vehicle={v}
+                onOpen={() => onOpenVehicle(v)}
+                index={i}
+              />
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Desktop: Vehicle grid */}
+        <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <AnimatePresence mode="popLayout">
             {filtered.map((v, i) => (
               <FleetCard
@@ -220,6 +234,92 @@ function FleetCard({
               +{vehicle.features.length - 3} more
             </span>
           )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ─── Mobile Fleet Card (horizontal layout) ──────────── */
+
+function MobileFleetCard({
+  vehicle,
+  onOpen,
+  index,
+}: {
+  vehicle: Vehicle;
+  onOpen: () => void;
+  index: number;
+}) {
+  const isSelfRide = SELF_RIDE.includes(vehicle.category);
+
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.4, delay: index * 0.04 }}
+      onClick={onOpen}
+      className="flex gap-4 rounded-2xl overflow-hidden cursor-pointer bg-white/[0.04] border border-white/[0.08] p-3"
+    >
+      {/* Image */}
+      <div className="relative w-[120px] h-[120px] rounded-xl overflow-hidden flex-shrink-0">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={vehicle.image}
+          alt={vehicle.name}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
+
+        {/* Badge */}
+        <div className="absolute top-2 left-2">
+          {isSelfRide ? (
+            <span className="bg-amber-500 text-white rounded-full px-2 py-0.5 text-[9px] font-mono tracking-[0.06em] uppercase font-semibold">
+              Self-ride
+            </span>
+          ) : (
+            <span className="backdrop-blur-md bg-white/15 border border-white/10 text-white rounded-full px-2 py-0.5 text-[9px] font-mono tracking-[0.06em] uppercase">
+              With driver
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 min-w-0 py-0.5">
+        <h3 className="font-display text-[17px] font-semibold text-white leading-tight truncate">
+          {vehicle.name}
+        </h3>
+
+        {/* Specs row */}
+        <div className="flex items-center gap-2 mt-1.5 text-[11px] text-white/40 font-mono">
+          <span>{vehicle.transmission}</span>
+          <span className="text-white/20">&middot;</span>
+          <span>{vehicle.ac ? "A/C" : "Non-A/C"}</span>
+          <span className="text-white/20">&middot;</span>
+          <span>{vehicle.luggage}</span>
+        </div>
+
+        {/* Feature pills */}
+        <div className="flex flex-wrap gap-1.5 mt-2.5">
+          {vehicle.features.slice(0, 2).map((f) => (
+            <span
+              key={f}
+              className="bg-white/[0.06] border border-white/[0.06] rounded-full px-2 py-0.5 text-[10px] text-white/50"
+            >
+              {f}
+            </span>
+          ))}
+        </div>
+
+        {/* View details link */}
+        <div className="flex items-center gap-1 mt-2.5 text-[12px] font-medium text-primary-400">
+          View details
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
         </div>
       </div>
     </motion.div>

@@ -32,7 +32,7 @@ export function WhatsAppButton() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-3"
+            className="fixed bottom-20 right-6 z-50 flex items-center gap-3"
           >
             {/* Label pill */}
             <motion.button
@@ -72,7 +72,7 @@ export function WhatsAppButton() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
-            className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] rounded-2xl overflow-hidden shadow-elevation-3 border border-slate-100"
+            className="fixed bottom-20 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] rounded-2xl overflow-hidden shadow-elevation-3 border border-slate-100"
           >
             {/* Header */}
             <div className="bg-[#075E54] px-5 py-4 flex items-center justify-between">

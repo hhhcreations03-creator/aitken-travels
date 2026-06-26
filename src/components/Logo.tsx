@@ -10,7 +10,7 @@ export function Logo({ light = false }: { light?: boolean }) {
         className={`h-32 md:h-44 w-auto object-contain transition-all duration-300 ${
           light
             ? ""
-            : "brightness-0 saturate-100 [filter:brightness(0)_saturate(100%)_invert(24%)_sepia(89%)_saturate(746%)_hue-rotate(152deg)_brightness(93%)_contrast(93%)]"
+            : "brightness-0 saturate-100 [filter:brightness(0)_saturate(100%)_invert(58%)_sepia(85%)_saturate(1500%)_hue-rotate(180deg)_brightness(100%)_contrast(95%)]"
         }`}
       />
     </div>

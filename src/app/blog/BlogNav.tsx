@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { label: "Fleet", href: "/#fleet" },
   { label: "Destinations", href: "/#destinations" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function BlogNav() {
@@ -18,15 +18,15 @@ export function BlogNav() {
 
   return (
     <>
-      <nav className="absolute top-0 left-0 right-0 z-[100] py-4">
+      <nav className="absolute top-0 left-0 right-0 z-[100] py-5">
         <div className="flex items-center justify-between max-w-[1440px] mx-auto px-6 md:px-10">
           {/* Logo */}
-          <Link href="/" className="flex items-center min-h-[44px]">
+          <Link href="/" className="flex items-center min-h-[44px] -mt-6">
             <Logo light />
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8 -mt-6">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.label}
@@ -43,7 +43,7 @@ export function BlogNav() {
           </div>
 
           {/* Right side — mobile menu */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 -mt-6">
             {/* Mobile hamburger */}
             <button
               className="lg:hidden flex flex-col gap-1.5 bg-transparent border-none cursor-pointer p-2 min-h-[44px] justify-center"

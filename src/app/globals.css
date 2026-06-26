@@ -3,28 +3,28 @@
 @tailwind utilities;
 
 :root {
-  /* Primary — Tropical Teal (adventure, nature, exploration) */
-  --primary-50: #f0fdfa;
-  --primary-100: #ccfbf1;
-  --primary-200: #99f6e4;
-  --primary-300: #5eead4;
-  --primary-400: #2dd4bf;
-  --primary-500: #14b8a6;
-  --primary-600: #0d9488;
-  --primary-700: #0f766e;
-  --primary-800: #115e59;
-  --primary-900: #134e4a;
-  --primary-950: #042f2e;
+  /* Primary — Sky Blue (#15B0F8 based) */
+  --primary-50: #eff8ff;
+  --primary-100: #dbeffe;
+  --primary-200: #bfe3fe;
+  --primary-300: #93d3fd;
+  --primary-400: #15b0f8;
+  --primary-500: #0e9de5;
+  --primary-600: #0b7ec4;
+  --primary-700: #0a659f;
+  --primary-800: #0d5583;
+  --primary-900: #10476d;
+  --primary-950: #0a2d49;
 
-  /* Accent — Sunset Amber (warmth, golden hour, tropical) */
-  --accent: #f59e0b;
-  --accent-deep: #d97706;
-  --accent-warm: #d4a853;
+  /* Accent */
+  --accent: #15b0f8;
+  --accent-deep: #0b7ec4;
+  --accent-warm: #f59e0b;
   --accent-orange: #f97316;
 
-  /* Surfaces — Warm cream / sand */
-  --surface: #fffbf5;
-  --surface-ice: #fff7ed;
+  /* Surfaces — Cool white / ice blue */
+  --surface: #f8fbff;
+  --surface-ice: #eff8ff;
 
   /* Glassmorphism */
   --glass-bg: rgba(255, 255, 255, 0.6);
@@ -32,29 +32,29 @@
   --glass-border: rgba(255, 255, 255, 0.2);
   --glass-border-strong: rgba(255, 255, 255, 0.35);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  --glass-dark-bg: rgba(19, 78, 74, 0.7);
+  --glass-dark-bg: rgba(10, 45, 73, 0.7);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #134e4a 0%, #0d9488 50%, #2dd4bf 100%);
-  --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
-  --gradient-warm: linear-gradient(135deg, #f97316 0%, #d4a853 100%);
-  --gradient-surface: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,251,245,0.4));
+  --gradient-primary: linear-gradient(135deg, #0a2d49 0%, #0b7ec4 50%, #15b0f8 100%);
+  --gradient-accent: linear-gradient(135deg, #15b0f8 0%, #0e9de5 100%);
+  --gradient-warm: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(248,251,255,0.4));
 
   /* Legacy aliases */
-  --emerald: #134e4a;
-  --emerald-deep: #042f2e;
-  --emerald-soft: #0f766e;
-  --sand: #fff7ed;
-  --ivory: #fffbf5;
-  --gold: #f59e0b;
-  --gold-deep: #d97706;
+  --emerald: #10476d;
+  --emerald-deep: #0a2d49;
+  --emerald-soft: #0a659f;
+  --sand: #eff8ff;
+  --ivory: #f8fbff;
+  --gold: #15b0f8;
+  --gold-deep: #0b7ec4;
   --terracotta: #f97316;
   --terracotta-deep: #ea580c;
-  --charcoal: #1c1917;
-  --gray: #78716c;
-  --gray-soft: #a8a29e;
-  --line: rgba(28, 25, 23, 0.06);
-  --line-strong: rgba(28, 25, 23, 0.12);
+  --charcoal: #0f172a;
+  --gray: #64748b;
+  --gray-soft: #94a3b8;
+  --line: rgba(15, 23, 42, 0.06);
+  --line-strong: rgba(15, 23, 42, 0.12);
 }
 
 * {

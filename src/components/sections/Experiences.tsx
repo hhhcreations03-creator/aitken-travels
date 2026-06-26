@@ -12,7 +12,11 @@ const SERVICE_ICONS: Record<string, string> = {
   "day-trips": "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707 M16 12a4 4 0 11-8 0 4 4 0 018 0z",
 };
 
-export function Services() {
+interface ServicesProps {
+  onBookService?: (serviceId: string) => void;
+}
+
+export function Services({ onBookService }: ServicesProps) {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
   return (
@@ -34,8 +38,46 @@ export function Services() {
           />
         </div>
 
-        {/* 2x2 Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+        {/* Mobile: Stacked card grid */}
+        <div className="md:hidden">
+          <div className="grid grid-cols-1 gap-4">
+            {SERVICES.map((service, i) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                onClick={() => setSelectedService(service)}
+                className="flex rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-elevation-1 cursor-pointer"
+              >
+                {/* Image */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-[120px] h-[120px] rounded-l-2xl object-cover flex-shrink-0"
+                />
+
+                {/* Content */}
+                <div className="p-4 flex-1 flex flex-col justify-center">
+                  <h3 className="text-[17px] font-semibold text-slate-900 leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-[13px] text-slate-500 leading-snug mt-1 line-clamp-1">
+                    {service.blurb}
+                  </p>
+                  <span className="text-[10px] font-mono text-primary-600 tracking-[0.1em] uppercase mt-2">
+                    {service.meta}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: 2x2 Card Grid */}
+        <div className="hidden md:grid md:grid-cols-2 gap-6">
           {SERVICES.map((service, i) => (
             <motion.div
               key={service.id}
@@ -47,7 +89,7 @@ export function Services() {
               className="group relative rounded-2xl overflow-hidden cursor-pointer bg-white border border-slate-100 shadow-elevation-1 hover:shadow-elevation-2 hover:-translate-y-1 transition-all duration-400"
             >
               {/* Image */}
-              <div className="relative h-[240px] md:h-[280px] overflow-hidden">
+              <div className="relative h-[280px] overflow-hidden">
                 <div
                   className="absolute inset-0 bg-cover bg-center group-hover:scale-[1.05] transition-transform duration-700"
                   style={{ backgroundImage: `url(${service.image})` }}
@@ -76,7 +118,7 @@ export function Services() {
               </div>
 
               {/* Content */}
-              <div className="p-6 md:p-7">
+              <div className="p-7">
                 <div className="flex items-start gap-4">
                   {/* Icon */}
                   <div className="w-12 h-12 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
@@ -86,7 +128,7 @@ export function Services() {
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="font-display text-[22px] md:text-[24px] font-semibold text-slate-900 leading-tight group-hover:text-primary-800 transition-colors duration-300">
+                    <h3 className="font-display text-[24px] font-semibold text-slate-900 leading-tight group-hover:text-primary-800 transition-colors duration-300">
                       {service.title}
                     </h3>
                     <p className="text-[14px] text-slate-500 leading-relaxed mt-2 line-clamp-2">
@@ -117,6 +159,10 @@ export function Services() {
         service={selectedService}
         open={!!selectedService}
         onClose={() => setSelectedService(null)}
+        onBook={(serviceId: string) => {
+          setSelectedService(null);
+          onBookService?.(serviceId);
+        }}
       />
     </section>
   );
@@ -128,10 +174,12 @@ function ServiceModal({
   service,
   open,
   onClose,
+  onBook,
 }: {
   service: Service | null;
   open: boolean;
   onClose: () => void;
+  onBook: (serviceId: string) => void;
 }) {
   return (
     <AnimatePresence>
@@ -243,7 +291,7 @@ function ServiceModal({
               {/* CTA */}
               <div className="flex flex-wrap gap-3 pt-4 border-t border-slate-100">
                 <button
-                  onClick={onClose}
+                  onClick={() => service && onBook(service.id)}
                   className="flex-1 sm:flex-none bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl px-8 py-3.5 font-semibold text-[15px] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer min-h-[48px] flex items-center justify-center gap-2"
                 >
                   Book this service

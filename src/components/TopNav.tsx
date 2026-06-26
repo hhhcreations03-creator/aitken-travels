@@ -40,16 +40,16 @@ export function TopNav({ onOpenBooking }: TopNavProps) {
         ].join(" ")}
       >
         <div className="flex items-center justify-between max-w-[1440px] mx-auto px-6 md:px-10">
-          <a href="#" className="cursor-pointer min-h-[44px] flex items-center -mt-4">
+          <a href="#" className="cursor-pointer min-h-[44px] flex items-center -mt-6">
             <Logo light={transparent} />
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-9 -mt-4">
+          <div className="hidden lg:flex items-center gap-9 -mt-6">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={item === "Contact" ? "/contact" : `#${item.toLowerCase()}`}
                 className={[
                   "relative text-[13px] font-normal tracking-[0.01em] transition-colors duration-200 min-h-[44px] flex items-center group",
                   transparent
@@ -68,7 +68,7 @@ export function TopNav({ onOpenBooking }: TopNavProps) {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-3.5 -mt-4">
+          <div className="hidden lg:flex items-center gap-3.5 -mt-6">
             <button
               className={[
                 "bg-transparent border-none cursor-pointer text-[11px] font-mono tracking-[0.16em] min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors duration-200",
@@ -171,7 +171,7 @@ export function TopNav({ onOpenBooking }: TopNavProps) {
               {NAV_ITEMS.map((item, i) => (
                 <motion.a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={item === "Contact" ? "/contact" : `#${item.toLowerCase()}`}
                   className="font-display text-3xl text-slate-900 min-h-[44px] flex items-center"
                   onClick={() => setMenuOpen(false)}
                   initial={{ opacity: 0, y: 20 }}
