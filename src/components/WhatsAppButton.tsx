@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const WHATSAPP_NUMBER = "94770813690";
-const DEFAULT_MESSAGE = "Hi Aitken Travels! 👋\n\nI'm interested in your transport services in Sri Lanka. Could you help me with:\n\n• Destination: \n• Date: \n• Number of passengers: \n• Vehicle preference: \n\nLooking forward to hearing from you!";
+const DEFAULT_MESSAGE = "Hi Aitken Travels!\n\nI'm interested in your transport services in Sri Lanka. Could you help me with:\n\n- Destination: \n- Date: \n- Number of passengers: \n- Vehicle preference: \n\nLooking forward to hearing from you!";
 
 export function WhatsAppButton() {
   const [visible, setVisible] = useState(false);
@@ -107,7 +107,7 @@ export function WhatsAppButton() {
               {/* Greeting bubble */}
               <div className="bg-white rounded-xl rounded-tl-sm p-3 shadow-sm max-w-[85%] mb-3">
                 <p className="text-[13px] text-slate-700 leading-relaxed">
-                  Hello! Welcome to Aitken Travels. How can we help you plan your Sri Lanka trip? 🇱🇰
+                  Hello! Welcome to Aitken Travels. How can we help you plan your Sri Lanka trip?
                 </p>
                 <div className="text-[10px] text-slate-400 text-right mt-1">Aitken Travels</div>
               </div>
