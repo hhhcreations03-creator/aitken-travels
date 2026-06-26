@@ -56,7 +56,7 @@ export function Services({ onBookService }: ServicesProps) {
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-[120px] h-[120px] rounded-l-2xl object-cover flex-shrink-0"
+                  className="w-[110px] h-[110px] rounded-l-2xl object-cover flex-shrink-0"
                 />
 
                 {/* Content */}
@@ -67,7 +67,7 @@ export function Services({ onBookService }: ServicesProps) {
                   <p className="text-[13px] text-slate-500 leading-snug mt-1 line-clamp-1">
                     {service.blurb}
                   </p>
-                  <span className="text-[10px] font-mono text-primary-600 tracking-[0.1em] uppercase mt-2">
+                  <span className="text-[11px] font-mono text-primary-600 tracking-[0.1em] uppercase mt-2">
                     {service.meta}
                   </span>
                 </div>
@@ -140,11 +140,11 @@ export function Services({ onBookService }: ServicesProps) {
                 {/* Feature pills */}
                 <div className="flex flex-wrap gap-2 mt-5 pt-5 border-t border-slate-50">
                   {service.details.features.slice(0, 3).map((f) => (
-                    <span key={f} className="text-[11px] font-medium text-primary-700 bg-primary-50 rounded-full px-3 py-1">
+                    <span key={f} className="text-[12px] font-medium text-primary-700 bg-primary-50 rounded-full px-3 py-1">
                       {f.split("\u2014")[0].trim()}
                     </span>
                   ))}
-                  <span className="text-[11px] font-medium text-slate-400 bg-slate-50 rounded-full px-3 py-1">
+                  <span className="text-[12px] font-medium text-slate-400 bg-slate-50 rounded-full px-3 py-1">
                     +{service.details.features.length - 3} more
                   </span>
                 </div>

@@ -80,7 +80,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-primary-600 hover:border-primary-600 hover:text-white transition-all duration-300"
+                    className="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-primary-600 hover:border-primary-600 hover:text-white transition-all duration-300"
                   >
                     <svg
                       width="16"
@@ -98,7 +98,7 @@ export function Footer() {
             {/* Link columns */}
             {columns.map((col) => (
               <div key={col.h}>
-                <div className="font-display text-[13px] font-semibold tracking-wide text-primary-400 uppercase mb-5">
+                <div className="font-display text-[14px] font-semibold tracking-wide text-primary-400 uppercase mb-5">
                   {col.h}
                 </div>
                 <ul className="flex flex-col gap-3">

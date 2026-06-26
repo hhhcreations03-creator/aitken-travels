@@ -36,7 +36,7 @@ export function Intro() {
                 </div>
 
                 {/* Floating stat card — smaller on mobile */}
-                <div className="absolute -bottom-4 left-3 z-20 bg-white rounded-xl shadow-elevation-2 p-3 border border-slate-100">
+                <div className="absolute -bottom-4 left-3 z-20 bg-white rounded-xl shadow-elevation-2 p-3.5 border border-slate-100">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-lg bg-primary-100 text-primary-600 flex items-center justify-center">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -51,13 +51,13 @@ export function Intro() {
                 </div>
 
                 {/* Floating rating badge — smaller on mobile */}
-                <div className="absolute -top-2 right-3 z-20 bg-white rounded-lg shadow-elevation-2 px-3 py-2 border border-slate-100">
+                <div className="absolute -top-2 right-3 z-20 bg-white rounded-lg shadow-elevation-2 px-3 py-2.5 border border-slate-100">
                   <div className="flex items-center gap-1.5">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" strokeWidth="1">
                       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                     </svg>
                     <div className="font-display text-[15px] font-bold text-slate-900">4.8</div>
-                    <div className="text-[9px] text-slate-400 font-mono">/ 5.0</div>
+                    <div className="text-[11px] text-slate-400 font-mono">/ 5.0</div>
                   </div>
                 </div>
               </div>
@@ -109,7 +109,7 @@ export function Intro() {
                       </svg>
                     </div>
                     <div className="text-[13px] font-semibold text-slate-800 mt-2">{v.title}</div>
-                    <div className="text-[11px] text-slate-500 leading-snug mt-1">{v.desc}</div>
+                    <div className="text-[12px] text-slate-500 leading-snug mt-1">{v.desc}</div>
                   </motion.div>
                 ))}
               </div>
@@ -183,7 +183,7 @@ export function Intro() {
                     </div>
                     <div>
                       <div className="font-display text-[14px] font-semibold text-slate-800">{v.title}</div>
-                      <div className="text-[12px] text-slate-500 leading-snug mt-0.5">{v.desc}</div>
+                      <div className="text-[13px] text-slate-500 leading-snug mt-0.5">{v.desc}</div>
                     </div>
                   </motion.div>
                 ))}

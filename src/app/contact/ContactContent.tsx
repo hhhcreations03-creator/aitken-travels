@@ -69,7 +69,7 @@ export function ContactContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-elevation-1 hover:-translate-y-0.5 transition-all duration-300 group"
+                  className="flex items-center gap-4 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-elevation-1 hover:-translate-y-0.5 transition-all duration-300 group"
                 >
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${
                     info.isWhatsApp
@@ -81,7 +81,7 @@ export function ContactContent() {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-slate-400">{info.label}</div>
+                    <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-400">{info.label}</div>
                     <div className="font-display text-[16px] font-semibold text-slate-800 group-hover:text-primary-700 transition-colors">{info.value}</div>
                   </div>
                 </motion.a>
@@ -165,7 +165,7 @@ export function ContactContent() {
                     Send message
                   </button>
 
-                  <p className="text-[11px] text-slate-400 text-center">
+                  <p className="text-[12px] text-slate-400 text-center">
                     Your message will be sent to <span className="text-primary-600 font-medium">travelsaitken@gmail.com</span>
                   </p>
                 </div>

@@ -66,7 +66,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
               <div className="font-display text-[32px] font-bold gradient-text leading-none">4.8</div>
               <div>
                 <StarRating rating={5} />
-                <div className="font-mono text-[9px] text-slate-400 tracking-wide uppercase mt-0.5">500+ reviews</div>
+                <div className="font-mono text-[11px] text-slate-400 tracking-wide uppercase mt-0.5">500+ reviews</div>
               </div>
             </div>
 
@@ -127,7 +127,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
                   <div className="font-display text-[17px] font-semibold text-slate-900 leading-tight">
                     {t.name}
                   </div>
-                  <div className="text-[12px] text-slate-500 mt-0.5">{t.from}</div>
+                  <div className="text-[13px] text-slate-500 mt-0.5">{t.from}</div>
                   <div className="mt-1.5">
                     <StarRating rating={t.rating} />
                   </div>
@@ -135,7 +135,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
               </div>
 
               <div className="flex items-center gap-2 mb-4">
-                <span className="bg-primary-50 text-primary-700 rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.06em] font-semibold">
+                <span className="bg-primary-50 text-primary-700 rounded-full px-3 py-1 text-[12px] font-mono tracking-[0.06em] font-semibold">
                   {t.trip}
                 </span>
               </div>
@@ -152,14 +152,14 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
             </div>
 
             <div className="p-5 pt-4 mt-4 border-t border-slate-50">
-              <div className="font-mono text-[9px] tracking-[0.12em] uppercase text-slate-400 mb-2">
+              <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-400 mb-2">
                 Places visited
               </div>
-              <div className="flex gap-1.5 flex-wrap">
+              <div className="flex gap-2 flex-wrap">
                 {t.highlights.map((h) => (
                   <span
                     key={h}
-                    className="flex items-center gap-1 bg-slate-50 border border-slate-100 rounded-full px-2.5 py-1 text-[11px] text-slate-600 font-medium"
+                    className="flex items-center gap-1 bg-slate-50 border border-slate-100 rounded-full px-2.5 py-1 text-[12px] text-slate-600 font-medium"
                   >
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--primary-500)" strokeWidth="2.5" strokeLinecap="round">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
@@ -213,7 +213,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
                   <div className="font-display text-[17px] font-semibold text-slate-900 leading-tight">
                     {t.name}
                   </div>
-                  <div className="text-[12px] text-slate-500 mt-0.5">{t.from}</div>
+                  <div className="text-[13px] text-slate-500 mt-0.5">{t.from}</div>
                   <div className="mt-1.5">
                     <StarRating rating={t.rating} />
                   </div>
@@ -222,7 +222,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
 
               {/* Trip badge */}
               <div className="flex items-center gap-2 mb-4">
-                <span className="bg-primary-50 text-primary-700 rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.06em] font-semibold">
+                <span className="bg-primary-50 text-primary-700 rounded-full px-3 py-1 text-[12px] font-mono tracking-[0.06em] font-semibold">
                   {t.trip}
                 </span>
               </div>
@@ -241,14 +241,14 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
 
             {/* Bottom — tour highlights */}
             <div className="p-6 pt-5 mt-4 border-t border-slate-50">
-              <div className="font-mono text-[9px] tracking-[0.12em] uppercase text-slate-400 mb-2">
+              <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-400 mb-2">
                 Places visited
               </div>
-              <div className="flex gap-1.5 flex-wrap">
+              <div className="flex gap-2 flex-wrap">
                 {t.highlights.map((h) => (
                   <span
                     key={h}
-                    className="flex items-center gap-1 bg-slate-50 border border-slate-100 rounded-full px-2.5 py-1 text-[11px] text-slate-600 font-medium"
+                    className="flex items-center gap-1 bg-slate-50 border border-slate-100 rounded-full px-2.5 py-1 text-[12px] text-slate-600 font-medium"
                   >
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--primary-500)" strokeWidth="2.5" strokeLinecap="round">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />

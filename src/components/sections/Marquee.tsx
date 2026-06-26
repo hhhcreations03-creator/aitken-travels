@@ -54,11 +54,11 @@ export function Marquee() {
                 className="text-slate-400 flex-shrink-0"
                 dangerouslySetInnerHTML={{ __html: item.icon }}
               />
-              <span className="text-[12px] font-medium tracking-[0.08em] text-slate-500 uppercase">
+              <span className="text-[13px] font-medium tracking-[0.08em] text-slate-500 uppercase">
                 {item.label}
               </span>
             </div>
-            <span className="text-primary-300 text-[10px] flex-shrink-0">&middot;</span>
+            <span className="text-primary-300 text-[11px] flex-shrink-0">&middot;</span>
           </div>
         ))}
       </div>

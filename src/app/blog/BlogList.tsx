@@ -28,7 +28,7 @@ export function BlogList({ posts, categories }: BlogListProps) {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={[
-                "px-5 py-2 rounded-full text-[13px] font-medium transition-all duration-300 border",
+                "px-5 py-2 rounded-full text-[13px] font-medium transition-all duration-300 border min-h-[44px]",
                 activeCategory === cat
                   ? "bg-primary-700 text-white border-primary-700 shadow-elevation-1"
                   : "bg-white text-slate-600 border-slate-200 hover:border-primary-300 hover:text-primary-700",
@@ -69,7 +69,7 @@ export function BlogList({ posts, categories }: BlogListProps) {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     {/* Category Pill */}
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.1em] text-slate-700 uppercase">
+                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-[12px] font-mono tracking-[0.1em] text-slate-700 uppercase">
                       {post.category}
                     </div>
                   </div>
@@ -84,7 +84,7 @@ export function BlogList({ posts, categories }: BlogListProps) {
                     </p>
 
                     {/* Footer: Author, Date, Read Time */}
-                    <div className="flex items-center gap-3 text-[12px] text-slate-400 font-mono tracking-wide">
+                    <div className="flex items-center gap-3 text-[13px] text-slate-400 font-mono tracking-wide">
                       <span>{post.author}</span>
                       <span className="w-1 h-1 rounded-full bg-slate-300" />
                       <span>

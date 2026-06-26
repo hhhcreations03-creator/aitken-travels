@@ -59,7 +59,7 @@ export function Stories() {
 
                 {/* Content */}
                 <div className="p-5">
-                  <div className="flex items-center gap-3 text-[11px] text-slate-400 font-mono mb-3">
+                  <div className="flex items-center gap-3 text-[12px] text-slate-400 font-mono mb-3">
                     <span>{post.publishedAt}</span>
                     <span className="w-1 h-1 rounded-full bg-slate-300" />
                     <span>{post.readTime}</span>

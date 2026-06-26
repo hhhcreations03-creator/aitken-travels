@@ -33,7 +33,7 @@ export function Offers({ onApplyOffer }: OffersProps) {
             </div>
 
             <div className="relative z-10">
-              <div className="text-white/60 font-mono text-[11px] tracking-[0.16em] uppercase mb-6">
+              <div className="text-white/60 font-mono text-[12px] tracking-[0.16em] uppercase mb-6">
                 {o.tag.toUpperCase()}
               </div>
 

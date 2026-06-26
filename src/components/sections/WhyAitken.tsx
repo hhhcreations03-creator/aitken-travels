@@ -97,7 +97,7 @@ export function WhyAitken() {
                 </div>
                 <div>
                   <div className="font-display text-[28px] font-bold gradient-text leading-none">{reasons[0].stat}</div>
-                  <div className="font-mono text-[10px] tracking-[0.1em] uppercase text-slate-400 mt-0.5">{reasons[0].statLabel}</div>
+                  <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-slate-400 mt-0.5">{reasons[0].statLabel}</div>
                 </div>
               </div>
               <h3 className="font-display text-[22px] font-semibold text-slate-900 mb-3">
@@ -110,7 +110,7 @@ export function WhyAitken() {
           </motion.div>
 
           {/* Remaining items — stacked cards */}
-          <div className="grid grid-cols-1 gap-3 mt-4">
+          <div className="grid grid-cols-1 gap-4 mt-4">
             {reasons.slice(1).map((r, i) => (
               <motion.div
                 key={r.title}
@@ -118,7 +118,7 @@ export function WhyAitken() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="flex items-start gap-3 bg-white rounded-xl border border-slate-100 shadow-sm p-4"
+                className="flex items-start gap-4 bg-white rounded-xl border border-slate-100 shadow-sm p-5"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center flex-shrink-0">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -130,7 +130,7 @@ export function WhyAitken() {
                   <h3 className="text-[15px] font-semibold text-slate-900 mt-1">
                     {r.title}
                   </h3>
-                  <p className="text-[12px] text-slate-500 leading-relaxed line-clamp-2 mt-0.5">
+                  <p className="text-[13px] text-slate-500 leading-relaxed line-clamp-2 mt-0.5">
                     {r.description}
                   </p>
                 </div>
@@ -165,7 +165,7 @@ export function WhyAitken() {
                   </div>
                   <div>
                     <div className="font-display text-[28px] md:text-[32px] font-bold gradient-text leading-none">{r.stat}</div>
-                    <div className="font-mono text-[10px] tracking-[0.1em] uppercase text-slate-400 mt-0.5">{r.statLabel}</div>
+                    <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-slate-400 mt-0.5">{r.statLabel}</div>
                   </div>
                 </div>
 
@@ -199,7 +199,7 @@ export function WhyAitken() {
                 </div>
                 <div className="text-right">
                   <div className="font-display text-[24px] font-bold gradient-text leading-none">{r.stat}</div>
-                  <div className="font-mono text-[9px] tracking-[0.1em] uppercase text-slate-400 mt-0.5">{r.statLabel}</div>
+                  <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-slate-400 mt-0.5">{r.statLabel}</div>
                 </div>
               </div>
 

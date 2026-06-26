@@ -142,7 +142,7 @@ export function ClosingCTA({ onOpenBooking }: ClosingCTAProps) {
               </div>
               <div className="grid grid-cols-2 md:flex flex-wrap gap-x-5 gap-y-2 md:gap-y-1 justify-center lg:justify-end">
                 {["Responds in 1 hour", "No upfront payment", "Free cancellation"].map((b) => (
-                  <div key={b} className="flex items-center gap-1.5 text-[11px] text-white/30">
+                  <div key={b} className="flex items-center gap-1.5 text-[12px] text-white/30">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-primary-400">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
