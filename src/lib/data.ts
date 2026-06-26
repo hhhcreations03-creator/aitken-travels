@@ -480,7 +480,7 @@ export const SEASONAL_DATA: Season[] = [
     tagline: "Sun-soaked beaches and ancient wonders await.",
     description: "Sri Lanka\u2019s southwest coast basks in dry, sunny weather \u2014 ideal for golden beaches, whale watching off Mirissa, exploring Galle Fort, and sunrise safaris in Yala.",
     weather: { condition: "Sunny & Dry", icon: "sun", tempHigh: 32, tempLow: 28, humidity: "Low", rainfall: "Minimal" },
-    heroSlideIndices: [1, 0, 2],
+    heroSlideIndices: [1, 0, 2, 3],
     destinations: [
       { regionId: "mirissa", whyNow: "Peak whale watching season \u2014 spot blue whales just offshore.", highlights: ["Blue whale tours", "Coconut Tree Hill", "Stilt fishermen"] },
       { regionId: "galle", whyNow: "Dry, golden light makes the fort magical for walking and photography.", highlights: ["Fort rampart walks", "Boutique galleries", "Sunset lighthouse"] },
@@ -500,7 +500,7 @@ export const SEASONAL_DATA: Season[] = [
     tagline: "Hill country magic and cultural celebrations.",
     description: "Experience Sri Lanka\u2019s vibrant Sinhala & Tamil New Year, lush tea plantations at their greenest, and the cool embrace of the hill country before the east coast season begins.",
     weather: { condition: "Warm Showers", icon: "cloud-sun", tempHigh: 30, tempLow: 24, humidity: "Moderate", rainfall: "Moderate" },
-    heroSlideIndices: [4, 3, 0],
+    heroSlideIndices: [4, 3, 0, 1],
     destinations: [
       { regionId: "nuwaraeliya", whyNow: "Tea fields at peak green \u2014 cool weather perfect for hiking.", highlights: ["Tea factory tours", "Horton Plains trek", "Gregory Lake"] },
       { regionId: "ella", whyNow: "Waterfalls in full flow after early rains \u2014 spectacular views.", highlights: ["Nine Arch Bridge", "Ravana Falls", "Little Adam\u2019s Peak"] },
@@ -518,7 +518,7 @@ export const SEASONAL_DATA: Season[] = [
     tagline: "Untouched east coast beaches and wild safaris.",
     description: "While the southwest gets monsoon rain, Sri Lanka\u2019s east coast shines with crystal-clear waters, world-class surf, and pristine beaches that most tourists never see.",
     weather: { condition: "Dry & Breezy", icon: "sun", tempHigh: 31, tempLow: 27, humidity: "Low", rainfall: "Minimal" },
-    heroSlideIndices: [5, 2, 0],
+    heroSlideIndices: [5, 2, 0, 4],
     destinations: [
       { regionId: "trincomalee", whyNow: "Calm turquoise seas \u2014 best snorkelling and diving conditions.", highlights: ["Pigeon Island snorkelling", "Nilaveli Beach", "Whale watching"] },
       { regionId: "wilpattu", whyNow: "Dry season wildlife concentrations around natural lakes.", highlights: ["Leopard tracking", "Sloth bear sightings", "Bird watching"] },
@@ -536,7 +536,7 @@ export const SEASONAL_DATA: Season[] = [
     tagline: "Misty mountains and emerald landscapes.",
     description: "Short rains transform Sri Lanka into an emerald paradise. Waterfalls thunder, tea fields glow impossibly green, and you\u2019ll find the best deals of the year with fewer crowds.",
     weather: { condition: "Showers & Mist", icon: "cloud-drizzle", tempHigh: 28, tempLow: 23, humidity: "High", rainfall: "Heavy" },
-    heroSlideIndices: [4, 3, 1],
+    heroSlideIndices: [4, 3, 1, 0],
     destinations: [
       { regionId: "nuwaraeliya", whyNow: "Dramatic mist rolling through tea plantations \u2014 magical photography.", highlights: ["Misty tea walks", "Horton Plains clouds", "Cozy hill stays"] },
       { regionId: "ella", whyNow: "Waterfalls at their most powerful \u2014 Ravana and Bambarakanda thunder.", highlights: ["Waterfall viewing", "Train through mist", "Ella Rock in clouds"] },
