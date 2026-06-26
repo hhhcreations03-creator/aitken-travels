@@ -119,7 +119,7 @@ export function TopNav({ onOpenBooking }: TopNavProps) {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden flex flex-col gap-1.5 bg-transparent border-none cursor-pointer p-2 min-h-[44px] min-w-[44px] items-center justify-center"
+            className="lg:hidden flex flex-col gap-1.5 bg-transparent border-none cursor-pointer p-2 min-h-[44px] min-w-[44px] items-center justify-center -mt-6"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
