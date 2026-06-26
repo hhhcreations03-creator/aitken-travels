@@ -172,7 +172,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
         {/* Main content — left column */}
         <div className="relative z-[3] h-full flex flex-col justify-center px-6 md:px-10 lg:px-16 2xl:px-24">
           <div className="content-max w-full">
-            <div className="flex items-start justify-between gap-12">
+            <div className="flex items-center justify-between gap-12">
               {/* Left — Text content */}
               <div className="max-w-[640px]">
                 {/* Eyebrow */}
@@ -229,7 +229,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
               {/* Right — Season card (desktop only, hidden on smaller screens) */}
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7, duration: 0.6 }}
-                className="hidden lg:block flex-shrink-0 mt-4">
+                className="hidden lg:block flex-shrink-0">
                 <div className="bg-black/20 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-5 w-[260px]">
                   {/* Season name */}
                   <div className="flex items-center gap-2 mb-4">
