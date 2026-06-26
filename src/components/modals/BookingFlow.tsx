@@ -372,7 +372,7 @@ function StepFlight({ data, set }: SP) {
       <div className="flex flex-col gap-4">
         <FL label="Flight number (optional)"><input value={data.flightNumber} onChange={(e) => set("flightNumber", e.target.value)} placeholder="e.g. SQ468" className="fi" /></FL>
         <div className="grid grid-cols-2 gap-4">
-          <FL label="Arrival date"><input type="date" value={data.arrivalDate} onChange={(e) => set("arrivalDate", e.target.value)} className="fi" /></FL>
+          <FL label="Arrival date"><input type="date" value={data.arrivalDate} onChange={(e) => set("arrivalDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
           <FL label="Arrival time"><input type="time" value={data.arrivalTime} onChange={(e) => set("arrivalTime", e.target.value)} className="fi" /></FL>
         </div>
         <FL label="Number of passengers"><input type="number" min="1" max="45" value={data.pax} onChange={(e) => set("pax", +e.target.value)} className="fi w-28" /></FL>
@@ -402,7 +402,7 @@ function StepTourDetails({ data, set }: SP) {
       <p className="text-slate-500 mb-6 text-[14px]">Select dates, duration, and destinations you want to visit.</p>
       <div className="flex flex-col gap-5">
         <div className="grid grid-cols-2 gap-4">
-          <FL label="Start date"><input type="date" value={data.tourStartDate} onChange={(e) => set("tourStartDate", e.target.value)} className="fi" /></FL>
+          <FL label="Start date"><input type="date" value={data.tourStartDate} onChange={(e) => set("tourStartDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
           <FL label="Number of passengers"><input type="number" min="1" max="45" value={data.pax} onChange={(e) => set("pax", +e.target.value)} className="fi" /></FL>
         </div>
         <div>
@@ -447,7 +447,7 @@ function StepDayTrip({ data, set }: SP) {
       <h3 className="font-display text-[24px] md:text-[32px] font-semibold leading-tight mb-2">Day trip details</h3>
       <p className="text-slate-500 mb-6 text-[14px]">Where would you like to go?</p>
       <div className="flex flex-col gap-4">
-        <FL label="Date"><input type="date" value={data.dayTripDate} onChange={(e) => set("dayTripDate", e.target.value)} className="fi" /></FL>
+        <FL label="Date"><input type="date" value={data.dayTripDate} onChange={(e) => set("dayTripDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
         <div className="grid grid-cols-2 gap-4">
           <FL label="Trip type">
             <select value={data.dayTripType} onChange={(e) => set("dayTripType", e.target.value)} className="fi">
@@ -485,7 +485,7 @@ function StepRental({ data, set }: SP) {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <FL label="Start date"><input type="date" value={data.rentalStartDate} onChange={(e) => set("rentalStartDate", e.target.value)} className="fi" /></FL>
+          <FL label="Start date"><input type="date" value={data.rentalStartDate} onChange={(e) => set("rentalStartDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
           <FL label="Duration (days)"><input type="number" min="1" max="30" value={data.rentalDays} onChange={(e) => set("rentalDays", +e.target.value)} className="fi" /></FL>
         </div>
         <FL label="Pickup location"><select value={data.rentalPickupLocation} onChange={(e) => set("rentalPickupLocation", e.target.value)} className="fi"><option value="">Select...</option>{LOCATIONS.map((l) => <option key={l}>{l}</option>)}</select></FL>
