@@ -26,6 +26,8 @@ const GALLERY: GalleryItem[] = [
   { src: "/gallery/photo6.JPG", type: "image", caption: "Golden sands and turquoise waters at Unawatuna Beach", location: "Unawatuna", tag: "Beach" },
   { src: "/gallery/video5.MP4", type: "video", caption: "Behind the wheel across Sri Lanka", location: "Sri Lanka", tag: "Scenic Drive", poster: "/gallery/video5-poster.jpg" },
   { src: "/gallery/video6.MP4", type: "video", caption: "Every trip tells a story", location: "Sri Lanka", tag: "Tour Life", poster: "/gallery/video6-poster.jpg" },
+  { src: "/gallery/photo7.JPG", type: "image", caption: "Enjoying fresh king coconuts — a Sri Lankan road trip essential", location: "Sri Lanka", tag: "On the Road" },
+  { src: "/gallery/photo8.JPG", type: "image", caption: "Welcome to Sri Lanka — Aitken Travels airport pickup with orchid garlands", location: "Colombo Airport", tag: "Airport Pickup" },
 ];
 
 export function TourGallery() {
