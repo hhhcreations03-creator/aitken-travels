@@ -232,9 +232,12 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                 className="hidden lg:block flex-shrink-0">
                 <div className="bg-black/20 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-5 w-[260px]">
                   {/* Season name */}
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="w-2 h-2 rounded-full bg-primary-400" />
-                    <span className="text-[12px] text-white font-semibold">{season.name}</span>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
+                      <span className="text-[12px] text-white font-semibold">{season.name}</span>
+                    </div>
+                    <span className="text-[9px] bg-primary-400/20 text-primary-300 rounded-full px-2 py-0.5 font-mono uppercase tracking-wider">Now</span>
                   </div>
 
                   {/* Destination thumbnails */}
