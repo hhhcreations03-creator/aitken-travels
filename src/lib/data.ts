@@ -434,6 +434,12 @@ export const HERO_SLIDES = [
     place: "Nuwara Eliya",
     sub: "Tea Plantations \u00b7 Hill Country",
   },
+  {
+    // Tropical beach with palm trees — Sri Lanka east coast
+    img: "https://images.unsplash.com/photo-1589534345827-e619f9b2dd2b?w=1600&q=80&fm=webp",
+    place: "Trincomalee",
+    sub: "Tropical Beach \u00b7 East Coast",
+  },
 ];
 
 // ─── Seasonal Travel Data ───────────────────────────────────────
@@ -512,7 +518,7 @@ export const SEASONAL_DATA: Season[] = [
     tagline: "Untouched east coast beaches and wild safaris.",
     description: "While the southwest gets monsoon rain, Sri Lanka\u2019s east coast shines with crystal-clear waters, world-class surf, and pristine beaches that most tourists never see.",
     weather: { condition: "Dry & Breezy", icon: "sun", tempHigh: 31, tempLow: 27, humidity: "Low", rainfall: "Minimal" },
-    heroSlideIndices: [2, 0, 4],
+    heroSlideIndices: [5, 2, 0],
     destinations: [
       { regionId: "trincomalee", whyNow: "Calm turquoise seas \u2014 best snorkelling and diving conditions.", highlights: ["Pigeon Island snorkelling", "Nilaveli Beach", "Whale watching"] },
       { regionId: "wilpattu", whyNow: "Dry season wildlife concentrations around natural lakes.", highlights: ["Leopard tracking", "Sloth bear sightings", "Bird watching"] },
