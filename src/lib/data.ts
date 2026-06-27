@@ -467,7 +467,7 @@ export interface Season {
   };
   heroSlideIndices: number[];
   destinations: SeasonDestination[];
-  activities: string[];
+  activities: { name: string; description: string; image: string }[];
   tips: string[];
 }
 
@@ -489,7 +489,14 @@ export const SEASONAL_DATA: Season[] = [
       { regionId: "sigiriya", whyNow: "Cool mornings and clear skies for climbing the rock fortress.", highlights: ["Lion Rock climb", "Pidurangala sunrise", "Ancient frescoes"] },
       { regionId: "kandy", whyNow: "Pleasant hill-country weather for temple visits and botanical gardens.", highlights: ["Temple of the Tooth", "Royal Botanical Gardens", "Kandyan dance"] },
     ],
-    activities: ["Beach hopping along the south coast", "Whale & dolphin watching", "Yala safari at dawn", "Galle Fort heritage walk", "Sigiriya rock fortress climb", "Surf lessons in Weligama"],
+    activities: [
+      { name: "Beach hopping", description: "Discover golden stretches from Bentota to Tangalle along the sun-drenched south coast.", image: "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7c?w=600&q=80&fm=webp" },
+      { name: "Whale watching", description: "Spot blue whales and spinner dolphins off Mirissa \u2014 peak season with calm seas.", image: "https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=600&q=80&fm=webp" },
+      { name: "Yala safari", description: "Dawn game drives through Sri Lanka\u2019s premier wildlife park \u2014 best leopard sighting odds.", image: "https://images.unsplash.com/photo-1561731216-c3a4d514467d?w=600&q=80&fm=webp" },
+      { name: "Galle Fort walk", description: "Stroll the UNESCO ramparts at golden hour with ocean views and colonial architecture.", image: "https://images.unsplash.com/photo-1704797390682-76479a29dc9a?w=600&q=80&fm=webp" },
+      { name: "Sigiriya climb", description: "Ascend the ancient rock fortress at sunrise \u2014 1,200 steps to panoramic views.", image: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=600&q=80&fm=webp" },
+      { name: "Surfing in Weligama", description: "Beginner-friendly waves and warm water make this the ideal surf spot.", image: "https://images.unsplash.com/photo-1502680390548-bdbac40a7d9a?w=600&q=80&fm=webp" },
+    ],
     tips: ["Book whale watching tours at least 2 days ahead \u2014 boats fill fast.", "Start Yala safaris before 6 AM for the best leopard sightings.", "Carry reef-safe sunscreen for beach days.", "This is peak season \u2014 book vehicles and hotels early."],
   },
   {
@@ -507,7 +514,14 @@ export const SEASONAL_DATA: Season[] = [
       { regionId: "kandy", whyNow: "New Year festivities bring the city alive with colour and tradition.", highlights: ["Sinhala New Year celebrations", "Temple ceremonies", "Local markets"] },
       { regionId: "sigiriya", whyNow: "Fewer crowds and dramatic cloud formations over the rock.", highlights: ["Lion Rock at dawn", "Dambulla Cave Temple", "Village cycling"] },
     ],
-    activities: ["Sinhala & Tamil New Year celebrations", "Tea plantation walks & tasting", "Scenic train ride (Kandy\u2013Ella)", "Waterfall chasing in hill country", "Temple & heritage trail", "Cooking classes with locals"],
+    activities: [
+      { name: "New Year festivities", description: "Experience the vibrant Sinhala & Tamil New Year \u2014 games, food, and tradition.", image: "https://images.unsplash.com/photo-1665849050332-8d5d7e59afb6?w=600&q=80&fm=webp" },
+      { name: "Tea plantation walks", description: "Wander emerald-green tea fields and taste freshly brewed Ceylon tea at the source.", image: "https://images.unsplash.com/photo-1544451822-38e32b887c08?w=600&q=80&fm=webp" },
+      { name: "Scenic train ride", description: "The iconic Kandy\u2013Ella railway \u2014 bridges, tunnels, and misty mountains.", image: "https://images.unsplash.com/photo-1566766189268-ecac9118f2b7?w=600&q=80&fm=webp" },
+      { name: "Waterfall chasing", description: "Hill-country cascades in full flow after early rains \u2014 Ravana, Bambarakanda, and more.", image: "https://images.unsplash.com/photo-1578519050142-afb511e518de?w=600&q=80&fm=webp" },
+      { name: "Temple trail", description: "Visit ancient temples in cool weather \u2014 the Tooth Relic, Dambulla caves, and more.", image: "https://images.unsplash.com/photo-1663403764000-f927ff20fcbb?w=600&q=80&fm=webp" },
+      { name: "Cooking classes", description: "Learn to cook authentic Sri Lankan curry with local families in Ella and Kandy.", image: "https://images.unsplash.com/photo-1663784025074-49e9e7f11f62?w=600&q=80&fm=webp" },
+    ],
     tips: ["April is New Year \u2014 some shops close for 2\u20133 days, plan accordingly.", "Pack a light rain jacket for afternoon showers.", "The Kandy\u2013Ella train is iconic \u2014 book 1st class seats in advance.", "Shoulder season means better hotel rates and fewer tourists."],
   },
   {
@@ -525,7 +539,14 @@ export const SEASONAL_DATA: Season[] = [
       { regionId: "ella", whyNow: "Clear skies in the hills while the coast stays dry.", highlights: ["Ella Rock hike", "Nine Arch Bridge", "Local caf\u00e9 culture"] },
       { regionId: "nuwaraeliya", whyNow: "Cool hill-country escape from the coastal heat.", highlights: ["Tea estate stays", "Horton Plains", "Pedro Tea Estate"] },
     ],
-    activities: ["Snorkelling at Pigeon Island", "Surfing in Arugam Bay", "Wilpattu dawn safari", "East coast beach camping", "Hill country trekking", "Trincomalee whale watching"],
+    activities: [
+      { name: "Pigeon Island snorkelling", description: "Crystal-clear waters and vibrant coral reefs just off Nilaveli beach.", image: "https://images.unsplash.com/photo-1552055568-f8c4fb8c6320?w=600&q=80&fm=webp" },
+      { name: "Surfing Arugam Bay", description: "World-class point breaks and a laid-back surf culture on the east coast.", image: "https://images.unsplash.com/photo-1502680390548-bdbac40a7d9a?w=600&q=80&fm=webp" },
+      { name: "Wilpattu safari", description: "Track leopards and sloth bears at dawn around natural jungle lakes.", image: "https://images.unsplash.com/photo-1680967462466-aa9321bd5fce?w=600&q=80&fm=webp" },
+      { name: "Beach camping", description: "Sleep under the stars on pristine east coast beaches far from the crowds.", image: "https://images.unsplash.com/photo-1589534345827-e619f9b2dd2b?w=600&q=80&fm=webp" },
+      { name: "Hill country trekking", description: "Clear skies make Ella Rock and Horton Plains perfect for panoramic hikes.", image: "https://images.unsplash.com/photo-1578519050142-afb511e518de?w=600&q=80&fm=webp" },
+      { name: "Whale watching", description: "Spot blue whales and sperm whales from Trincomalee\u2019s deep harbour.", image: "https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=600&q=80&fm=webp" },
+    ],
     tips: ["The east coast is less developed \u2014 carry cash as ATMs are sparse.", "Arugam Bay is a 6-hour drive from Colombo \u2014 consider a multi-day trip.", "Book Wilpattu safaris through us for experienced tracker-guides.", "Evenings cool down quickly in the hills \u2014 bring layers."],
   },
   {
@@ -543,7 +564,14 @@ export const SEASONAL_DATA: Season[] = [
       { regionId: "kandy", whyNow: "Temple visits in cool weather \u2014 serene atmosphere with fewer tourists.", highlights: ["Temple of the Tooth", "Botanical Gardens", "Udawattakele forest"] },
       { regionId: "colombo", whyNow: "The capital\u2019s food scene, museums, and shopping are rain-proof.", highlights: ["Food tours", "Gangaramaya Temple", "Galle Face sunset"] },
     ],
-    activities: ["Waterfall trail in the hills", "Tea plantation morning walks", "Temple & meditation retreats", "Colombo street food tours", "Photography in the mist", "Ayurvedic spa experiences"],
+    activities: [
+      { name: "Waterfall trails", description: "Cascades thunder at peak flow \u2014 Ravana Falls and Bambarakanda at their most dramatic.", image: "https://images.unsplash.com/photo-1578519050142-afb511e518de?w=600&q=80&fm=webp" },
+      { name: "Misty tea walks", description: "Morning walks through mist-wrapped plantations \u2014 magical and cool.", image: "https://images.unsplash.com/photo-1544451822-38e32b887c08?w=600&q=80&fm=webp" },
+      { name: "Meditation retreats", description: "Serene temple stays in the hills \u2014 fewer tourists and cooler weather.", image: "https://images.unsplash.com/photo-1665849050332-8d5d7e59afb6?w=600&q=80&fm=webp" },
+      { name: "Colombo food tours", description: "Explore the capital\u2019s diverse street food scene \u2014 rain-proof and delicious.", image: "https://images.unsplash.com/photo-1643049996505-1fbe2dfe81af?w=600&q=80&fm=webp" },
+      { name: "Mist photography", description: "Capture dramatic fog rolling through valleys and tea estates at dawn.", image: "https://images.unsplash.com/photo-1760532511219-c8b7566f90af?w=600&q=80&fm=webp" },
+      { name: "Ayurvedic spa", description: "Traditional healing treatments in lush hillside retreats at budget-friendly rates.", image: "https://images.unsplash.com/photo-1566766189268-ecac9118f2b7?w=600&q=80&fm=webp" },
+    ],
     tips: ["Rain is mostly afternoon bursts \u2014 mornings are often clear and beautiful.", "This is the best time for budget travel \u2014 rates drop 20\u201340%.", "Waterproof bags are essential for electronics.", "Leeches are active on forest trails \u2014 wear closed shoes and carry salt."],
   },
 ];

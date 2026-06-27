@@ -257,7 +257,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                   {/* Activity pills */}
                   <div className="flex flex-wrap gap-1.5">
                     {season.activities.slice(0, 3).map((a) => (
-                      <span key={a} className="text-[9px] bg-white/[0.08] text-white/70 rounded-full px-2.5 py-1 font-medium">{a}</span>
+                      <span key={a.name} className="text-[9px] bg-white/[0.08] text-white/70 rounded-full px-2.5 py-1 font-medium">{a.name}</span>
                     ))}
                   </div>
                 </div>

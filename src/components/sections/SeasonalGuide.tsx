@@ -200,62 +200,86 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
                 })}
               </div>
 
-              {/* Section 4: Activities & Tips */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
-                {/* Activities */}
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="bg-white/5 backdrop-blur-sm border border-white/8 rounded-2xl p-6 md:p-8"
-                >
-                  <h3 className="font-display text-[20px] md:text-[24px] text-white font-semibold mb-5">
-                    Things to do
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {season.activities.map((activity, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <span className="w-6 h-6 rounded-full bg-primary-400/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-[10px] text-primary-400 font-bold">{i + 1}</span>
-                        </span>
-                        <span className="text-[13px] text-white/70 leading-relaxed">{activity}</span>
-                      </div>
-                    ))}
+              {/* Section 4: Activities — Visual Cards */}
+              <div className="mb-12 md:mb-16">
+                <div className="flex items-center justify-between mb-6 md:mb-8">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="w-5 h-[2px] rounded-full bg-primary-400" />
+                      <span className="font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-primary-300 font-semibold">
+                        {season.name}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-[22px] md:text-[28px] text-white font-bold leading-tight">
+                      Things to do <span className="text-primary-400">this season</span>
+                    </h3>
                   </div>
-                </motion.div>
+                </div>
 
-                {/* Tips */}
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="bg-white/5 backdrop-blur-sm border border-white/8 rounded-2xl p-6 md:p-8"
-                >
-                  <h3 className="font-display text-[20px] md:text-[24px] text-white font-semibold mb-5">
-                    Travel tips
-                  </h3>
-                  <div className="flex flex-col gap-4">
-                    {season.tips.map((tip, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="var(--primary-400)"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          className="flex-shrink-0 mt-0.5"
-                        >
-                          <path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 01-2 2h-4a2 2 0 01-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z" />
-                          <path d="M9 21h6" />
-                        </svg>
-                        <span className="text-[13px] text-white/70 leading-relaxed">{tip}</span>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                  {season.activities.map((activity, i) => (
+                    <motion.div
+                      key={activity.name}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 + i * 0.07 }}
+                      className="group relative rounded-2xl overflow-hidden cursor-default"
+                    >
+                      <div className="relative aspect-[4/5] md:aspect-[3/4]">
+                        <img
+                          src={activity.image}
+                          alt={activity.name}
+                          loading="lazy"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                        {/* Content overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 p-3.5 md:p-4">
+                          <h4 className="font-display text-[14px] md:text-[16px] font-semibold text-white leading-tight mb-1">
+                            {activity.name}
+                          </h4>
+                          <p className="text-[11px] md:text-[12px] text-white/60 leading-snug line-clamp-2">
+                            {activity.description}
+                          </p>
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
+
+              {/* Travel Tips — Compact strip */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 md:p-7 mb-12 md:mb-16"
+              >
+                <h3 className="font-display text-[18px] md:text-[22px] text-white font-semibold mb-4">
+                  Travel tips
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                  {season.tips.map((tip, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--primary-400)"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        className="flex-shrink-0 mt-0.5"
+                      >
+                        <path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 01-2 2h-4a2 2 0 01-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z" />
+                        <path d="M9 21h6" />
+                      </svg>
+                      <span className="text-[13px] text-white/65 leading-relaxed">{tip}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
 
               {/* Section 5: Bottom CTA */}
               <motion.div
