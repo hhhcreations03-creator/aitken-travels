@@ -1,7 +1,19 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+function Watermark({ size = "sm" }: { size?: "sm" | "lg" }) {
+  const isLg = size === "lg";
+  return (
+    <div className={`absolute z-[5] pointer-events-none select-none ${isLg ? "bottom-4 right-4" : "bottom-2 right-2"}`}>
+      <div className={`flex items-center gap-1.5 ${isLg ? "opacity-[0.4]" : "opacity-[0.3]"}`}>
+        <img src="/logo.png" alt="" className={`${isLg ? "h-7 md:h-8" : "h-4 md:h-5"} w-auto brightness-0 invert drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]`} />
+      </div>
+    </div>
+  );
+}
 
 interface GalleryItem {
   src: string;
@@ -118,6 +130,7 @@ export function TourGallery() {
                         </svg>
                       </div>
                     </div>
+                    <Watermark />
                   </div>
                 ) : (
                   <div className={`relative overflow-hidden ${
@@ -127,13 +140,13 @@ export function TourGallery() {
                     i % 5 === 3 ? "aspect-[4/3]" :
                     "aspect-[3/4]"
                   }`}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={item.src}
                       alt={item.caption}
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
+                    <Watermark />
                   </div>
                 )}
 
@@ -210,22 +223,24 @@ export function TourGallery() {
               </button>
 
               {/* Media */}
-              {selected.type === "video" ? (
-                <video
-                  src={selected.src}
-                  controls
-                  playsInline
-                  className="w-full max-h-[70vh] object-contain"
-                />
-              ) : (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={selected.src}
-                  alt={selected.caption}
-                  loading="lazy"
-                  className="w-full max-h-[70vh] object-contain"
-                />
-              )}
+              <div className="relative">
+                {selected.type === "video" ? (
+                  <video
+                    src={selected.src}
+                    controls
+                    playsInline
+                    className="w-full max-h-[70vh] object-contain"
+                  />
+                ) : (
+                  <img
+                    src={selected.src}
+                    alt={selected.caption}
+                    loading="lazy"
+                    className="w-full max-h-[70vh] object-contain"
+                  />
+                )}
+                <Watermark size="lg" />
+              </div>
 
               {/* Caption bar */}
               <div className="p-5 bg-slate-900">
