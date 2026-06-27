@@ -6,22 +6,25 @@ export async function POST(req: NextRequest) {
     const { subject, body, replyTo } = await req.json();
 
     if (!subject || !body) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+
+    if (!user || !pass) {
+      return NextResponse.json({ error: "Email not configured" }, { status: 500 });
     }
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: { user, pass },
     });
 
     await transporter.sendMail({
-      from: `"Aitken Travels Website" <${process.env.SMTP_USER}>`,
+      from: `"Aitken Travels Website" <${user}>`,
       to: "travelsaitken@gmail.com",
       replyTo: replyTo || undefined,
       subject,
@@ -33,7 +36,7 @@ export async function POST(req: NextRequest) {
     const message = error instanceof Error ? error.message : "Unknown error";
     console.error("Email send error:", message);
     return NextResponse.json(
-      { error: "Failed to send email", detail: message, hasCredentials: !!(process.env.SMTP_USER && process.env.SMTP_PASS) },
+      { error: "Failed to send email", detail: message },
       { status: 500 }
     );
   }
