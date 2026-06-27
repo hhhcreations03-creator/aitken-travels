@@ -30,9 +30,10 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Email send error:", error);
+    const message = error instanceof Error ? error.message : "Unknown error";
+    console.error("Email send error:", message);
     return NextResponse.json(
-      { error: "Failed to send email" },
+      { error: "Failed to send email", detail: message, hasCredentials: !!(process.env.SMTP_USER && process.env.SMTP_PASS) },
       { status: 500 }
     );
   }
