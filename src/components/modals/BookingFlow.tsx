@@ -219,13 +219,27 @@ export function BookingFlow({ open, onClose, prefillVehicle, prefillSearch }: Bo
 
   const handleSubmit = async () => {
     setSubmitting(true);
-    const subject = `New Booking Inquiry: ${data.service} - ${data.name}`;
+    const serviceNames: Record<string, string> = { airport: "Airport Transfer", "round-tour": "Round Island Tour", "day-trip": "Day Excursion", "self-drive": "Vehicle Rental" };
+    const subject = `New Booking Inquiry: ${serviceNames[data.service] || data.service} - ${data.name}`;
     const body = buildEmailBody(data);
-    // Send via mailto as fallback (works universally)
-    const mailto = `mailto:travelsaitken@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailto, "_blank");
-    setSubmitting(false);
-    setSubmitted(true);
+
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject, body, replyTo: data.email }),
+      });
+
+      if (!res.ok) throw new Error("Failed to send");
+      setSubmitted(true);
+    } catch {
+      // Fallback to mailto if API fails
+      const mailto = `mailto:travelsaitken@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(mailto, "_blank");
+      setSubmitted(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {

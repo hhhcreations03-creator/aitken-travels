@@ -35,12 +35,28 @@ export function ContactContent() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSending(true);
     const subject = `Contact Inquiry from ${form.name}`;
     const body = `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nService: ${form.service}\n\nMessage:\n${form.message}`;
-    window.open(`mailto:travelsaitken@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, "_blank");
-    setSent(true);
+
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject, body, replyTo: form.email }),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setSent(true);
+    } catch {
+      window.open(`mailto:travelsaitken@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, "_blank");
+      setSent(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -159,10 +175,19 @@ export function ContactContent() {
                       className="px-4 py-3 border border-slate-200 rounded-xl text-[14px] outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all resize-none" />
                   </div>
 
-                  <button type="submit"
-                    className="w-full bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl py-4 font-semibold text-[15px] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer min-h-[52px] flex items-center justify-center gap-2">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
-                    Send message
+                  <button type="submit" disabled={sending}
+                    className="w-full bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl py-4 font-semibold text-[15px] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer min-h-[52px] flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
+                    {sending ? (
+                      <>
+                        <svg className="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><circle cx="12" cy="12" r="10" strokeOpacity="0.3" /><path d="M12 2a10 10 0 019.95 9" /></svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
+                        Send message
+                      </>
+                    )}
                   </button>
 
                   <p className="text-[12px] text-slate-400 text-center">
