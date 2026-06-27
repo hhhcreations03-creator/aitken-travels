@@ -73,8 +73,10 @@ function getSteps(service: string, needAccom: string): string[] {
     "self-drive": ["Rental Details"],
   };
   const steps = [...base, ...(serviceSteps[service] || [])];
-  steps.push("Accommodation");
-  if (needAccom === "yes") steps.push("Accommodation Details");
+  if (service !== "airport") {
+    steps.push("Accommodation");
+    if (needAccom === "yes") steps.push("Accommodation Details");
+  }
   steps.push("Your Details", "Review & Submit");
   return steps;
 }
