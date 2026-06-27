@@ -200,52 +200,75 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
                 })}
               </div>
 
-              {/* Section 4: Activities — Visual Cards */}
+              {/* Section 4: Activities — Bento Grid */}
               <div className="mb-12 md:mb-16">
-                <div className="flex items-center justify-between mb-6 md:mb-8">
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="w-5 h-[2px] rounded-full bg-primary-400" />
-                      <span className="font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-primary-300 font-semibold">
-                        {season.name}
-                      </span>
-                    </div>
-                    <h3 className="font-display text-[22px] md:text-[28px] text-white font-bold leading-tight">
-                      Things to do <span className="text-primary-400">this season</span>
-                    </h3>
+                <div className="mb-6 md:mb-8">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="w-5 h-[2px] rounded-full bg-primary-400" />
+                    <span className="font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-primary-300 font-semibold">
+                      {season.name}
+                    </span>
                   </div>
+                  <h3 className="font-display text-[22px] md:text-[28px] text-white font-bold leading-tight">
+                    Things to do <span className="text-primary-400">this season</span>
+                  </h3>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                  {season.activities.map((activity, i) => (
-                    <motion.div
-                      key={activity.name}
-                      initial={{ opacity: 0, y: 16 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 + i * 0.07 }}
-                      className="group relative rounded-2xl overflow-hidden cursor-default"
-                    >
-                      <div className="relative aspect-[4/5] md:aspect-[3/4]">
+                {/* Bento grid — featured + smaller cards */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[200px]">
+                  {season.activities.map((activity, i) => {
+                    // First card spans 2 cols + 2 rows on desktop for hero effect
+                    const isHero = i === 0;
+                    // Last card spans 2 cols on mobile for variety
+                    const isWide = i === season.activities.length - 1 && season.activities.length % 2 !== 0;
+
+                    return (
+                      <motion.div
+                        key={activity.name}
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + i * 0.06 }}
+                        className={`group relative rounded-2xl overflow-hidden ${
+                          isHero
+                            ? "col-span-2 row-span-2"
+                            : isWide
+                              ? "col-span-2 md:col-span-1"
+                              : ""
+                        }`}
+                      >
                         <img
                           src={activity.image}
                           alt={activity.name}
                           loading="lazy"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/5" />
+
+                        {/* Number badge */}
+                        <div className="absolute top-3 left-3 md:top-4 md:left-4">
+                          <span className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/15 backdrop-blur-sm border border-white/10 flex items-center justify-center text-[11px] md:text-[12px] text-white font-bold font-mono">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                        </div>
 
                         {/* Content overlay */}
-                        <div className="absolute bottom-0 left-0 right-0 p-3.5 md:p-4">
-                          <h4 className="font-display text-[14px] md:text-[16px] font-semibold text-white leading-tight mb-1">
+                        <div className="absolute bottom-0 left-0 right-0 p-3.5 md:p-5">
+                          <h4 className={`font-display font-semibold text-white leading-tight mb-1 ${
+                            isHero ? "text-[18px] md:text-[22px]" : "text-[14px] md:text-[15px]"
+                          }`}>
                             {activity.name}
                           </h4>
-                          <p className="text-[11px] md:text-[12px] text-white/60 leading-snug line-clamp-2">
+                          <p className={`text-white/55 leading-snug ${
+                            isHero
+                              ? "text-[13px] md:text-[14px] line-clamp-3 max-w-[400px]"
+                              : "text-[11px] md:text-[12px] line-clamp-2"
+                          }`}>
                             {activity.description}
                           </p>
                         </div>
-                      </div>
-                    </motion.div>
-                  ))}
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
 

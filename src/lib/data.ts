@@ -495,7 +495,7 @@ export const SEASONAL_DATA: Season[] = [
       { name: "Yala safari", description: "Dawn game drives through Sri Lanka\u2019s premier wildlife park \u2014 best leopard sighting odds.", image: "https://images.unsplash.com/photo-1561731216-c3a4d514467d?w=600&q=80&fm=webp" },
       { name: "Galle Fort walk", description: "Stroll the UNESCO ramparts at golden hour with ocean views and colonial architecture.", image: "https://images.unsplash.com/photo-1704797390682-76479a29dc9a?w=600&q=80&fm=webp" },
       { name: "Sigiriya climb", description: "Ascend the ancient rock fortress at sunrise \u2014 1,200 steps to panoramic views.", image: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?w=600&q=80&fm=webp" },
-      { name: "Surfing in Weligama", description: "Beginner-friendly waves and warm water make this the ideal surf spot.", image: "https://images.unsplash.com/photo-1502680390548-bdbac40a7d9a?w=600&q=80&fm=webp" },
+      { name: "Surfing in Weligama", description: "Beginner-friendly waves and warm water make this the ideal surf spot.", image: "https://images.unsplash.com/photo-1613693692851-204a395d0ec7?w=600&q=80&fm=webp" },
     ],
     tips: ["Book whale watching tours at least 2 days ahead \u2014 boats fill fast.", "Start Yala safaris before 6 AM for the best leopard sightings.", "Carry reef-safe sunscreen for beach days.", "This is peak season \u2014 book vehicles and hotels early."],
   },
@@ -541,7 +541,7 @@ export const SEASONAL_DATA: Season[] = [
     ],
     activities: [
       { name: "Pigeon Island snorkelling", description: "Crystal-clear waters and vibrant coral reefs just off Nilaveli beach.", image: "https://images.unsplash.com/photo-1552055568-f8c4fb8c6320?w=600&q=80&fm=webp" },
-      { name: "Surfing Arugam Bay", description: "World-class point breaks and a laid-back surf culture on the east coast.", image: "https://images.unsplash.com/photo-1502680390548-bdbac40a7d9a?w=600&q=80&fm=webp" },
+      { name: "Surfing Arugam Bay", description: "World-class point breaks and a laid-back surf culture on the east coast.", image: "https://images.unsplash.com/photo-1613693692851-204a395d0ec7?w=600&q=80&fm=webp" },
       { name: "Wilpattu safari", description: "Track leopards and sloth bears at dawn around natural jungle lakes.", image: "https://images.unsplash.com/photo-1680967462466-aa9321bd5fce?w=600&q=80&fm=webp" },
       { name: "Beach camping", description: "Sleep under the stars on pristine east coast beaches far from the crowds.", image: "https://images.unsplash.com/photo-1589534345827-e619f9b2dd2b?w=600&q=80&fm=webp" },
       { name: "Hill country trekking", description: "Clear skies make Ella Rock and Horton Plains perfect for panoramic hikes.", image: "https://images.unsplash.com/photo-1578519050142-afb511e518de?w=600&q=80&fm=webp" },
