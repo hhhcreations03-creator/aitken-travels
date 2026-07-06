@@ -128,29 +128,48 @@ export function MaxCard() {
           padding: 30px 26px 8px;
           text-align: center;
         }
+        .mc-profile-row {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          text-align: left;
+        }
+        .mc-avatar {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid var(--cloud);
+          flex-shrink: 0;
+          box-shadow: 0 4px 12px rgba(6,48,74,0.12);
+        }
+        .mc-profile-info {
+          flex: 1;
+          min-width: 0;
+        }
         .mc-name {
           font-family: 'Fredoka', sans-serif;
           font-weight: 600;
-          font-size: 22px;
+          font-size: 21px;
           color: var(--navy);
+          line-height: 1.2;
         }
         .mc-title {
           margin-top: 4px;
-          font-size: 12.5px;
+          font-size: 11.5px;
           font-weight: 700;
-          letter-spacing: 1.6px;
+          letter-spacing: 1.4px;
           text-transform: uppercase;
           color: var(--sky-deep);
         }
         .mc-org-row {
-          margin-top: 12px;
+          margin-top: 8px;
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: 8px;
-          font-size: 12.5px;
+          gap: 7px;
+          font-size: 12px;
           color: var(--ink);
-          opacity: 0.65;
+          opacity: 0.6;
         }
         .mc-org-row .mc-dot {
           width: 4px; height: 4px; border-radius: 50%; background: var(--ink); opacity: 0.4;
@@ -301,12 +320,17 @@ export function MaxCard() {
 
           {/* PANEL */}
           <div className="mc-panel">
-            <div className="mc-name">Max Amarasinghe</div>
-            <div className="mc-title">Chief Travel Designer</div>
-            <div className="mc-org-row">
-              <span>Aitken Travels</span>
-              <span className="mc-dot" />
-              <span>Galle, Sri Lanka</span>
+            <div className="mc-profile-row">
+              <img className="mc-avatar" src="/team/max.JPG" alt="Max Amarasinghe" />
+              <div className="mc-profile-info">
+                <div className="mc-name">Max Amarasinghe</div>
+                <div className="mc-title">Chief Travel Designer</div>
+                <div className="mc-org-row">
+                  <span>Aitken Travels</span>
+                  <span className="mc-dot" />
+                  <span>Galle, Sri Lanka</span>
+                </div>
+              </div>
             </div>
 
             {/* ACTIONS */}
