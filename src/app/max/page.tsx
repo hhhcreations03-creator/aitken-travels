@@ -5,11 +5,28 @@ export const metadata: Metadata = {
   title: "Max Amarasinghe | Chief Travel Designer — Aitken Travels",
   description:
     "Connect with Max Amarasinghe, Chief Travel Designer at Aitken Travels. Plan your perfect Sri Lanka journey with personalized service.",
+  alternates: {
+    canonical: "/max",
+  },
   openGraph: {
-    title: "Max Amarasinghe — Aitken Travels",
-    description: "Chief Travel Designer | Plan your Sri Lanka journey",
+    title: "Max Amarasinghe — Chief Travel Designer",
+    description: "Aitken Travels · Galle, Sri Lanka · Plan your perfect Sri Lanka journey",
     type: "profile",
-    images: ["/team/max.JPG"],
+    url: "https://aitkentravel.com/max",
+    images: [
+      {
+        url: "/team/max-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Max Amarasinghe — Chief Travel Designer at Aitken Travels",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Max Amarasinghe — Chief Travel Designer",
+    description: "Aitken Travels · Galle, Sri Lanka",
+    images: ["/team/max-og.jpg"],
   },
 };
 
