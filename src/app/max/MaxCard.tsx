@@ -66,7 +66,7 @@ export function MaxCard() {
         .mc-hero {
           position: relative;
           background: linear-gradient(160deg, var(--navy) 0%, var(--sky-deep) 55%, var(--sky) 100%);
-          padding: 40px 24px 66px;
+          padding: 48px 24px 72px;
           text-align: center;
           overflow: hidden;
         }
@@ -80,33 +80,33 @@ export function MaxCard() {
         }
         .mc-flight-path {
           position: absolute;
-          top: 18px; left: 0;
-          width: 100%;
+          top: 8px; left: -10%;
+          width: 120%;
           opacity: 0.35;
         }
         .mc-icon-mark {
-          width: 66px;
+          width: 82px;
           height: auto;
           position: relative;
           z-index: 2;
           filter: drop-shadow(0 6px 14px rgba(0,0,0,0.15));
         }
         .mc-wordmark {
-          margin-top: 14px;
+          margin-top: 16px;
           font-family: 'Fredoka', sans-serif;
-          font-weight: 600;
-          font-size: 26px;
-          letter-spacing: 0.5px;
+          font-weight: 700;
+          font-size: 28px;
+          letter-spacing: 1px;
           color: var(--white);
           position: relative;
           z-index: 2;
         }
         .mc-tagline {
-          margin-top: 6px;
-          font-size: 13px;
+          margin-top: 8px;
+          font-size: 14px;
           font-weight: 500;
           font-style: italic;
-          letter-spacing: 0.3px;
+          letter-spacing: 0.4px;
           color: rgba(255,255,255,0.85);
           position: relative;
           z-index: 2;
@@ -286,8 +286,8 @@ export function MaxCard() {
 
           {/* HERO */}
           <div className="mc-hero">
-            <svg className="mc-flight-path" viewBox="0 0 400 60" fill="none">
-              <path d="M10 45 C 100 5, 300 5, 390 45" stroke="white" strokeWidth="1.5" strokeDasharray="2 8" strokeLinecap="round" />
+            <svg className="mc-flight-path" viewBox="0 0 500 80" fill="none">
+              <path d="M-20 65 C 80 -5, 420 -5, 520 65" stroke="white" strokeWidth="1.8" strokeDasharray="3 10" strokeLinecap="round" />
             </svg>
             <img className="mc-icon-mark" src={ICON_MARK_BASE64} alt="Aitken Travels" />
             <div className="mc-wordmark">AITKEN TRAVELS</div>
