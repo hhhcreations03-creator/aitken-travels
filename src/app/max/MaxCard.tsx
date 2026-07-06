@@ -90,6 +90,8 @@ export function MaxCard() {
           position: relative;
           z-index: 2;
           filter: drop-shadow(0 6px 14px rgba(0,0,0,0.15));
+          display: block;
+          margin: 0 auto;
         }
         .mc-wordmark {
           margin-top: 16px;
