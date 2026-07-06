@@ -139,10 +139,11 @@ export function MaxCard() {
           height: 86px;
           border-radius: 50%;
           object-fit: cover;
+          object-position: center top;
           border: 3px solid var(--cloud);
           flex-shrink: 0;
           box-shadow: 0 6px 16px rgba(6,48,74,0.15);
-          image-rendering: high-quality;
+          aspect-ratio: 1 / 1;
         }
         .mc-profile-info {
           text-align: left;
