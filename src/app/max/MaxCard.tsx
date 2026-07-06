@@ -131,34 +131,34 @@ export function MaxCard() {
         .mc-profile-row {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 18px;
-          text-align: left;
         }
         .mc-avatar {
-          width: 80px;
-          height: 80px;
+          width: 86px;
+          height: 86px;
           border-radius: 50%;
           object-fit: cover;
           border: 3px solid var(--cloud);
           flex-shrink: 0;
-          box-shadow: 0 4px 12px rgba(6,48,74,0.12);
+          box-shadow: 0 6px 16px rgba(6,48,74,0.15);
+          image-rendering: high-quality;
         }
         .mc-profile-info {
-          flex: 1;
-          min-width: 0;
+          text-align: left;
         }
         .mc-name {
           font-family: 'Fredoka', sans-serif;
           font-weight: 600;
-          font-size: 21px;
+          font-size: 22px;
           color: var(--navy);
           line-height: 1.2;
         }
         .mc-title {
           margin-top: 4px;
-          font-size: 11.5px;
+          font-size: 12px;
           font-weight: 700;
-          letter-spacing: 1.4px;
+          letter-spacing: 1.5px;
           text-transform: uppercase;
           color: var(--sky-deep);
         }
@@ -167,7 +167,7 @@ export function MaxCard() {
           display: flex;
           align-items: center;
           gap: 7px;
-          font-size: 12px;
+          font-size: 12.5px;
           color: var(--ink);
           opacity: 0.6;
         }
