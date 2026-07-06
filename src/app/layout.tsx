@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.aitkentravels.com"),
+  metadataBase: new URL("https://aitkentravel.com"),
   title: "Aitken Travels \u2014 Reliable Transport Services Across Sri Lanka",
   description:
     "Aitken Travels provides cars, vans, buses, and bikes for airport transfers, round-island tours, corporate transport, and self-drive rentals across Sri Lanka.",

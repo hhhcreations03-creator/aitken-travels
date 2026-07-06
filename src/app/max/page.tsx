@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: "https://aitkentravel.com/max",
     images: [
       {
-        url: "/team/max-og.jpg",
+        url: "https://aitkentravel.com/team/max-og.jpg",
         width: 1200,
         height: 630,
         alt: "Max Amarasinghe — Chief Travel Designer at Aitken Travels",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Max Amarasinghe — Chief Travel Designer",
     description: "Aitken Travels · Galle, Sri Lanka",
-    images: ["/team/max-og.jpg"],
+    images: ["https://aitkentravel.com/team/max-og.jpg"],
   },
 };
 
