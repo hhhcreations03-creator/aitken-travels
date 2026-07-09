@@ -322,7 +322,7 @@ export function MaxCard() {
           {/* PANEL */}
           <div className="mc-panel">
             <div className="mc-profile-row">
-              <img className="mc-avatar" src="/team/max.JPG" alt="Max Amarasinghe" />
+              <img className="mc-avatar" src="/team/max.webp" alt="Max Amarasinghe" />
               <div className="mc-profile-info">
                 <div className="mc-name">Max Amarasinghe</div>
                 <div className="mc-title">Chief Travel Designer</div>

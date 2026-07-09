@@ -28,7 +28,7 @@ export function Intro() {
                 <div className="relative rounded-2xl overflow-hidden shadow-elevation-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/about.JPG"
+                    src="/about.webp"
                     alt="The four founders of Aitken Travels on a scenic Sri Lanka road"
                     loading="lazy"
                     className="w-full aspect-[16/10] object-cover"
@@ -209,7 +209,7 @@ export function Intro() {
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-elevation-3">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/about.JPG"
+                  src="/about.webp"
                   alt="The four founders of Aitken Travels on a scenic Sri Lanka road"
                   className="w-full aspect-[4/3] object-cover"
                 />

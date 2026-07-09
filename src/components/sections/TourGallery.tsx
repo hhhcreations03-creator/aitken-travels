@@ -26,20 +26,20 @@ interface GalleryItem {
 
 // Add your photos and videos to public/gallery/ and list them here
 const GALLERY: GalleryItem[] = [
-  { src: "/gallery/photo1.JPG", type: "image", caption: "Exploring Sri Lanka with Aitken Travels", location: "Sri Lanka", tag: "On the Road" },
-  { src: "/gallery/video1.MP4", type: "video", caption: "Driving through the beauty of Sri Lanka", location: "Sri Lanka", tag: "Scenic Drive", poster: "/gallery/video1-poster.jpg" },
-  { src: "/gallery/photo2.JPG", type: "image", caption: "Whale watching off the southern coast", location: "Mirissa", tag: "South Coast" },
-  { src: "/gallery/photo3.JPG", type: "image", caption: "The iconic Ambuluwawa Tower surrounded by misty mountains", location: "Ambuluwawa", tag: "Hill Country" },
-  { src: "/gallery/video2.MP4", type: "video", caption: "On the road — real moments from our tours", location: "Sri Lanka", tag: "Tour Life", poster: "/gallery/video2-poster.jpg" },
-  { src: "/gallery/photo4.JPG", type: "image", caption: "Ambuluwawa spiral staircase with panoramic views", location: "Ambuluwawa", tag: "Hill Country" },
-  { src: "/gallery/video3.MP4", type: "video", caption: "Coastal roads and ocean views", location: "South Coast", tag: "Coastal", poster: "/gallery/video3-poster.jpg" },
-  { src: "/gallery/photo5.JPG", type: "image", caption: "Walking the historic ramparts of Galle Fort", location: "Galle", tag: "Heritage" },
-  { src: "/gallery/video4.MP4", type: "video", caption: "Adventures captured by our drivers", location: "Sri Lanka", tag: "On the Road", poster: "/gallery/video4-poster.jpg" },
-  { src: "/gallery/photo6.JPG", type: "image", caption: "Golden sands and turquoise waters at Unawatuna Beach", location: "Unawatuna", tag: "Beach" },
-  { src: "/gallery/video5.MP4", type: "video", caption: "Behind the wheel across Sri Lanka", location: "Sri Lanka", tag: "Scenic Drive", poster: "/gallery/video5-poster.jpg" },
-  { src: "/gallery/video6.MP4", type: "video", caption: "Every trip tells a story", location: "Sri Lanka", tag: "Tour Life", poster: "/gallery/video6-poster.jpg" },
-  { src: "/gallery/photo7.JPG", type: "image", caption: "Enjoying fresh king coconuts — a Sri Lankan road trip essential", location: "Sri Lanka", tag: "On the Road" },
-  { src: "/gallery/photo8.JPG", type: "image", caption: "Welcome to Sri Lanka — Aitken Travels airport pickup with orchid garlands", location: "Colombo Airport", tag: "Airport Pickup" },
+  { src: "/gallery/photo1.webp", type: "image", caption: "Exploring Sri Lanka with Aitken Travels", location: "Sri Lanka", tag: "On the Road" },
+  { src: "/gallery/video1.MP4", type: "video", caption: "Driving through the beauty of Sri Lanka", location: "Sri Lanka", tag: "Scenic Drive", poster: "/gallery/video1-poster.webp" },
+  { src: "/gallery/photo2.webp", type: "image", caption: "Whale watching off the southern coast", location: "Mirissa", tag: "South Coast" },
+  { src: "/gallery/photo3.webp", type: "image", caption: "The iconic Ambuluwawa Tower surrounded by misty mountains", location: "Ambuluwawa", tag: "Hill Country" },
+  { src: "/gallery/video2.MP4", type: "video", caption: "On the road — real moments from our tours", location: "Sri Lanka", tag: "Tour Life", poster: "/gallery/video2-poster.webp" },
+  { src: "/gallery/photo4.webp", type: "image", caption: "Ambuluwawa spiral staircase with panoramic views", location: "Ambuluwawa", tag: "Hill Country" },
+  { src: "/gallery/video3.MP4", type: "video", caption: "Coastal roads and ocean views", location: "South Coast", tag: "Coastal", poster: "/gallery/video3-poster.webp" },
+  { src: "/gallery/photo5.webp", type: "image", caption: "Walking the historic ramparts of Galle Fort", location: "Galle", tag: "Heritage" },
+  { src: "/gallery/video4.MP4", type: "video", caption: "Adventures captured by our drivers", location: "Sri Lanka", tag: "On the Road", poster: "/gallery/video4-poster.webp" },
+  { src: "/gallery/photo6.webp", type: "image", caption: "Golden sands and turquoise waters at Unawatuna Beach", location: "Unawatuna", tag: "Beach" },
+  { src: "/gallery/video5.MP4", type: "video", caption: "Behind the wheel across Sri Lanka", location: "Sri Lanka", tag: "Scenic Drive", poster: "/gallery/video5-poster.webp" },
+  { src: "/gallery/video6.MP4", type: "video", caption: "Every trip tells a story", location: "Sri Lanka", tag: "Tour Life", poster: "/gallery/video6-poster.webp" },
+  { src: "/gallery/photo7.webp", type: "image", caption: "Enjoying fresh king coconuts — a Sri Lankan road trip essential", location: "Sri Lanka", tag: "On the Road" },
+  { src: "/gallery/photo8.webp", type: "image", caption: "Welcome to Sri Lanka — Aitken Travels airport pickup with orchid garlands", location: "Colombo Airport", tag: "Airport Pickup" },
 ];
 
 export function TourGallery() {
