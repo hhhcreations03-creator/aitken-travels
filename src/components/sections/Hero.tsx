@@ -151,7 +151,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
       </section>
 
       {/* ===== DESKTOP HERO ===== */}
-      <section className="relative h-[85vh] min-h-[640px] max-h-[860px] overflow-hidden hidden md:block">
+      <section className="relative h-[100vh] min-h-[680px] overflow-hidden hidden md:block">
         {/* Background */}
         <AnimatePresence initial={false}>
           <motion.div key={slide} initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
@@ -166,15 +166,15 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
         }} />
 
         {/* Main content */}
-        <div className="relative z-[3] h-full flex flex-col justify-center px-6 md:px-10 lg:px-16 2xl:px-24">
+        <div className="relative z-[3] h-full flex flex-col justify-center px-6 md:px-10 lg:px-16 2xl:px-24 pt-[120px] pb-[80px]">
           <div className="content-max w-full">
-            <div className="flex items-center justify-between gap-12">
+            <div className="flex items-center justify-between gap-16">
 
               {/* Left — Text */}
-              <div className="max-w-[640px]">
+              <div className="max-w-[620px]">
                 {/* Eyebrow */}
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-                  className="flex items-center gap-3 mb-5">
+                  className="flex items-center gap-3 mb-6">
                   <span className="w-8 h-[2px] rounded-full bg-gradient-to-r from-primary-400 to-primary-300" />
                   <span className="font-mono text-[11px] tracking-[0.16em] uppercase font-semibold text-primary-300">
                     {season.monthLabel} &middot; {season.weather.condition}
@@ -184,13 +184,13 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                 {/* Headline */}
                 <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-                  className="font-display font-bold text-white leading-[0.97] tracking-tight text-[clamp(38px,5.5vw,68px)]">
+                  className="font-display font-bold text-white leading-[0.97] tracking-tight text-[clamp(40px,6vw,74px)]">
                   {season.tagline}
                 </motion.h1>
 
                 {/* Description */}
                 <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.5 }}
-                  className="text-[15px] lg:text-[17px] text-white/70 mt-5 max-w-[480px] leading-relaxed">
+                  className="text-[16px] lg:text-[18px] text-white/70 mt-6 max-w-[500px] leading-relaxed">
                   {season.description}
                 </motion.p>
 
@@ -207,7 +207,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
                 {/* CTAs */}
                 <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}
-                  className="flex flex-wrap items-center gap-3 mt-7">
+                  className="flex flex-wrap items-center gap-3 mt-8">
                   <button onClick={onOpenBooking}
                     className="bg-gradient-to-r from-primary-500 to-primary-400 text-white rounded-full px-7 py-3.5 font-semibold text-[14px] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary-500/20 transition-all duration-300 cursor-pointer min-h-[48px]">
                     Book your ride
@@ -227,7 +227,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
               {/* Right — Season card */}
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7, duration: 0.6 }}
                 className="hidden lg:block flex-shrink-0">
-                <div className="bg-black/20 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-5 w-[260px]">
+                <div className="bg-black/20 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 w-[280px]">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
