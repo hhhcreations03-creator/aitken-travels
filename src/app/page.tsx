@@ -4,7 +4,7 @@ import { useState } from "react";
 import { TopNav } from "@/components/TopNav";
 import { Hero } from "@/components/sections/Hero";
 import { SeasonalGuide } from "@/components/sections/SeasonalGuide";
-import { SearchSection, SearchData } from "@/components/sections/BookingBar";
+import { SearchData } from "@/components/sections/BookingBar";
 import { Marquee } from "@/components/sections/Marquee";
 import { Intro } from "@/components/sections/Intro";
 import { Services } from "@/components/sections/Experiences";
@@ -53,7 +53,6 @@ export default function Home() {
           seasonalGuideOpen={seasonalGuideOpen}
         />
         <SeasonalGuide open={seasonalGuideOpen} onOpenBooking={() => onOpenBooking()} />
-        <SearchSection onSearch={onSearch} />
         <Marquee />
         <Intro />
         <Services onBookService={(serviceId: string) => {
