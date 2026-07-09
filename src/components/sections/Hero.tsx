@@ -59,7 +59,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
   return (
     <>
       {/* ===== MOBILE HERO ===== */}
-      <section className="relative overflow-hidden md:hidden" style={{ height: "calc(100dvh - 60px)", minHeight: 480, maxHeight: 700 }}>
+      <section className="relative min-h-[100dvh] overflow-hidden md:hidden">
         {/* Background */}
         <AnimatePresence initial={false}>
           <motion.div key={slide} initial={{ opacity: 0, scale: 1.06 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
@@ -70,16 +70,15 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
         {/* Overlay */}
         <div className="absolute inset-0 z-[1]" style={{
-          background: "linear-gradient(180deg, rgba(10,45,73,0.45) 0%, rgba(10,45,73,0.05) 35%, rgba(10,45,73,0.4) 60%, rgba(10,45,73,0.95) 100%)",
+          background: "linear-gradient(180deg, rgba(10,45,73,0.5) 0%, rgba(10,45,73,0.05) 35%, rgba(10,45,73,0.45) 60%, rgba(10,45,73,0.95) 100%)",
         }} />
 
         {/* Content */}
-        <div className="relative z-[3] h-full flex flex-col px-5">
-          {/* Top spacer for nav */}
-          <div style={{ height: 100 }} />
+        <div className="relative z-[3] min-h-[100dvh] flex flex-col justify-end px-5 pb-8 pt-[160px]">
 
-          {/* Weather pill */}
-          <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+          {/* Weather pill — sits above the spacer */}
+          <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+            className="mb-auto">
             <div className="inline-flex items-center gap-2 bg-black/20 backdrop-blur-xl border border-white/10 rounded-full px-3.5 py-2">
               <WeatherIcon icon={season.weather.icon} size={14} className="text-primary-400" />
               <span className="text-[11px] text-white/90 font-medium">{season.weather.tempLow}&deg;&ndash;{season.weather.tempHigh}&deg;C</span>
@@ -88,77 +87,71 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
             </div>
           </motion.div>
 
-          {/* Flexible spacer */}
-          <div className="flex-1 min-h-[40px]" />
+          {/* Eyebrow */}
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.5 }}
+            className="flex items-center gap-2 mb-3">
+            <span className="w-4 h-[1.5px] rounded-full bg-primary-400" />
+            <span className="font-mono text-[9px] tracking-[0.2em] uppercase font-semibold text-primary-300">
+              {season.monthLabel} &middot; {season.name}
+            </span>
+          </motion.div>
 
-          {/* Main content block — anchored to bottom */}
-          <div className="pb-6">
-            {/* Eyebrow */}
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.5 }}
-              className="flex items-center gap-2 mb-3">
-              <span className="w-4 h-[1.5px] rounded-full bg-primary-400" />
-              <span className="font-mono text-[9px] tracking-[0.2em] uppercase font-semibold text-primary-300">
-                {season.monthLabel} &middot; {season.name}
-              </span>
-            </motion.div>
+          {/* Headline */}
+          <motion.h1 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+            className="font-display font-bold text-white leading-[1.08] tracking-tight text-[30px] mb-3">
+            {season.tagline}
+          </motion.h1>
 
-            {/* Headline */}
-            <motion.h1 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-              className="font-display font-bold text-white leading-[1.08] tracking-tight text-[28px] mb-3">
-              {season.tagline}
-            </motion.h1>
+          {/* Description */}
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
+            className="text-[13px] text-white/50 leading-relaxed max-w-[340px] mb-6">
+            {season.description}
+          </motion.p>
 
-            {/* Description */}
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
-              className="text-[13px] text-white/50 leading-relaxed max-w-[320px] mb-5">
-              {season.description}
-            </motion.p>
+          {/* CTAs */}
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
+            className="flex gap-2.5 mb-5">
+            <button onClick={onOpenBooking}
+              className="flex-1 bg-gradient-to-r from-primary-500 to-primary-400 text-white rounded-xl py-3 font-semibold text-[13px] cursor-pointer min-h-[48px] active:scale-[0.97] transition-transform">
+              Book your ride
+            </button>
+            <button onClick={onToggleSeasonalGuide}
+              className="flex-1 bg-white/10 backdrop-blur-md border border-white/15 text-white rounded-xl py-3 font-medium text-[13px] cursor-pointer min-h-[48px] flex items-center justify-center gap-1.5 active:scale-[0.97] transition-transform">
+              More Info
+              <svg className={`transition-transform duration-300 ${seasonalGuideOpen ? "rotate-180" : ""}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+          </motion.div>
 
-            {/* CTAs */}
-            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
-              className="flex gap-2.5 mb-5">
-              <button onClick={onOpenBooking}
-                className="flex-1 bg-gradient-to-r from-primary-500 to-primary-400 text-white rounded-xl py-3 font-semibold text-[13px] cursor-pointer min-h-[44px] active:scale-[0.97] transition-transform">
-                Book your ride
-              </button>
-              <button onClick={onToggleSeasonalGuide}
-                className="flex-1 bg-white/10 backdrop-blur-md border border-white/15 text-white rounded-xl py-3 font-medium text-[13px] cursor-pointer min-h-[44px] flex items-center justify-center gap-1.5 active:scale-[0.97] transition-transform">
-                More Info
-                <svg className={`transition-transform duration-300 ${seasonalGuideOpen ? "rotate-180" : ""}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M6 9l6 6 6-6" /></svg>
-              </button>
-            </motion.div>
-
-            {/* Bottom row: dots + location */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-              className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                {seasonSlides.map((_, i) => (
-                  <button key={i} onClick={() => { setSlide(i); setProgress(0); }}
-                    className="relative flex items-center justify-center cursor-pointer bg-transparent border-none p-1 min-h-[32px] min-w-[16px]"
-                    aria-label={`Slide ${i + 1}`}>
-                    {i === slide ? (
-                      <motion.span layoutId="m-dot" className="block w-5 h-1 rounded-full bg-primary-400" transition={{ type: "spring", stiffness: 400, damping: 30 }} />
-                    ) : (
-                      <span className="block w-1 h-1 rounded-full bg-white/30" />
-                    )}
-                  </button>
-                ))}
-              </div>
-              <AnimatePresence mode="wait">
-                <motion.div key={slide} initial={{ opacity: 0, x: 6 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -6 }} transition={{ duration: 0.2 }}
-                  className="flex items-center gap-1.5">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--primary-400)" strokeWidth="2.5" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                  <span className="text-[11px] text-white/80 font-medium">{seasonSlides[slide].place}</span>
-                </motion.div>
-              </AnimatePresence>
-            </motion.div>
-          </div>
+          {/* Bottom row: dots + location */}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+            className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              {seasonSlides.map((_, i) => (
+                <button key={i} onClick={() => { setSlide(i); setProgress(0); }}
+                  className="relative flex items-center justify-center cursor-pointer bg-transparent border-none p-1 min-h-[32px] min-w-[16px]"
+                  aria-label={`Slide ${i + 1}`}>
+                  {i === slide ? (
+                    <motion.span layoutId="m-dot" className="block w-5 h-1 rounded-full bg-primary-400" transition={{ type: "spring", stiffness: 400, damping: 30 }} />
+                  ) : (
+                    <span className="block w-1 h-1 rounded-full bg-white/30" />
+                  )}
+                </button>
+              ))}
+            </div>
+            <AnimatePresence mode="wait">
+              <motion.div key={slide} initial={{ opacity: 0, x: 6 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -6 }} transition={{ duration: 0.2 }}
+                className="flex items-center gap-1.5">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--primary-400)" strokeWidth="2.5" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                <span className="text-[11px] text-white/80 font-medium">{seasonSlides[slide].place}</span>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
 
       {/* ===== DESKTOP HERO ===== */}
-      <section className="relative overflow-hidden hidden md:block" style={{ height: "clamp(580px, 75vh, 820px)" }}>
+      <section className="relative h-[85vh] min-h-[640px] max-h-[860px] overflow-hidden hidden md:block">
         {/* Background */}
         <AnimatePresence initial={false}>
           <motion.div key={slide} initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
@@ -178,10 +171,10 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
             <div className="flex items-center justify-between gap-12">
 
               {/* Left — Text */}
-              <div className="max-w-[620px]">
+              <div className="max-w-[640px]">
                 {/* Eyebrow */}
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-                  className="flex items-center gap-3 mb-4">
+                  className="flex items-center gap-3 mb-5">
                   <span className="w-8 h-[2px] rounded-full bg-gradient-to-r from-primary-400 to-primary-300" />
                   <span className="font-mono text-[11px] tracking-[0.16em] uppercase font-semibold text-primary-300">
                     {season.monthLabel} &middot; {season.weather.condition}
@@ -191,19 +184,19 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                 {/* Headline */}
                 <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-                  className="font-display font-bold text-white leading-[0.97] tracking-tight text-[clamp(36px,5.5vw,64px)]">
+                  className="font-display font-bold text-white leading-[0.97] tracking-tight text-[clamp(38px,5.5vw,68px)]">
                   {season.tagline}
                 </motion.h1>
 
                 {/* Description */}
                 <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.5 }}
-                  className="text-[15px] lg:text-[16px] text-white/70 mt-4 max-w-[460px] leading-relaxed">
+                  className="text-[15px] lg:text-[17px] text-white/70 mt-5 max-w-[480px] leading-relaxed">
                   {season.description}
                 </motion.p>
 
                 {/* Weather pill */}
                 <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}
-                  className="mt-4">
+                  className="mt-5">
                   <div className="inline-flex items-center gap-3 bg-white/[0.06] backdrop-blur-md border border-white/[0.08] rounded-full px-4 py-2">
                     <WeatherIcon icon={season.weather.icon} size={16} className="text-primary-400" />
                     <span className="text-[13px] text-white/85 font-medium">{season.weather.tempLow}&deg;&ndash;{season.weather.tempHigh}&deg;C</span>
@@ -214,7 +207,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
                 {/* CTAs */}
                 <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}
-                  className="flex flex-wrap items-center gap-3 mt-6">
+                  className="flex flex-wrap items-center gap-3 mt-7">
                   <button onClick={onOpenBooking}
                     className="bg-gradient-to-r from-primary-500 to-primary-400 text-white rounded-full px-7 py-3.5 font-semibold text-[14px] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary-500/20 transition-all duration-300 cursor-pointer min-h-[48px]">
                     Book your ride
@@ -234,7 +227,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
               {/* Right — Season card */}
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7, duration: 0.6 }}
                 className="hidden lg:block flex-shrink-0">
-                <div className="bg-black/20 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-5 w-[250px]">
+                <div className="bg-black/20 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-5 w-[260px]">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
@@ -266,7 +259,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
         </div>
 
         {/* Bottom bar */}
-        <div className="absolute bottom-0 left-0 right-0 z-[4] px-6 md:px-10 lg:px-16 2xl:px-24 pb-6">
+        <div className="absolute bottom-0 left-0 right-0 z-[4] px-6 md:px-10 lg:px-16 2xl:px-24 pb-7">
           <div className="content-max flex items-center gap-5">
             <div className="flex items-center gap-2.5">
               {seasonSlides.map((_, i) => (
