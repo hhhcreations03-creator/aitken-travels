@@ -152,8 +152,8 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
       </section>
 
       {/* ===== DESKTOP HERO ===== */}
-      {/* Tablet: 90vh | Laptop: 92vh | Desktop: 95vh | Large: 100vh */}
-      <section className="relative h-[90vh] md:min-h-[600px] lg:h-[92vh] lg:min-h-[650px] xl:h-[95vh] 2xl:h-[100vh] overflow-hidden hidden md:block">
+      {/* Tablet: 92vh | Laptop: 95vh | Desktop/Large: 100vh */}
+      <section className="relative h-[92vh] md:min-h-[620px] lg:h-[95vh] lg:min-h-[660px] xl:h-[100vh] 2xl:h-[100vh] overflow-hidden hidden md:block">
         {/* Background */}
         <AnimatePresence initial={false}>
           <motion.div key={slide} initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
