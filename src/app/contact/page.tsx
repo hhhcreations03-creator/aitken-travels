@@ -68,7 +68,7 @@ export default function ContactPage() {
         <div className="flex items-center justify-between max-w-[1600px] mx-auto px-6 md:px-10 2xl:px-24">
           <Link href="/" className="flex items-center min-h-[44px] -mt-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="" className="h-40 md:h-44 w-auto object-contain" />
+            <img src="/logo.png" alt="Aitken Travels - Home" className="h-40 md:h-44 w-auto object-contain" />
           </Link>
           <div className="hidden md:flex items-center gap-8 -mt-6">
             {[{ label: "Home", href: "/" }, { label: "Services", href: "/#services" }, { label: "Fleet", href: "/#fleet" }, { label: "Blog", href: "/blog" }, { label: "Contact", href: "/contact" }].map((item) => (

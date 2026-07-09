@@ -71,7 +71,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
         {/* Overlay */}
         <div className="absolute inset-0 z-[1]" style={{
-          background: "linear-gradient(180deg, rgba(10,45,73,0.5) 0%, rgba(10,45,73,0.05) 35%, rgba(10,45,73,0.45) 60%, rgba(10,45,73,0.95) 100%)",
+          background: "linear-gradient(180deg, rgba(10,45,73,0.7) 0%, rgba(10,45,73,0.45) 35%, rgba(10,45,73,0.65) 55%, rgba(10,45,73,0.95) 100%)",
         }} />
 
         {/* Content */}
@@ -164,7 +164,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
         {/* Gradient overlay */}
         <div className="absolute inset-0 z-[1]" style={{
-          background: "linear-gradient(135deg, rgba(10,45,73,0.72) 0%, rgba(10,45,73,0.15) 50%, rgba(10,45,73,0.55) 100%)",
+          background: "linear-gradient(135deg, rgba(10,45,73,0.8) 0%, rgba(10,45,73,0.5) 50%, rgba(10,45,73,0.65) 100%)",
         }} />
 
         {/* Main content */}

@@ -53,7 +53,7 @@ export function TopNav({ onOpenBooking }: TopNavProps) {
                 className={[
                   "relative text-[13px] font-normal tracking-[0.01em] transition-colors duration-200 min-h-[44px] flex items-center group",
                   transparent
-                    ? "text-white/90 hover:text-white"
+                    ? "text-white hover:text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]"
                     : "text-slate-700 hover:text-primary-700",
                 ].join(" ")}
               >
@@ -73,7 +73,7 @@ export function TopNav({ onOpenBooking }: TopNavProps) {
               className={[
                 "bg-transparent border-none cursor-pointer text-[11px] font-mono tracking-[0.16em] min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors duration-200",
                 transparent
-                  ? "text-white/90 hover:text-white"
+                  ? "text-white hover:text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]"
                   : "text-slate-700 hover:text-primary-700",
               ].join(" ")}
             >
@@ -89,7 +89,7 @@ export function TopNav({ onOpenBooking }: TopNavProps) {
               className={[
                 "bg-transparent border-none cursor-pointer text-[11px] font-mono tracking-[0.16em] min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors duration-200",
                 transparent
-                  ? "text-white/90 hover:text-white"
+                  ? "text-white hover:text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]"
                   : "text-slate-700 hover:text-primary-700",
               ].join(" ")}
             >
