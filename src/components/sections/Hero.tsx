@@ -59,7 +59,8 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
   return (
     <>
       {/* ===== MOBILE HERO ===== */}
-      <section className="relative min-h-[100dvh] overflow-hidden md:hidden">
+      {/* Mobile: full screen | Small phones: min 560px */}
+      <section className="relative h-[100dvh] min-h-[560px] overflow-hidden md:hidden">
         {/* Background */}
         <AnimatePresence initial={false}>
           <motion.div key={slide} initial={{ opacity: 0, scale: 1.06 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
@@ -74,7 +75,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
         }} />
 
         {/* Content */}
-        <div className="relative z-[3] min-h-[100dvh] flex flex-col justify-end px-5 pb-8 pt-[160px]">
+        <div className="relative z-[3] h-full flex flex-col justify-end px-5 pb-8 pt-[140px]">
 
           {/* Weather pill — sits above the spacer */}
           <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
@@ -151,7 +152,8 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
       </section>
 
       {/* ===== DESKTOP HERO ===== */}
-      <section className="relative h-[100vh] min-h-[680px] overflow-hidden hidden md:block">
+      {/* Tablet: 90vh | Laptop: 92vh | Desktop: 95vh | Large: 100vh */}
+      <section className="relative h-[90vh] md:min-h-[600px] lg:h-[92vh] lg:min-h-[650px] xl:h-[95vh] 2xl:h-[100vh] overflow-hidden hidden md:block">
         {/* Background */}
         <AnimatePresence initial={false}>
           <motion.div key={slide} initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
@@ -166,7 +168,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
         }} />
 
         {/* Main content */}
-        <div className="relative z-[3] h-full flex flex-col justify-center px-6 md:px-10 lg:px-16 2xl:px-24 pt-[120px] pb-[80px]">
+        <div className="relative z-[3] h-full flex flex-col justify-center px-6 md:px-10 lg:px-16 2xl:px-24 pt-[100px] lg:pt-[110px] xl:pt-[120px] pb-[70px] lg:pb-[80px]">
           <div className="content-max w-full">
             <div className="flex items-center justify-between gap-16">
 
@@ -184,13 +186,13 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                 {/* Headline */}
                 <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-                  className="font-display font-bold text-white leading-[0.97] tracking-tight text-[clamp(40px,6vw,74px)]">
+                  className="font-display font-bold text-white leading-[0.97] tracking-tight text-[clamp(32px,5vw,48px)] lg:text-[clamp(40px,5.5vw,64px)] xl:text-[clamp(44px,5.5vw,72px)] 2xl:text-[76px]">
                   {season.tagline}
                 </motion.h1>
 
                 {/* Description */}
                 <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.5 }}
-                  className="text-[16px] lg:text-[18px] text-white/70 mt-6 max-w-[500px] leading-relaxed">
+                  className="text-[14px] lg:text-[16px] xl:text-[17px] 2xl:text-[18px] text-white/70 mt-4 lg:mt-5 xl:mt-6 max-w-[440px] lg:max-w-[480px] xl:max-w-[500px] leading-relaxed">
                   {season.description}
                 </motion.p>
 
@@ -207,7 +209,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
                 {/* CTAs */}
                 <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}
-                  className="flex flex-wrap items-center gap-3 mt-8">
+                  className="flex flex-wrap items-center gap-3 mt-5 lg:mt-6 xl:mt-8">
                   <button onClick={onOpenBooking}
                     className="bg-gradient-to-r from-primary-500 to-primary-400 text-white rounded-full px-7 py-3.5 font-semibold text-[14px] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary-500/20 transition-all duration-300 cursor-pointer min-h-[48px]">
                     Book your ride
@@ -226,8 +228,8 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
               {/* Right — Season card */}
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7, duration: 0.6 }}
-                className="hidden lg:block flex-shrink-0">
-                <div className="bg-black/20 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 w-[280px]">
+                className="hidden xl:block flex-shrink-0">
+                <div className="bg-black/20 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-5 xl:p-6 w-[250px] xl:w-[270px] 2xl:w-[290px]">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
@@ -259,7 +261,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
         </div>
 
         {/* Bottom bar */}
-        <div className="absolute bottom-0 left-0 right-0 z-[4] px-6 md:px-10 lg:px-16 2xl:px-24 pb-7">
+        <div className="absolute bottom-0 left-0 right-0 z-[4] px-6 md:px-10 lg:px-16 2xl:px-24 pb-5 lg:pb-6 xl:pb-7">
           <div className="content-max flex items-center gap-5">
             <div className="flex items-center gap-2.5">
               {seasonSlides.map((_, i) => (
