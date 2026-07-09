@@ -71,7 +71,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
         {/* Overlay */}
         <div className="absolute inset-0 z-[1]" style={{
-          background: "linear-gradient(180deg, rgba(10,45,73,0.7) 0%, rgba(10,45,73,0.45) 35%, rgba(10,45,73,0.65) 55%, rgba(10,45,73,0.95) 100%)",
+          background: "linear-gradient(180deg, rgba(10,45,73,0.75) 0%, rgba(10,45,73,0.6) 30%, rgba(10,45,73,0.7) 55%, rgba(10,45,73,0.92) 100%)",
         }} />
 
         {/* Content */}
@@ -100,13 +100,13 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
           {/* Headline */}
           <motion.h1 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-            className="font-display font-bold text-white leading-[1.08] tracking-tight text-[30px] mb-3">
+            className="font-display font-bold text-white leading-[1.08] tracking-tight text-[30px] mb-3 [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
             {season.tagline}
           </motion.h1>
 
           {/* Description */}
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
-            className="text-[13px] text-white/75 leading-relaxed max-w-[340px] mb-6">
+            className="text-[13px] text-white leading-relaxed max-w-[340px] mb-6 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
             {season.description}
           </motion.p>
 
@@ -164,7 +164,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
         {/* Gradient overlay */}
         <div className="absolute inset-0 z-[1]" style={{
-          background: "linear-gradient(135deg, rgba(10,45,73,0.8) 0%, rgba(10,45,73,0.5) 50%, rgba(10,45,73,0.65) 100%)",
+          background: "linear-gradient(135deg, rgba(10,45,73,0.82) 0%, rgba(10,45,73,0.6) 50%, rgba(10,45,73,0.72) 100%)",
         }} />
 
         {/* Main content */}
@@ -186,13 +186,13 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                 {/* Headline */}
                 <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-                  className="font-display font-bold text-white leading-[0.97] tracking-tight text-[clamp(32px,5vw,48px)] lg:text-[clamp(40px,5.5vw,64px)] xl:text-[clamp(44px,5.5vw,72px)] 2xl:text-[76px]">
+                  className="font-display font-bold text-white leading-[0.97] tracking-tight text-[clamp(32px,5vw,48px)] lg:text-[clamp(40px,5.5vw,64px)] xl:text-[clamp(44px,5.5vw,72px)] 2xl:text-[76px] [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
                   {season.tagline}
                 </motion.h1>
 
                 {/* Description */}
                 <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.5 }}
-                  className="text-[14px] lg:text-[16px] xl:text-[17px] 2xl:text-[18px] text-white/70 mt-4 lg:mt-5 xl:mt-6 max-w-[440px] lg:max-w-[480px] xl:max-w-[500px] leading-relaxed">
+                  className="text-[14px] lg:text-[16px] xl:text-[17px] 2xl:text-[18px] text-white mt-4 lg:mt-5 xl:mt-6 max-w-[440px] lg:max-w-[480px] xl:max-w-[500px] leading-relaxed [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
                   {season.description}
                 </motion.p>
 
@@ -201,9 +201,9 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                   className="mt-5">
                   <div className="inline-flex items-center gap-3 bg-white/[0.06] backdrop-blur-md border border-white/[0.08] rounded-full px-4 py-2">
                     <WeatherIcon icon={season.weather.icon} size={16} className="text-primary-400" />
-                    <span className="text-[13px] text-white/85 font-medium">{season.weather.tempLow}&deg;&ndash;{season.weather.tempHigh}&deg;C</span>
+                    <span className="text-[13px] text-white font-medium">{season.weather.tempLow}&deg;&ndash;{season.weather.tempHigh}&deg;C</span>
                     <span className="w-px h-4 bg-white/10" />
-                    <span className="text-[11px] text-white/75 font-mono">{season.weather.humidity} humidity</span>
+                    <span className="text-[11px] text-white font-mono">{season.weather.humidity} humidity</span>
                   </div>
                 </motion.div>
 
@@ -219,7 +219,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                     Seasonal guide
                     <svg className={`transition-transform duration-300 ${seasonalGuideOpen ? "rotate-180" : ""}`} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M6 9l6 6 6-6" /></svg>
                   </button>
-                  <a href="#fleet" className="text-white/75 hover:text-white text-[13px] font-medium transition-colors min-h-[48px] inline-flex items-center gap-1.5 pl-2">
+                  <a href="#fleet" className="text-white hover:text-white text-[13px] font-medium transition-colors min-h-[48px] inline-flex items-center gap-1.5 pl-2">
                     Explore fleet
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
                   </a>
@@ -251,7 +251,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {season.activities.slice(0, 3).map((a) => (
-                      <span key={a.name} className="text-[11px] bg-white/[0.08] text-white/70 rounded-full px-2.5 py-1 font-medium">{a.name}</span>
+                      <span key={a.name} className="text-[11px] bg-white/[0.08] text-white rounded-full px-2.5 py-1 font-medium">{a.name}</span>
                     ))}
                   </div>
                 </div>
@@ -286,7 +286,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                 className="flex items-center gap-2">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--primary-400)" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
                 <span className="text-[13px] text-white font-medium">{seasonSlides[slide].place}</span>
-                <span className="text-[11px] text-white/75 font-mono hidden lg:inline">{seasonSlides[slide].sub}</span>
+                <span className="text-[11px] text-white font-mono hidden lg:inline">{seasonSlides[slide].sub}</span>
               </motion.div>
             </AnimatePresence>
           </div>
