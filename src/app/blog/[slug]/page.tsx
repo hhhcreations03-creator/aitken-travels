@@ -127,7 +127,7 @@ export default function BlogPostPage({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={post.image}
-              alt={post.title}
+              alt={`Article: ${post.title}`}
               className="w-full h-full object-cover"
             />
             {/* Gradient overlay */}
@@ -281,7 +281,7 @@ export default function BlogPostPage({
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={r.image}
-                            alt={r.title}
+                            alt=""
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                         </div>
@@ -323,7 +323,7 @@ export default function BlogPostPage({
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={r.image}
-                      alt={r.title}
+                      alt=""
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.1em] text-slate-700 uppercase">

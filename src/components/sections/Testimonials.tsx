@@ -120,7 +120,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={t.avatar}
-                  alt={t.name}
+                  alt={`Photo of ${t.name}`}
                   loading="lazy"
                   className="w-14 h-14 rounded-full object-cover border-2 border-primary-100 flex-shrink-0"
                 />
@@ -207,7 +207,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={t.avatar}
-                  alt={t.name}
+                  alt={`Photo of ${t.name}`}
                   loading="lazy"
                   className="w-14 h-14 rounded-full object-cover border-2 border-primary-100 flex-shrink-0"
                 />

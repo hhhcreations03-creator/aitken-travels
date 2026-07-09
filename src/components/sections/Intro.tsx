@@ -29,7 +29,7 @@ export function Intro() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/about.JPG"
-                    alt="Aitken Travels team — four founders"
+                    alt="The four founders of Aitken Travels on a scenic Sri Lanka road"
                     loading="lazy"
                     className="w-full aspect-[16/10] object-cover"
                   />
@@ -210,7 +210,7 @@ export function Intro() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/about.JPG"
-                  alt="Aitken Travels team — four founders"
+                  alt="The four founders of Aitken Travels on a scenic Sri Lanka road"
                   className="w-full aspect-[4/3] object-cover"
                 />
                 {/* Subtle gradient overlay at bottom */}

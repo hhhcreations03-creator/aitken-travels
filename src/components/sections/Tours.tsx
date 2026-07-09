@@ -170,7 +170,7 @@ function FleetCard({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={vehicle.image}
-          alt={vehicle.name}
+          alt={`${vehicle.name} - ${vehicle.category}`}
           loading="lazy"
           className="w-full h-full object-cover group-hover:scale-[1.06] transition-transform duration-700"
         />
@@ -269,7 +269,7 @@ function MobileFleetCard({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={vehicle.image}
-          alt={vehicle.name}
+          alt={`${vehicle.name} - ${vehicle.category}`}
           loading="lazy"
           className="w-full h-full object-cover"
         />

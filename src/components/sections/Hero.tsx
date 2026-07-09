@@ -242,7 +242,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                       const region = REGIONS.find((r) => r.id === d.regionId);
                       return region ? (
                         <div key={d.regionId} className="relative aspect-square rounded-xl overflow-hidden">
-                          <img src={region.image} alt={region.name} className="w-full h-full object-cover" />
+                          <img src={region.image} alt="" className="w-full h-full object-cover" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                           <span className="absolute bottom-1.5 left-1.5 text-[11px] text-white font-semibold leading-none">{region.name}</span>
                         </div>

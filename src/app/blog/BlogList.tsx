@@ -65,7 +65,7 @@ export function BlogList({ posts, categories }: BlogListProps) {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={post.image}
-                      alt={post.title}
+                      alt={`${post.title} cover`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     {/* Category Pill */}

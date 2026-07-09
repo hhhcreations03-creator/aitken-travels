@@ -131,7 +131,7 @@ export function SriLankaMap({ onOpenBooking }: SriLankaMapProps) {
               {/* Hero image */}
               <div className="relative aspect-[16/9] overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={active.image} alt={active.name} loading="lazy" className="w-full h-full object-cover" />
+                <img src={active.image} alt={`Scenic view of ${active.name}, Sri Lanka`} loading="lazy" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between">
                   <div>
@@ -212,7 +212,7 @@ export function SriLankaMap({ onOpenBooking }: SriLankaMapProps) {
                         className="flex-shrink-0 flex items-center gap-2 pl-1 pr-3 py-1 rounded-full bg-slate-50 border border-slate-100 text-[11px] font-medium text-slate-600 hover:border-primary-200 hover:text-primary-700 transition-all cursor-pointer min-h-[32px]"
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={r.image} alt={r.name} loading="lazy" className="w-5 h-5 rounded-full object-cover" />
+                        <img src={r.image} alt="" loading="lazy" className="w-5 h-5 rounded-full object-cover" />
                         {r.name}
                       </button>
                     ))}

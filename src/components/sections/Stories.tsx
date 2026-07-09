@@ -49,7 +49,7 @@ export function Stories() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={post.image}
-                    alt={post.title}
+                    alt={`Cover image for ${post.title}`}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />

@@ -121,7 +121,9 @@ export function TourGallery() {
                       preload="none"
                       poster={item.poster}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+                    >
+                      <track kind="descriptions" label="Video description" />
+                    </video>
                     {/* Play icon */}
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <div className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -230,7 +232,9 @@ export function TourGallery() {
                     controls
                     playsInline
                     className="w-full max-h-[70vh] object-contain"
-                  />
+                  >
+                    <track kind="descriptions" label="Video description" />
+                  </video>
                 ) : (
                   <img
                     src={selected.src}
