@@ -97,7 +97,7 @@ export function ContactContent() {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-400">{info.label}</div>
+                    <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-500">{info.label}</div>
                     <div className="font-display text-[16px] font-semibold text-slate-800 group-hover:text-primary-700 transition-colors">{info.value}</div>
                   </div>
                 </motion.a>
@@ -137,26 +137,26 @@ export function ContactContent() {
                 <div className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-600 font-medium">Full name *</label>
-                      <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="John Smith"
+                      <label htmlFor="contact-name" className="font-mono text-[11px] tracking-[0.14em] uppercase text-primary-600 font-medium">Full name *</label>
+                      <input id="contact-name" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="John Smith"
                         className="px-4 py-3 border border-slate-200 rounded-xl text-[14px] outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all min-h-[44px]" />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-600 font-medium">Email *</label>
-                      <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@email.com"
+                      <label htmlFor="contact-email" className="font-mono text-[11px] tracking-[0.14em] uppercase text-primary-600 font-medium">Email *</label>
+                      <input id="contact-email" required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@email.com"
                         className="px-4 py-3 border border-slate-200 rounded-xl text-[14px] outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all min-h-[44px]" />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-600 font-medium">Phone / WhatsApp</label>
-                      <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="+94 77 081 3690"
+                      <label htmlFor="contact-phone" className="font-mono text-[11px] tracking-[0.14em] uppercase text-primary-600 font-medium">Phone / WhatsApp</label>
+                      <input id="contact-phone" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="+94 77 081 3690"
                         className="px-4 py-3 border border-slate-200 rounded-xl text-[14px] outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all min-h-[44px]" />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-600 font-medium">Service interested in</label>
-                      <select value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })}
+                      <label htmlFor="contact-service" className="font-mono text-[11px] tracking-[0.14em] uppercase text-primary-600 font-medium">Service interested in</label>
+                      <select id="contact-service" value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })}
                         className="px-4 py-3 border border-slate-200 rounded-xl text-[14px] outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all min-h-[44px] bg-white">
                         <option value="">Select a service...</option>
                         <option>Airport Transfer</option>
@@ -169,8 +169,8 @@ export function ContactContent() {
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-600 font-medium">Message *</label>
-                    <textarea required value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={5}
+                    <label htmlFor="contact-message" className="font-mono text-[11px] tracking-[0.14em] uppercase text-primary-600 font-medium">Message *</label>
+                    <textarea id="contact-message" required value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={5}
                       placeholder="Tell us about your trip — dates, destinations, number of passengers, any special requirements..."
                       className="px-4 py-3 border border-slate-200 rounded-xl text-[14px] outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all resize-none" />
                   </div>
@@ -190,7 +190,7 @@ export function ContactContent() {
                     )}
                   </button>
 
-                  <p className="text-[12px] text-slate-400 text-center">
+                  <p className="text-[12px] text-slate-500 text-center">
                     Your message will be sent to <span className="text-primary-600 font-medium">travelsaitken@gmail.com</span>
                   </p>
                 </div>

@@ -60,7 +60,7 @@ export function Fleet({ onOpenVehicle }: FleetProps) {
               Choose your perfect{" "}
               <span className="text-primary-400">ride</span>
             </h2>
-            <p className="text-[16px] md:text-[18px] text-white/50 mt-4 max-w-[500px] mx-auto leading-relaxed">
+            <p className="text-[16px] md:text-[18px] text-white/75 mt-4 max-w-[500px] mx-auto leading-relaxed">
               From compact sedans to luxury coaches — we have the right vehicle for every Sri Lankan adventure.
             </p>
           </motion.div>
@@ -82,12 +82,12 @@ export function Fleet({ onOpenVehicle }: FleetProps) {
                   className={`relative flex-shrink-0 px-5 py-2.5 rounded-full text-[13px] font-medium cursor-pointer transition-all duration-300 min-h-[44px] flex items-center gap-2 border ${
                     isActive
                       ? "bg-primary-500 border-primary-400 text-white shadow-[0_0_20px_rgba(21,176,248,0.25)]"
-                      : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white/90"
+                      : "bg-white/5 border-white/10 text-white/75 hover:bg-white/10 hover:text-white/90"
                   }`}
                 >
                   {cat.label}
-                  <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${
-                    isActive ? "bg-white/20 text-white" : "bg-white/5 text-white/40"
+                  <span className={`text-[11px] font-mono px-1.5 py-0.5 rounded-full ${
+                    isActive ? "bg-white/20 text-white" : "bg-white/5 text-white/75"
                   }`}>
                     {count}
                   </span>
@@ -127,7 +127,7 @@ export function Fleet({ onOpenVehicle }: FleetProps) {
 
         {/* Empty state */}
         {filtered.length === 0 && (
-          <div className="text-center py-20 text-white/40">
+          <div className="text-center py-20 text-white/75">
             <p className="font-display text-[20px]">No vehicles in this category</p>
           </div>
         )}
@@ -179,16 +179,16 @@ function FleetCard({
         {/* Top badges */}
         <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
           {isSelfRide && (
-            <span className="bg-amber-500 text-white rounded-full px-3 py-1 text-[10px] font-mono tracking-[0.08em] uppercase font-semibold">
+            <span className="bg-amber-500 text-white rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.08em] uppercase font-semibold">
               Self-ride
             </span>
           )}
           {!isSelfRide && (
-            <span className="backdrop-blur-md bg-white/15 border border-white/10 text-white rounded-full px-3 py-1 text-[10px] font-mono tracking-[0.08em] uppercase">
+            <span className="backdrop-blur-md bg-white/15 border border-white/10 text-white rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.08em] uppercase">
               With driver
             </span>
           )}
-          <span className="backdrop-blur-md bg-black/30 text-white rounded-full px-3 py-1 text-[10px] font-mono tracking-[0.08em]">
+          <span className="backdrop-blur-md bg-black/30 text-white rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.08em]">
             {vehicle.seats} {isSelfRide ? "riders" : "seats"}
           </span>
         </div>
@@ -209,7 +209,7 @@ function FleetCard({
         </h3>
 
         {/* Specs row */}
-        <div className="flex items-center gap-3 mt-3 text-[12px] text-white/40 font-mono">
+        <div className="flex items-center gap-3 mt-3 text-[12px] text-white/75 font-mono">
           <span className="flex items-center gap-1.5">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2m-9-11h2m18 0h2"/></svg>
             {vehicle.transmission}
@@ -225,13 +225,13 @@ function FleetCard({
           {vehicle.features.slice(0, 3).map((f) => (
             <span
               key={f}
-              className="bg-white/[0.06] border border-white/[0.06] rounded-full px-2.5 py-1 text-[10px] text-white/50"
+              className="bg-white/[0.06] border border-white/[0.06] rounded-full px-2.5 py-1 text-[11px] text-white/75"
             >
               {f}
             </span>
           ))}
           {vehicle.features.length > 3 && (
-            <span className="bg-primary-500/10 border border-primary-400/20 rounded-full px-2.5 py-1 text-[10px] text-primary-400">
+            <span className="bg-primary-500/10 border border-primary-400/20 rounded-full px-2.5 py-1 text-[11px] text-primary-400">
               +{vehicle.features.length - 3} more
             </span>
           )}
@@ -278,11 +278,11 @@ function MobileFleetCard({
         {/* Badge */}
         <div className="absolute top-2 left-2">
           {isSelfRide ? (
-            <span className="bg-amber-500 text-white rounded-full px-2 py-0.5 text-[9px] font-mono tracking-[0.06em] uppercase font-semibold">
+            <span className="bg-amber-500 text-white rounded-full px-2 py-0.5 text-[11px] font-mono tracking-[0.06em] uppercase font-semibold">
               Self-ride
             </span>
           ) : (
-            <span className="backdrop-blur-md bg-white/15 border border-white/10 text-white rounded-full px-2 py-0.5 text-[9px] font-mono tracking-[0.06em] uppercase">
+            <span className="backdrop-blur-md bg-white/15 border border-white/10 text-white rounded-full px-2 py-0.5 text-[11px] font-mono tracking-[0.06em] uppercase">
               With driver
             </span>
           )}
@@ -296,7 +296,7 @@ function MobileFleetCard({
         </h3>
 
         {/* Specs row */}
-        <div className="flex items-center gap-2 mt-1.5 text-[11px] text-white/40 font-mono">
+        <div className="flex items-center gap-2 mt-1.5 text-[11px] text-white/75 font-mono">
           <span>{vehicle.transmission}</span>
           <span className="text-white/20">&middot;</span>
           <span>{vehicle.ac ? "A/C" : "Non-A/C"}</span>
@@ -309,7 +309,7 @@ function MobileFleetCard({
           {vehicle.features.slice(0, 2).map((f) => (
             <span
               key={f}
-              className="bg-white/[0.06] border border-white/[0.06] rounded-full px-2 py-0.5 text-[10px] text-white/50"
+              className="bg-white/[0.06] border border-white/[0.06] rounded-full px-2 py-0.5 text-[11px] text-white/75"
             >
               {f}
             </span>

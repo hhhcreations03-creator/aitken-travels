@@ -68,7 +68,7 @@ export default function ContactPage() {
         <div className="flex items-center justify-between max-w-[1600px] mx-auto px-6 md:px-10 2xl:px-24">
           <Link href="/" className="flex items-center min-h-[44px] -mt-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Aitken Travels" className="h-40 md:h-44 w-auto object-contain" />
+            <img src="/logo.png" alt="" className="h-40 md:h-44 w-auto object-contain" />
           </Link>
           <div className="hidden md:flex items-center gap-8 -mt-6">
             {[{ label: "Home", href: "/" }, { label: "Services", href: "/#services" }, { label: "Fleet", href: "/#fleet" }, { label: "Blog", href: "/blog" }, { label: "Contact", href: "/contact" }].map((item) => (
@@ -96,7 +96,7 @@ export default function ContactPage() {
               <h1 className="font-display font-bold text-white leading-[1.05] text-[clamp(36px,5vw,56px)]">
                 We&apos;d love to hear{" "}<span className="text-primary-300">from you</span>
               </h1>
-              <p className="text-[16px] md:text-[18px] text-white/50 mt-4 max-w-[480px] mx-auto leading-relaxed">
+              <p className="text-[16px] md:text-[18px] text-white/75 mt-4 max-w-[480px] mx-auto leading-relaxed">
                 Have a question or ready to book? Reach out and we&apos;ll get back to you within the hour.
               </p>
             </div>

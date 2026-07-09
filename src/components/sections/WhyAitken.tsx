@@ -97,7 +97,7 @@ export function WhyAitken() {
                 </div>
                 <div>
                   <div className="font-display text-[28px] font-bold gradient-text leading-none">{reasons[0].stat}</div>
-                  <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-slate-400 mt-0.5">{reasons[0].statLabel}</div>
+                  <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-slate-500 mt-0.5">{reasons[0].statLabel}</div>
                 </div>
               </div>
               <h3 className="font-display text-[22px] font-semibold text-slate-900 mb-3">
@@ -165,7 +165,7 @@ export function WhyAitken() {
                   </div>
                   <div>
                     <div className="font-display text-[28px] md:text-[32px] font-bold gradient-text leading-none">{r.stat}</div>
-                    <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-slate-400 mt-0.5">{r.statLabel}</div>
+                    <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-slate-500 mt-0.5">{r.statLabel}</div>
                   </div>
                 </div>
 
@@ -199,7 +199,7 @@ export function WhyAitken() {
                 </div>
                 <div className="text-right">
                   <div className="font-display text-[24px] font-bold gradient-text leading-none">{r.stat}</div>
-                  <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-slate-400 mt-0.5">{r.statLabel}</div>
+                  <div className="font-mono text-[11px] tracking-[0.1em] uppercase text-slate-500 mt-0.5">{r.statLabel}</div>
                 </div>
               </div>
 

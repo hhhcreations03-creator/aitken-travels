@@ -112,7 +112,7 @@ export function ClosingCTA({ onOpenBooking }: ClosingCTAProps) {
               <h3 className="font-display font-bold text-[clamp(24px,3.5vw,36px)] leading-[1.1] text-white mb-3">
                 Ready to hit the road?
               </h3>
-              <p className="text-[15px] text-white/50 leading-relaxed">
+              <p className="text-[15px] text-white/75 leading-relaxed">
                 Get in touch today and we&apos;ll have your perfect vehicle
                 and driver sorted &mdash; usually within the hour.
               </p>
@@ -142,7 +142,7 @@ export function ClosingCTA({ onOpenBooking }: ClosingCTAProps) {
               </div>
               <div className="grid grid-cols-2 md:flex flex-wrap gap-x-5 gap-y-2 md:gap-y-1 justify-center lg:justify-end">
                 {["Responds in 1 hour", "No upfront payment", "Free cancellation"].map((b) => (
-                  <div key={b} className="flex items-center gap-1.5 text-[12px] text-white/30">
+                  <div key={b} className="flex items-center gap-1.5 text-[12px] text-white/75">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-primary-400">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>

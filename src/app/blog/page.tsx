@@ -79,7 +79,7 @@ export default function BlogPage() {
               Travel guides &amp;{" "}
               <span className="text-primary-300">tips</span>
             </h1>
-            <p className="text-[16px] md:text-[18px] text-white/60 mt-4 max-w-[520px] mx-auto leading-relaxed">
+            <p className="text-[16px] md:text-[18px] text-white/75 mt-4 max-w-[520px] mx-auto leading-relaxed">
               Insider advice, honest comparisons, and practical guides to help you
               plan the perfect Sri Lanka trip.
             </p>
@@ -93,7 +93,7 @@ export default function BlogPage() {
               ].map((s) => (
                 <div key={s.label} className="text-center">
                   <div className="font-display text-[24px] md:text-[28px] font-bold text-white leading-none">{s.num}</div>
-                  <div className="font-mono text-[9px] tracking-[0.12em] uppercase text-white/40 mt-1">{s.label}</div>
+                  <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-white/75 mt-1">{s.label}</div>
                 </div>
               ))}
             </div>

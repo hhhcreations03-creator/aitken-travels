@@ -88,7 +88,7 @@ export function TourGallery() {
               }`}
             >
               {f === "all" ? "All" : f === "image" ? "Photos" : "Videos"}
-              <span className={`ml-1.5 text-[10px] font-mono px-1.5 py-0.5 rounded-full ${
+              <span className={`ml-1.5 text-[11px] font-mono px-1.5 py-0.5 rounded-full ${
                 filter === f ? "bg-white/20" : "bg-slate-100"
               }`}>
                 {f === "all" ? GALLERY.length : GALLERY.filter((g) => g.type === f).length}
@@ -155,7 +155,7 @@ export function TourGallery() {
 
                 {/* Tag */}
                 <div className="absolute top-3 left-3">
-                  <span className="bg-white/90 backdrop-blur-sm text-primary-800 rounded-full px-2.5 py-0.5 text-[9px] md:text-[10px] font-mono tracking-[0.08em] uppercase font-semibold shadow-sm">
+                  <span className="bg-white/90 backdrop-blur-sm text-primary-800 rounded-full px-2.5 py-0.5 text-[11px] md:text-[11px] font-mono tracking-[0.08em] uppercase font-semibold shadow-sm">
                     {item.tag}
                   </span>
                 </div>
@@ -163,7 +163,7 @@ export function TourGallery() {
                 {/* Video badge */}
                 {item.type === "video" && (
                   <div className="absolute top-3 right-3">
-                    <span className="bg-red-500 text-white rounded-full px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase font-semibold flex items-center gap-1">
+                    <span className="bg-red-500 text-white rounded-full px-2 py-0.5 text-[11px] font-mono tracking-wider uppercase font-semibold flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                       Video
                     </span>
@@ -173,7 +173,7 @@ export function TourGallery() {
                 {/* Bottom caption — shows on hover */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                   <p className="text-[13px] text-white font-medium leading-snug">{item.caption}</p>
-                  <div className="flex items-center gap-1.5 mt-1.5 text-[10px] text-white/60 font-mono">
+                  <div className="flex items-center gap-1.5 mt-1.5 text-[11px] text-white/75 font-mono">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
                     </svg>
@@ -187,7 +187,7 @@ export function TourGallery() {
 
         {/* Empty state */}
         {filtered.length === 0 && (
-          <div className="text-center py-20 text-slate-400">
+          <div className="text-center py-20 text-slate-500">
             <p className="font-display text-[18px]">No items in this category yet</p>
           </div>
         )}
@@ -246,14 +246,14 @@ export function TourGallery() {
               <div className="p-5 bg-slate-900">
                 <p className="text-[15px] text-white font-medium">{selected.caption}</p>
                 <div className="flex items-center gap-3 mt-2">
-                  <span className="flex items-center gap-1.5 text-[11px] text-white/50 font-mono">
+                  <span className="flex items-center gap-1.5 text-[11px] text-white/75 font-mono">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
                     </svg>
                     {selected.location}
                   </span>
                   <span className="w-1 h-1 rounded-full bg-white/20" />
-                  <span className="text-[11px] text-white/50 font-mono uppercase">{selected.tag}</span>
+                  <span className="text-[11px] text-white/75 font-mono uppercase">{selected.tag}</span>
                 </div>
               </div>
             </motion.div>

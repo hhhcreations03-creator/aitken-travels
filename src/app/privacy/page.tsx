@@ -112,7 +112,7 @@ export default function PrivacyPage() {
         <div className="max-w-[1600px] mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center min-h-[44px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Aitken Travels" className="h-40 md:h-44 w-auto object-contain" />
+            <img src="/logo.png" alt="" className="h-40 md:h-44 w-auto object-contain" />
           </Link>
           <Link href="/" className="text-[13px] text-white/70 hover:text-white transition-colors min-h-[44px] flex items-center">
             &larr; Back to home

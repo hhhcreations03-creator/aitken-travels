@@ -67,7 +67,7 @@ export function SriLankaMap({ onOpenBooking }: SriLankaMapProps) {
 
                 {/* Tag */}
                 <div className="absolute top-3 left-3">
-                  <span className="bg-white/90 backdrop-blur-sm text-primary-800 rounded-full px-2.5 py-0.5 text-[9px] md:text-[10px] font-mono tracking-[0.08em] uppercase font-semibold shadow-sm">
+                  <span className="bg-white/90 backdrop-blur-sm text-primary-800 rounded-full px-2.5 py-0.5 text-[11px] md:text-[11px] font-mono tracking-[0.08em] uppercase font-semibold shadow-sm">
                     {region.tag}
                   </span>
                 </div>
@@ -80,13 +80,13 @@ export function SriLankaMap({ onOpenBooking }: SriLankaMapProps) {
                   {/* Info that reveals on hover */}
                   <div className="flex items-center gap-3 mt-1.5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                     {region.bestTime && (
-                      <span className="text-[10px] text-white/70 font-mono flex items-center gap-1">
+                      <span className="text-[11px] text-white/70 font-mono flex items-center gap-1">
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                         {region.bestTime}
                       </span>
                     )}
                     {region.distance && (
-                      <span className="text-[10px] text-white/70 font-mono flex items-center gap-1">
+                      <span className="text-[11px] text-white/70 font-mono flex items-center gap-1">
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         {region.distance}
                       </span>
@@ -135,19 +135,19 @@ export function SriLankaMap({ onOpenBooking }: SriLankaMapProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between">
                   <div>
-                    <span className="bg-white/90 backdrop-blur-sm text-primary-800 rounded-full px-3 py-1 text-[10px] font-mono tracking-[0.1em] uppercase font-semibold">
+                    <span className="bg-white/90 backdrop-blur-sm text-primary-800 rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.1em] uppercase font-semibold">
                       {active.tag}
                     </span>
                   </div>
                   <div className="flex gap-3">
                     {active.bestTime && (
-                      <span className="bg-white/80 backdrop-blur-sm text-slate-700 rounded-full px-2.5 py-1 text-[10px] font-mono flex items-center gap-1">
+                      <span className="bg-white/80 backdrop-blur-sm text-slate-700 rounded-full px-2.5 py-1 text-[11px] font-mono flex items-center gap-1">
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                         {active.bestTime}
                       </span>
                     )}
                     {active.distance && (
-                      <span className="bg-white/80 backdrop-blur-sm text-slate-700 rounded-full px-2.5 py-1 text-[10px] font-mono flex items-center gap-1">
+                      <span className="bg-white/80 backdrop-blur-sm text-slate-700 rounded-full px-2.5 py-1 text-[11px] font-mono flex items-center gap-1">
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         {active.distance}
                       </span>
@@ -187,13 +187,13 @@ export function SriLankaMap({ onOpenBooking }: SriLankaMapProps) {
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   {active.bestTime && (
                     <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                      <div className="font-mono text-[9px] tracking-[0.12em] uppercase text-slate-400 mb-1">Best time to visit</div>
+                      <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-500 mb-1">Best time to visit</div>
                       <div className="font-display text-[15px] font-semibold text-slate-800">{active.bestTime}</div>
                     </div>
                   )}
                   {active.distance && (
                     <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                      <div className="font-mono text-[9px] tracking-[0.12em] uppercase text-slate-400 mb-1">Distance</div>
+                      <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-500 mb-1">Distance</div>
                       <div className="font-display text-[15px] font-semibold text-slate-800">{active.distance}</div>
                     </div>
                   )}
@@ -201,7 +201,7 @@ export function SriLankaMap({ onOpenBooking }: SriLankaMapProps) {
 
                 {/* Explore other destinations */}
                 <div className="pt-5 border-t border-slate-100">
-                  <div className="font-mono text-[10px] tracking-[0.14em] uppercase text-slate-400 font-medium mb-3">
+                  <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-slate-500 font-medium mb-3">
                     Explore more destinations
                   </div>
                   <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">

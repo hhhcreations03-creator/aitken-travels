@@ -100,7 +100,7 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
                     >
                       <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
                     </svg>
-                    <span className="text-white/60">{season.weather.humidity} humidity</span>
+                    <span className="text-white/75">{season.weather.humidity} humidity</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <svg
@@ -115,7 +115,7 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
                       <path d="M16 13V5a4 4 0 00-8 0v8" />
                       <path d="M4 19h16" />
                     </svg>
-                    <span className="text-white/60">{season.weather.rainfall} rain</span>
+                    <span className="text-white/75">{season.weather.rainfall} rain</span>
                   </div>
                 </div>
               </motion.div>
@@ -124,14 +124,14 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
               <div className="mb-8 md:mb-12">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-6 h-[2px] rounded-full bg-primary-400" />
-                  <span className="font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-primary-300 font-semibold">
+                  <span className="font-mono text-[11px] md:text-[11px] tracking-[0.18em] uppercase text-primary-300 font-semibold">
                     {season.monthLabel}
                   </span>
                 </div>
                 <h2 className="font-display text-[28px] md:text-[clamp(32px,4vw,48px)] font-bold text-white leading-[1.05]">
                   Where to go <span className="gradient-text-accent">right now</span>
                 </h2>
-                <p className="text-[14px] md:text-[16px] text-white/50 mt-3 max-w-[560px] leading-relaxed">
+                <p className="text-[14px] md:text-[16px] text-white/75 mt-3 max-w-[560px] leading-relaxed">
                   {season.description}
                 </p>
               </div>
@@ -175,7 +175,7 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
                           </span>
                         </div>
                         {region.bestTime && (
-                          <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm rounded-full px-2.5 py-1 text-[9px] text-white/70 font-mono uppercase tracking-wider">
+                          <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm rounded-full px-2.5 py-1 text-[11px] text-white/70 font-mono uppercase tracking-wider">
                             Best: {region.bestTime}
                           </div>
                         )}
@@ -188,7 +188,7 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
                           {dest.highlights.map((h) => (
                             <span
                               key={h}
-                              className="text-[10px] bg-primary-400/15 text-primary-300 rounded-full px-2.5 py-1 font-medium"
+                              className="text-[11px] bg-primary-400/15 text-primary-300 rounded-full px-2.5 py-1 font-medium"
                             >
                               {h}
                             </span>
@@ -205,7 +205,7 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
                 <div className="mb-6 md:mb-8">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="w-5 h-[2px] rounded-full bg-primary-400" />
-                    <span className="font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-primary-300 font-semibold">
+                    <span className="font-mono text-[11px] md:text-[11px] tracking-[0.18em] uppercase text-primary-300 font-semibold">
                       {season.name}
                     </span>
                   </div>
@@ -258,7 +258,7 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
                           }`}>
                             {activity.name}
                           </h4>
-                          <p className={`text-white/55 leading-snug ${
+                          <p className={`text-white/75 leading-snug ${
                             isHero
                               ? "text-[13px] md:text-[14px] line-clamp-3 max-w-[400px]"
                               : "text-[11px] md:text-[12px] line-clamp-2"
@@ -298,7 +298,7 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
                         <path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 01-2 2h-4a2 2 0 01-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z" />
                         <path d="M9 21h6" />
                       </svg>
-                      <span className="text-[13px] text-white/65 leading-relaxed">{tip}</span>
+                      <span className="text-[13px] text-white/75 leading-relaxed">{tip}</span>
                     </div>
                   ))}
                 </div>
@@ -317,7 +317,7 @@ export function SeasonalGuide({ open, onOpenBooking }: SeasonalGuideProps) {
                 >
                   Plan your {season.name.toLowerCase()} trip
                 </button>
-                <p className="text-[12px] text-white/30 mt-3 font-mono">
+                <p className="text-[12px] text-white/75 mt-3 font-mono">
                   Our drivers know the best routes for this season
                 </p>
               </motion.div>

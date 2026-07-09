@@ -109,7 +109,7 @@ export function WhatsAppButton() {
                 <p className="text-[13px] text-slate-700 leading-relaxed">
                   Hello! Welcome to Aitken Travels. How can we help you plan your Sri Lanka trip?
                 </p>
-                <div className="text-[10px] text-slate-400 text-right mt-1">Aitken Travels</div>
+                <div className="text-[11px] text-slate-500 text-right mt-1">Aitken Travels</div>
               </div>
 
               {/* Quick replies */}
@@ -146,7 +146,7 @@ export function WhatsAppButton() {
                   </svg>
                 </button>
               </div>
-              <p className="text-[10px] text-slate-400 mt-2 text-center">
+              <p className="text-[11px] text-slate-500 mt-2 text-center">
                 Powered by WhatsApp &middot; Opens in WhatsApp to send
               </p>
             </div>

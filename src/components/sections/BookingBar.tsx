@@ -49,14 +49,14 @@ export function SearchSection({ onSearch }: SearchSectionProps) {
             <div className="flex items-stretch">
               {/* Service */}
               <Field icon={FIELD_ICONS.service} label="Service">
-                <select value={service} onChange={(e) => setService(e.target.value)} className="field-select">
+                <select id="service" value={service} onChange={(e) => setService(e.target.value)} className="field-select">
                   {SERVICE_OPTIONS.map((o) => <option key={o}>{o}</option>)}
                 </select>
               </Field>
               <Divider />
               {/* Vehicle */}
               <Field icon={FIELD_ICONS.vehicle} label="Vehicle">
-                <select value={vehicle} onChange={(e) => setVehicle(e.target.value)} className="field-select">
+                <select id="vehicle" value={vehicle} onChange={(e) => setVehicle(e.target.value)} className="field-select">
                   {VEHICLE_OPTIONS.map((o) => <option key={o}>{o}</option>)}
                 </select>
               </Field>
@@ -64,6 +64,7 @@ export function SearchSection({ onSearch }: SearchSectionProps) {
               {/* Date picker */}
               <Field icon={FIELD_ICONS.date} label="Travel Date">
                 <input
+                  id="travel-date"
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
@@ -74,7 +75,7 @@ export function SearchSection({ onSearch }: SearchSectionProps) {
               <Divider />
               {/* Pickup */}
               <Field icon={FIELD_ICONS.pickup} label="Pickup Location">
-                <select value={pickup} onChange={(e) => setPickup(e.target.value)} className="field-select">
+                <select id="pickup-location" value={pickup} onChange={(e) => setPickup(e.target.value)} className="field-select">
                   {LOCATION_OPTIONS.map((o) => <option key={o}>{o}</option>)}
                 </select>
               </Field>
@@ -100,6 +101,7 @@ export function SearchSection({ onSearch }: SearchSectionProps) {
               <select
                 value={service}
                 onChange={(e) => setService(e.target.value)}
+                aria-label="Select service"
                 className="w-full h-full px-4 py-3.5 text-[15px] font-medium text-slate-800 bg-transparent border-none outline-none cursor-pointer appearance-none"
                 style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")", backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center" }}
               >
@@ -114,7 +116,7 @@ export function SearchSection({ onSearch }: SearchSectionProps) {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
             </button>
           </div>
-          <p className="text-[12px] text-slate-400 text-center mt-3">
+          <p className="text-[12px] text-slate-500 text-center mt-3">
             Airport Transfer · Round Tour · Day Trip · Vehicle Rental
           </p>
         </div>
@@ -129,12 +131,13 @@ export function SearchSection({ onSearch }: SearchSectionProps) {
 }
 
 function Field({ icon, label, children }: { icon: string; label: string; children: React.ReactNode }) {
+  const id = label.toLowerCase().replace(/\s+/g, '-');
   return (
     <div className="flex items-stretch flex-1">
       <div className="flex-1 px-5 py-4">
         <div className="flex items-center gap-2 mb-2">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-600)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 opacity-60"><path d={icon} /></svg>
-          <label className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-700 font-semibold">{label}</label>
+          <label htmlFor={id} className="font-mono text-[11px] tracking-[0.14em] uppercase text-primary-700 font-semibold">{label}</label>
         </div>
         {children}
       </div>

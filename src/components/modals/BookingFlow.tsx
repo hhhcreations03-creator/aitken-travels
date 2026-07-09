@@ -283,7 +283,7 @@ export function BookingFlow({ open, onClose, prefillVehicle, prefillSearch }: Bo
                     </div>
                     {i < steps.length - 1 && <div className="w-0.5 h-5 rounded-full transition-colors duration-300" style={{ background: i < step ? "var(--primary-400)" : "rgba(255,255,255,0.1)" }} />}
                   </div>
-                  <span className={`mt-1 text-[12px] transition-all ${i === step ? "font-semibold text-white" : i < step ? "text-white/60" : "text-white/25"}`}>{s}</span>
+                  <span className={`mt-1 text-[12px] transition-all ${i === step ? "font-semibold text-white" : i < step ? "text-white/60" : "text-white/75"}`}>{s}</span>
                 </div>
               ))}
             </div>
@@ -386,12 +386,12 @@ function StepFlight({ data, set }: SP) {
       <h3 className="font-display text-[24px] md:text-[32px] font-semibold leading-tight mb-2">Flight details</h3>
       <p className="text-slate-500 mb-6 text-[14px]">We&apos;ll track your flight and be ready when you land.</p>
       <div className="flex flex-col gap-4">
-        <FL label="Flight number (optional)"><input value={data.flightNumber} onChange={(e) => set("flightNumber", e.target.value)} placeholder="e.g. SQ468" className="fi" /></FL>
+        <FL label="Flight number (optional)"><input id="bf-flight-number--optional-" value={data.flightNumber} onChange={(e) => set("flightNumber", e.target.value)} placeholder="e.g. SQ468" className="fi" /></FL>
         <div className="grid grid-cols-2 gap-4">
-          <FL label="Arrival date"><input type="date" value={data.arrivalDate} onChange={(e) => set("arrivalDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
-          <FL label="Arrival time"><input type="time" value={data.arrivalTime} onChange={(e) => set("arrivalTime", e.target.value)} className="fi" /></FL>
+          <FL label="Arrival date"><input id="bf-arrival-date" type="date" value={data.arrivalDate} onChange={(e) => set("arrivalDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
+          <FL label="Arrival time"><input id="bf-arrival-time" type="time" value={data.arrivalTime} onChange={(e) => set("arrivalTime", e.target.value)} className="fi" /></FL>
         </div>
-        <FL label="Number of passengers"><input type="number" min="1" max="45" value={data.pax} onChange={(e) => set("pax", +e.target.value)} className="fi w-28" /></FL>
+        <FL label="Number of passengers"><input id="bf-number-of-passengers" type="number" min="1" max="45" value={data.pax} onChange={(e) => set("pax", +e.target.value)} className="fi w-28" /></FL>
       </div>
     </div>
   );
@@ -403,8 +403,8 @@ function StepAirportRoute({ data, set }: SP) {
       <h3 className="font-display text-[24px] md:text-[32px] font-semibold leading-tight mb-2">Pickup &amp; drop-off</h3>
       <p className="text-slate-500 mb-6 text-[14px]">Where are you coming from and going to?</p>
       <div className="flex flex-col gap-4">
-        <FL label="Pickup"><select value={data.airportPickup} onChange={(e) => set("airportPickup", e.target.value)} className="fi"><option value="">Select...</option>{LOCATIONS.map((l) => <option key={l}>{l}</option>)}</select></FL>
-        <FL label="Drop-off"><select value={data.airportDropoff} onChange={(e) => set("airportDropoff", e.target.value)} className="fi"><option value="">Select...</option>{LOCATIONS.map((l) => <option key={l}>{l}</option>)}</select></FL>
+        <FL label="Pickup"><select id="bf-pickup" value={data.airportPickup} onChange={(e) => set("airportPickup", e.target.value)} className="fi"><option value="">Select...</option>{LOCATIONS.map((l) => <option key={l}>{l}</option>)}</select></FL>
+        <FL label="Drop-off"><select id="bf-drop-off" value={data.airportDropoff} onChange={(e) => set("airportDropoff", e.target.value)} className="fi"><option value="">Select...</option>{LOCATIONS.map((l) => <option key={l}>{l}</option>)}</select></FL>
       </div>
     </div>
   );
@@ -418,12 +418,12 @@ function StepTourDetails({ data, set }: SP) {
       <p className="text-slate-500 mb-6 text-[14px]">Select dates, duration, and destinations you want to visit.</p>
       <div className="flex flex-col gap-5">
         <div className="grid grid-cols-2 gap-4">
-          <FL label="Start date"><input type="date" value={data.tourStartDate} onChange={(e) => set("tourStartDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
-          <FL label="Number of passengers"><input type="number" min="1" max="45" value={data.pax} onChange={(e) => set("pax", +e.target.value)} className="fi" /></FL>
+          <FL label="Start date"><input id="bf-start-date" type="date" value={data.tourStartDate} onChange={(e) => set("tourStartDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
+          <FL label="Number of passengers"><input id="bf-number-of-passengers" type="number" min="1" max="45" value={data.pax} onChange={(e) => set("pax", +e.target.value)} className="fi" /></FL>
         </div>
         <div>
           <div className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-600 font-medium mb-2">Duration &middot; {data.tourDays} days</div>
-          <input type="range" min="2" max="21" value={data.tourDays} onChange={(e) => set("tourDays", +e.target.value)} className="w-full accent-primary-600" />
+          <input type="range" min="2" max="21" value={data.tourDays} onChange={(e) => set("tourDays", +e.target.value)} aria-label="Tour duration in days" className="w-full accent-primary-600" />
           <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-1"><span>2</span><span>7</span><span>14</span><span>21</span></div>
         </div>
         <div>
@@ -463,14 +463,14 @@ function StepDayTrip({ data, set }: SP) {
       <h3 className="font-display text-[24px] md:text-[32px] font-semibold leading-tight mb-2">Day trip details</h3>
       <p className="text-slate-500 mb-6 text-[14px]">Where would you like to go?</p>
       <div className="flex flex-col gap-4">
-        <FL label="Date"><input type="date" value={data.dayTripDate} onChange={(e) => set("dayTripDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
+        <FL label="Date"><input id="bf-date" type="date" value={data.dayTripDate} onChange={(e) => set("dayTripDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
         <div className="grid grid-cols-2 gap-4">
           <FL label="Trip type">
-            <select value={data.dayTripType} onChange={(e) => set("dayTripType", e.target.value)} className="fi">
+            <select id="bf-trip-type" value={data.dayTripType} onChange={(e) => set("dayTripType", e.target.value)} className="fi">
               <option value="half">Half day (4-5 hrs)</option><option value="full">Full day (8-10 hrs)</option>
             </select>
           </FL>
-          <FL label="Passengers"><input type="number" min="1" max="45" value={data.pax} onChange={(e) => set("pax", +e.target.value)} className="fi" /></FL>
+          <FL label="Passengers"><input id="bf-passengers" type="number" min="1" max="45" value={data.pax} onChange={(e) => set("pax", +e.target.value)} className="fi" /></FL>
         </div>
         <div>
           <div className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-600 font-medium mb-3">Destination</div>
@@ -501,10 +501,10 @@ function StepRental({ data, set }: SP) {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <FL label="Start date"><input type="date" value={data.rentalStartDate} onChange={(e) => set("rentalStartDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
-          <FL label="Duration (days)"><input type="number" min="1" max="30" value={data.rentalDays} onChange={(e) => set("rentalDays", +e.target.value)} className="fi" /></FL>
+          <FL label="Start date"><input id="bf-start-date" type="date" value={data.rentalStartDate} onChange={(e) => set("rentalStartDate", e.target.value)} min={new Date().toISOString().split("T")[0]} className="fi" /></FL>
+          <FL label="Duration (days)"><input id="bf-duration--days-" type="number" min="1" max="30" value={data.rentalDays} onChange={(e) => set("rentalDays", +e.target.value)} className="fi" /></FL>
         </div>
-        <FL label="Pickup location"><select value={data.rentalPickupLocation} onChange={(e) => set("rentalPickupLocation", e.target.value)} className="fi"><option value="">Select...</option>{LOCATIONS.map((l) => <option key={l}>{l}</option>)}</select></FL>
+        <FL label="Pickup location"><select id="bf-pickup-location" value={data.rentalPickupLocation} onChange={(e) => set("rentalPickupLocation", e.target.value)} className="fi"><option value="">Select...</option>{LOCATIONS.map((l) => <option key={l}>{l}</option>)}</select></FL>
       </div>
     </div>
   );
@@ -537,19 +537,19 @@ function StepAccommodationDetails({ data, set }: SP) {
       <p className="text-slate-500 mb-6 text-[14px]">Tell us what you&apos;re looking for and we&apos;ll find the best options.</p>
       <div className="flex flex-col gap-4">
         <FL label="Type of accommodation">
-          <select value={data.accommodationType} onChange={(e) => set("accommodationType", e.target.value)} className="fi">
+          <select id="bf-type-of-accommodation" value={data.accommodationType} onChange={(e) => set("accommodationType", e.target.value)} className="fi">
             <option value="">Select...</option><option>Budget guesthouse</option><option>Mid-range hotel</option><option>Boutique hotel</option><option>Luxury resort</option><option>Eco lodge</option><option>No preference</option>
           </select>
         </FL>
         <div className="grid grid-cols-2 gap-4">
           <FL label="Budget per night">
-            <select value={data.accommodationBudget} onChange={(e) => set("accommodationBudget", e.target.value)} className="fi">
+            <select id="bf-budget-per-night" value={data.accommodationBudget} onChange={(e) => set("accommodationBudget", e.target.value)} className="fi">
               <option value="">Select...</option><option>Under $30</option><option>$30 - $60</option><option>$60 - $100</option><option>$100 - $200</option><option>$200+</option><option>Flexible</option>
             </select>
           </FL>
-          <FL label="Number of rooms"><input type="number" min="1" max="20" value={data.accommodationRooms} onChange={(e) => set("accommodationRooms", +e.target.value)} className="fi" /></FL>
+          <FL label="Number of rooms"><input id="bf-number-of-rooms" type="number" min="1" max="20" value={data.accommodationRooms} onChange={(e) => set("accommodationRooms", +e.target.value)} className="fi" /></FL>
         </div>
-        <FL label="Any special requirements?"><textarea value={data.accommodationNotes} onChange={(e) => set("accommodationNotes", e.target.value)} rows={2} placeholder="Pool, sea view, family room, etc." className="fi resize-none" /></FL>
+        <FL label="Any special requirements?"><textarea id="bf-any-special-requirements-" value={data.accommodationNotes} onChange={(e) => set("accommodationNotes", e.target.value)} rows={2} placeholder="Pool, sea view, family room, etc." className="fi resize-none" /></FL>
       </div>
     </div>
   );
@@ -562,14 +562,14 @@ function StepContact({ data, set }: SP) {
       <p className="text-slate-500 mb-6 text-[14px]">So we can confirm your booking.</p>
       <div className="flex flex-col gap-4">
         <div className="grid grid-cols-2 gap-4">
-          <FL label="Full name"><input value={data.name} onChange={(e) => set("name", e.target.value)} placeholder="John Smith" className="fi" /></FL>
-          <FL label="Country"><input value={data.country} onChange={(e) => set("country", e.target.value)} placeholder="e.g. Australia" className="fi" /></FL>
+          <FL label="Full name"><input id="bf-full-name" value={data.name} onChange={(e) => set("name", e.target.value)} placeholder="John Smith" className="fi" /></FL>
+          <FL label="Country"><input id="bf-country" value={data.country} onChange={(e) => set("country", e.target.value)} placeholder="e.g. Australia" className="fi" /></FL>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <FL label="Email"><input type="email" value={data.email} onChange={(e) => set("email", e.target.value)} placeholder="you@email.com" className="fi" /></FL>
-          <FL label="Phone / WhatsApp"><input value={data.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+61 400 123 456" className="fi" /></FL>
+          <FL label="Email"><input id="bf-email" type="email" value={data.email} onChange={(e) => set("email", e.target.value)} placeholder="you@email.com" className="fi" /></FL>
+          <FL label="Phone / WhatsApp"><input id="bf-phone---whatsapp" value={data.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+61 400 123 456" className="fi" /></FL>
         </div>
-        <FL label="Additional notes"><textarea value={data.notes} onChange={(e) => set("notes", e.target.value)} rows={3} placeholder="Special requests, dietary needs, etc." className="fi resize-none" /></FL>
+        <FL label="Additional notes"><textarea id="bf-additional-notes" value={data.notes} onChange={(e) => set("notes", e.target.value)} rows={3} placeholder="Special requests, dietary needs, etc." className="fi resize-none" /></FL>
       </div>
     </div>
   );
@@ -617,9 +617,10 @@ function RR({ label, v }: { label: string; v: string }) {
 }
 
 function FL({ label, children }: { label: string; children: React.ReactNode }) {
+  const id = `bf-${label.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-600 font-medium">{label}</label>
+      <label htmlFor={id} className="font-mono text-[10px] tracking-[0.14em] uppercase text-primary-600 font-medium">{label}</label>
       {children}
       <style jsx>{`
         .fi { padding: 10px 14px; border: 1.5px solid var(--line-strong); border-radius: 10px; background: white; font-size: 16px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; min-height: 44px; font-family: var(--font-inter), Inter, sans-serif; width: 100%; -webkit-appearance: none; }

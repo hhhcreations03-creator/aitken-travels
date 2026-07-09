@@ -84,7 +84,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
               <WeatherIcon icon={season.weather.icon} size={14} className="text-primary-400" />
               <span className="text-[11px] text-white/90 font-medium">{season.weather.tempLow}&deg;&ndash;{season.weather.tempHigh}&deg;C</span>
               <span className="w-px h-3 bg-white/20" />
-              <span className="text-[10px] text-primary-300 font-mono uppercase tracking-wider">{season.weather.condition}</span>
+              <span className="text-[11px] text-primary-300 font-mono uppercase tracking-wider">{season.weather.condition}</span>
             </div>
           </motion.div>
 
@@ -92,7 +92,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.5 }}
             className="flex items-center gap-2 mb-3">
             <span className="w-4 h-[1.5px] rounded-full bg-primary-400" />
-            <span className="font-mono text-[9px] tracking-[0.2em] uppercase font-semibold text-primary-300">
+            <span className="font-mono text-[11px] tracking-[0.2em] uppercase font-semibold text-primary-300">
               {season.monthLabel} &middot; {season.name}
             </span>
           </motion.div>
@@ -106,7 +106,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
 
           {/* Description */}
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
-            className="text-[13px] text-white/50 leading-relaxed max-w-[340px] mb-6">
+            className="text-[13px] text-white/75 leading-relaxed max-w-[340px] mb-6">
             {season.description}
           </motion.p>
 
@@ -203,7 +203,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                     <WeatherIcon icon={season.weather.icon} size={16} className="text-primary-400" />
                     <span className="text-[13px] text-white/85 font-medium">{season.weather.tempLow}&deg;&ndash;{season.weather.tempHigh}&deg;C</span>
                     <span className="w-px h-4 bg-white/10" />
-                    <span className="text-[10px] text-white/45 font-mono">{season.weather.humidity} humidity</span>
+                    <span className="text-[11px] text-white/75 font-mono">{season.weather.humidity} humidity</span>
                   </div>
                 </motion.div>
 
@@ -219,7 +219,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                     Seasonal guide
                     <svg className={`transition-transform duration-300 ${seasonalGuideOpen ? "rotate-180" : ""}`} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M6 9l6 6 6-6" /></svg>
                   </button>
-                  <a href="#fleet" className="text-white/55 hover:text-white text-[13px] font-medium transition-colors min-h-[48px] inline-flex items-center gap-1.5 pl-2">
+                  <a href="#fleet" className="text-white/75 hover:text-white text-[13px] font-medium transition-colors min-h-[48px] inline-flex items-center gap-1.5 pl-2">
                     Explore fleet
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
                   </a>
@@ -235,7 +235,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                       <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
                       <span className="text-[12px] text-white font-semibold">{season.name}</span>
                     </div>
-                    <span className="text-[9px] bg-primary-400/20 text-primary-300 rounded-full px-2 py-0.5 font-mono uppercase tracking-wider">Now</span>
+                    <span className="text-[11px] bg-primary-400/20 text-primary-300 rounded-full px-2 py-0.5 font-mono uppercase tracking-wider">Now</span>
                   </div>
                   <div className="grid grid-cols-3 gap-1.5 mb-4">
                     {season.destinations.slice(0, 3).map((d) => {
@@ -244,14 +244,14 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                         <div key={d.regionId} className="relative aspect-square rounded-xl overflow-hidden">
                           <img src={region.image} alt={region.name} className="w-full h-full object-cover" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                          <span className="absolute bottom-1.5 left-1.5 text-[8px] text-white font-semibold leading-none">{region.name}</span>
+                          <span className="absolute bottom-1.5 left-1.5 text-[11px] text-white font-semibold leading-none">{region.name}</span>
                         </div>
                       ) : null;
                     })}
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {season.activities.slice(0, 3).map((a) => (
-                      <span key={a.name} className="text-[9px] bg-white/[0.08] text-white/70 rounded-full px-2.5 py-1 font-medium">{a.name}</span>
+                      <span key={a.name} className="text-[11px] bg-white/[0.08] text-white/70 rounded-full px-2.5 py-1 font-medium">{a.name}</span>
                     ))}
                   </div>
                 </div>
@@ -286,7 +286,7 @@ export function Hero({ onOpenBooking, onToggleSeasonalGuide, seasonalGuideOpen }
                 className="flex items-center gap-2">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--primary-400)" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
                 <span className="text-[13px] text-white font-medium">{seasonSlides[slide].place}</span>
-                <span className="text-[11px] text-white/40 font-mono hidden lg:inline">{seasonSlides[slide].sub}</span>
+                <span className="text-[11px] text-white/75 font-mono hidden lg:inline">{seasonSlides[slide].sub}</span>
               </motion.div>
             </AnimatePresence>
           </div>

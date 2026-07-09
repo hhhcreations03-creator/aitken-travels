@@ -145,7 +145,7 @@ export function Services({ onBookService }: ServicesProps) {
                       {f.split("\u2014")[0].trim()}
                     </span>
                   ))}
-                  <span className="text-[12px] font-medium text-slate-400 bg-slate-50 rounded-full px-3 py-1">
+                  <span className="text-[12px] font-medium text-slate-500 bg-slate-50 rounded-full px-3 py-1">
                     +{service.details.features.length - 3} more
                   </span>
                 </div>

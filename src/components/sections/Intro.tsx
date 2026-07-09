@@ -46,7 +46,7 @@ export function Intro() {
                     </div>
                     <div>
                       <div className="font-display text-[20px] font-bold text-slate-900 leading-none">30+</div>
-                      <div className="text-[10px] text-slate-500 font-mono tracking-wide uppercase mt-0.5">Countries served</div>
+                      <div className="text-[11px] text-slate-500 font-mono tracking-wide uppercase mt-0.5">Countries served</div>
                     </div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@ export function Intro() {
                       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                     </svg>
                     <div className="font-display text-[15px] font-bold text-slate-900">4.8</div>
-                    <div className="text-[11px] text-slate-400 font-mono">/ 5.0</div>
+                    <div className="text-[11px] text-slate-500 font-mono">/ 5.0</div>
                   </div>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export function Intro() {
                   EST. 2024
                 </div>
                 <span className="w-1 h-1 rounded-full bg-slate-300" />
-                <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-slate-400">
+                <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-slate-500">
                   Colombo, Sri Lanka
                 </div>
               </div>
@@ -161,7 +161,7 @@ export function Intro() {
                   EST. 2024
                 </div>
                 <span className="w-1 h-1 rounded-full bg-slate-300" />
-                <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-slate-400">
+                <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-slate-500">
                   Colombo, Sri Lanka
                 </div>
               </div>
@@ -239,7 +239,7 @@ export function Intro() {
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                   </svg>
                   <div className="font-display text-[18px] font-bold text-slate-900">4.8</div>
-                  <div className="text-[10px] text-slate-400 font-mono">/ 5.0</div>
+                  <div className="text-[11px] text-slate-500 font-mono">/ 5.0</div>
                 </div>
               </div>
             </motion.div>

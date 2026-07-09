@@ -6,7 +6,7 @@ export function Logo({ light = false }: { light?: boolean }) {
     <div className="flex-shrink-0">
       <img
         src="/logo.png"
-        alt="Aitken Travels"
+        alt=""
         className={`h-40 md:h-44 w-auto object-contain transition-all duration-300 ${
           light
             ? ""

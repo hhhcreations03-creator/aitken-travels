@@ -66,7 +66,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
               <div className="font-display text-[32px] font-bold gradient-text leading-none">4.8</div>
               <div>
                 <StarRating rating={5} />
-                <div className="font-mono text-[11px] text-slate-400 tracking-wide uppercase mt-0.5">500+ reviews</div>
+                <div className="font-mono text-[11px] text-slate-500 tracking-wide uppercase mt-0.5">500+ reviews</div>
               </div>
             </div>
 
@@ -153,7 +153,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
             </div>
 
             <div className="p-5 pt-4 mt-4 border-t border-slate-50">
-              <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-400 mb-2">
+              <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-500 mb-2">
                 Places visited
               </div>
               <div className="flex gap-2 flex-wrap">
@@ -243,7 +243,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
 
             {/* Bottom — tour highlights */}
             <div className="p-6 pt-5 mt-4 border-t border-slate-50">
-              <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-400 mb-2">
+              <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-500 mb-2">
                 Places visited
               </div>
               <div className="flex gap-2 flex-wrap">
@@ -279,7 +279,7 @@ export function Testimonials({ onOpenBooking }: { onOpenBooking?: () => void }) 
           <h3 className="font-display text-[24px] font-bold text-white mb-3">
             Join 500+ happy travellers
           </h3>
-          <p className="text-[14px] text-white/60 leading-relaxed mb-6">
+          <p className="text-[14px] text-white/75 leading-relaxed mb-6">
             Start your Sri Lanka adventure with Aitken Travels and share your own story.
           </p>
           <button

@@ -57,6 +57,7 @@ export function Modal({ open, onClose, children, width = 1100 }: ModalProps) {
           >
             <button
               onClick={onClose}
+              aria-label="Close"
               className="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-10 h-10 rounded-full glass-card-strong cursor-pointer flex items-center justify-center hover:scale-110 transition-transform duration-200"
             >
               <svg width="14" height="14" viewBox="0 0 14 14">

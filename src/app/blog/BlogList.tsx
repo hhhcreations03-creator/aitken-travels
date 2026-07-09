@@ -84,7 +84,7 @@ export function BlogList({ posts, categories }: BlogListProps) {
                     </p>
 
                     {/* Footer: Author, Date, Read Time */}
-                    <div className="flex items-center gap-3 text-[13px] text-slate-400 font-mono tracking-wide">
+                    <div className="flex items-center gap-3 text-[13px] text-slate-500 font-mono tracking-wide">
                       <span>{post.author}</span>
                       <span className="w-1 h-1 rounded-full bg-slate-300" />
                       <span>
@@ -110,7 +110,7 @@ export function BlogList({ posts, categories }: BlogListProps) {
         {/* Empty state */}
         {filtered.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-slate-400 text-[16px]">
+            <p className="text-slate-500 text-[16px]">
               No posts found in this category yet.
             </p>
           </div>

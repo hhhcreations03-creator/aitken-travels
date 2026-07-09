@@ -51,7 +51,7 @@ export function Marquee() {
           <div key={i} className="flex items-center gap-0 flex-shrink-0">
             <div className="flex items-center gap-2 px-4">
               <span
-                className="text-slate-400 flex-shrink-0"
+                className="text-slate-500 flex-shrink-0"
                 dangerouslySetInnerHTML={{ __html: item.icon }}
               />
               <span className="text-[13px] font-medium tracking-[0.08em] text-slate-500 uppercase">
