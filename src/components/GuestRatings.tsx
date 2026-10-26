@@ -34,7 +34,7 @@ function RatingEntry({ r }: { r: Rating }) {
         {hasScore && (
           <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px] text-charcoal-soft">
             {r.outOf === 5 && <Stars score={r.score!} outOf={r.outOf} />}
-            {r.reviewCount !== null && <span>{r.reviewCount} verified guest reviews</span>}
+            {r.reviewCount !== null && <span>{r.reviewCount} guest reviews</span>}
           </p>
         )}
       </div>

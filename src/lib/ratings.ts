@@ -28,10 +28,9 @@ export const RATINGS: Rating[] = [
   },
   {
     source: "Google",
-    // Add the star rating and review count from the hotel's Google Business Profile.
-    score: null,
+    score: 4.8,
     outOf: 5,
-    reviewCount: null,
+    reviewCount: 52,
     url: "https://www.google.com/maps/search/?api=1&query=The+Lavish+Haven+166%2F2+Welhengoda+Road+Ahangama",
     linkLabel: "Read reviews on Google",
     asOf: "October 2026",
