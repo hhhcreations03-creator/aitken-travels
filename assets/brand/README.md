@@ -1,16 +1,18 @@
 # Brand source files
 
-Put the official logo files here, then run `npm run brand` to rebuild the
-favicon and app icons in `public/`.
+The official logo lives here. After replacing a file, run `npm run brand` to
+rebuild every logo asset the website uses, then commit the results.
 
-| File | What it is | Used for |
-|---|---|---|
-| `logo.svg` (or `logo.png`) | Full logo for light backgrounds | Website header, footer source |
-| `logo-light.svg` (or `logo-light.png`) | Full logo in white or ivory for dark backgrounds | Footer and dark sections |
-| `icon.svg` (or `icon.png`) | Square symbol or monogram only, no small text | Favicon, Apple touch icon, app icons |
+| File | What it is |
+|---|---|
+| `logo.png` | Full logo, brown on its beige background, high resolution. This is the master. |
+| `logo-light.png` | Same artwork on a transparent background. Used only if `logo.png` is missing. |
 
-SVG is preferred. A PNG should have a transparent background and be at least
-1024 px on its longest side. Any file you leave out falls back to the current
-LH monogram.
+The script separates the artwork from the background and writes, under `public/`:
 
-These files are source material and are not published directly.
+- `brand/logo.png`, `brand/logo-light.png`: full stacked logo in brown and in cream (footer)
+- `brand/symbol*.png`, `brand/wordmark*.png`: palms and name, used side by side in the header
+- `favicon.ico`, `apple-touch-icon.png`, `brand/icon-*.png`: browser, Google and phone icons
+- `og.jpg`: the link preview for WhatsApp, Facebook and X
+
+These source files are not published directly.

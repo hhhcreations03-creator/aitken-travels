@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach.",
     start_url: "/",
     display: "browser",
-    background_color: "#F5F1E8",
+    background_color: "#EFE3CD",
     theme_color: "#1E3A2F",
     icons: [
       { src: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },

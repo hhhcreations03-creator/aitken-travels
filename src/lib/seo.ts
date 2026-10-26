@@ -16,7 +16,8 @@ interface PageMetaInput {
   noindex?: boolean;
 }
 
-export const DEFAULT_OG_IMAGE = "/og.jpg";
+/** Bump `v` whenever og.jpg changes so WhatsApp and Facebook fetch the new image. */
+export const DEFAULT_OG_IMAGE = "/og.jpg?v=2";
 
 export function pageMeta({ title, description, path, image = DEFAULT_OG_IMAGE, imageAlt, socialTitle, noindex }: PageMetaInput): Metadata {
   const alt = imageAlt ?? `${SITE.name}, boutique hotel in Ahangama, Sri Lanka`;

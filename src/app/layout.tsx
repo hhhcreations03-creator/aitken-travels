@@ -63,7 +63,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
-      { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
@@ -94,8 +93,8 @@ const hotelSchema = {
   url: SITE.url,
   description:
     "Boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach, with an outdoor pool, yoga classes and a restaurant.",
-  image: [`${SITE.url}/og.jpg`, `${SITE.url}/images/property/pool-dusk-wide.webp`],
-  logo: `${SITE.url}/brand/icon-512.png`,
+  image: [`${SITE.url}/og.jpg?v=2`, `${SITE.url}/images/property/pool-dusk-wide.webp`],
+  logo: `${SITE.url}/brand/logo.png`,
   hasMap: MAPS_LINK,
   email: SITE.email,
   telephone: SITE.whatsappE164,

@@ -9,7 +9,7 @@ export function Footer() {
       <div className="wrap py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <Logo light />
+            <Logo light stacked />
             <p className="mt-6 max-w-[34ch] text-[15px] leading-relaxed text-sand/85">
               A boutique hotel on Welhengoda Road, a short walk from Kabalana Beach on Sri Lanka&rsquo;s southern coast.
             </p>

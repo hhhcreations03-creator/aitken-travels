@@ -54,7 +54,7 @@ export function Header({ overlay = false }: HeaderProps) {
         ].join(" ")}
       >
         <div className="wrap flex h-[72px] items-center justify-between lg:h-[84px]">
-          <Logo light={light} />
+          <Logo light={light} priority />
 
           <nav aria-label="Primary" className="hidden items-center gap-7 xl:flex">
             {primary.map((item) => {
