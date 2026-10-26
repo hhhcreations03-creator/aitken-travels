@@ -1,47 +1,20 @@
 import type { MetadataRoute } from "next";
-import { BLOG_POSTS } from "@/lib/blog-data";
+import { NAV, SITE } from "@/lib/site";
+import { ROOMS } from "@/lib/rooms";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.aitkentravels.com";
-
-  const blogPostEntries: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
+  const now = new Date();
+  const pages: MetadataRoute.Sitemap = NAV.map((n) => ({
+    url: `${SITE.url}${n.href}`,
+    lastModified: now,
+    changeFrequency: n.href === "/" ? "weekly" : "monthly",
+    priority: n.href === "/" ? 1 : n.href === "/rooms" || n.href === "/groups" ? 0.9 : 0.7,
   }));
-
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    ...blogPostEntries,
-  ];
+  const rooms: MetadataRoute.Sitemap = ROOMS.map((r) => ({
+    url: `${SITE.url}/rooms/${r.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+  return [...pages, ...rooms];
 }

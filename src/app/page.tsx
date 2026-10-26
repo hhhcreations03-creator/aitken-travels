@@ -1,127 +1,199 @@
-"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { Header } from "@/components/Header";
+import { PageHero } from "@/components/PageHero";
+import { Section, Heading } from "@/components/Section";
+import { RoomCard } from "@/components/RoomCard";
+import { ImageBlock } from "@/components/ImageBlock";
+import { GalleryGrid } from "@/components/GalleryGrid";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { ROOMS } from "@/lib/rooms";
+import { GALLERY } from "@/lib/gallery";
+import { MAPS_LINK, whatsappUrl } from "@/lib/site";
 
-import { useState } from "react";
-import { TopNav } from "@/components/TopNav";
-import { Hero } from "@/components/sections/Hero";
-import { SeasonalGuide } from "@/components/sections/SeasonalGuide";
-import { SearchSection, SearchData } from "@/components/sections/BookingBar";
-import { Marquee } from "@/components/sections/Marquee";
-import { Intro } from "@/components/sections/Intro";
-import { Services } from "@/components/sections/Experiences";
-import { Fleet } from "@/components/sections/Tours";
-import { SriLankaMap } from "@/components/sections/SriLankaMap";
-import { TourGallery } from "@/components/sections/TourGallery";
-import { WhyAitken } from "@/components/sections/WhyAitken";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { Offers } from "@/components/sections/Offers";
-import { Stories } from "@/components/sections/Stories";
-import { FAQ } from "@/components/sections/FAQ";
-import { ClosingCTA } from "@/components/sections/ClosingCTA";
-import { Footer } from "@/components/Footer";
-import { BookingFlow } from "@/components/modals/BookingFlow";
-import { VehicleDetail } from "@/components/modals/TourDetail";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { Vehicle } from "@/lib/data";
+const FEATURED = ["superior-king-balcony-garden-pool-view", "family-suite-patio", "two-bedroom-suite"];
 
-export default function Home() {
-  const [bookingOpen, setBookingOpen] = useState(false);
-  const [vehicleOpen, setVehicleOpen] = useState<Vehicle | null>(null);
-  const [prefillVehicle, setPrefillVehicle] = useState<Vehicle | null>(null);
-  const [searchData, setSearchData] = useState<SearchData | null>(null);
-  const [seasonalGuideOpen, setSeasonalGuideOpen] = useState(false);
-
-  const onOpenBooking = (vehicle?: Vehicle) => {
-    setPrefillVehicle(vehicle || null);
-    setSearchData(null);
-    setBookingOpen(true);
-  };
-
-  const onSearch = (data: SearchData) => {
-    setSearchData(data);
-    setPrefillVehicle(null);
-    setBookingOpen(true);
-  };
+export default function HomePage() {
+  const featured = FEATURED.map((s) => ROOMS.find((r) => r.slug === s)!).filter(Boolean);
+  const preview = [
+    GALLERY[0].images[1],
+    GALLERY[1].images[0],
+    GALLERY[2].images[1],
+    GALLERY[4].images[0],
+    GALLERY[5].images[1],
+    GALLERY[3].images[0],
+  ];
 
   return (
     <>
-      <TopNav onOpenBooking={() => onOpenBooking()} />
+      <Header overlay />
+      <main id="main">
+        <PageHero
+          tall
+          title="A Refined Coastal Escape in Ahangama"
+          intro="Discover The Lavish Haven, a relaxed boutique stay where considered comfort, tropical surroundings, and the spirit of Sri Lanka's southern coast come together."
+          image={{ src: "/images/property/pool-dusk-wide.webp", alt: "The Lavish Haven at dusk: the pool lit from below, balconies glowing under the gabled roofs" }}
+        >
+          <Link href="/enquire" className="btn-ivory">Enquire About Your Stay</Link>
+          <Link href="/rooms" className="btn-outline-light">Explore Rooms</Link>
+        </PageHero>
 
-      <main>
-        <Hero
-          onOpenBooking={() => onOpenBooking()}
-          onToggleSeasonalGuide={() => setSeasonalGuideOpen((prev) => !prev)}
-          seasonalGuideOpen={seasonalGuideOpen}
-        />
-        <SeasonalGuide open={seasonalGuideOpen} onOpenBooking={() => onOpenBooking()} />
-        <SearchSection onSearch={onSearch} />
-        <Marquee />
-        <Intro />
-        <Services onBookService={(serviceId: string) => {
-          const serviceMap: Record<string, string> = {
-            "airport-transfers": "Airport Transfer",
-            "round-tours": "Round Island Tour",
-            "day-trips": "Day Excursion",
-            "self-drive": "Vehicle Rental",
-          };
-          onSearch({ service: serviceMap[serviceId] || "", vehicle: "", date: "", pickup: "" });
-        }} />
-        <Fleet onOpenVehicle={setVehicleOpen} />
-        <SriLankaMap onOpenBooking={() => onOpenBooking()} />
-        <TourGallery />
-        <WhyAitken />
-        <Testimonials onOpenBooking={() => onOpenBooking()} />
-        <Offers onApplyOffer={(offerIndex: number) => {
-          // Offer 0 = 15% off multi-day (Round Tour), Offer 1 = Free meet & greet (Airport Transfer)
-          const serviceMap = ["Round Island Tour", "Airport Transfer"];
-          onSearch({
-            service: serviceMap[offerIndex] || "",
-            vehicle: "",
-            date: "",
-            pickup: offerIndex === 1 ? "Airport (CMB)" : "",
-          });
-        }} />
-        <Stories />
-        <FAQ />
-        <ClosingCTA onOpenBooking={() => onOpenBooking()} />
+        {/* Introduction */}
+        <Section>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+            <div className="lg:col-span-5">
+              <h2 className="display-lg text-forest">A quiet house around a pool, two minutes from the surf</h2>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <p className="lede">
+                The Lavish Haven sits on Welhengoda Road in Ahangama, set back from the coast road among coconut palms. Rooms and suites open onto patios and balconies around a long outdoor pool, with a restaurant, lounge and garden at the heart of the house.
+              </p>
+              <p className="body mt-6">
+                Kabalana Beach, with its well-known surf break, is a short walk away. Galle Fort and Weligama are both close by for a day out. Come for a few nights of surf, a yoga-led reset, or a longer stay with family and friends; the team will help you put the right rooms together.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[14.5px]">
+                <Link href="/about" className="textlink">About the Haven</Link>
+                <Link href="/location" className="textlink">Where we are</Link>
+              </div>
+            </div>
+          </div>
+          <div className="mt-16 grid gap-4 md:grid-cols-12">
+            <ImageBlock src="/images/property/aerial-pool-building.webp" alt="Aerial view of The Lavish Haven: green roofs, the pool and surrounding palms" aspect="aspect-[16/10]" sizes="(min-width: 768px) 66vw, 100vw" className="md:col-span-8" />
+            <ImageBlock src="/images/property/lobby-staircase.webp" alt="Lobby with timber staircase, rattan chairs and a tree growing through the floor" aspect="aspect-[16/10] md:aspect-auto md:h-full" sizes="(min-width: 768px) 33vw, 100vw" className="md:col-span-4" />
+          </div>
+        </Section>
+
+        {/* Rooms */}
+        <Section tone="deep">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <Heading title="Rooms & Suites" lead="King rooms with patios or balconies, family suites with two beds, and a two-bedroom suite under the roof. Every room has air conditioning, a private bathroom and its own outdoor space." />
+            <Link href="/rooms" className="btn-outline shrink-0">See all rooms</Link>
+          </div>
+          <div className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+            {featured.map((room, i) => <RoomCard key={room.slug} room={room} priority={i === 0} />)}
+          </div>
+        </Section>
+
+        {/* Surf */}
+        <section className="relative overflow-hidden bg-forest text-ivory">
+          <Image src="/images/property/aerial-coast-surf.webp" alt="Aerial view of the Ahangama coastline with waves breaking along the reef" fill sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-forest-deep/60" aria-hidden="true" />
+          <div className="wrap relative py-24 lg:py-36">
+            <div className="max-w-[44rem]">
+              <p className="font-display text-[1.1rem] italic text-sand">Surf Retreats</p>
+              <h2 className="display-lg mt-3">Kabalana is a short walk from the door</h2>
+              <p className="lede mt-5 !text-ivory/85">
+                Ahangama&rsquo;s best-known break sits at the end of the lane. Plan a surf-focused stay with early mornings on the water and slow afternoons by the pool, and let us know if you&rsquo;d like a hand arranging the local surf scene.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/surf-retreats" className="btn-ivory">Plan a surf retreat</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Wellness */}
+        <Section>
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="grid grid-cols-2 gap-4 lg:col-span-7">
+              <ImageBlock src="/images/wellness/yoga-balcony-reach.webp" alt="Yoga on a first-floor balcony among palm fronds" aspect="aspect-[3/4]" sizes="(min-width: 1024px) 30vw, 50vw" className="mt-10" />
+              <ImageBlock src="/images/wellness/pool-swim.webp" alt="A guest stepping into the pool" aspect="aspect-[3/4]" sizes="(min-width: 1024px) 30vw, 50vw" />
+            </div>
+            <div className="lg:col-span-4 lg:col-start-9">
+              <h2 className="display-lg text-forest">Wellness & Experiences</h2>
+              <p className="lede mt-5">An outdoor pool, yoga classes and a spa and wellness area for slower days.</p>
+              <p className="body mt-5">
+                Mornings start on the mat or in the water. Treatments and sessions are arranged on request, so tell us what you have in mind when you enquire and the team will confirm what&rsquo;s available during your stay.
+              </p>
+              <Link href="/wellness" className="btn-outline mt-8">Wellness at the Haven</Link>
+            </div>
+          </div>
+        </Section>
+
+        {/* Dining */}
+        <Section tone="deep">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-4">
+              <h2 className="display-lg text-forest">Dining</h2>
+              <p className="lede mt-5">An open-air restaurant beside the pool, serving breakfast and a menu that moves between Sri Lankan, Indian, Chinese, British and Mediterranean cooking.</p>
+              <p className="body mt-5">Breakfast offers continental, full English and vegetarian options with fresh fruit. Kids&rsquo; meals, packed lunches and room service are available; tell us about dietary needs when you enquire.</p>
+              <Link href="/dining" className="btn-outline mt-8">About the restaurant</Link>
+            </div>
+            <div className="grid grid-cols-2 gap-4 lg:col-span-7 lg:col-start-6">
+              <ImageBlock src="/images/dining/restaurant-lanterns.webp" alt="The restaurant at night, lit by woven lanterns" aspect="aspect-[4/5]" sizes="(min-width: 1024px) 30vw, 50vw" />
+              <ImageBlock src="/images/dining/drink-service.webp" alt="A cold drink arriving on a wooden tray by the pool" aspect="aspect-[4/5]" sizes="(min-width: 1024px) 30vw, 50vw" className="mt-10" />
+            </div>
+          </div>
+        </Section>
+
+        {/* Groups */}
+        <Section tone="forest">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <p className="font-display text-[1.1rem] italic text-sand">Groups & Events</p>
+              <h2 className="display-lg mt-3">Bring everyone</h2>
+              <p className="lede mt-5 !text-sand">
+                With rooms and suites across two floors around one pool, the Haven suits groups who want to stay together: surf trips, yoga retreats, families and friends travelling as one.
+              </p>
+              <p className="body mt-5 !text-ivory/80">
+                Tell us your dates, the size of the group and what you&rsquo;d like to do. The team will put together a room plan and confirm what the house can accommodate for your dates.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/groups" className="btn-ivory">Plan a group stay</Link>
+                <a href={whatsappUrl("Hello The Lavish Haven, I'm organising a group stay and would like to enquire.")} target="_blank" rel="noopener noreferrer" className="btn-outline-light">WhatsApp the team</a>
+              </div>
+            </div>
+            <div className="lg:col-span-6">
+              <ImageBlock src="/images/property/pool-daytime.webp" alt="The pool and courtyard by day, balconies on two floors" aspect="aspect-[4/3]" sizes="(min-width: 1024px) 50vw, 100vw" />
+            </div>
+          </div>
+        </Section>
+
+        {/* Gallery */}
+        <Section>
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <Heading title="Gallery" lead="The house, the rooms and the coast, photographed as they are." />
+            <Link href="/gallery" className="btn-outline shrink-0">Open the gallery</Link>
+          </div>
+          <div className="mt-12">
+            <GalleryGrid images={preview} />
+          </div>
+        </Section>
+
+        {/* Location */}
+        <Section tone="deep">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7">
+              <ImageBlock src="/images/property/aerial-ocean-horizon.webp" alt="Aerial view over the palms of Ahangama to the Indian Ocean" aspect="aspect-[16/10]" sizes="(min-width: 1024px) 58vw, 100vw" />
+            </div>
+            <div className="lg:col-span-4 lg:col-start-9">
+              <h2 className="display-lg text-forest">Ahangama</h2>
+              <p className="lede mt-5">A surf village on the south coast between Galle and Weligama.</p>
+              <address className="body mt-5 not-italic">
+                166/2 Welhengoda Road<br />Ahangama 80650, Sri Lanka
+              </address>
+              <p className="body mt-3">Kabalana Beach is a short walk away. Galle Fort and Weligama are nearby for a day out.</p>
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[14.5px]">
+                <Link href="/location" className="textlink">Location and directions</Link>
+                <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="textlink">Open in Google Maps</a>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* Final CTA */}
+        <Section>
+          <div className="mx-auto max-w-[48rem] text-center">
+            <h2 className="display-lg text-forest">Make your stay your own</h2>
+            <p className="lede mt-5">Tell us your dates, who&rsquo;s coming and what you&rsquo;d like from your time here. The team confirms availability and arrangements directly.</p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Link href="/enquire" className="btn-forest">Enquire About Your Stay</Link>
+              <a href={whatsappUrl("Hello The Lavish Haven, I'd like to ask about a stay.")} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">WhatsApp</a>
+            </div>
+          </div>
+        </Section>
       </main>
-
-      <Footer />
-
-      <WhatsAppButton />
-
-      <BookingFlow
-        open={bookingOpen}
-        onClose={() => {
-          setBookingOpen(false);
-          setPrefillVehicle(null);
-          setSearchData(null);
-        }}
-        prefillVehicle={prefillVehicle}
-        prefillSearch={searchData}
-      />
-      <VehicleDetail
-        vehicle={vehicleOpen}
-        open={!!vehicleOpen}
-        onClose={() => setVehicleOpen(null)}
-        onBook={() => {
-          const v = vehicleOpen;
-          setVehicleOpen(null);
-          if (v) {
-            // Small delay to let the VehicleDetail modal fully close
-            // before opening BookingFlow (prevents body overflow conflict)
-            setTimeout(() => {
-              const selfDrive = ["Scooter", "Royal Enfield", "Tuk-Tuk"];
-              const serviceName = selfDrive.includes(v.category) ? "Vehicle Rental" : "Round Island Tour";
-              onSearch({
-                service: serviceName,
-                vehicle: v.name,
-                date: "",
-                pickup: "",
-              });
-            }, 350);
-          }
-        }}
-      />
+      <WhatsAppFloat />
     </>
   );
 }

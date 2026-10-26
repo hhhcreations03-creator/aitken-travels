@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 64" width="420" height="64">
+  <title>The Lavish Haven</title>
+  <g fill="none" stroke="#F5F1E8" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M11 27 L32 11 L53 27"/>
+    <path d="M19 30 V53 H33"/>
+    <path d="M33 30 V53 M45 30 V53 M33 41.5 H45"/>
+  </g>
+  <text x="76" y="41" font-family="Newsreader, 'Cormorant Garamond', Georgia, serif" font-weight="400" font-size="30" letter-spacing="0.02em" fill="#F5F1E8">The Lavish Haven</text>
+  <text x="77" y="56" font-family="'Instrument Sans', system-ui, sans-serif" font-size="10.5" letter-spacing="0.22em" fill="#C9B995">AHANGAMA, SRI LANKA</text>
+</svg>

@@ -1,139 +1,92 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Instrument_Sans, Newsreader } from "next/font/google";
 import "./globals.css";
+import { SITE } from "@/lib/site";
+import { Footer } from "@/components/Footer";
 
-const batangas = localFont({
-  src: [{ path: "../../public/fonts/Batangas.otf", weight: "400", style: "normal" }],
-  variable: "--font-batangas",
+const display = Newsreader({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
   display: "swap",
 });
 
-const inter = Inter({
+const sans = Instrument_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
+  variable: "--font-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aitkentravel.com"),
-  title: "Aitken Travels \u2014 Reliable Transport Services Across Sri Lanka",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: "The Lavish Haven | Boutique Hotel in Ahangama, Sri Lanka",
+    template: "%s | The Lavish Haven",
+  },
   description:
-    "Aitken Travels provides cars, vans, buses, and bikes for airport transfers, round-island tours, corporate transport, and self-drive rentals across Sri Lanka.",
-  keywords: [
-    "Sri Lanka transport",
-    "car hire Sri Lanka",
-    "van rental Sri Lanka",
-    "airport transfer Colombo",
-    "Aitken Travels",
-    "bus rental Sri Lanka",
-    "motorbike rental",
-    "chauffeur service",
-  ],
-  alternates: {
-    canonical: "/",
-  },
-  icons: {
-    icon: [
-      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: "/apple-touch-icon.png",
-  },
+    "The Lavish Haven is a boutique hotel in Ahangama, a short walk from Kabalana Beach. King rooms, family suites, an outdoor pool, yoga and a restaurant. Enquire directly for your stay.",
+  keywords: ["Ahangama hotel", "Kabalana Beach hotel", "boutique hotel Sri Lanka", "surf stay Ahangama", "The Lavish Haven", "group accommodation Ahangama"],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Aitken Travels \u2014 Reliable Transport Services Across Sri Lanka",
-    description:
-      "Cars, vans, buses & bikes \u2014 your ride across Sri Lanka, handled with care.",
     type: "website",
-    locale: "en_US",
-    siteName: "Aitken Travels",
+    locale: "en_GB",
+    siteName: SITE.name,
+    title: "The Lavish Haven | Boutique Hotel in Ahangama, Sri Lanka",
+    description: "A refined coastal escape in Ahangama, a short walk from Kabalana Beach.",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "The Lavish Haven pool at dusk" }],
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "@aitkentravels",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  twitter: { card: "summary_large_image" },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: "#1E3A2F",
+  width: "device-width",
+  initialScale: 1,
+};
+
+const hotelSchema = {
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  name: SITE.name,
+  url: SITE.url,
+  image: `${SITE.url}/og.jpg`,
+  logo: `${SITE.url}/brand/logo.svg`,
+  email: SITE.email,
+  telephone: SITE.whatsappE164,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.locality,
+    postalCode: SITE.address.postalCode,
+    addressCountry: SITE.address.countryCode,
+  },
+  checkinTime: "14:00",
+  amenityFeature: [
+    { "@type": "LocationFeatureSpecification", name: "Outdoor swimming pool", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Restaurant", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Yoga classes", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Free Wi-Fi", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Free private parking", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Air conditioning", value: true },
+  ],
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": ["Organization", "LocalBusiness"],
-                name: "Aitken Travels",
-                description:
-                  "Aitken Travels provides cars, vans, buses, and bikes for airport transfers, round-island tours, corporate transport, and self-drive rentals across Sri Lanka.",
-                url: "https://www.aitkentravels.com",
-                logo: "https://www.aitkentravels.com/logo.png",
-                telephone: "+94770813690",
-                email: "travelsaitken@gmail.com",
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: "Galle",
-                  addressCountry: "LK",
-                },
-                sameAs: [
-                  "https://www.facebook.com/profile.php?id=61576498498498",
-                  "https://www.instagram.com/aitken.travels/",
-                  "https://www.tiktok.com/@aitken.travels",
-                ],
-                aggregateRating: {
-                  "@type": "AggregateRating",
-                  ratingValue: "4.8",
-                  reviewCount: "500",
-                  bestRating: "5",
-                },
-                priceRange: "$$",
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                name: "Aitken Travels",
-                url: "https://www.aitkentravels.com",
-                potentialAction: {
-                  "@type": "SearchAction",
-                  target:
-                    "https://www.aitkentravels.com/search?q={search_term_string}",
-                  "query-input": "required name=search_term_string",
-                },
-              },
-            ]),
-          }}
-        />
-      </head>
-      <body
-        className={`${batangas.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
-      >
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+      <body className="font-sans">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-forest focus:px-4 focus:py-2 focus:text-ivory"
+        >
+          Skip to content
+        </a>
         {children}
+        <Footer />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(hotelSchema) }} />
       </body>
     </html>
   );

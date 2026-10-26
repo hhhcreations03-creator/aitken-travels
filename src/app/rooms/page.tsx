@@ -1,0 +1,95 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Header } from "@/components/Header";
+import { PageHero } from "@/components/PageHero";
+import { Section } from "@/components/Section";
+import { RoomCard } from "@/components/RoomCard";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { ROOMS } from "@/lib/rooms";
+import { SITE } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Rooms & Suites",
+  description: "King rooms with private patios or balconies, family suites and a two-bedroom suite at The Lavish Haven, Ahangama. Enquire directly about any room.",
+  alternates: { canonical: "/rooms" },
+};
+
+export default function RoomsPage() {
+  const doubles = ROOMS.filter((r) => r.category === "Double");
+  const families = ROOMS.filter((r) => r.category !== "Double");
+
+  return (
+    <>
+      <Header overlay />
+      <main id="main">
+        <PageHero
+          kicker="Rooms & Suites"
+          title="Twelve ways to stay"
+          intro="Every room has air conditioning, a private bathroom with a walk-in shower and its own patio or balcony. Choose by floor, by view or by how many of you are coming."
+          image={{ src: "/images/rooms/superior-king/balcony-wide.webp", alt: "A covered first-floor balcony with timber chairs looking over the garden and pool" }}
+        >
+          <Link href="/enquire" className="btn-ivory">Check availability</Link>
+          <a href={SITE.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn-outline-light">View on Booking.com</a>
+        </PageHero>
+
+        <Section compact>
+          <div className="rule grid gap-y-3 pt-6 text-[14.5px] sm:grid-cols-3">
+            <p><span className="text-charcoal-mute">Check-in from</span><br />{SITE.checkIn}</p>
+            <p><span className="text-charcoal-mute">In every room</span><br />Air conditioning, Wi-Fi, minibar, kettle, safe</p>
+            <p><span className="text-charcoal-mute">How booking works</span><br />Enquire, the team confirms availability and rate directly</p>
+          </div>
+        </Section>
+
+        <Section className="!pt-0">
+          <h2 className="display-md text-forest">King rooms</h2>
+          <p className="body mt-3 max-w-[60ch]">One king bed, between 38 and 47 square metres, on the ground floor with a patio or on the first floor with a balcony.</p>
+          <div className="mt-10 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+            {doubles.map((room, i) => <RoomCard key={room.slug} room={room} priority={i < 3} />)}
+          </div>
+        </Section>
+
+        <Section tone="deep">
+          <h2 className="display-md text-forest">Family suites and the two-bedroom suite</h2>
+          <p className="body mt-3 max-w-[60ch]">Two beds or two bedrooms, from 39 to 93 square metres. Several have a kitchenette; all have a patio or balcony.</p>
+          <div className="mt-10 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+            {families.map((room) => <RoomCard key={room.slug} room={room} />)}
+          </div>
+        </Section>
+
+        <Section>
+          <div className="rule pt-10">
+            <h2 className="display-md text-forest">Room register</h2>
+            <p className="body mt-3 max-w-[60ch]">All twelve at a glance. Sizes and bed configurations are as published on the hotel&rsquo;s listing.</p>
+            <div className="mt-8 overflow-x-auto">
+              <table className="w-full min-w-[720px] text-left text-[14.5px]">
+                <thead>
+                  <tr className="border-b border-[color:var(--line)] text-charcoal-mute">
+                    <th scope="col" className="py-3 pr-4 font-medium">Room</th>
+                    <th scope="col" className="py-3 pr-4 font-medium">Floor</th>
+                    <th scope="col" className="py-3 pr-4 font-medium">Size</th>
+                    <th scope="col" className="py-3 pr-4 font-medium">Beds</th>
+                    <th scope="col" className="py-3 pr-4 font-medium">Outdoor</th>
+                    <th scope="col" className="py-3 font-medium"><span className="sr-only">Actions</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ROOMS.map((r) => (
+                    <tr key={r.slug} className="border-b border-[color:var(--line-soft)] align-top">
+                      <th scope="row" className="py-3.5 pr-4 font-normal"><Link href={`/rooms/${r.slug}`} className="textlink">{r.name}</Link></th>
+                      <td className="py-3.5 pr-4 text-charcoal-soft">{r.floor}</td>
+                      <td className="py-3.5 pr-4 text-charcoal-soft tabular-nums">{r.sizeSqm} m²</td>
+                      <td className="py-3.5 pr-4 text-charcoal-soft">{r.beds}</td>
+                      <td className="py-3.5 pr-4 text-charcoal-soft">{r.outdoor}</td>
+                      <td className="py-3.5"><Link href={`/enquire?room=${r.slug}`} className="textlink whitespace-nowrap">Check availability</Link></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </Section>
+      </main>
+      <WhatsAppFloat />
+    </>
+  );
+}
