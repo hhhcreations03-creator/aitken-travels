@@ -8,12 +8,14 @@ import { RoomCard } from "@/components/RoomCard";
 import { SurfRetreatForm } from "@/components/forms/SurfRetreatForm";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ROOMS } from "@/lib/rooms";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Surf Retreats in Ahangama",
-  description: "Base a surf-focused stay at The Lavish Haven, a short walk from Kabalana Beach in Ahangama. Rooms for solo surfers, couples and whole crews. Enquire directly.",
-  alternates: { canonical: "/surf-retreats" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Surf Stays near Kabalana Beach | The Lavish Haven",
+  socialTitle: "Surf Retreats at The Lavish Haven",
+  description: "Base your surf trip two minutes' walk from Kabalana, Ahangama's best-known break. Rooms for solo surfers, couples and crews, plus pool and yoga.",
+  path: "/surf-retreats",
+});
 
 const PICKS = ["deluxe-king-patio-pool-view", "family-suite-patio", "two-bedroom-suite"];
 

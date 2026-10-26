@@ -5,12 +5,14 @@ import { Section } from "@/components/Section";
 import { GalleryTabs } from "@/components/GalleryTabs";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { GALLERY } from "@/lib/gallery";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Gallery",
-  description: "Photographs of The Lavish Haven in Ahangama: the property, rooms, pool and gardens, the surf coast, wellness and dining.",
-  alternates: { canonical: "/gallery" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Photo Gallery | The Lavish Haven, Ahangama",
+  socialTitle: "Gallery of The Lavish Haven",
+  description: "See The Lavish Haven in photographs: the pool and gardens, the rooms and suites, the restaurant, yoga on the terrace and the surf coast of Ahangama.",
+  path: "/gallery",
+});
 
 export default function GalleryPage() {
   const total = GALLERY.reduce((n, c) => n + c.images.length, 0);

@@ -8,12 +8,14 @@ import { GroupForm } from "@/components/forms/GroupForm";
 import { GROUP_TYPES } from "@/lib/groups";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { whatsappUrl } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Groups & Events",
-  description: "Group accommodation at The Lavish Haven, Ahangama: surf trips, wellness retreats, families and friends. Rooms and suites across two floors around one pool. Enquire directly.",
-  alternates: { canonical: "/groups" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Group Stays & Retreats in Ahangama | The Lavish Haven",
+  socialTitle: "Group Stays at The Lavish Haven",
+  description: "Bring the whole group to Ahangama. Surf trips, yoga retreats, families and friends stay together around one pool. Send a group enquiry to the hotel team.",
+  path: "/groups",
+});
 
 const WHY = [
   { h: "One house, one pool", p: "Rooms and suites on two floors look onto the same courtyard, so a group stays together without anyone being far from the action." },

@@ -9,6 +9,7 @@ import { RoomCard, roomEnquiryMessage } from "@/components/RoomCard";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ROOMS, getRoom } from "@/lib/rooms";
 import { SITE, whatsappUrl } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return ROOMS.map((r) => ({ slug: r.slug }));
@@ -17,12 +18,24 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const room = getRoom(params.slug);
   if (!room) return {};
-  return {
-    title: room.name,
-    description: `${room.name} at The Lavish Haven, Ahangama: ${room.sizeSqm} m², ${room.beds}, ${room.outdoor.toLowerCase()}. Enquire directly about availability.`,
-    alternates: { canonical: `/rooms/${room.slug}` },
-    openGraph: { images: [{ url: room.images[0].src, alt: room.images[0].alt }] },
-  };
+  return pageMeta({
+    title: roomTitle(room.shortName),
+    socialTitle: `${room.name} at The Lavish Haven`,
+    description: roomDescription(room),
+    path: `/rooms/${room.slug}`,
+  });
+}
+
+function roomTitle(shortName: string): string {
+  const full = `${shortName} | The Lavish Haven, Ahangama`;
+  return full.length <= 60 ? full : `${shortName} | The Lavish Haven`;
+}
+
+function roomDescription(room: NonNullable<ReturnType<typeof getRoom>>): string {
+  const base = `${room.name}: ${room.sizeSqm} m², ${room.beds}, ${room.outdoor.toLowerCase()}.`;
+  const tail = " A short walk from Kabalana Beach, Ahangama. Enquire direct with the hotel.";
+  const full = base + tail;
+  return full.length <= 158 ? full : `${base} Near Kabalana Beach. Enquire direct.`;
 }
 
 export default function RoomPage({ params }: { params: { slug: string } }) {

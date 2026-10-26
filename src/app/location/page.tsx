@@ -6,12 +6,14 @@ import { Section } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { MAPS_EMBED, MAPS_LINK, SITE, whatsappUrl } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Location",
-  description: "The Lavish Haven, 166/2 Welhengoda Road, Ahangama 80650, Sri Lanka. A short walk from Kabalana Beach, between Galle and Weligama on the south coast.",
-  alternates: { canonical: "/location" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Location & Directions | The Lavish Haven, Ahangama",
+  socialTitle: "Finding The Lavish Haven, Ahangama",
+  description: "Find The Lavish Haven at 166/2 Welhengoda Road, Ahangama, between Galle and Weligama. Two minutes' walk to Kabalana Beach; airport transfers on request.",
+  path: "/location",
+});
 
 export default function LocationPage() {
   return (

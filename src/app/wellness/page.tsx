@@ -6,12 +6,14 @@ import { Section } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { whatsappUrl } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Wellness & Experiences",
-  description: "An outdoor pool, yoga classes and a spa and wellness area at The Lavish Haven, Ahangama. Sessions and treatments are arranged on request; enquire directly.",
-  alternates: { canonical: "/wellness" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Pool, Yoga & Wellness in Ahangama | The Lavish Haven",
+  socialTitle: "Wellness & Experiences at The Lavish Haven",
+  description: "Slow down beside an outdoor pool, with yoga classes and spa treatments arranged on request at The Lavish Haven, a boutique hotel in Ahangama.",
+  path: "/wellness",
+});
 
 interface Experience {
   title: string;

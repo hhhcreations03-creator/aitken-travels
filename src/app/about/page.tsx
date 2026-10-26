@@ -5,12 +5,14 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description: "The Lavish Haven is a boutique hotel on Welhengoda Road, Ahangama, a short walk from Kabalana Beach. Rooms and suites around an outdoor pool, with a restaurant, yoga and wellness.",
-  alternates: { canonical: "/about" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "About Us | The Lavish Haven, Boutique Hotel in Ahangama",
+  socialTitle: "About The Lavish Haven",
+  description: "The Lavish Haven is a boutique hotel on Welhengoda Road in Ahangama, set among coconut palms around a pool, a short walk from Kabalana Beach.",
+  path: "/about",
+});
 
 /**
  * Editable brand story. The paragraphs below are written from verified

@@ -5,13 +5,15 @@ import { Section } from "@/components/Section";
 import { AvailabilityForm } from "@/components/forms/AvailabilityForm";
 import { ImageBlock } from "@/components/ImageBlock";
 import { SITE, whatsappUrl } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Enquire About Your Stay",
-  description: "Send an availability enquiry to The Lavish Haven, Ahangama. Choose a room, add your dates and guests, and the team will confirm directly.",
-  alternates: { canonical: "/enquire" },
-  robots: { index: false, follow: true },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Check Availability | The Lavish Haven, Ahangama",
+  socialTitle: "Check availability at The Lavish Haven",
+  description: "Send your dates, room choice and guest numbers to The Lavish Haven. The team confirms availability and rates with you directly by email or WhatsApp.",
+  path: "/enquire",
+  noindex: true,
+});
 
 export default function EnquirePage() {
   return (

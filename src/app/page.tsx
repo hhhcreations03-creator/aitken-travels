@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -11,6 +12,14 @@ import { GuestRatings } from "@/components/GuestRatings";
 import { ROOMS } from "@/lib/rooms";
 import { GALLERY } from "@/lib/gallery";
 import { MAPS_LINK, whatsappUrl } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata: Metadata = pageMeta({
+  title: "The Lavish Haven | Boutique Hotel in Ahangama, Sri Lanka",
+  socialTitle: "The Lavish Haven, Ahangama",
+  description: "A boutique hotel in Ahangama, two minutes' walk from Kabalana Beach. King rooms and family suites around an outdoor pool, with yoga and a restaurant.",
+  path: "/",
+});
 
 const FEATURED = ["superior-king-balcony-garden-pool-view", "family-suite-patio", "two-bedroom-suite"];
 

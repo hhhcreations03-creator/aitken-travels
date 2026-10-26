@@ -5,12 +5,14 @@ import { Section } from "@/components/Section";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { MAPS_LINK, SITE, whatsappUrl } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Contact The Lavish Haven, Ahangama by email at hello@thelavishhaven.com or WhatsApp +94 76 483 2968. 166/2 Welhengoda Road, Ahangama 80650, Sri Lanka.",
-  alternates: { canonical: "/contact" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Contact & Reservations | The Lavish Haven, Ahangama",
+  socialTitle: "Contact The Lavish Haven",
+  description: "Contact The Lavish Haven by WhatsApp on +94 76 483 2968 or at hello@thelavishhaven.com for stays, groups and dining. The team replies directly.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

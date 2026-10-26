@@ -7,12 +7,14 @@ import { RoomCard } from "@/components/RoomCard";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ROOMS } from "@/lib/rooms";
 import { SITE } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Rooms & Suites",
-  description: "King rooms with private patios or balconies, family suites and a two-bedroom suite at The Lavish Haven, Ahangama. Enquire directly about any room.",
-  alternates: { canonical: "/rooms" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Rooms & Suites in Ahangama | The Lavish Haven",
+  socialTitle: "Rooms & Suites at The Lavish Haven",
+  description: "Twelve rooms and suites near Kabalana Beach, from king rooms with private patios to family suites and a two-bedroom suite. Enquire direct with the hotel.",
+  path: "/rooms",
+});
 
 export default function RoomsPage() {
   const doubles = ROOMS.filter((r) => r.category === "Double");

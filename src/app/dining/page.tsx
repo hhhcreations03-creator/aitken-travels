@@ -6,12 +6,14 @@ import { Section } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { whatsappUrl } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Dining",
-  description: "The restaurant at The Lavish Haven, Ahangama serves breakfast and an international menu beside the pool. Enquire about dining, dietary needs and group meals.",
-  alternates: { canonical: "/dining" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Restaurant & Breakfast in Ahangama | The Lavish Haven",
+  socialTitle: "Dining at The Lavish Haven",
+  description: "Breakfast by the pool and an all-day menu of Sri Lankan, Indian, Chinese, British and Mediterranean dishes at The Lavish Haven's open-air restaurant.",
+  path: "/dining",
+});
 
 export default function DiningPage() {
   const diningEnquiry = whatsappUrl("Hello The Lavish Haven, I'd like to ask about dining at the restaurant.\n\nDates: \nNumber of guests: \nDietary needs or requests: ");

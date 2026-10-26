@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Newsreader } from "next/font/google";
 import "./globals.css";
-import { SITE } from "@/lib/site";
+import { MAPS_LINK, SITE } from "@/lib/site";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { Footer } from "@/components/Footer";
 
 const display = Newsreader({
@@ -21,24 +22,55 @@ const sans = Instrument_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
+  applicationName: SITE.name,
   title: {
     default: "The Lavish Haven | Boutique Hotel in Ahangama, Sri Lanka",
     template: "%s | The Lavish Haven",
   },
   description:
-    "The Lavish Haven is a boutique hotel in Ahangama, a short walk from Kabalana Beach. King rooms, family suites, an outdoor pool, yoga and a restaurant. Enquire directly for your stay.",
-  keywords: ["Ahangama hotel", "Kabalana Beach hotel", "boutique hotel Sri Lanka", "surf stay Ahangama", "The Lavish Haven", "group accommodation Ahangama"],
-  alternates: { canonical: "/" },
+    "A boutique hotel in Ahangama, two minutes' walk from Kabalana Beach. King rooms and family suites around an outdoor pool, with yoga and a restaurant.",
+  keywords: [
+    "The Lavish Haven",
+    "Ahangama hotel",
+    "boutique hotel Ahangama",
+    "Kabalana Beach hotel",
+    "hotel near Kabalana",
+    "surf stay Ahangama",
+    "Ahangama accommodation",
+    "group accommodation Ahangama",
+  ],
+  category: "travel",
+  creator: SITE.name,
+  publisher: SITE.name,
+  formatDetection: { telephone: false, email: false, address: false },
   openGraph: {
     type: "website",
     locale: "en_GB",
     siteName: SITE.name,
-    title: "The Lavish Haven | Boutique Hotel in Ahangama, Sri Lanka",
-    description: "A refined coastal escape in Ahangama, a short walk from Kabalana Beach.",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "The Lavish Haven pool at dusk" }],
+    url: "/",
+    title: "The Lavish Haven, Ahangama",
+    description:
+      "A boutique hotel in Ahangama, two minutes' walk from Kabalana Beach. King rooms and family suites around an outdoor pool, with yoga and a restaurant.",
+    images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "The Lavish Haven pool and courtyard at dusk, Ahangama", type: "image/jpeg" }],
   },
-  twitter: { card: "summary_large_image" },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Lavish Haven, Ahangama",
+    description:
+      "A boutique hotel in Ahangama, two minutes' walk from Kabalana Beach. King rooms and family suites around an outdoor pool, with yoga and a restaurant.",
+    images: [{ url: DEFAULT_OG_IMAGE, alt: "The Lavish Haven pool and courtyard at dusk, Ahangama" }],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: { title: SITE.name, statusBarStyle: "default" },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
 };
 
 export const viewport: Viewport = {
@@ -47,13 +79,24 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  alternateName: ["Lavish Haven", "The Lavish Haven Ahangama"],
+  url: `${SITE.url}/`,
+};
+
 const hotelSchema = {
   "@context": "https://schema.org",
   "@type": "Hotel",
   name: SITE.name,
   url: SITE.url,
-  image: `${SITE.url}/og.jpg`,
-  logo: `${SITE.url}/brand/logo.svg`,
+  description:
+    "Boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach, with an outdoor pool, yoga classes and a restaurant.",
+  image: [`${SITE.url}/og.jpg`, `${SITE.url}/images/property/pool-dusk-wide.webp`],
+  logo: `${SITE.url}/brand/icon-512.png`,
+  hasMap: MAPS_LINK,
   email: SITE.email,
   telephone: SITE.whatsappE164,
   address: {
@@ -86,7 +129,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </a>
         {children}
         <Footer />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(hotelSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([websiteSchema, hotelSchema]) }} />
       </body>
     </html>
   );
