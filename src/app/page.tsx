@@ -7,6 +7,7 @@ import { RoomCard } from "@/components/RoomCard";
 import { ImageBlock } from "@/components/ImageBlock";
 import { GalleryGrid } from "@/components/GalleryGrid";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { GuestRatings } from "@/components/GuestRatings";
 import { ROOMS } from "@/lib/rooms";
 import { GALLERY } from "@/lib/gallery";
 import { MAPS_LINK, whatsappUrl } from "@/lib/site";
@@ -37,6 +38,8 @@ export default function HomePage() {
           <Link href="/enquire" className="btn-ivory">Enquire About Your Stay</Link>
           <Link href="/rooms" className="btn-outline-light">Explore Rooms</Link>
         </PageHero>
+
+        <GuestRatings />
 
         {/* Introduction */}
         <Section>
