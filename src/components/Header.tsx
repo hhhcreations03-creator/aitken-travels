@@ -78,10 +78,10 @@ export function Header({ overlay = false }: HeaderProps) {
 
           <div className="flex items-center gap-3">
             <Link
-              href="/enquire"
+              href="/book"
               className={`hidden md:inline-flex ${light ? "btn-outline-light" : "btn-forest"} !py-2.5 !min-h-[44px]`}
             >
-              Enquire About Your Stay
+              Book Your Stay
             </Link>
             <button
               type="button"
@@ -147,7 +147,7 @@ export function Header({ overlay = false }: HeaderProps) {
                       Tell us when you&rsquo;d like to come and who&rsquo;s coming. We&rsquo;ll confirm availability and arrangements directly.
                     </p>
                     <div className="mt-7 flex flex-wrap gap-3">
-                      <Link href="/enquire" className="btn-ivory">Enquire About Your Stay</Link>
+                      <Link href="/book" className="btn-ivory">Book Your Stay</Link>
                       <a href={whatsappUrl("Hello The Lavish Haven, I'd like to ask about a stay.")} target="_blank" rel="noopener noreferrer" className="btn-outline-light">
                         WhatsApp
                       </a>

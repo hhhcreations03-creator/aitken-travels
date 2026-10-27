@@ -7,16 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "brand": "node scripts/brand/generate.mjs"
+    "brand": "node scripts/brand/generate.mjs",
+    "admin:password": "node scripts/admin-password.mjs"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "framer-motion": "^12.40.0",
     "next": "14.2.35",
     "nodemailer": "^9.0.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
     "@types/node": "^20",
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^18",

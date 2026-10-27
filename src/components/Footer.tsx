@@ -13,7 +13,7 @@ export function Footer() {
             <p className="mt-6 max-w-[34ch] text-[15px] leading-relaxed text-sand/85">
               A boutique hotel on Welhengoda Road, a short walk from Kabalana Beach on Sri Lanka&rsquo;s southern coast.
             </p>
-            <Link href="/enquire" className="btn-ivory mt-8">Enquire About Your Stay</Link>
+            <Link href="/book" className="btn-ivory mt-8">Book Your Stay</Link>
           </div>
 
           <nav aria-label="Footer, pages">
@@ -31,7 +31,7 @@ export function Footer() {
               {NAV.slice(5).map((n) => (
                 <li key={n.href}><Link className="text-ivory/85 hover:text-ivory" href={n.href}>{n.label}</Link></li>
               ))}
-              <li><Link className="text-ivory/85 hover:text-ivory" href="/enquire">Availability enquiry</Link></li>
+              <li><Link className="text-ivory/85 hover:text-ivory" href="/book">Book your stay</Link></li>
             </ul>
           </nav>
 

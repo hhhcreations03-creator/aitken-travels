@@ -31,7 +31,7 @@ export function RoomCard({ room, priority = false }: { room: Room; priority?: bo
         <p className="body mt-2 line-clamp-3">{room.description}</p>
         <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[14px]">
           <a href={whatsappUrl(roomEnquiryMessage(room))} target="_blank" rel="noopener noreferrer" className="textlink">Enquire about this room</a>
-          <Link href={`/enquire?room=${room.slug}`} className="textlink">Check availability</Link>
+          <Link href={`/book?room=${room.slug}`} className="textlink">Check availability</Link>
         </div>
       </div>
     </article>

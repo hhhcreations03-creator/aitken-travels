@@ -118,7 +118,7 @@ export default function GroupsPage() {
         </Section>
 
         <Section compact>
-          <p className="body max-w-[60ch]">Looking for a single room instead? <Link href="/enquire" className="textlink">Send an availability enquiry</Link>.</p>
+          <p className="body max-w-[60ch]">Looking for a single room instead? <Link href="/book" className="textlink">Check availability and book</Link>.</p>
         </Section>
       </main>
       <WhatsAppFloat />

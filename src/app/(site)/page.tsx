@@ -44,7 +44,7 @@ export default function HomePage() {
           intro="Discover The Lavish Haven, a relaxed boutique stay where considered comfort, tropical surroundings, and the spirit of Sri Lanka's southern coast come together."
           image={{ src: "/images/property/pool-dusk-wide.webp", alt: "The Lavish Haven at dusk: the pool lit from below, balconies glowing under the gabled roofs" }}
         >
-          <Link href="/enquire" className="btn-ivory">Enquire About Your Stay</Link>
+          <Link href="/book" className="btn-ivory">Book Your Stay</Link>
           <Link href="/rooms" className="btn-outline-light">Explore Rooms</Link>
         </PageHero>
 
@@ -199,7 +199,7 @@ export default function HomePage() {
             <h2 className="display-lg text-forest">Make your stay your own</h2>
             <p className="lede mt-5">Tell us your dates, who&rsquo;s coming and what you&rsquo;d like from your time here. The team confirms availability and arrangements directly.</p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link href="/enquire" className="btn-forest">Enquire About Your Stay</Link>
+              <Link href="/book" className="btn-forest">Book Your Stay</Link>
               <a href={whatsappUrl("Hello The Lavish Haven, I'd like to ask about a stay.")} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">WhatsApp</a>
             </div>
           </div>

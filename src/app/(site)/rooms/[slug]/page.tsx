@@ -59,7 +59,7 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
       <Header overlay />
       <main id="main">
         <PageHero kicker={`${room.floor}, ${room.sizeSqm} m²`} title={room.name} image={room.images[0]}>
-          <Link href={`/enquire?room=${room.slug}`} className="btn-ivory">Check availability</Link>
+          <Link href={`/book?room=${room.slug}`} className="btn-ivory">Check availability</Link>
           <a href={whatsappUrl(roomEnquiryMessage(room))} target="_blank" rel="noopener noreferrer" className="btn-outline-light">Enquire about this room</a>
         </PageHero>
 
@@ -87,7 +87,7 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
                 <h2 className="display-sm text-forest">Stay in this room</h2>
                 <p className="body mt-2">Send your dates and the team will confirm availability, the rate and how to book. Nothing is reserved until they reply.</p>
                 <div className="mt-6 grid gap-3">
-                  <Link href={`/enquire?room=${room.slug}`} className="btn-forest w-full">Check availability</Link>
+                  <Link href={`/book?room=${room.slug}`} className="btn-forest w-full">Check availability</Link>
                   <a href={whatsappUrl(roomEnquiryMessage(room))} target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full">Enquire on WhatsApp</a>
                   <a href={SITE.bookingUrl} target="_blank" rel="noopener noreferrer" className="textlink mx-auto mt-2 text-[14px]">Or view on Booking.com</a>
                 </div>

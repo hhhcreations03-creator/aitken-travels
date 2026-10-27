@@ -30,7 +30,7 @@ export default function RoomsPage() {
           intro="Every room has air conditioning, a private bathroom with a walk-in shower and its own patio or balcony. Choose by floor, by view or by how many of you are coming."
           image={{ src: "/images/rooms/superior-king/balcony-wide.webp", alt: "A covered first-floor balcony with timber chairs looking over the garden and pool" }}
         >
-          <Link href="/enquire" className="btn-ivory">Check availability</Link>
+          <Link href="/book" className="btn-ivory">Check availability</Link>
           <a href={SITE.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn-outline-light">View on Booking.com</a>
         </PageHero>
 
@@ -82,7 +82,7 @@ export default function RoomsPage() {
                       <td className="py-3.5 pr-4 text-charcoal-soft tabular-nums">{r.sizeSqm} m²</td>
                       <td className="py-3.5 pr-4 text-charcoal-soft">{r.beds}</td>
                       <td className="py-3.5 pr-4 text-charcoal-soft">{r.outdoor}</td>
-                      <td className="py-3.5"><Link href={`/enquire?room=${r.slug}`} className="textlink whitespace-nowrap">Check availability</Link></td>
+                      <td className="py-3.5"><Link href={`/book?room=${r.slug}`} className="textlink whitespace-nowrap">Check availability</Link></td>
                     </tr>
                   ))}
                 </tbody>

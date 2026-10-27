@@ -91,7 +91,7 @@ export default function AboutPage() {
               <p className="lede mt-4 !text-sand">Tell us your dates and who&rsquo;s coming. The team will reply directly with availability and arrangements.</p>
             </div>
             <div className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
-              <Link href="/enquire" className="btn-ivory">Enquire About Your Stay</Link>
+              <Link href="/book" className="btn-ivory">Book Your Stay</Link>
             </div>
           </div>
         </Section>

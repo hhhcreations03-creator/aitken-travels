@@ -16,5 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.8,
   }));
-  return [...pages, ...rooms];
+  const book: MetadataRoute.Sitemap = [{ url: `${SITE.url}/book`, lastModified: now, changeFrequency: "weekly", priority: 0.9 }];
+  return [...pages, ...book, ...rooms];
 }
