@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { ROOMS } from "@/lib/rooms";
-import { assertSameOrigin, checkCredentials, endSession, requireAdmin, startSession } from "@/lib/booking/auth";
+import { assertSameOrigin, checkCredentials, endSession, hashLooksValid, requireAdmin, startSession } from "@/lib/booking/auth";
 import { adminConfigured } from "@/lib/booking/config";
 import { rateLimit } from "@/lib/booking/ratelimit";
 import { createBooking, setStatus, updateBooking, logEvent, getBookingById } from "@/lib/booking/bookings";
@@ -28,6 +28,7 @@ export async function login(formData: FormData) {
   const next = str(formData, "next");
   const safeNext = next.startsWith("/admin") && !next.startsWith("//") ? next : "/admin";
   if (!adminConfigured()) back("/admin/login", { error: "Admin login isn't set up yet. See the setup notes below." });
+  if (!hashLooksValid()) back("/admin/login", { error: "The ADMIN_PASSWORD_HASH setting in Vercel isn't in the right format. It should be one line starting with scrypt:. Run npm run admin:password again, paste the new value, then redeploy." });
   if (!(await rateLimit("login", 8, 15).catch(() => true))) back("/admin/login", { error: "Too many attempts. Wait 15 minutes and try again." });
   const email = str(formData, "email");
   const password = String(formData.get("password") ?? "");

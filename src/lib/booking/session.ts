@@ -24,6 +24,11 @@ async function key(): Promise<CryptoKey> {
   return crypto.subtle.importKey("raw", enc.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign", "verify"]);
 }
 
+/** ADMIN_EMAIL as set in the environment, forgiving stray spaces, quotes and capitals. */
+export function adminEmail(): string {
+  return (process.env.ADMIN_EMAIL ?? "").trim().replace(/^["']+|["']+$/g, "").trim().toLowerCase();
+}
+
 export interface Session {
   email: string;
   exp: number;
@@ -45,7 +50,7 @@ export async function verifySession(value: string | undefined): Promise<Session 
     if (!ok) return null;
     const session = JSON.parse(new TextDecoder().decode(fromB64url(body))) as Session;
     if (typeof session.exp !== "number" || session.exp < Date.now()) return null;
-    if (session.email.toLowerCase() !== (process.env.ADMIN_EMAIL ?? "").toLowerCase()) return null;
+    if (!adminEmail() || session.email.toLowerCase() !== adminEmail()) return null;
     return session;
   } catch {
     return null;

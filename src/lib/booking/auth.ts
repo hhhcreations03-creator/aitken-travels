@@ -2,16 +2,28 @@ import "server-only";
 import crypto from "node:crypto";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { SESSION_COOKIE, SESSION_HOURS, signSession, verifySession, type Session } from "./session";
+import { SESSION_COOKIE, SESSION_HOURS, adminEmail, signSession, verifySession, type Session } from "./session";
 
 /**
  * Password hashes look like: scrypt:<N>:<r>:<p>:<salt b64>:<hash b64>
  * Colons, not dollar signs, so .env files don't treat parts as variables.
  * Generate one with `npm run admin:password`.
+ *
+ * Undo common paste mistakes: the "ADMIN_PASSWORD_HASH=" prefix, quotes, stray spaces or line breaks.
  */
+export function normaliseHash(stored: string): string {
+  return stored.replace(/\s+/g, "").replace(/^ADMIN_PASSWORD_HASH=/, "").replace(/^["']+|["']+$/g, "");
+}
+
+/** True when ADMIN_PASSWORD_HASH has the shape `npm run admin:password` prints. */
+export function hashLooksValid(stored = process.env.ADMIN_PASSWORD_HASH ?? ""): boolean {
+  const parts = normaliseHash(stored).split(/[:$]/);
+  return parts.length === 6 && parts[0] === "scrypt" && parts.slice(1, 4).every((n) => /^\d+$/.test(n)) && parts[4].length > 0 && parts[5].length > 0;
+}
+
 export function verifyPassword(password: string, stored: string): boolean {
-  const parts = stored.trim().split(/[:$]/);
-  if (parts.length !== 6 || parts[0] !== "scrypt") return false;
+  if (!hashLooksValid(stored)) return false;
+  const parts = normaliseHash(stored).split(/[:$]/);
   const [, N, r, p, salt, hash] = parts;
   const expected = Buffer.from(hash, "base64");
   const actual = crypto.scryptSync(password, Buffer.from(salt, "base64"), expected.length, {
@@ -21,11 +33,11 @@ export function verifyPassword(password: string, stored: string): boolean {
 }
 
 export function checkCredentials(email: string, password: string): boolean {
-  const adminEmail = (process.env.ADMIN_EMAIL ?? "").trim().toLowerCase();
+  const expectedEmail = adminEmail();
   const hash = process.env.ADMIN_PASSWORD_HASH ?? "";
   // Always run the hash so response time doesn't reveal whether the email matched.
   const passwordOk = hash ? verifyPassword(password, hash) : false;
-  return Boolean(adminEmail) && email.trim().toLowerCase() === adminEmail && passwordOk;
+  return Boolean(expectedEmail) && email.trim().toLowerCase() === expectedEmail && passwordOk;
 }
 
 export async function startSession(email: string) {
