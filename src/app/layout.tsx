@@ -3,6 +3,8 @@ import { Instrument_Sans, Newsreader } from "next/font/google";
 import "./globals.css";
 import { MAPS_LINK, SITE } from "@/lib/site";
 import { DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const display = Newsreader({
   subsets: ["latin"],
@@ -126,6 +128,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         {children}
+        <Analytics />
+        <SpeedInsights />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([websiteSchema, hotelSchema]) }} />
       </body>
     </html>
