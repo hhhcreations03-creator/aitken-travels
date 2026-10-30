@@ -52,8 +52,8 @@ export function GuestRatings() {
     <section aria-labelledby="ratings-heading" className="bg-ivory-deep">
       <div className="wrap grid gap-10 py-14 lg:grid-cols-12 lg:items-end lg:py-16">
         <div className="lg:col-span-4">
-          <h2 id="ratings-heading" className="display-md text-forest">Rated by our guests</h2>
-          <p className="body mt-3 max-w-[34ch]">Scores from guests who have stayed at the Haven, published on independent review sites.</p>
+          <h2 id="ratings-heading" className="display-md text-forest">In our guests&rsquo; words</h2>
+          <p className="body mt-3 max-w-[34ch]">The kindest compliments come from those who have stayed with us. These scores are published on independent review sites.</p>
         </div>
         <ul className="grid gap-8 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
           {RATINGS.map((r) => <RatingEntry key={r.source} r={r} />)}

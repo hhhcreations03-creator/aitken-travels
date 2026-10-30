@@ -62,7 +62,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private patio",
     features: COMMON_FEATURES,
     description:
-      "A ground-floor king room that opens straight onto its own patio, a few steps from the pool. Polished concrete walls, timber doors and a wide bed keep the room calm and cool through the afternoon.",
+      "Step from your bed onto your own patio, and from the patio to the edge of the pool, a few steps away. On the ground floor, polished concrete walls, timber doors and a wide king bed hold the room calm and cool through the long afternoon.",
     images: [
       { src: "/images/rooms/king-patio-pool/bed-garden-window.webp", alt: "King bed with blue palm-print runner beside a window onto the garden" },
       { src: "/images/rooms/king-patio-pool/bed-feature-wall.webp", alt: "King bed against a textured concrete feature wall" },
@@ -83,7 +83,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private balcony",
     features: COMMON_FEATURES,
     description:
-      "The largest of the king rooms, with a deep covered balcony under the gabled roof. Timber chairs look out across the palms to the pool below, and the bedroom behind keeps a stone feature wall and soft, even light.",
+      "The largest of our king rooms, with a deep covered balcony beneath the gabled roof. Settle into the timber chairs and look out across the palms to the pool below. Behind you, the bedroom keeps its stone feature wall and a soft, even light.",
     images: [
       { src: "/images/rooms/superior-king/balcony-wide.webp", alt: "Covered first-floor balcony with timber chairs looking over the garden and pool" },
       { src: "/images/rooms/superior-king/bed-balcony-doors.webp", alt: "King bed with green cushions and doors opening onto the balcony" },
@@ -104,7 +104,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private terrace",
     features: ["Private kitchenette", ...COMMON_FEATURES],
     description:
-      "A ground-floor king room with its own kitchenette and a small dining nook, made for longer stays or guests who like to make their own breakfast. The terrace sits off the inner courtyard.",
+      "A ground-floor king room with its own kitchenette and a small dining nook, for longer stays and slow mornings when you would rather make breakfast your own way. The terrace opens off the inner courtyard.",
     images: [
       { src: "/images/rooms/king-kitchen/bed-stone-wall.webp", alt: "King bed beneath a vaulted ceiling with a stone feature wall" },
       { src: "/images/rooms/king-kitchen/kitchen-dining.webp", alt: "Private kitchenette with a white dining table and chairs" },
@@ -125,7 +125,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private patio and terrace",
     features: COMMON_FEATURES,
     description:
-      "A wide ground-floor suite with two beds under one high ceiling, so a family or two friends share the space without crowding it. The patio outside looks directly onto the pool.",
+      "A wide ground-floor suite with two beds beneath one high ceiling, so a family or two friends can share the space and still have room to breathe. Outside, the patio looks straight onto the pool.",
     images: [
       { src: "/images/rooms/family-suite-patio/two-beds-wide.webp", alt: "Family suite with two beds, desk and large windows" },
       { src: "/images/rooms/family-suite-patio/patio-pool.webp", alt: "Private patio with chairs looking onto the pool" },
@@ -146,7 +146,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private patio",
     features: COMMON_FEATURES,
     description:
-      "A ground-floor king room whose patio sits among the garden planting. Inside, a long shelf runs the length of the wall, with a desk by the doors and a quiet, neutral palette.",
+      "A ground-floor king room whose patio sits among the green of the garden. Inside, a long shelf runs the length of the wall, a desk waits by the doors, and a quiet, neutral palette lets the light do the rest.",
     images: [
       { src: "/images/rooms/king-patio-garden/bed-garden-doors.webp", alt: "King bed with green cushions and doors to a garden patio" },
       { src: "/images/rooms/king-patio-garden/patio-garden.webp", alt: "Stone-paved patio with chairs among tropical planting" },
@@ -167,7 +167,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private balcony",
     features: COMMON_FEATURES,
     description:
-      "A first-floor king room with a balcony that looks into the treetops. Warm ochre textiles, a timber-framed mirror and a wood-panelled bathroom give it a slightly richer tone than the ground-floor rooms.",
+      "Up on the first floor, this king room has a balcony that looks into the treetops. Warm ochre textiles, a timber-framed mirror and a wood-panelled bathroom give it a richer, more golden tone than the rooms below.",
     images: [
       { src: "/images/rooms/king-balcony-garden/bed-balcony-doors.webp", alt: "King bed with ochre throw and open doors to a balcony" },
       { src: "/images/rooms/king-balcony-garden/bed-and-shelf.webp", alt: "King bed, wall shelf and artwork in a first-floor room" },
@@ -188,7 +188,7 @@ export const ROOMS: Room[] = [
     outdoor: "Two private balconies",
     features: COMMON_FEATURES,
     description:
-      "A studio for families, with two sleeping areas and two balconies on different sides of the building: one over the pool, one into the garden. Grey linen and pale timber keep it restful.",
+      "A studio for families, with two sleeping areas and two balconies on different sides of the building, one above the pool and one into the garden. Grey linen and pale timber keep the whole space restful, morning to night.",
     images: [
       { src: "/images/rooms/family-studio/bed-balcony-doors.webp", alt: "King bed with grey throw and doors to a balcony" },
       { src: "/images/rooms/family-studio/balcony-one.webp", alt: "First-floor balcony with timber bench overlooking the garden" },
@@ -210,7 +210,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private patio and terrace",
     features: ["Kitchenette", ...COMMON_FEATURES],
     description:
-      "A compact ground-floor suite with a kitchenette and a planted patio, suited to a small family who want to keep a little independence. The patio is screened by palms and potted greenery.",
+      "A compact ground-floor suite with a kitchenette and a planted patio, for a small family who like a little independence. Palms and potted greenery screen the patio, making it a private, leafy place to sit.",
     images: [
       { src: "/images/rooms/family-junior-suite/bed-patio-doors.webp", alt: "King bed with blue runner and doors to a private patio" },
       { src: "/images/rooms/family-junior-suite/patio-plants.webp", alt: "Ground-floor patio with potted plants and seating" },
@@ -232,7 +232,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private balcony",
     features: COMMON_FEATURES,
     description:
-      "The largest room in the house. A timber staircase climbs from the main bedroom to a second bedroom on the mezzanine, with a sofa bed below for a fifth guest. Dark-green walls and lantern light make it the most atmospheric space at the Haven.",
+      "The largest room in the house. A timber staircase climbs from the main bedroom to a second bedroom on the mezzanine, with a sofa bed below for a fifth guest. Dark-green walls and the glow of lantern light make this the most atmospheric space at the Haven.",
     images: [
       { src: "/images/rooms/two-bedroom-suite/stairs-mezzanine.webp", alt: "Timber staircase rising to a mezzanine bedroom" },
       { src: "/images/rooms/two-bedroom-suite/bed-balcony.webp", alt: "King bed with doors to a balcony in the two-bedroom suite" },
@@ -254,7 +254,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private balcony and terrace",
     features: COMMON_FEATURES,
     description:
-      "A first-floor king room with a balcony above the pool. Soft grey pillows, a long concrete shelf and a timber desk; from the balcony the whole courtyard is in view.",
+      "A first-floor king room with a balcony above the pool. Inside, soft grey pillows, a long concrete shelf and a timber desk. Outside, the whole courtyard opens out beneath you, the water bright in the sun.",
     images: [
       { src: "/images/rooms/king-balcony-pool/balcony-pool-view.webp", alt: "Covered balcony with chairs looking down onto the pool" },
       { src: "/images/rooms/king-balcony-pool/bed-grey-pillows.webp", alt: "King bed with grey pillows beneath a vaulted ceiling" },
@@ -275,7 +275,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private balcony and terrace",
     features: COMMON_FEATURES,
     description:
-      "A generous first-floor suite with two beds side by side beneath the gable, a stone feature wall and doors to a balcony over the garden. Easy for a family of four.",
+      "A generous first-floor suite with two beds side by side beneath the gable, a stone feature wall and doors that open to a balcony over the garden. Spacious and easy for a family of four.",
     images: [
       { src: "/images/rooms/family-suite-balcony/two-beds-balcony.webp", alt: "Family suite with two beds and doors to a balcony" },
       { src: "/images/rooms/family-suite-balcony/two-beds-stone-wall.webp", alt: "Two beds beside a stone feature wall" },
@@ -296,7 +296,7 @@ export const ROOMS: Room[] = [
     outdoor: "Private balcony and terrace",
     features: ["Private kitchenette", ...COMMON_FEATURES],
     description:
-      "A first-floor family suite with its own kitchenette on the balcony, a king bedroom and a second sleeping alcove. The balcony looks over the neighbouring rooftops and banana trees.",
+      "A first-floor family suite with a king bedroom, a second sleeping alcove and its own kitchenette out on the balcony. From there, the view drifts over neighbouring rooftops and the broad leaves of banana trees.",
     images: [
       { src: "/images/rooms/family-suite-kitchen/bed-balcony-doors.webp", alt: "King bed with blue runner and doors to a sunny balcony" },
       { src: "/images/rooms/family-suite-kitchen/balcony-kitchenette.webp", alt: "Balcony with seating and a kitchenette with fridge" },

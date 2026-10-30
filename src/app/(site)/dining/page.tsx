@@ -11,7 +11,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Restaurant & Breakfast in Ahangama | The Lavish Haven",
   socialTitle: "Dining at The Lavish Haven",
-  description: "Breakfast by the pool and an all-day menu of Sri Lankan, Indian, Chinese, British and Mediterranean dishes at The Lavish Haven's open-air restaurant.",
+  description: "Breakfast by the pool and dinner under the lanterns: Sri Lankan, Indian, Chinese, British and Mediterranean dishes at our open-air restaurant in Ahangama.",
   path: "/dining",
 });
 
@@ -24,7 +24,7 @@ export default function DiningPage() {
         <PageHero
           kicker="Dining"
           title="Breakfast by the pool, dinner under the lanterns"
-          intro="An open-sided restaurant looks onto the pool from the ground floor, with timber tables, woven lanterns and a bar at the back."
+          intro="Our open-sided restaurant looks out over the pool from the ground floor. Timber tables, woven lanterns and a bar at the back, where the evening air drifts in from the garden."
           image={{ src: "/images/dining/restaurant-lanterns.webp", alt: "The restaurant at night, lit by woven lanterns above timber tables" }}
         >
           <a href={diningEnquiry} target="_blank" rel="noopener noreferrer" className="btn-ivory">Enquire about dining</a>
@@ -36,9 +36,9 @@ export default function DiningPage() {
               <h2 className="display-lg text-forest">The restaurant</h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
-              <p className="lede">The kitchen cooks across several traditions: Sri Lankan and Indian dishes alongside Chinese, British and Mediterranean plates, so a table can order in different directions and still eat together.</p>
-              <p className="body mt-5">Breakfast is served each morning with continental, full English and vegetarian options and fresh fruit. Kids&rsquo; meals are available, packed lunches can be arranged for early surf starts or day trips, and room service is offered if you&rsquo;d rather eat on your balcony. There&rsquo;s also a coffee house and a bar and lounge area.</p>
-              <p className="body mt-5">Tell the team about dietary requirements when you enquire and they&rsquo;ll confirm what the kitchen can do.</p>
+              <p className="lede">Our kitchen cooks across many traditions. Sri Lankan and Indian dishes sit beside Chinese, British and Mediterranean plates, so everyone at the table can follow their own appetite and still share the meal.</p>
+              <p className="body mt-5">Mornings begin with breakfast: continental, full English and vegetarian options, with fresh fruit. Kids&rsquo; meals are available, packed lunches can be arranged for early surf starts or days out, and room service is offered if you&rsquo;d rather linger on your balcony. There&rsquo;s also a coffee house, and a bar and lounge for when the day softens into evening.</p>
+              <p className="body mt-5">Share any dietary requirements when you enquire and our team will confirm what the kitchen can prepare for you.</p>
             </div>
           </div>
         </Section>
@@ -80,7 +80,7 @@ export default function DiningPage() {
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <h2 className="display-lg">Group dinners and long tables</h2>
-              <p className="lede mt-4 !text-sand">Travelling as a party? The restaurant can seat a group together. Let the team know numbers and dates and they&rsquo;ll confirm arrangements.</p>
+              <p className="lede mt-4 !text-sand">Travelling together? The restaurant can seat your group around one table, for evenings of shared plates and long conversation. Let our team know your numbers and dates and they&rsquo;ll confirm the arrangements.</p>
             </div>
             <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
               <a href={diningEnquiry} target="_blank" rel="noopener noreferrer" className="btn-ivory">Enquire on WhatsApp</a>

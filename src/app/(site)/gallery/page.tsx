@@ -10,7 +10,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Photo Gallery | The Lavish Haven, Ahangama",
   socialTitle: "Gallery of The Lavish Haven",
-  description: "See The Lavish Haven in photographs: the pool and gardens, the rooms and suites, the restaurant, yoga on the terrace and the surf coast of Ahangama.",
+  description: "The Lavish Haven in photographs: the pool and gardens, rooms and suites, the restaurant, yoga on the terrace and the surf coast of Ahangama.",
   path: "/gallery",
 });
 
@@ -22,8 +22,8 @@ export default function GalleryPage() {
       <main id="main">
         <PageHero
           kicker="Gallery"
-          title="The Haven, as it is"
-          intro={`${total} photographs of the house, the rooms and the coast around Ahangama.`}
+          title="The Haven, in its own light"
+          intro={`${total} photographs of the house, the rooms and the coast around Ahangama, from the pool by day to lanterns after dark.`}
           image={{ src: "/images/property/aerial-night-pool.webp", alt: "Night-time aerial view of the illuminated pool and courtyard" }}
         />
         <Section>

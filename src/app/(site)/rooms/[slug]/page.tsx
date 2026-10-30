@@ -33,9 +33,9 @@ function roomTitle(shortName: string): string {
 
 function roomDescription(room: NonNullable<ReturnType<typeof getRoom>>): string {
   const base = `${room.name}: ${room.sizeSqm} m², ${room.beds}, ${room.outdoor.toLowerCase()}.`;
-  const tail = " A short walk from Kabalana Beach, Ahangama. Enquire direct with the hotel.";
+  const tail = " A short walk from Kabalana Beach, Ahangama. Book direct with the hotel.";
   const full = base + tail;
-  return full.length <= 158 ? full : `${base} Near Kabalana Beach. Enquire direct.`;
+  return full.length <= 158 ? full : `${base} Near Kabalana Beach. Book direct.`;
 }
 
 export default function RoomPage({ params }: { params: { slug: string } }) {
@@ -85,7 +85,7 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
             <aside className="lg:col-span-4 lg:col-start-9">
               <div className="sticky top-28 rounded-[2px] border border-[color:var(--line)] bg-white/50 p-6">
                 <h2 className="display-sm text-forest">Stay in this room</h2>
-                <p className="body mt-2">Send your dates and the team will confirm availability, the rate and how to book. Nothing is reserved until they reply.</p>
+                <p className="body mt-2">Share your dates and our team will confirm availability, your rate and the next steps with you personally. Nothing is confirmed until we reply.</p>
                 <div className="mt-6 grid gap-3">
                   <Link href={`/book?room=${room.slug}`} className="btn-forest w-full">Check availability</Link>
                   <a href={whatsappUrl(roomEnquiryMessage(room))} target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full">Enquire on WhatsApp</a>

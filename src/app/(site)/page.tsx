@@ -17,7 +17,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "The Lavish Haven | Boutique Hotel in Ahangama, Sri Lanka",
   socialTitle: "The Lavish Haven, Ahangama",
-  description: "A boutique hotel in Ahangama, two minutes' walk from Kabalana Beach. King rooms and family suites around an outdoor pool, with yoga and a restaurant.",
+  description: "A boutique hotel in Ahangama, a short walk from Kabalana Beach. Calm king rooms and family suites around an outdoor pool, with yoga and a restaurant.",
   path: "/",
 });
 
@@ -40,8 +40,8 @@ export default function HomePage() {
       <main id="main">
         <PageHero
           tall
-          title="A Refined Coastal Escape in Ahangama"
-          intro="Discover The Lavish Haven, a relaxed boutique stay where considered comfort, tropical surroundings, and the spirit of Sri Lanka's southern coast come together."
+          title="Where the palms meet the southern sea"
+          intro="The Lavish Haven is a boutique stay in Ahangama, where quiet comfort, warm hospitality and the slow rhythm of Sri Lanka's south coast meet."
           image={{ src: "/images/property/pool-dusk-wide.webp", alt: "The Lavish Haven at dusk: the pool lit from below, balconies glowing under the gabled roofs" }}
         >
           <Link href="/book" className="btn-ivory">Book Your Stay</Link>
@@ -54,14 +54,14 @@ export default function HomePage() {
         <Section>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
-              <h2 className="display-lg text-forest">A quiet house around a pool, two minutes from the surf</h2>
+              <h2 className="display-lg text-forest">A quiet house around a pool, a short walk from the surf</h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="lede">
-                The Lavish Haven sits on Welhengoda Road in Ahangama, set back from the coast road among coconut palms. Rooms and suites open onto patios and balconies around a long outdoor pool, with a restaurant, lounge and garden at the heart of the house.
+                On Welhengoda Road in Ahangama, set back from the coast road among coconut palms, the house gathers around a long outdoor pool. Rooms and suites open onto patios and balconies, and at its heart are the restaurant, the lounge and the garden, where the days drift easily from one to the next.
               </p>
               <p className="body mt-6">
-                Kabalana Beach, with its well-known surf break, is a short walk away. Galle Fort and Weligama are both close by for a day out. Come for a few nights of surf, a yoga-led reset, or a longer stay with family and friends; the team will help you put the right rooms together.
+                Kabalana Beach and its well-loved surf break are a short walk away, and Galle Fort and Weligama are close enough for an easy day out. Come for a few nights of waves, a gentle reset on the yoga mat, or a longer stay with the people you love. Our team will help you choose the rooms that suit you.
               </p>
               <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[14.5px]">
                 <Link href="/about" className="textlink">About the Haven</Link>
@@ -78,7 +78,7 @@ export default function HomePage() {
         {/* Rooms */}
         <Section tone="deep">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <Heading title="Rooms & Suites" lead="King rooms with patios or balconies, family suites with two beds, and a two-bedroom suite under the roof. Every room has air conditioning, a private bathroom and its own outdoor space." />
+            <Heading title="Rooms & Suites" lead="King rooms that open onto patios and balconies, family suites with room for everyone, and a two-bedroom suite beneath the roof. Each has air conditioning, a private bathroom and a little outdoor space to call your own." />
             <Link href="/rooms" className="btn-outline shrink-0">See all rooms</Link>
           </div>
           <div className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
@@ -93,9 +93,9 @@ export default function HomePage() {
           <div className="wrap relative py-24 lg:py-36">
             <div className="max-w-[44rem]">
               <p className="font-display text-[1.1rem] italic text-sand">Surf Retreats</p>
-              <h2 className="display-lg mt-3">Kabalana is a short walk from the door</h2>
+              <h2 className="display-lg mt-3">The waves are a short walk from the door</h2>
               <p className="lede mt-5 !text-ivory/85">
-                Ahangama&rsquo;s best-known break sits at the end of the lane. Plan a surf-focused stay with early mornings on the water and slow afternoons by the pool, and let us know if you&rsquo;d like a hand arranging the local surf scene.
+                Kabalana, Ahangama&rsquo;s best-known break, waits at the end of the lane. Let your days follow the swell: early mornings on the water, long afternoons by the pool. If you&rsquo;d like help finding your way into the local surf scene, simply let us know.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/surf-retreats" className="btn-ivory">Plan a surf retreat</Link>
@@ -113,9 +113,9 @@ export default function HomePage() {
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
               <h2 className="display-lg text-forest">Wellness & Experiences</h2>
-              <p className="lede mt-5">An outdoor pool, yoga classes and a spa and wellness area for slower days.</p>
+              <p className="lede mt-5">An outdoor pool, yoga classes and a spa and wellness area, for days that move at a gentler pace.</p>
               <p className="body mt-5">
-                Mornings start on the mat or in the water. Treatments and sessions are arranged on request, so tell us what you have in mind when you enquire and the team will confirm what&rsquo;s available during your stay.
+                Begin the morning on the mat or in the cool of the pool. Treatments and sessions are arranged on request, so share what you have in mind when you enquire and our team will confirm what&rsquo;s available during your stay.
               </p>
               <Link href="/wellness" className="btn-outline mt-8">Wellness at the Haven</Link>
             </div>
@@ -127,8 +127,8 @@ export default function HomePage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-4">
               <h2 className="display-lg text-forest">Dining</h2>
-              <p className="lede mt-5">An open-air restaurant beside the pool, serving breakfast and a menu that moves between Sri Lankan, Indian, Chinese, British and Mediterranean cooking.</p>
-              <p className="body mt-5">Breakfast offers continental, full English and vegetarian options with fresh fruit. Kids&rsquo; meals, packed lunches and room service are available; tell us about dietary needs when you enquire.</p>
+              <p className="lede mt-5">An open-air restaurant beside the pool, where breakfast meets the morning light and the menu wanders from Sri Lankan and Indian to Chinese, British and Mediterranean cooking.</p>
+              <p className="body mt-5">Breakfast brings continental, full English and vegetarian options with fresh fruit. Kids&rsquo; meals, packed lunches and room service are all available, and if you have dietary needs, tell us when you enquire and we&rsquo;ll take care of them.</p>
               <Link href="/dining" className="btn-outline mt-8">About the restaurant</Link>
             </div>
             <div className="grid grid-cols-2 gap-4 lg:col-span-7 lg:col-start-6">
@@ -143,12 +143,12 @@ export default function HomePage() {
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <p className="font-display text-[1.1rem] italic text-sand">Groups & Events</p>
-              <h2 className="display-lg mt-3">Bring everyone</h2>
+              <h2 className="display-lg mt-3">Gather everyone together</h2>
               <p className="lede mt-5 !text-sand">
-                With rooms and suites across two floors around one pool, the Haven suits groups who want to stay together: surf trips, yoga retreats, families and friends travelling as one.
+                With rooms and suites across two floors around a single pool, the Haven is made for staying together: surf trips, yoga retreats, and families and friends who travel as one.
               </p>
               <p className="body mt-5 !text-ivory/80">
-                Tell us your dates, the size of the group and what you&rsquo;d like to do. The team will put together a room plan and confirm what the house can accommodate for your dates.
+                Share your dates, the size of your group and how you&rsquo;d like to spend your time. Our team will shape a room plan around you and confirm what the house can offer for your dates.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/groups" className="btn-ivory">Plan a group stay</Link>
@@ -164,7 +164,7 @@ export default function HomePage() {
         {/* Gallery */}
         <Section>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <Heading title="Gallery" lead="The house, the rooms and the coast, photographed as they are." />
+            <Heading title="Gallery" lead="The house, the rooms and the coast, just as you'll find them." />
             <Link href="/gallery" className="btn-outline shrink-0">Open the gallery</Link>
           </div>
           <div className="mt-12">
@@ -180,11 +180,11 @@ export default function HomePage() {
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
               <h2 className="display-lg text-forest">Ahangama</h2>
-              <p className="lede mt-5">A surf village on the south coast between Galle and Weligama.</p>
+              <p className="lede mt-5">A surf village on the south coast, between Galle and Weligama, where life keeps time with the tide.</p>
               <address className="body mt-5 not-italic">
                 166/2 Welhengoda Road<br />Ahangama 80650, Sri Lanka
               </address>
-              <p className="body mt-3">Kabalana Beach is a short walk away. Galle Fort and Weligama are nearby for a day out.</p>
+              <p className="body mt-3">Kabalana Beach is a short walk away, and Galle Fort and Weligama are close by for a day of exploring.</p>
               <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[14.5px]">
                 <Link href="/location" className="textlink">Location and directions</Link>
                 <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="textlink">Open in Google Maps</a>
@@ -196,8 +196,8 @@ export default function HomePage() {
         {/* Final CTA */}
         <Section>
           <div className="mx-auto max-w-[48rem] text-center">
-            <h2 className="display-lg text-forest">Make your stay your own</h2>
-            <p className="lede mt-5">Tell us your dates, who&rsquo;s coming and what you&rsquo;d like from your time here. The team confirms availability and arrangements directly.</p>
+            <h2 className="display-lg text-forest">Your stay, shaped around you</h2>
+            <p className="lede mt-5">Tell us your dates, who&rsquo;s coming and what you hope to find here. Our team will confirm availability and arrangements with you personally.</p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link href="/book" className="btn-forest">Book Your Stay</Link>
               <a href={whatsappUrl("Hello The Lavish Haven, I'd like to ask about a stay.")} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">WhatsApp</a>

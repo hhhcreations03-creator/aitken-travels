@@ -13,15 +13,15 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Group Stays & Retreats in Ahangama | The Lavish Haven",
   socialTitle: "Group Stays at The Lavish Haven",
-  description: "Bring the whole group to Ahangama. Surf trips, yoga retreats, families and friends stay together around one pool. Send a group enquiry to the hotel team.",
+  description: "Gather your people in Ahangama. Surf trips, yoga retreats, families and friends stay together around one pool. Send a group enquiry to our team.",
   path: "/groups",
 });
 
 const WHY = [
-  { h: "One house, one pool", p: "Rooms and suites on two floors look onto the same courtyard, so a group stays together without anyone being far from the action." },
-  { h: "A mix of room types", p: "King rooms for couples, family suites with two beds, kitchenette rooms for the self-sufficient, and a two-bedroom suite for a small household." },
-  { h: "Surf and yoga on the doorstep", p: "Kabalana Beach is a short walk away and yoga classes can be arranged at the house. Spa treatments on request." },
-  { h: "Meals together", p: "The restaurant serves breakfast and an international menu, and can seat a group at one table." },
+  { h: "One house, one pool", p: "Rooms and suites on two floors look onto the same courtyard, so your group stays close, with everyone a few steps from the water and each other." },
+  { h: "A mix of room types", p: "King rooms for couples, family suites with two beds, kitchenette rooms for those who like to make their own, and a two-bedroom suite for a small household." },
+  { h: "Surf and yoga on the doorstep", p: "Kabalana Beach is a short walk away, and yoga classes can be arranged at the house. Spa treatments are available on request." },
+  { h: "Meals together", p: "The restaurant serves breakfast and an international menu, and can bring your whole group together around one table." },
 ];
 
 export default function GroupsPage() {
@@ -39,7 +39,7 @@ export default function GroupsPage() {
               <div className="max-w-[40rem] animate-rise lg:col-span-8">
                 <p className="font-display text-[1.1rem] italic text-sand">Groups & Events</p>
                 <h1 className="display-xl mt-3">Take the whole house</h1>
-                <p className="lede mt-6 !text-ivory/85 max-w-[40ch]">Surf crews, yoga retreats, families and friends travelling together. The Lavish Haven is built for groups who want to stay under one roof.</p>
+                <p className="lede mt-6 !text-ivory/85 max-w-[40ch]">Surf crews, yoga retreats, families and friends travelling as one. The Lavish Haven is made for groups who want to share the same roof, the same pool and the same long evenings.</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a href="#group-enquiry" className="btn-ivory">Send a group enquiry</a>
                   <a href={groupWhatsApp} target="_blank" rel="noopener noreferrer" className="btn-outline-light">WhatsApp the team</a>
@@ -56,7 +56,7 @@ export default function GroupsPage() {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 className="display-lg text-forest">Why groups choose the Haven</h2>
-              <p className="lede mt-5">The hotel&rsquo;s rooms and suites sit around a single pool on Welhengoda Road, which makes it a natural base for a party that wants to be together.</p>
+              <p className="lede mt-5">Our rooms and suites gather around a single pool on Welhengoda Road, a natural home for a party that wants to be together, from morning swims to dinners that run late.</p>
             </div>
             <div className="lg:col-span-6 lg:col-start-7 grid gap-8 sm:grid-cols-2">
               {WHY.map((w) => (
@@ -86,10 +86,10 @@ export default function GroupsPage() {
             </div>
             <dl className="lg:col-span-6 lg:col-start-7 grid gap-7">
               {[
-                ["Surf retreat", "Early starts at Kabalana, rooms with patios for sandy feet, a pool to warm down in. Ask about help arranging lessons or boards locally."],
-                ["Wellness retreat", "Yoga classes at the house, spa treatments on request, quiet rooms around the garden and a restaurant that caters to dietary needs."],
-                ["Friends and family", "A mix of king rooms and family suites so couples, kids and grandparents each have their own space and one shared courtyard."],
-                ["Organised group trip", "Tour groups, clubs and teams. Send numbers and dates and the team will propose a room plan and meal arrangements."],
+                ["Surf retreat", "Early starts at Kabalana, patio rooms for sandy feet, and a pool to wind down in after the last wave. Ask us about help arranging lessons or boards locally."],
+                ["Wellness retreat", "Yoga classes at the house, spa treatments on request, quiet rooms around the garden and a restaurant that caters to your dietary needs."],
+                ["Friends and family", "A mix of king rooms and family suites, so couples, children and grandparents each have their own space and one courtyard to share."],
+                ["Organised group trip", "Tour groups, clubs and teams. Send us your numbers and dates and our team will propose a room plan and meal arrangements."],
               ].map(([k, v]) => (
                 <div key={k} className="rule-soft pt-5">
                   <dt className="display-sm text-forest">{k}</dt>
@@ -105,7 +105,7 @@ export default function GroupsPage() {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <h2 className="display-lg text-forest">Group enquiry</h2>
-              <p className="lede mt-5">Tell us about the group and the team will come back with what the house can accommodate for your dates.</p>
+              <p className="lede mt-5">Tell us about your group and our team will come back to you with what the house can offer for your dates.</p>
               <p className="body mt-4">Prefer to talk it through? <a href={groupWhatsApp} target="_blank" rel="noopener noreferrer" className="textlink">WhatsApp the team</a> with your dates and numbers.</p>
               <div className="mt-8 hidden lg:block">
                 <ImageBlock src="/images/property/aerial-pool-building.webp" alt="Aerial view of the hotel's green roofs and pool" aspect="aspect-[4/5]" sizes="30vw" />

@@ -24,11 +24,11 @@ export default function EnquirePage() {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <h1 className="display-lg text-forest">Enquire about your stay</h1>
-              <p className="lede mt-5">Tell us the room you have in mind, your dates and who&rsquo;s coming. The team replies to confirm availability, the rate and how to book.</p>
+              <p className="lede mt-5">Tell us the room you have in mind, your dates and who&rsquo;s travelling with you. Our team will reply personally to confirm availability, the rate and how to book.</p>
               <ul className="body mt-6 space-y-2">
                 <li>Reply comes by email or WhatsApp, whichever you prefer.</li>
                 <li>Nothing is reserved and no payment is taken until the team confirms with you.</li>
-                <li>Not sure which room? Leave it blank and describe your group instead.</li>
+                <li>Not sure which room suits you? Leave it blank and tell us about your group, and we&rsquo;ll find the right fit.</li>
               </ul>
               <div className="mt-8 hidden lg:block">
                 <ImageBlock src="/images/property/pool-evening.webp" alt="The courtyard and pool in the evening" aspect="aspect-[4/5]" sizes="30vw" />

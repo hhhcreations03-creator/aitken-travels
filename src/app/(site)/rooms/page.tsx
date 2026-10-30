@@ -12,7 +12,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Rooms & Suites in Ahangama | The Lavish Haven",
   socialTitle: "Rooms & Suites at The Lavish Haven",
-  description: "Twelve rooms and suites near Kabalana Beach, from king rooms with private patios to family suites and a two-bedroom suite. Enquire direct with the hotel.",
+  description: "Twelve rooms and suites near Kabalana Beach in Ahangama, from king rooms with patios to family suites, each with its own outdoor space. Book direct.",
   path: "/rooms",
 });
 
@@ -27,7 +27,7 @@ export default function RoomsPage() {
         <PageHero
           kicker="Rooms & Suites"
           title="Twelve ways to stay"
-          intro="Every room has air conditioning, a private bathroom with a walk-in shower and its own patio or balcony. Choose by floor, by view or by how many of you are coming."
+          intro="Each room comes with air conditioning, a private bathroom with a walk-in shower and a patio or balcony of its own. Choose by floor, by view, or by the people you are bringing with you."
           image={{ src: "/images/rooms/superior-king/balcony-wide.webp", alt: "A covered first-floor balcony with timber chairs looking over the garden and pool" }}
         >
           <Link href="/book" className="btn-ivory">Check availability</Link>
@@ -38,13 +38,13 @@ export default function RoomsPage() {
           <div className="rule grid gap-y-3 pt-6 text-[14.5px] sm:grid-cols-3">
             <p><span className="text-charcoal-mute">Check-in from</span><br />{SITE.checkIn}</p>
             <p><span className="text-charcoal-mute">In every room</span><br />Air conditioning, Wi-Fi, minibar, kettle, safe</p>
-            <p><span className="text-charcoal-mute">How booking works</span><br />Enquire, the team confirms availability and rate directly</p>
+            <p><span className="text-charcoal-mute">How booking works</span><br />Send a request, and our team confirms availability and your rate directly</p>
           </div>
         </Section>
 
         <Section className="!pt-0">
           <h2 className="display-md text-forest">King rooms</h2>
-          <p className="body mt-3 max-w-[60ch]">One king bed, between 38 and 47 square metres, on the ground floor with a patio or on the first floor with a balcony.</p>
+          <p className="body mt-3 max-w-[60ch]">One king bed in 38 to 47 square metres of calm. Choose the ground floor and a patio at garden level, or the first floor and a balcony among the palms.</p>
           <div className="mt-10 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
             {doubles.map((room, i) => <RoomCard key={room.slug} room={room} priority={i < 3} />)}
           </div>
@@ -52,7 +52,7 @@ export default function RoomsPage() {
 
         <Section tone="deep">
           <h2 className="display-md text-forest">Family suites and the two-bedroom suite</h2>
-          <p className="body mt-3 max-w-[60ch]">Two beds or two bedrooms, from 39 to 93 square metres. Several have a kitchenette; all have a patio or balcony.</p>
+          <p className="body mt-3 max-w-[60ch]">Room for everyone, with two beds or two bedrooms across 39 to 93 square metres. Several have a kitchenette, and every one opens to a patio or balcony.</p>
           <div className="mt-10 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
             {families.map((room) => <RoomCard key={room.slug} room={room} />)}
           </div>
@@ -61,7 +61,7 @@ export default function RoomsPage() {
         <Section>
           <div className="rule pt-10">
             <h2 className="display-md text-forest">Room register</h2>
-            <p className="body mt-3 max-w-[60ch]">All twelve at a glance. Sizes and bed configurations are as published on the hotel&rsquo;s listing.</p>
+            <p className="body mt-3 max-w-[60ch]">All twelve at a glance, to help you find the right fit. Sizes and bed configurations are as published on the hotel&rsquo;s listing.</p>
             <div className="mt-8 overflow-x-auto">
               <table className="w-full min-w-[720px] text-left text-[14.5px]">
                 <thead>

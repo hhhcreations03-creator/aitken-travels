@@ -45,8 +45,8 @@ export default async function BookPage({ searchParams }: { searchParams: { room?
             <h1 className="display-lg text-forest">Book your stay</h1>
             <p className="lede mt-4">
               {settings
-                ? "Check availability, choose your room and send a booking request. We hold the room while our team confirms, and nothing is charged online."
-                : "Tell us your dates and room, and the team will confirm availability and your rate directly."}
+                ? "Choose your dates, find the room that feels right and send us your booking request. We hold it for you while our team confirms, and nothing is charged online."
+                : "Tell us your dates and the room you have in mind, and our team will personally confirm availability and your rate."}
             </p>
           </div>
           {settings ? (

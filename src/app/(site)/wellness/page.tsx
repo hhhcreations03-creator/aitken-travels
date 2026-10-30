@@ -11,7 +11,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Pool, Yoga & Wellness in Ahangama | The Lavish Haven",
   socialTitle: "Wellness & Experiences at The Lavish Haven",
-  description: "Slow down beside an outdoor pool, with yoga classes and spa treatments arranged on request at The Lavish Haven, a boutique hotel in Ahangama.",
+  description: "Slow mornings by an outdoor pool, yoga on the terrace and spa treatments on request at The Lavish Haven, a boutique hotel in Ahangama.",
   path: "/wellness",
 });
 
@@ -26,28 +26,28 @@ interface Experience {
 const EXPERIENCES: Experience[] = [
   {
     title: "The pool",
-    body: "A long outdoor pool runs through the middle of the house, overlooked by balconies on two floors. It's open year-round, has a shallow end, and there are loungers and a sun terrace around it for the hours when you're not in it.",
+    body: "A long outdoor pool runs through the heart of the house, watched over by balconies on two floors. It's open year-round, with a shallow end, and loungers and a sun terrace gathered around it for the hours you spend drying in the sun.",
     image: { src: "/images/property/aerial-pool-swimmer.webp", alt: "Top-down aerial of a swimmer in the pool" },
     enquiry: "Hello The Lavish Haven, I'd like to ask about the pool and relaxation facilities during my stay.",
     confirmed: "Open to all guests throughout the stay.",
   },
   {
     title: "Yoga",
-    body: "Yoga classes are offered at the Haven, on the terrace or by the pool. Sessions suit surfers working out tight shoulders as much as guests who simply want a slow start to the day. Tell us your level and preferred times when you enquire.",
+    body: "Yoga classes are offered at the Haven, on the terrace or beside the pool, with the palms moving overhead. Sessions suit surfers easing out tight shoulders as much as guests who simply want a gentle start to the day. Tell us your level and preferred times when you enquire.",
     image: { src: "/images/wellness/yoga-stretch.webp", alt: "A side stretch on the covered terrace" },
     enquiry: "Hello The Lavish Haven, I'd like to enquire about yoga classes during my stay.\n\nDates: \nNumber of people: \nExperience level: ",
     confirmed: "Arranged on request. Schedule and any cost confirmed by the team.",
   },
   {
     title: "Spa and wellness",
-    body: "The hotel has a spa and wellness area. Treatments are arranged on request rather than from a fixed menu, so let the team know what you'd like and when, and they'll confirm what's available during your dates.",
+    body: "Our spa and wellness area is a place to be looked after. Treatments are arranged on request rather than from a fixed menu, so tell our team what you'd like and when, and they'll confirm what's available during your stay.",
     image: { src: "/images/details/amenities-bottles.webp", alt: "Bathroom amenity bottles with the Haven's palm motif" },
     enquiry: "Hello The Lavish Haven, I'd like to enquire about spa or wellness treatments during my stay.\n\nDates: \nWhat I'm interested in: ",
     confirmed: "Arranged on request. Availability and pricing confirmed by the team.",
   },
   {
     title: "Slow afternoons",
-    body: "Reading on a lounger, a fresh king coconut from the restaurant, an early dinner under the lanterns. Ahangama's cafés and surf shops are a short walk away when you want them, and Galle Fort and Weligama are close enough for a day trip.",
+    body: "A book on a lounger, a fresh king coconut from the restaurant, an early dinner as the lanterns come on. Ahangama's cafés and surf shops are a short walk away whenever you want them, and Galle Fort and Weligama are close enough for a day of wandering.",
     image: { src: "/images/wellness/poolside-reading-coconut.webp", alt: "Reading with a fresh coconut beside the pool" },
     enquiry: "Hello The Lavish Haven, I'd like some help planning days out during my stay.",
     confirmed: "Ask the team for local recommendations and transport options.",
@@ -61,8 +61,8 @@ export default function WellnessPage() {
       <main id="main">
         <PageHero
           kicker="Wellness & Experiences"
-          title="Slow mornings, long afternoons"
-          intro="A pool at the centre of the house, yoga on the terrace and a wellness area for treatments on request. Nothing here is on a timetable unless you want it to be."
+          title="Slow mornings, golden afternoons"
+          intro="A pool at the heart of the house, yoga on the terrace and a wellness area for treatments on request. Here, time keeps no schedule but your own."
           image={{ src: "/images/wellness/yoga-balcony-reach.webp", alt: "A yoga pose on a first-floor balcony, palm fronds behind" }}
         >
           <a href={whatsappUrl("Hello The Lavish Haven, I'd like to ask about wellness and experiences during my stay.")} target="_blank" rel="noopener noreferrer" className="btn-ivory">Enquire on WhatsApp</a>
@@ -91,7 +91,7 @@ export default function WellnessPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <h2 className="display-lg">Wellness retreats for groups</h2>
-              <p className="lede mt-5 !text-sand">Bringing a yoga group or a retreat? The house works well taken over by one party, with the pool, terrace and restaurant at your disposal. Tell us the dates and numbers and the team will confirm what&rsquo;s possible.</p>
+              <p className="lede mt-5 !text-sand">Bringing a yoga group or a retreat? The house comes alive when it&rsquo;s shared by one party, with the pool, terrace and restaurant yours to gather in. Tell us your dates and numbers and our team will confirm what&rsquo;s possible.</p>
             </div>
             <div className="flex flex-wrap gap-3 lg:col-span-4 lg:col-start-9 lg:justify-end">
               <Link href="/groups" className="btn-ivory">Plan a group retreat</Link>

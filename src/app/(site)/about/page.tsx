@@ -10,7 +10,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "About Us | The Lavish Haven, Boutique Hotel in Ahangama",
   socialTitle: "About The Lavish Haven",
-  description: "The Lavish Haven is a boutique hotel on Welhengoda Road in Ahangama, set among coconut palms around a pool, a short walk from Kabalana Beach.",
+  description: "A boutique hotel in Ahangama, Sri Lanka: rooms and suites around a pool among coconut palms, a short walk from the surf at Kabalana Beach.",
   path: "/about",
 });
 
@@ -20,11 +20,11 @@ export const metadata: Metadata = pageMeta({
  * the personal story (who built the Haven, when it opened, who runs it) here.
  */
 const STORY = {
-  heading: "A house built around a pool, in a village built around a wave",
+  heading: "A house that gathers around a pool, in a village that gathers around a wave",
   paragraphs: [
-    "The Lavish Haven stands on Welhengoda Road in Ahangama, a short lane back from the coast road on Sri Lanka's southern shore. The house is arranged on two floors around a long outdoor pool: timber balconies and railings above, stone-paved patios and planting below, a restaurant open to the courtyard on the ground floor.",
-    "Inside, the rooms share a quiet language of polished concrete, teak doors, high gabled ceilings and white linen. Each has its own patio or balcony, and the suites add a second bed, a second room or a kitchenette. The lobby, with its staircase and a tree growing through the floor, is where guests tend to drift at the end of the day.",
-    "Ahangama has become one of the south coast's best-loved surf villages, and Kabalana Beach, its most popular break, is a few minutes' walk from the door. The village around it has cafés, surf shops and small restaurants, and Galle Fort and Weligama are close enough for a day out.",
+    "The Lavish Haven stands on Welhengoda Road in Ahangama, a short lane back from the coast road on Sri Lanka's southern shore, where the noise of traffic gives way to palms and birdsong. The house rises on two floors around a long outdoor pool: timber balconies and railings above, stone-paved patios and planting below, and a restaurant that opens onto the courtyard, so the water is never far from view.",
+    "Inside, the rooms speak a quiet language of polished concrete, teak doors, high gabled ceilings and crisp white linen. Each one opens onto its own patio or balcony, and the suites add a second bed, a second room or a kitchenette. The lobby, with its timber staircase and a tree growing up through the floor, is where the day tends to settle, and where guests find themselves drifting as the light softens.",
+    "Ahangama has become one of the south coast's best-loved surf villages, and Kabalana Beach, its most popular break, is a few minutes' walk from our door. Around it, the village hums with cafés, surf shops and small restaurants, and Galle Fort and Weligama are close enough for an unhurried day out.",
   ],
 };
 
@@ -36,7 +36,7 @@ export default function AboutPage() {
         <PageHero
           kicker="About Us"
           title="The Lavish Haven"
-          intro="A boutique hotel in Ahangama, set among coconut palms a short walk from Kabalana Beach."
+          intro="A boutique hotel in Ahangama, held in the shade of coconut palms, a short walk from the waves of Kabalana Beach."
           image={{ src: "/images/property/aerial-green-roofs.webp", alt: "Aerial view over coconut palms to the hotel's green roofs and pool" }}
         />
 
@@ -68,10 +68,10 @@ export default function AboutPage() {
             </div>
             <dl className="lg:col-span-6 lg:col-start-7 grid gap-6 sm:grid-cols-2">
               {[
-                ["Front desk", "Staffed around the clock, with luggage storage and laundry."],
+                ["Front desk", "Someone is always here for you, day and night, with luggage storage and laundry."],
                 ["Getting here", "Airport pick-up and shuttle services can be arranged for a charge; car rental on request."],
-                ["Families", "Family suites, kids' meals, cots on request and an outdoor play area."],
-                ["Accessibility", "Wheelchair access and facilities for guests with reduced mobility. Tell us your needs when you enquire."],
+                ["Families", "Family suites, kids' meals, cots on request and an outdoor play area, so little ones feel at home too."],
+                ["Accessibility", "Wheelchair access and facilities for guests with reduced mobility. Share your needs when you enquire and we'll prepare for you."],
                 ["Parking", "Free private parking on site."],
                 ["House rules", "Check-in from 2:00 PM. No pets. A designated smoking area outside."],
               ].map(([k, v]) => (
@@ -87,8 +87,8 @@ export default function AboutPage() {
         <Section tone="forest">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-8">
-              <h2 className="display-lg">Come and see for yourself</h2>
-              <p className="lede mt-4 !text-sand">Tell us your dates and who&rsquo;s coming. The team will reply directly with availability and arrangements.</p>
+              <h2 className="display-lg">Come and find your place by the pool</h2>
+              <p className="lede mt-4 !text-sand">Tell us your dates and who&rsquo;s travelling with you. Our team will reply personally with availability and every arrangement for your stay.</p>
             </div>
             <div className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
               <Link href="/book" className="btn-ivory">Book Your Stay</Link>

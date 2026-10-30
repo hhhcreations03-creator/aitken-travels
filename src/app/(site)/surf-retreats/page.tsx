@@ -13,7 +13,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Surf Stays near Kabalana Beach | The Lavish Haven",
   socialTitle: "Surf Retreats at The Lavish Haven",
-  description: "Base your surf trip two minutes' walk from Kabalana, Ahangama's best-known break. Rooms for solo surfers, couples and crews, plus pool and yoga.",
+  description: "Wake two minutes' walk from Kabalana, Ahangama's best-known break. Rooms for solo surfers, couples and crews, with a pool and yoga to come home to.",
   path: "/surf-retreats",
 });
 
@@ -28,7 +28,7 @@ export default function SurfRetreatsPage() {
         <PageHero
           kicker="Surf Retreats"
           title="Sleep two minutes from Kabalana"
-          intro="Ahangama's best-known break is at the end of the lane. Base a surf trip here and the day has a simple shape: dawn on the water, breakfast by the pool, a second session when the wind drops."
+          intro="Ahangama's best-known break waits at the end of the lane. Here the days find their own rhythm: first light on the water, breakfast by the pool, and a second paddle out when the wind lies down."
           image={{ src: "/images/property/aerial-coast-surf.webp", alt: "Aerial view of the Ahangama coastline, waves breaking along the reef beyond the palms" }}
         >
           <a href="#retreat-enquiry" className="btn-ivory">Enquire about a surf retreat</a>
@@ -37,14 +37,14 @@ export default function SurfRetreatsPage() {
         <Section>
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <h2 className="display-lg text-forest">The break at the end of the road</h2>
+              <h2 className="display-lg text-forest">The wave at the end of the road</h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
-              <p className="lede">Kabalana Beach, home to one of the south coast&rsquo;s most popular waves, is a short walk from the hotel. The listing puts it at about two minutes on foot.</p>
+              <p className="lede">Kabalana Beach, home to one of the south coast&rsquo;s most loved waves, is a short walk from our door. About two minutes on foot, close enough to hear the sets roll in.</p>
               <p className="body mt-5">
-                The surrounding village has surf shops, cafés and board hire within easy reach. The Haven doesn&rsquo;t run its own surf school; if you&rsquo;d like lessons, guiding or boards, say so in your enquiry and the team will tell you what they can help arrange locally for your dates.
+                Around us, the village keeps surf shops, cafés and board hire within easy reach. We don&rsquo;t run a surf school of our own, but if you&rsquo;d like lessons, guiding or boards, mention it when you enquire and our team will let you know what they can help arrange locally for your dates.
               </p>
-              <p className="body mt-5">Back at the house there&rsquo;s an outdoor pool to loosen up in, a restaurant for a late breakfast, loungers in the garden, and yoga classes to keep shoulders and backs happy between sessions.</p>
+              <p className="body mt-5">Salt-dried and sun-warmed, you come back to a quiet house: an outdoor pool to loosen tired limbs, a restaurant for a late breakfast, loungers in the garden, and yoga classes to keep shoulders and backs supple between sessions.</p>
             </div>
           </div>
           <div className="mt-16 grid gap-4 md:grid-cols-3">
@@ -55,7 +55,7 @@ export default function SurfRetreatsPage() {
         </Section>
 
         <Section tone="deep">
-          <Heading title="Rooms that suit a surf trip" lead="Ground-floor rooms with patios for quick dawn exits, suites with two beds for a crew sharing, and the two-bedroom suite for a small group under one roof." />
+          <Heading title="Rooms that suit a surf trip" lead="Ground-floor rooms with patios for slipping out at dawn, suites with two beds for friends sharing the trip, and the two-bedroom suite for a small crew under one roof." />
           <div className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
             {rooms.map((room) => <RoomCard key={room.slug} room={room} />)}
           </div>
@@ -65,7 +65,7 @@ export default function SurfRetreatsPage() {
         <Section>
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <h2 className="display-lg text-forest">What the house offers between sessions</h2>
+              <h2 className="display-lg text-forest">What awaits you between sessions</h2>
             </div>
             <ul className="body grid gap-x-10 gap-y-4 lg:col-span-6 lg:col-start-7 sm:grid-cols-2">
               {[
@@ -90,7 +90,7 @@ export default function SurfRetreatsPage() {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <h2 className="display-lg text-forest">Plan a surf retreat</h2>
-              <p className="lede mt-5">Share your dates, group size and what you&rsquo;d like from the trip. The team confirms rooms and what can be arranged locally.</p>
+              <p className="lede mt-5">Tell us your dates, who&rsquo;s coming and the trip you have in mind. Our team will confirm rooms and what can be arranged locally, and help shape the rest.</p>
               <div className="mt-8 hidden lg:block">
                 <ImageBlock src="/images/property/aerial-ocean-horizon.webp" alt="Aerial view over palms to the ocean horizon" aspect="aspect-[4/5]" sizes="30vw" />
               </div>

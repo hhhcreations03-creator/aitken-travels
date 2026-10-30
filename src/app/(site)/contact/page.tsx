@@ -10,7 +10,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Contact & Reservations | The Lavish Haven, Ahangama",
   socialTitle: "Contact The Lavish Haven",
-  description: "Contact The Lavish Haven by WhatsApp on +94 76 483 2968 or at hello@thelavishhaven.com for stays, groups and dining. The team replies directly.",
+  description: "Write to The Lavish Haven on WhatsApp (+94 76 483 2968) or at hello@thelavishhaven.com about stays, groups and dining. We reply personally.",
   path: "/contact",
 });
 
@@ -22,7 +22,7 @@ export default function ContactPage() {
         <PageHero
           kicker="Contact"
           title="Write to us"
-          intro="For stays, groups, dining and anything else. The team replies directly."
+          intro="A stay, a gathering, a table by the pool or simply a question: write to us, and our team will reply to you personally."
           image={{ src: "/images/property/lobby-wide.webp", alt: "The lobby with marble floor, timber balustrades and rattan seating" }}
         />
 
@@ -55,7 +55,7 @@ export default function ContactPage() {
               </dl>
             </div>
             <div className="lg:col-span-7 lg:col-start-6">
-              <h2 className="display-md text-forest">Send a message</h2>
+              <h2 className="display-md text-forest">Send us a note</h2>
               <div className="mt-6">
                 <ContactForm />
               </div>
