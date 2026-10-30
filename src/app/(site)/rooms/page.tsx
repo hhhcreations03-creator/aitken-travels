@@ -62,8 +62,22 @@ export default function RoomsPage() {
           <div className="rule pt-10">
             <h2 className="display-md text-forest">Room register</h2>
             <p className="body mt-3 max-w-[60ch]">All twelve at a glance, to help you find the right fit. Sizes and bed configurations are as published on the hotel&rsquo;s listing.</p>
-            <div className="mt-8 overflow-x-auto">
-              <table className="w-full min-w-[720px] text-left text-[14.5px]">
+            <ul className="mt-8 grid gap-4 md:hidden">
+              {ROOMS.map((r) => (
+                <li key={r.slug} className="border-b border-[color:var(--line-soft)] pb-4">
+                  <Link href={`/rooms/${r.slug}`} className="textlink text-[15.5px]">{r.name}</Link>
+                  <dl className="mt-3 grid grid-cols-[5.5rem_1fr] gap-x-3 gap-y-1.5 text-[14px]">
+                    <dt className="text-charcoal-mute">Floor</dt><dd className="text-charcoal-soft">{r.floor}</dd>
+                    <dt className="text-charcoal-mute">Size</dt><dd className="text-charcoal-soft tabular-nums">{r.sizeSqm} m²</dd>
+                    <dt className="text-charcoal-mute">Beds</dt><dd className="text-charcoal-soft">{r.beds}</dd>
+                    <dt className="text-charcoal-mute">Outdoor</dt><dd className="text-charcoal-soft">{r.outdoor}</dd>
+                  </dl>
+                  <Link href={`/book?room=${r.slug}`} className="textlink mt-3 inline-block text-[14px]">Check availability</Link>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 hidden relative overflow-x-auto md:block">
+              <table className="w-full min-w-[680px] text-left text-[14.5px]">
                 <thead>
                   <tr className="border-b border-[color:var(--line)] text-charcoal-mute">
                     <th scope="col" className="py-3 pr-4 font-medium">Room</th>

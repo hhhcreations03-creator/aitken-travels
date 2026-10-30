@@ -86,7 +86,7 @@ export default async function BookingDetail({ params, searchParams }: { params: 
           </Panel>
         </div>
 
-        <div className="grid h-fit gap-6">
+        <div className="order-first grid h-fit gap-6 lg:order-none">
           <Panel title="Status">
             <p className="mb-4 text-[14px] text-charcoal-soft">Currently <strong className="text-charcoal">{STATUS_LABELS[b.status]}</strong>.</p>
             <div className="grid gap-3">

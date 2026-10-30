@@ -75,8 +75,11 @@ export function BookingFlow({ rooms, initialRoom, today, maxNights, maxRooms, cu
   const openedAt = useRef(Date.now());
   const headingRef = useRef<HTMLHeadingElement>(null);
 
+  const firstStep = useRef(true);
   useEffect(() => {
-    headingRef.current?.focus();
+    // Move focus to the new step's heading for screen readers, but not on first load.
+    if (firstStep.current) { firstStep.current = false; return; }
+    headingRef.current?.focus({ preventScroll: false });
   }, [step]);
 
   const roomInfo = useMemo(() => new Map(rooms.map((r) => [r.slug, r])), [rooms]);
@@ -193,7 +196,7 @@ export function BookingFlow({ rooms, initialRoom, today, maxNights, maxRooms, cu
 
       {step === "search" && (
         <form onSubmit={runSearch} noValidate className="grid gap-5">
-          <h2 ref={headingRef} tabIndex={-1} className="display-md text-forest outline-none">When would you like to stay?</h2>
+          <h2 ref={headingRef} tabIndex={-1} className="display-md text-forest outline-none focus-visible:outline-none">When would you like to stay?</h2>
           <div className="grid gap-5 sm:grid-cols-2">
             <TextField id="checkIn" label="Check-in" type="date" required min={today} value={search.checkIn} onChange={(e) => { const v = e.target.value; setSearch((s) => ({ ...s, checkIn: v, checkOut: v && (!s.checkOut || s.checkOut <= v) ? addDays(v, 2) : s.checkOut })); setSearchErrors({}); }} error={searchErrors.checkIn} />
             <TextField id="checkOut" label="Check-out" type="date" required min={search.checkIn ? addDays(search.checkIn, 1) : addDays(today, 1)} value={search.checkOut} onChange={setS("checkOut")} error={searchErrors.checkOut}
@@ -221,7 +224,7 @@ export function BookingFlow({ rooms, initialRoom, today, maxNights, maxRooms, cu
         <div>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 ref={headingRef} tabIndex={-1} className="display-md text-forest outline-none">Choose your room</h2>
+              <h2 ref={headingRef} tabIndex={-1} className="display-md text-forest outline-none focus-visible:outline-none">Choose your room</h2>
               <p className="body mt-2">
                 {fmt(searched.checkIn)} to {fmt(searched.checkOut)}, {n} night{n === 1 ? "" : "s"}, {guests} guest{guests === 1 ? "" : "s"}, {searched.rooms} room{searched.rooms === "1" ? "" : "s"}
               </p>
@@ -273,7 +276,7 @@ export function BookingFlow({ rooms, initialRoom, today, maxNights, maxRooms, cu
         <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
           <form onSubmit={submit} noValidate className="relative grid gap-5">
             <Honeypot />
-            <h2 ref={headingRef} tabIndex={-1} className="display-md text-forest outline-none">Your details</h2>
+            <h2 ref={headingRef} tabIndex={-1} className="display-md text-forest outline-none focus-visible:outline-none">Your details</h2>
             <div className="grid gap-5 sm:grid-cols-2">
               <TextField id="name" label="Full name" required autoComplete="name" value={guest.name} onChange={setG("name")} error={fieldErrors["guest.name"]} />
               <TextField id="email" label="Email" type="email" required autoComplete="email" value={guest.email} onChange={setG("email")} error={fieldErrors["guest.email"]} />
@@ -318,7 +321,7 @@ export function BookingFlow({ rooms, initialRoom, today, maxNights, maxRooms, cu
 
       {step === "done" && done && searched && (
         <div className="max-w-[40rem]">
-          <h2 ref={headingRef} tabIndex={-1} className="display-lg text-forest outline-none">Request sent</h2>
+          <h2 ref={headingRef} tabIndex={-1} className="display-lg text-forest outline-none focus-visible:outline-none">Request sent</h2>
           <p className="lede mt-4">Thank you, {guest.name.split(" ")[0]}. We&rsquo;re holding the room while our team confirms your stay.</p>
           <p className="mt-6 text-[15px] text-charcoal-soft">Your reference</p>
           <p className="font-display text-[2.4rem] tracking-[0.04em] text-forest">{done.ref}</p>

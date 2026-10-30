@@ -28,10 +28,10 @@ export default async function PanelLayout({ children }: { children: React.ReactN
   return (
     <>
       <header className="relative bg-forest text-ivory">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-3 sm:px-6">
-          <Link href="/admin" className="flex items-center gap-2.5" aria-label="Bookings admin home">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-3 sm:px-6">
+          <Link href="/admin" className="mr-auto flex items-center gap-2.5 lg:mr-0" aria-label="Bookings admin home">
             <Image src="/brand/symbol-light.png" alt="" width={36} height={33} className="h-[30px] w-auto" />
-            <span className="whitespace-nowrap font-display text-[1.15rem]">Lavish Haven <span className="text-sand-deep">Admin</span></span>
+            <span className="whitespace-nowrap font-display text-[1.15rem]"><span className="hidden min-[420px]:inline">Lavish Haven </span><span className="text-sand-deep">Admin</span></span>
           </Link>
           <div className="flex items-center gap-3 lg:order-last">
             <span className="hidden text-[12.5px] text-ivory/70 md:inline">{admin.email}</span>
@@ -39,7 +39,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
               <button type="submit" className="whitespace-nowrap rounded-[3px] border border-ivory/30 px-3 py-1.5 text-[13px] text-ivory hover:bg-ivory/10">Sign out</button>
             </form>
           </div>
-          <div className="flex-1 lg:flex lg:justify-center">
+          <div className="lg:flex lg:flex-1 lg:justify-center">
             <AdminNav pending={configured ? await pendingCount() : 0} />
           </div>
         </div>

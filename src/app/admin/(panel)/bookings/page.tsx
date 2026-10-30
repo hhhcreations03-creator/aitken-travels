@@ -44,18 +44,52 @@ export default async function BookingsPage({ searchParams }: { searchParams: Rec
         ))}
       </nav>
 
-      <form className="mb-6 grid gap-3 rounded-[4px] border border-[color:var(--line)] bg-white p-4 sm:grid-cols-[2fr_1fr_1fr_1fr_auto] sm:items-end" role="search">
-        {filter.status && <input type="hidden" name="status" value={filter.status} />}
-        <div><label htmlFor="q" className={adminLabel}>Search</label><input id="q" name="q" defaultValue={filter.q} placeholder="Name, email, phone or reference" className={adminInput} /></div>
-        <div><label htmlFor="from" className={adminLabel}>Staying from</label><input id="from" name="from" type="date" defaultValue={filter.from} className={adminInput} /></div>
-        <div><label htmlFor="to" className={adminLabel}>Staying until</label><input id="to" name="to" type="date" defaultValue={filter.to} className={adminInput} /></div>
-        <div><label htmlFor="sort" className={adminLabel}>Sort by</label>
-          <select id="sort" name="sort" defaultValue={filter.sort} className={adminInput}><option value="created">Newest first</option><option value="arrival">Arrival date</option></select>
+      <details className="group mb-6 rounded-[4px] border border-[color:var(--line)] bg-white md:hidden" open={Boolean(filter.q || filter.from || filter.to)}>
+        <summary className="flex min-h-[44px] cursor-pointer items-center justify-between px-4 text-[14px] font-medium text-charcoal">
+          Search and filter
+          <span aria-hidden="true" className="text-charcoal-mute transition-transform group-open:rotate-180">⌄</span>
+        </summary>
+        <div className="border-t border-[color:var(--line-soft)] p-4">
+          <Filters filter={filter} idPrefix="m-" />
         </div>
-        <div className="flex gap-2"><button className={adminBtnPrimary}>Apply</button><Link href="/admin/bookings" className={adminBtnOutline}>Clear</Link></div>
-      </form>
+      </details>
+      <div className="mb-6 hidden rounded-[4px] border border-[color:var(--line)] bg-white p-4 md:block">
+        <Filters filter={filter} idPrefix="d-" />
+      </div>
 
-      <div className="overflow-x-auto rounded-[4px] border border-[color:var(--line)] bg-white">
+      {rows.length > 0 && (
+        <ul className="grid gap-3 md:hidden">
+          {rows.map((b) => (
+            <li key={b.id} className="rounded-[4px] border border-[color:var(--line)] bg-white p-4">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <Link href={`/admin/bookings/${b.id}`} className="block truncate text-[15px] font-medium text-charcoal underline-offset-2 hover:underline">{b.guest_name}</Link>
+                  <p className="text-[12.5px] text-charcoal-mute">{b.ref}, {b.source}</p>
+                </div>
+                <StatusBadge status={b.status} />
+              </div>
+              <p className="mt-3 text-[14px] text-charcoal">{getRoom(b.room_slug)?.shortName ?? b.room_slug}{b.rooms > 1 ? ` x${b.rooms}` : ""}</p>
+              <p className="text-[13.5px] text-charcoal-soft">
+                {shortDate(b.check_in)} to {shortDate(b.check_out)}, {nights(b.check_in, b.check_out)} nights, {b.adults}{b.children ? ` + ${b.children}` : ""} guests
+              </p>
+              <p className="mt-1 text-[12.5px] text-charcoal-mute">Received {dateTime(b.created_at)}{b.quoted_total != null ? `, ${money(b.quoted_total, b.currency)}` : ""}</p>
+              <div className="mt-3 flex gap-2">
+                {b.status === "pending" && (
+                  <form action={changeStatus} className="flex-1">
+                    <input type="hidden" name="id" value={b.id} />
+                    <input type="hidden" name="to" value="confirmed" />
+                    {canEmail && b.email && <input type="hidden" name="notify" value="on" />}
+                    <button className={`${adminBtnPrimary} w-full`} aria-label={`Confirm booking ${b.ref}${canEmail && b.email ? " and email the guest" : ""}`}>Confirm</button>
+                  </form>
+                )}
+                <Link href={`/admin/bookings/${b.id}`} className={`${adminBtnOutline} flex-1`} aria-label={`Open booking ${b.ref}`}>{b.status === "pending" ? "Review" : "Open"}</Link>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <div className={`relative overflow-x-auto rounded-[4px] border border-[color:var(--line)] bg-white ${rows.length ? "hidden md:block" : ""}`}>
         {rows.length ? (
           <table className="w-full min-w-[980px] text-left text-[13.5px]">
             <thead className="border-b border-[color:var(--line)] bg-[#FAF8F4] text-[12.5px] text-charcoal-soft">
@@ -111,5 +145,20 @@ export default async function BookingsPage({ searchParams }: { searchParams: Rec
         </span>
       </div>
     </div>
+  );
+}
+
+function Filters({ filter, idPrefix }: { idPrefix: string; filter: { status?: string; q?: string; from?: string; to?: string; sort: "arrival" | "created" } }) {
+  return (
+    <form className="grid gap-3 sm:grid-cols-[2fr_1fr_1fr_1fr_auto] sm:items-end" role="search">
+        {filter.status && <input type="hidden" name="status" value={filter.status} />}
+        <div><label htmlFor={`${idPrefix}q`} className={adminLabel}>Search</label><input id={`${idPrefix}q`} name="q" defaultValue={filter.q} placeholder="Name, email, phone or reference" className={adminInput} /></div>
+        <div><label htmlFor={`${idPrefix}from`} className={adminLabel}>Staying from</label><input id={`${idPrefix}from`} name="from" type="date" defaultValue={filter.from} className={adminInput} /></div>
+        <div><label htmlFor={`${idPrefix}to`} className={adminLabel}>Staying until</label><input id={`${idPrefix}to`} name="to" type="date" defaultValue={filter.to} className={adminInput} /></div>
+        <div><label htmlFor={`${idPrefix}sort`} className={adminLabel}>Sort by</label>
+          <select id={`${idPrefix}sort`} name="sort" defaultValue={filter.sort} className={adminInput}><option value="created">Newest first</option><option value="arrival">Arrival date</option></select>
+        </div>
+        <div className="flex gap-2"><button className={adminBtnPrimary}>Apply</button><Link href="/admin/bookings" className={adminBtnOutline}>Clear</Link></div>
+    </form>
   );
 }

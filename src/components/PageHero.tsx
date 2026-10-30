@@ -24,7 +24,7 @@ export function PageHero({ title, intro, image, kicker, children, tall = false, 
         sizes="100vw"
         className="object-cover animate-fade"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/85 via-forest-deep/25 to-forest-deep/10" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/45 to-forest-deep/10 sm:via-forest-deep/25" aria-hidden="true" />
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-forest-deep/55 to-transparent" aria-hidden="true" />
       <div className="wrap relative pb-14 pt-40 lg:pb-20">
         <div className="max-w-[56rem] animate-rise">

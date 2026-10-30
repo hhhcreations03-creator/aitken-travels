@@ -33,11 +33,11 @@ export default async function CalendarPage({ searchParams }: { searchParams: { s
       <p className="mb-4 text-[14px] text-charcoal-soft">
         {month(start)}{month(start) !== month(addDays(end, -1)) ? ` to ${month(addDays(end, -1))}` : ""}. Each cell shows rooms taken out of rooms available that night, including closed dates and imported calendars.
       </p>
-      <div className="overflow-x-auto rounded-[4px] border border-[color:var(--line)] bg-white">
+      <div className="relative overflow-x-auto rounded-[4px] border border-[color:var(--line)] bg-white">
         <table className="w-full min-w-[1100px] border-collapse text-[12.5px]">
           <thead>
             <tr className="bg-[#FAF8F4]">
-              <th scope="col" className="sticky left-0 z-10 min-w-[220px] bg-[#FAF8F4] px-3 py-2 text-left font-medium text-charcoal-soft">Room type</th>
+              <th scope="col" className="sticky left-0 z-10 min-w-[150px] sm:min-w-[220px] bg-[#FAF8F4] px-3 py-2 text-left font-medium text-charcoal-soft">Room type</th>
               {days.map((d) => (
                 <th key={d} scope="col" className={`px-1 py-2 text-center font-medium ${d === today ? "text-forest" : "text-charcoal-soft"}`}>
                   <span className="block whitespace-nowrap">{label(d)}</span>
