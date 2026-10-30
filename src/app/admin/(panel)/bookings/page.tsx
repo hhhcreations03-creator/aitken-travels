@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getRoom } from "@/lib/rooms";
 import { listBookings } from "@/lib/booking/bookings";
+import { emailConfigured } from "@/lib/booking/config";
+import { changeStatus } from "@/app/admin/actions";
 import { nights } from "@/lib/booking/dates";
 import { BOOKING_STATUSES, STATUS_LABELS } from "@/lib/booking/validation";
 import { Empty, LinkButton, PageTitle, StatusBadge, adminBtnOutline, adminBtnPrimary, adminInput, adminLabel, money, shortDate, dateTime } from "@/components/admin/ui";
@@ -23,6 +25,7 @@ export default async function BookingsPage({ searchParams }: { searchParams: Rec
     Object.entries({ ...filter, ...extra }).forEach(([k, v]) => v !== undefined && v !== "" && p.set(k, String(v)));
     return `?${p}`;
   };
+  const canEmail = emailConfigured();
   const tabs = [{ v: "", l: "All" }, { v: "active", l: "Active" }, ...BOOKING_STATUSES.map((s) => ({ v: s, l: STATUS_LABELS[s] }))];
 
   return (
@@ -54,7 +57,7 @@ export default async function BookingsPage({ searchParams }: { searchParams: Rec
 
       <div className="overflow-x-auto rounded-[4px] border border-[color:var(--line)] bg-white">
         {rows.length ? (
-          <table className="w-full min-w-[860px] text-left text-[13.5px]">
+          <table className="w-full min-w-[980px] text-left text-[13.5px]">
             <thead className="border-b border-[color:var(--line)] bg-[#FAF8F4] text-[12.5px] text-charcoal-soft">
               <tr>
                 <th scope="col" className="px-4 py-2.5 font-medium">Reference</th>
@@ -65,19 +68,33 @@ export default async function BookingsPage({ searchParams }: { searchParams: Rec
                 <th scope="col" className="px-4 py-2.5 font-medium">Total</th>
                 <th scope="col" className="px-4 py-2.5 font-medium">Status</th>
                 <th scope="col" className="px-4 py-2.5 font-medium">Received</th>
+                <th scope="col" className="px-4 py-2.5 font-medium"><span className="sr-only">Actions</span></th>
               </tr>
             </thead>
             <tbody>
               {rows.map((b) => (
                 <tr key={b.id} className="border-b border-[color:var(--line-soft)] last:border-0 hover:bg-ivory/60">
                   <td className="px-4 py-3"><Link href={`/admin/bookings/${b.id}`} className="font-medium text-forest underline-offset-2 hover:underline">{b.ref}</Link></td>
-                  <td className="px-4 py-3"><span className="text-charcoal">{b.guest_name}</span><span className="block text-[12.5px] text-charcoal-mute">{b.source}</span></td>
+                  <td className="px-4 py-3"><Link href={`/admin/bookings/${b.id}`} className="text-charcoal underline-offset-2 hover:underline">{b.guest_name}</Link><span className="block text-[12.5px] text-charcoal-mute">{b.source}</span></td>
                   <td className="px-4 py-3">{getRoom(b.room_slug)?.shortName ?? b.room_slug}{b.rooms > 1 ? ` x${b.rooms}` : ""}</td>
                   <td className="whitespace-nowrap px-4 py-3">{shortDate(b.check_in)} to {shortDate(b.check_out)}<span className="block text-[12.5px] text-charcoal-mute">{nights(b.check_in, b.check_out)} nights</span></td>
                   <td className="px-4 py-3 tabular-nums">{b.adults}{b.children ? ` + ${b.children}` : ""}</td>
                   <td className="whitespace-nowrap px-4 py-3 tabular-nums">{money(b.quoted_total, b.currency)}</td>
                   <td className="px-4 py-3"><StatusBadge status={b.status} /></td>
                   <td className="whitespace-nowrap px-4 py-3 text-charcoal-soft">{dateTime(b.created_at)}</td>
+                  <td className="whitespace-nowrap px-4 py-3">
+                    <span className="flex justify-end gap-2">
+                      {b.status === "pending" && (
+                        <form action={changeStatus}>
+                          <input type="hidden" name="id" value={b.id} />
+                          <input type="hidden" name="to" value="confirmed" />
+                          {canEmail && b.email && <input type="hidden" name="notify" value="on" />}
+                          <button className={adminBtnPrimary} aria-label={`Confirm booking ${b.ref}${canEmail && b.email ? " and email the guest" : ""}`}>Confirm</button>
+                        </form>
+                      )}
+                      <Link href={`/admin/bookings/${b.id}`} className={adminBtnOutline} aria-label={`Open booking ${b.ref}`}>{b.status === "pending" ? "Review" : "Open"}</Link>
+                    </span>
+                  </td>
                 </tr>
               ))}
             </tbody>
