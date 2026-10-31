@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { RoomCard } from "@/components/RoomCard";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ROOMS } from "@/lib/rooms";
 import { SITE } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
@@ -105,7 +104,6 @@ export default function RoomsPage() {
           </div>
         </Section>
       </main>
-      <WhatsAppFloat />
     </>
   );
 }

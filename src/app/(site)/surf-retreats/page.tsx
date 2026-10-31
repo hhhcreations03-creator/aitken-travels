@@ -6,7 +6,6 @@ import { Section, Heading } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
 import { RoomCard } from "@/components/RoomCard";
 import { SurfRetreatForm } from "@/components/forms/SurfRetreatForm";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ROOMS } from "@/lib/rooms";
 import { pageMeta } from "@/lib/seo";
 
@@ -101,7 +100,6 @@ export default function SurfRetreatsPage() {
           </div>
         </Section>
       </main>
-      <WhatsAppFloat />
     </>
   );
 }

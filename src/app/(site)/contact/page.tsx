@@ -3,7 +3,6 @@ import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { MAPS_LINK, SITE, whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
@@ -63,7 +62,6 @@ export default function ContactPage() {
           </div>
         </Section>
       </main>
-      <WhatsAppFloat />
     </>
   );
 }

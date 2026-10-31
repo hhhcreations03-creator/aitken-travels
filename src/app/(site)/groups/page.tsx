@@ -6,7 +6,6 @@ import { Section } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
 import { GroupForm } from "@/components/forms/GroupForm";
 import { GROUP_TYPES } from "@/lib/groups";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
@@ -121,7 +120,6 @@ export default function GroupsPage() {
           <p className="body max-w-[60ch]">Looking for a single room instead? <Link href="/book" className="textlink">Check availability and book</Link>.</p>
         </Section>
       </main>
-      <WhatsAppFloat />
     </>
   );
 }

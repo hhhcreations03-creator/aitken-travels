@@ -6,7 +6,6 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { GalleryGrid } from "@/components/GalleryGrid";
 import { RoomCard, roomEnquiryMessage } from "@/components/RoomCard";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ROOMS, getRoom } from "@/lib/rooms";
 import { SITE, whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
@@ -114,7 +113,6 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
         )}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </main>
-      <WhatsAppFloat />
     </>
   );
 }

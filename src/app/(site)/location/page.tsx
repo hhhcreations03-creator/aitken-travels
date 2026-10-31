@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { MAPS_EMBED, MAPS_LINK, SITE, whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
@@ -91,7 +90,6 @@ export default function LocationPage() {
           </div>
         </Section>
       </main>
-      <WhatsAppFloat />
     </>
   );
 }

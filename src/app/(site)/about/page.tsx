@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -96,7 +95,6 @@ export default function AboutPage() {
           </div>
         </Section>
       </main>
-      <WhatsAppFloat />
     </>
   );
 }

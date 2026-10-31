@@ -7,7 +7,6 @@ import { Section, Heading } from "@/components/Section";
 import { RoomCard } from "@/components/RoomCard";
 import { ImageBlock } from "@/components/ImageBlock";
 import { GalleryGrid } from "@/components/GalleryGrid";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { GuestRatings } from "@/components/GuestRatings";
 import { ROOMS } from "@/lib/rooms";
 import { GALLERY } from "@/lib/gallery";
@@ -205,7 +204,6 @@ export default function HomePage() {
           </div>
         </Section>
       </main>
-      <WhatsAppFloat />
     </>
   );
 }

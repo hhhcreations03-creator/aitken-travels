@@ -3,7 +3,6 @@ import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { GalleryTabs } from "@/components/GalleryTabs";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { GALLERY } from "@/lib/gallery";
 import { pageMeta } from "@/lib/seo";
 
@@ -30,7 +29,6 @@ export default function GalleryPage() {
           <GalleryTabs categories={GALLERY} />
         </Section>
       </main>
-      <WhatsAppFloat />
     </>
   );
 }
