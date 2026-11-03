@@ -10,15 +10,30 @@ import { GalleryGrid } from "@/components/GalleryGrid";
 import { GuestRatings } from "@/components/GuestRatings";
 import { ROOMS } from "@/lib/rooms";
 import { GALLERY } from "@/lib/gallery";
-import { MAPS_LINK, whatsappUrl } from "@/lib/site";
+import { MAPS_LINK, SITE, whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "The Lavish Haven | Boutique Hotel in Ahangama, Sri Lanka",
   socialTitle: "The Lavish Haven, Ahangama",
-  description: "A boutique hotel in Ahangama, a short walk from Kabalana Beach. Calm king rooms and family suites around an outdoor pool, with yoga and a restaurant.",
+  description: "Boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach. King rooms and family suites around an outdoor pool, with yoga and a restaurant.",
   path: "/",
 });
+
+const FAQ: Array<[string, string]> = [
+  ["Where is The Lavish Haven?", `At ${SITE.address.street}, ${SITE.address.locality} ${SITE.address.postalCode}, on Sri Lanka's south coast between Galle and Weligama.`],
+  ["How far is the hotel from the beach?", "Kabalana Beach, Ahangama's best-known surf break, is about two minutes' walk from the hotel."],
+  ["What kinds of rooms are there?", "Twelve room types: king rooms with a patio or balcony, family suites, and a two-bedroom suite. Every room has air conditioning, Wi-Fi and a private bathroom."],
+  ["Is there a pool and a restaurant?", "Yes. The rooms gather around an outdoor pool, and the open-air restaurant serves breakfast and Sri Lankan, Indian, Chinese, British and Mediterranean dishes. Yoga classes run on the terrace."],
+  ["What time is check-in, and is there parking?", `Check-in is from ${SITE.checkIn}. Free private parking is available on site.`],
+  ["How do I book?", "Choose your dates on our booking page and send a request. Our team confirms availability and your rate personally. No payment is taken online."],
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+};
 
 const FEATURED = ["superior-king-balcony-garden-pool-view", "family-suite-patio", "two-bedroom-suite"];
 
@@ -39,6 +54,8 @@ export default function HomePage() {
       <main id="main">
         <PageHero
           tall
+          kicker="Boutique hotel in Ahangama, Sri Lanka"
+          kickerInTitle
           title="Where the palms meet the southern sea"
           intro="The Lavish Haven is a boutique stay in Ahangama, where quiet comfort, warm hospitality and the slow rhythm of Sri Lanka's south coast meet."
           image={{ src: "/images/property/pool-dusk-wide.webp", alt: "The Lavish Haven at dusk: the pool lit from below, balconies glowing under the gabled roofs" }}
@@ -192,8 +209,27 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* Final CTA */}
+        {/* Questions */}
         <Section>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <h2 className="display-lg text-forest">Staying in Ahangama</h2>
+              <p className="body mt-5">A few things guests often ask before they arrive.</p>
+            </div>
+            <dl className="lg:col-span-7 lg:col-start-6">
+              {FAQ.map(([q, a]) => (
+                <div key={q} className="border-b border-[color:var(--line-soft)] py-5 first:pt-0">
+                  <dt className="font-display text-[1.25rem] text-forest">{q}</dt>
+                  <dd className="body mt-2">{a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+        </Section>
+
+        {/* Final CTA */}
+        <Section tone="deep">
           <div className="mx-auto max-w-[48rem] text-center">
             <h2 className="display-lg text-forest">Your stay, shaped around you</h2>
             <p className="lede mt-5">Tell us your dates, who&rsquo;s coming and what you hope to find here. Our team will confirm availability and arrangements with you personally.</p>

@@ -50,7 +50,16 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
     image: room.images.map((i) => `${SITE.url}${i.src}`),
     floorSize: { "@type": "QuantitativeValue", value: room.sizeSqm, unitCode: "MTK" },
     bed: { "@type": "BedDetails", typeOfBed: room.beds },
-    containedInPlace: { "@type": "Hotel", name: SITE.name, url: SITE.url },
+    containedInPlace: { "@type": "Hotel", "@id": `${SITE.url}/#hotel`, name: SITE.name, url: `${SITE.url}/` },
+  };
+  const breadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
+      { "@type": "ListItem", position: 2, name: "Rooms & Suites", item: `${SITE.url}/rooms` },
+      { "@type": "ListItem", position: 3, name: room.name, item: `${SITE.url}/rooms/${room.slug}` },
+    ],
   };
 
   return (
@@ -111,7 +120,7 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
             <Link href="/rooms" className="btn-outline mt-12">All rooms and suites</Link>
           </Section>
         )}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([schema, breadcrumbs]) }} />
       </main>
     </>
   );

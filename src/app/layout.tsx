@@ -32,7 +32,10 @@ export const metadata: Metadata = {
     "A boutique hotel in Ahangama, two minutes' walk from Kabalana Beach. King rooms and family suites around an outdoor pool, with yoga and a restaurant.",
   keywords: [
     "The Lavish Haven",
+    "hotels in Ahangama",
     "Ahangama hotel",
+    "where to stay in Ahangama",
+    "hotel with pool Ahangama",
     "boutique hotel Ahangama",
     "Kabalana Beach hotel",
     "hotel near Kabalana",
@@ -70,6 +73,10 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.webmanifest",
   appleWebApp: { title: SITE.name, statusBarStyle: "default" },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined,
+  },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
 };
 
@@ -82,6 +89,7 @@ export const viewport: Viewport = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE.url}/#website`,
   name: SITE.name,
   alternateName: ["Lavish Haven", "The Lavish Haven Ahangama"],
   url: `${SITE.url}/`,
@@ -90,8 +98,11 @@ const websiteSchema = {
 const hotelSchema = {
   "@context": "https://schema.org",
   "@type": "Hotel",
+  "@id": `${SITE.url}/#hotel`,
   name: SITE.name,
-  url: SITE.url,
+  alternateName: "Lavish Haven Ahangama",
+  url: `${SITE.url}/`,
+  sameAs: [SITE.bookingUrl],
   description:
     "Boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach, with an outdoor pool, yoga classes and a restaurant.",
   image: [`${SITE.url}/og.jpg?v=2`, `${SITE.url}/images/property/pool-dusk-wide.webp`],
@@ -103,10 +114,12 @@ const hotelSchema = {
     "@type": "PostalAddress",
     streetAddress: SITE.address.street,
     addressLocality: SITE.address.locality,
+    addressRegion: "Southern Province",
     postalCode: SITE.address.postalCode,
     addressCountry: SITE.address.countryCode,
   },
   checkinTime: "14:00",
+  containedInPlace: { "@type": "Place", name: "Ahangama, Sri Lanka" },
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "Outdoor swimming pool", value: true },
     { "@type": "LocationFeatureSpecification", name: "Restaurant", value: true },
