@@ -12,7 +12,8 @@ function Stars({ score, outOf }: { score: number; outOf: number }) {
 
 function RatingEntry({ r }: { r: Rating }) {
   const hasScore = r.score !== null;
-  const scoreText = hasScore ? r.score!.toFixed(1) : null;
+  // A perfect 10 reads as "10", as Booking.com shows it; Google keeps one decimal ("5.0").
+  const scoreText = hasScore ? (r.score === 10 ? "10" : r.score!.toFixed(1)) : null;
   const label = hasScore
     ? `${r.source} guest rating: ${scoreText} out of ${r.outOf}${r.reviewCount ? `, from ${r.reviewCount} reviews` : ""}.`
     : `Guest reviews on ${r.source}.`;

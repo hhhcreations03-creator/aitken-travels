@@ -19,20 +19,20 @@ export interface Rating {
 export const RATINGS: Rating[] = [
   {
     source: "Booking.com",
-    score: 9.3,
+    score: 10,
     outOf: 10,
     reviewCount: 34,
     url: "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html#tab-reviews",
     linkLabel: "Read reviews on Booking.com",
-    asOf: "October 2026",
+    asOf: "November 2026",
   },
   {
     source: "Google",
-    score: 4.8,
+    score: 5,
     outOf: 5,
-    reviewCount: 52,
+    reviewCount: 22,
     url: "https://www.google.com/maps/search/?api=1&query=The+Lavish+Haven+166%2F2+Welhengoda+Road+Ahangama",
     linkLabel: "Read reviews on Google",
-    asOf: "October 2026",
+    asOf: "November 2026",
   },
 ];
