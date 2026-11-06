@@ -42,7 +42,7 @@ const FEATURED = ["superior-king-balcony-garden-pool-view", "family-suite-patio"
 export default function HomePage() {
   const featured = FEATURED.map((s) => ROOMS.find((r) => r.slug === s)!).filter(Boolean);
   const preview = [
-    GALLERY[0].images[1],
+    GALLERY[0].images[3],
     GALLERY[1].images[0],
     GALLERY[2].images[1],
     GALLERY[4].images[0],
