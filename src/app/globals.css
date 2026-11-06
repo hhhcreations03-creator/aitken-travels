@@ -14,7 +14,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--ivory); }
 
 body {
   color: var(--charcoal);
@@ -70,4 +70,23 @@ body {
   .field-hint { @apply mt-1.5 text-[13px] text-charcoal-mute; }
 
   .img-frame { @apply relative overflow-hidden bg-sand; }
+}
+
+/* Phones and tablets: form text at 16px or more stops iOS Safari zooming in when a field is tapped. */
+@media (pointer: coarse), (max-width: 1023px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]),
+  select:not([data-keep-size]),
+  textarea:not([data-keep-size]) { font-size: 16px; }
+}
+
+/* iOS Safari: empty date fields otherwise collapse and centre their text. */
+@supports (-webkit-touch-callout: none) {
+  input[type="date"] { -webkit-appearance: none; appearance: none; display: block; min-height: 44px; }
+  input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+}
+
+/* Phones turned sideways: keep the big headings from filling the whole screen. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .display-xl { font-size: clamp(2.25rem, 5vw, 3.25rem); }
+  .display-lg { font-size: clamp(1.9rem, 4vw, 2.6rem); }
 }
