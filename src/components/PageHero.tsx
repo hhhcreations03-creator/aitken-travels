@@ -32,7 +32,7 @@ export function PageHero({ title, intro, image, kicker, kickerInTitle = false, c
         <div className="max-w-[56rem] animate-rise">
           {kicker && !kickerInTitle && <p className="mb-4 font-display text-[1.1rem] italic text-sand">{kicker}</p>}
           <h1 className={tall ? "display-xl" : "display-lg"}>
-            {kicker && kickerInTitle && <span className="mb-4 block font-display text-[1.1rem] font-normal italic leading-normal tracking-normal text-sand">{kicker}</span>}
+            {kicker && kickerInTitle && <span className="mb-5 block font-display text-[clamp(1.2rem,1.9vw,1.6rem)] font-normal italic leading-normal tracking-normal text-sand">{kicker}</span>}
             {title}
           </h1>
           {intro && <p className="lede mt-6 max-w-[42ch] !text-ivory/85">{intro}</p>}

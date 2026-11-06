@@ -9,7 +9,7 @@ import { SITE } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Rooms & Suites in Ahangama | The Lavish Haven",
+  title: "Luxury Rooms & Suites in Ahangama | The Lavish Haven",
   socialTitle: "Rooms & Suites at The Lavish Haven",
   description: "23 luxury rooms and suites in twelve styles near Kabalana Beach, Ahangama, from king rooms with patios to family suites, each with its own outdoor space. Book direct.",
   path: "/rooms",

@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   applicationName: SITE.name,
   title: {
-    default: "The Lavish Haven | Boutique Hotel in Ahangama, Sri Lanka",
+    default: "The Lavish Haven | Luxury Boutique Hotel in Ahangama, Sri Lanka",
     template: "%s | The Lavish Haven",
   },
   description:
-    "A luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach. 23 rooms and suites appointed to luxury standards, around a palm-shaded pool, with yoga and a lantern-lit restaurant.",
+    "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and a restaurant.",
   keywords: [
     "The Lavish Haven",
     "hotels in Ahangama",
@@ -38,6 +38,10 @@ export const metadata: Metadata = {
     "hotel with pool Ahangama",
     "boutique hotel Ahangama",
     "luxury boutique hotel Ahangama",
+    "luxury boutique hotel Sri Lanka",
+    "luxury hotel Ahangama",
+    "boutique hotel Sri Lanka south coast",
+    "luxury hotel near Galle",
     "Kabalana Beach hotel",
     "hotel near Kabalana",
     "surf stay Ahangama",
@@ -55,14 +59,14 @@ export const metadata: Metadata = {
     url: "/",
     title: "The Lavish Haven, Ahangama",
     description:
-      "A luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach. 23 rooms and suites appointed to luxury standards, around a palm-shaded pool, with yoga and a lantern-lit restaurant.",
+      "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and a restaurant.",
     images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "The Lavish Haven pool and courtyard at dusk, Ahangama", type: "image/jpeg" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Lavish Haven, Ahangama",
     description:
-      "A luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach. 23 rooms and suites appointed to luxury standards, around a palm-shaded pool, with yoga and a lantern-lit restaurant.",
+      "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and a restaurant.",
     images: [{ url: DEFAULT_OG_IMAGE, alt: "The Lavish Haven pool and courtyard at dusk, Ahangama" }],
   },
   icons: {
@@ -101,7 +105,8 @@ const hotelSchema = {
   "@type": "Hotel",
   "@id": `${SITE.url}/#hotel`,
   name: SITE.name,
-  alternateName: "Lavish Haven Ahangama",
+  alternateName: ["Lavish Haven Ahangama", "The Lavish Haven Luxury Boutique Hotel"],
+  slogan: "A luxury boutique hotel in Ahangama, Sri Lanka",
   url: `${SITE.url}/`,
   sameAs: [SITE.bookingUrl],
   description:

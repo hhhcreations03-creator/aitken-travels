@@ -17,7 +17,6 @@ export const GALLERY: GalleryCategory[] = [
     label: "Property",
     images: [
       { src: "/images/property/pool-dusk-wide.webp", alt: "The Lavish Haven at dusk, pool lit and balconies glowing" },
-      { src: "/images/property/aerial-pool-building.webp", alt: "Aerial view of the hotel's green roofs and pool among palms" },
       { src: "/images/property/lobby-staircase.webp", alt: "Lobby with timber staircase and rattan seating" },
       { src: "/images/property/aerial-green-roofs.webp", alt: "Aerial view over palm trees to the hotel's green roofs" },
       { src: "/images/property/pool-evening.webp", alt: "Pool and courtyard in the blue hour" },

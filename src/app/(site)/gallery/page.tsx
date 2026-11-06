@@ -7,7 +7,7 @@ import { GALLERY } from "@/lib/gallery";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Photo Gallery | The Lavish Haven, Ahangama",
+  title: "Gallery | The Lavish Haven, Luxury Hotel in Ahangama",
   socialTitle: "Gallery of The Lavish Haven",
   description: "The Lavish Haven in photographs: the pool and gardens, rooms and suites, the restaurant, yoga on the terrace and the surf coast of Ahangama.",
   path: "/gallery",

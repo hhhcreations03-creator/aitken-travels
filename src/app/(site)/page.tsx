@@ -17,11 +17,12 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "The Lavish Haven | Luxury Boutique Hotel in Ahangama, Sri Lanka",
   socialTitle: "The Lavish Haven, Ahangama",
-  description: "A luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach. 23 rooms and suites appointed to luxury standards, around a palm-shaded pool, with yoga, a lantern-lit restaurant and Ahangama's best cafés minutes away.",
+  description: "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and a restaurant.",
   path: "/",
 });
 
 const FAQ: Array<[string, string]> = [
+  ["What makes The Lavish Haven a luxury boutique hotel?", "With 23 rooms and suites around a single pool, the house stays small and personal. Rooms are finished with polished concrete, teak doors, crisp white linen and a walk-in shower, and every one opens onto its own patio or balcony among the palms."],
   ["Are there good restaurants nearby?", "Yes. Cactus, Thileni's, Manori's Kitchen, Vertigo Pizzeria Italiana, The Protein House and Kai Ahangama are all within about five minutes by tuk-tuk, and our team will happily arrange the ride."],
   ["Where is The Lavish Haven?", `At ${SITE.address.street}, ${SITE.address.locality} ${SITE.address.postalCode}, on Sri Lanka's south coast between Galle and Weligama.`],
   ["How far is the hotel from the beach?", "Kabalana Beach, Ahangama's best-known surf break, is about two minutes' walk from the hotel."],
@@ -56,7 +57,7 @@ export default function HomePage() {
       <main id="main">
         <PageHero
           tall
-          kicker="Luxury boutique hotel in Ahangama, Sri Lanka"
+          kicker={"Luxury boutique hotel in Ahangama, Sri\u00a0Lanka"}
           kickerInTitle
           title="A day here begins with the sound of the sea"
           intro="Turn off the coast road, follow a quiet lane through the coconut palms, and the world slows to the pace of the tide. This is The Lavish Haven: 23 rooms and suites, one pool, and the whole of Sri Lanka's south coast at your door."

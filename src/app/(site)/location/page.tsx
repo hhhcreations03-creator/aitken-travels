@@ -8,7 +8,7 @@ import { MAPS_EMBED, MAPS_LINK, SITE, whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Location & Directions | The Lavish Haven, Ahangama",
+  title: "Location | The Lavish Haven, Luxury Hotel in Ahangama",
   socialTitle: "Finding The Lavish Haven, Ahangama",
   description: "Find us at 166/2 Welhengoda Road, Ahangama, between Galle and Weligama, two minutes' walk from Kabalana Beach. Airport transfers on request.",
   path: "/location",

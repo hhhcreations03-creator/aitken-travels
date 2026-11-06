@@ -107,7 +107,7 @@ export default function GroupsPage() {
               <p className="lede mt-5">Tell us about your group and our team will come back to you with what the house can offer for your dates.</p>
               <p className="body mt-4">Prefer to talk it through? <a href={groupWhatsApp} target="_blank" rel="noopener noreferrer" className="textlink">WhatsApp the team</a> with your dates and numbers.</p>
               <div className="mt-8 hidden lg:block">
-                <ImageBlock src="/images/property/aerial-pool-building.webp" alt="Aerial view of the hotel's green roofs and pool" aspect="aspect-[4/5]" sizes="30vw" />
+                <ImageBlock src="/images/property/aerial-green-roofs.webp" alt="Aerial view over the palms to the hotel's green roofs and pool" aspect="aspect-[4/5]" sizes="30vw" />
               </div>
             </div>
             <div className="lg:col-span-7 lg:col-start-6">

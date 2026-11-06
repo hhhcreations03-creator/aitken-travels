@@ -7,7 +7,7 @@ import { MAPS_LINK, SITE, whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Contact & Reservations | The Lavish Haven, Ahangama",
+  title: "Contact | The Lavish Haven, Luxury Hotel in Ahangama",
   socialTitle: "Contact The Lavish Haven",
   description: "Write to The Lavish Haven on WhatsApp (+94 76 483 2968) or at hello@thelavishhaven.com about stays, groups and dining. We reply personally.",
   path: "/contact",
