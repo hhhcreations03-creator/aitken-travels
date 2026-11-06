@@ -11,7 +11,7 @@ export function Footer() {
           <div>
             <Logo light stacked />
             <p className="mt-6 max-w-[34ch] text-[15px] leading-relaxed text-sand/85">
-              A boutique hotel among the palms of Welhengoda Road, a short walk from the waves of Kabalana Beach on Sri Lanka&rsquo;s southern coast.
+              A small luxury hotel among the palms of Welhengoda Road, Ahangama. Two minutes from the waves, a world away from everything else.
             </p>
             <Link href="/book" className="btn-ivory mt-8">Book Your Stay</Link>
           </div>

@@ -11,7 +11,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Rooms & Suites in Ahangama | The Lavish Haven",
   socialTitle: "Rooms & Suites at The Lavish Haven",
-  description: "Twelve rooms and suites near Kabalana Beach in Ahangama, from king rooms with patios to family suites, each with its own outdoor space. Book direct.",
+  description: "23 luxury rooms and suites in twelve styles near Kabalana Beach, Ahangama, from king rooms with patios to family suites, each with its own outdoor space. Book direct.",
   path: "/rooms",
 });
 
@@ -26,7 +26,7 @@ export default function RoomsPage() {
         <PageHero
           kicker="Rooms & Suites"
           title="Twelve ways to stay"
-          intro="Each room comes with air conditioning, a private bathroom with a walk-in shower and a patio or balcony of its own. Choose by floor, by view, or by the people you are bringing with you."
+          intro="A patio a few steps from the pool, or a balcony up among the palms. A king bed for two, or a suite for the whole family. Twenty-three rooms and suites in twelve styles, each finished to luxury standards with its own outdoor space, a walk-in shower and cool, quiet air. Choose the one that fits the story of your trip."
           image={{ src: "/images/rooms/superior-king/balcony-wide.webp", alt: "A covered first-floor balcony with timber chairs looking over the garden and pool" }}
         >
           <Link href="/book" className="btn-ivory">Check availability</Link>
@@ -60,7 +60,7 @@ export default function RoomsPage() {
         <Section>
           <div className="rule pt-10">
             <h2 className="display-md text-forest">Room register</h2>
-            <p className="body mt-3 max-w-[60ch]">All twelve at a glance, to help you find the right fit. Sizes and bed configurations are as published on the hotel&rsquo;s listing.</p>
+            <p className="body mt-3 max-w-[60ch]">All twelve room types at a glance, to help you find the right fit. Sizes and bed configurations are as published on the hotel&rsquo;s listing.</p>
             <ul className="mt-8 grid gap-4 md:hidden">
               {ROOMS.map((r) => (
                 <li key={r.slug} className="border-b border-[color:var(--line-soft)] pb-4">

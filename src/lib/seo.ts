@@ -20,7 +20,7 @@ interface PageMetaInput {
 export const DEFAULT_OG_IMAGE = "/og.jpg?v=2";
 
 export function pageMeta({ title, description, path, image = DEFAULT_OG_IMAGE, imageAlt, socialTitle, noindex }: PageMetaInput): Metadata {
-  const alt = imageAlt ?? `${SITE.name}, boutique hotel in Ahangama, Sri Lanka`;
+  const alt = imageAlt ?? `${SITE.name}, luxury boutique hotel in Ahangama, Sri Lanka`;
   const ogTitle = socialTitle ?? title;
   return {
     title: { absolute: title },

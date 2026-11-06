@@ -38,7 +38,7 @@ export default function GroupsPage() {
               <div className="max-w-[40rem] animate-rise lg:col-span-8">
                 <p className="font-display text-[1.1rem] italic text-sand">Groups & Events</p>
                 <h1 className="display-xl mt-3">Take the whole house</h1>
-                <p className="lede mt-6 !text-ivory/85 max-w-[40ch]">Surf crews, yoga retreats, families and friends travelling as one. The Lavish Haven is made for groups who want to share the same roof, the same pool and the same long evenings.</p>
+                <p className="lede mt-6 !text-ivory/85 max-w-[40ch]">Picture it: your people on every balcony, one pool in the middle, and long dinners under the lanterns that nobody wants to end. For a few days, the Haven can be your own private house by the sea.</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a href="#group-enquiry" className="btn-ivory">Send a group enquiry</a>
                   <a href={groupWhatsApp} target="_blank" rel="noopener noreferrer" className="btn-outline-light">WhatsApp the team</a>

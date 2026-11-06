@@ -7,9 +7,9 @@ import { ImageBlock } from "@/components/ImageBlock";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "About Us | The Lavish Haven, Boutique Hotel in Ahangama",
-  socialTitle: "About The Lavish Haven",
-  description: "A boutique hotel in Ahangama, Sri Lanka: rooms and suites around a pool among coconut palms, a short walk from the surf at Kabalana Beach.",
+  title: "Our Story | The Lavish Haven, Luxury Boutique Hotel in Ahangama",
+  socialTitle: "The story of The Lavish Haven",
+  description: "The story of The Lavish Haven, a luxury boutique hotel in Ahangama, Sri Lanka: a private house of 23 rooms and suites around a palm-shaded pool, two minutes from the surf at Kabalana Beach.",
   path: "/about",
 });
 
@@ -21,9 +21,9 @@ export const metadata: Metadata = pageMeta({
 const STORY = {
   heading: "A house that gathers around a pool, in a village that gathers around a wave",
   paragraphs: [
-    "The Lavish Haven stands on Welhengoda Road in Ahangama, a short lane back from the coast road on Sri Lanka's southern shore, where the noise of traffic gives way to palms and birdsong. The house rises on two floors around a long outdoor pool: timber balconies and railings above, stone-paved patios and planting below, and a restaurant that opens onto the courtyard, so the water is never far from view.",
-    "Inside, the rooms speak a quiet language of polished concrete, teak doors, high gabled ceilings and crisp white linen. Each one opens onto its own patio or balcony, and the suites add a second bed, a second room or a kitchenette. The lobby, with its timber staircase and a tree growing up through the floor, is where the day tends to settle, and where guests find themselves drifting as the light softens.",
-    "Ahangama has become one of the south coast's best-loved surf villages, and Kabalana Beach, its most popular break, is a few minutes' walk from our door. Around it, the village hums with cafés, surf shops and small restaurants, and Galle Fort and Weligama are close enough for an unhurried day out.",
+    "Every great stay begins with a turn off the main road. Ours is onto Welhengoda Road in Ahangama, a quiet lane on Sri Lanka's southern shore where the noise of the coast road fades into palms and birdsong. At the end of it, behind a gate, a house rises on two floors around a long outdoor pool. Timber balconies above, stone patios and planting below, and a restaurant open to the courtyard, so the water is never out of sight.",
+    "We wanted it to feel less like a hotel and more like a beautiful private house you have been lent for a while. So our 23 rooms and suites speak quietly, finished to luxury standards: polished concrete, teak doors, high gabled ceilings, crisp white linen and walk-in showers. Each one opens onto its own patio or balcony. In the lobby, a tree grows straight up through the floor beside the timber staircase, and that is where the day tends to settle as the light softens and guests drift in from the pool.",
+    "Outside the gate is Ahangama, a fishing village that became one of the south coast's best-loved surf towns without losing its easy pace. Kabalana Beach, its most famous break, is two minutes from our door. Cafés, surf shops and small kitchens line the road, and Galle Fort and Weligama are close enough for an unhurried day out. Then, when you have had enough of the world, the gate closes behind you again.",
   ],
 };
 
@@ -33,9 +33,9 @@ export default function AboutPage() {
       <Header overlay />
       <main id="main">
         <PageHero
-          kicker="About Us"
+          kicker="Our Story"
           title="The Lavish Haven"
-          intro="A boutique hotel in Ahangama, held in the shade of coconut palms, a short walk from the waves of Kabalana Beach."
+          intro="23 rooms and suites, one pool and a lane of coconut palms in Ahangama. A small luxury hotel built for one simple idea: that the best holidays feel like coming home to somewhere better."
           image={{ src: "/images/property/aerial-green-roofs.webp", alt: "Aerial view over coconut palms to the hotel's green roofs and pool" }}
         />
 
@@ -63,7 +63,8 @@ export default function AboutPage() {
         <Section>
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <h2 className="display-lg text-forest">How we host</h2>
+              <h2 className="display-lg text-forest">How we take care of you</h2>
+              <p className="body mt-5">Luxury, to us, is never having to ask twice. These are the small things we have ready before you arrive.</p>
             </div>
             <dl className="lg:col-span-6 lg:col-start-7 grid gap-6 sm:grid-cols-2">
               {[
@@ -86,7 +87,7 @@ export default function AboutPage() {
         <Section tone="forest">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-8">
-              <h2 className="display-lg">Come and find your place by the pool</h2>
+              <h2 className="display-lg">There is a lounger by the pool with your name on it</h2>
               <p className="lede mt-4 !text-sand">Tell us your dates and who&rsquo;s travelling with you. Our team will reply personally with availability and every arrangement for your stay.</p>
             </div>
             <div className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">

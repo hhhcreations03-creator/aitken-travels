@@ -21,7 +21,7 @@ export default function ContactPage() {
         <PageHero
           kicker="Contact"
           title="Write to us"
-          intro="A stay, a gathering, a table by the pool or simply a question: write to us, and our team will reply to you personally."
+          intro="A stay, a celebration, a table by the pool or simply a question. Write to us, and a real person on our team will reply to you personally."
           image={{ src: "/images/property/lobby-wide.webp", alt: "The lobby with marble floor, timber balustrades and rattan seating" }}
         />
 

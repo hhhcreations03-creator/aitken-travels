@@ -6,6 +6,7 @@ import { Section } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
 import { whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
+import { NEARBY } from "@/lib/nearby";
 
 export const metadata: Metadata = pageMeta({
   title: "Restaurant & Breakfast in Ahangama | The Lavish Haven",
@@ -23,7 +24,7 @@ export default function DiningPage() {
         <PageHero
           kicker="Dining"
           title="Breakfast by the pool, dinner under the lanterns"
-          intro="Our open-sided restaurant looks out over the pool from the ground floor. Timber tables, woven lanterns and a bar at the back, where the evening air drifts in from the garden."
+          intro="It starts with coffee and fruit in the morning light, and ends with the lanterns glowing above timber tables while the garden breathes in the evening air. In between, the restaurant is wherever you want it to be: the courtyard, the lounge, or your own balcony."
           image={{ src: "/images/dining/restaurant-lanterns.webp", alt: "The restaurant at night, lit by woven lanterns above timber tables" }}
         >
           <a href={diningEnquiry} target="_blank" rel="noopener noreferrer" className="btn-ivory">Enquire about dining</a>
@@ -35,7 +36,7 @@ export default function DiningPage() {
               <h2 className="display-lg text-forest">The restaurant</h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
-              <p className="lede">Our kitchen cooks across many traditions. Sri Lankan and Indian dishes sit beside Chinese, British and Mediterranean plates, so everyone at the table can follow their own appetite and still share the meal.</p>
+              <p className="lede">Our kitchen tells the island&rsquo;s story, and a few others besides. Sri Lankan and Indian curries share the table with Chinese, British and Mediterranean plates, so everyone can follow their own appetite and still pass the dishes around.</p>
               <p className="body mt-5">Mornings begin with breakfast: continental, full English and vegetarian options, with fresh fruit. Kids&rsquo; meals are available, packed lunches can be arranged for early surf starts or days out, and room service is offered if you&rsquo;d rather linger on your balcony. There&rsquo;s also a coffee house, and a bar and lounge for when the day softens into evening.</p>
               <p className="body mt-5">Share any dietary requirements when you enquire and our team will confirm what the kitchen can prepare for you.</p>
             </div>
@@ -73,6 +74,28 @@ export default function DiningPage() {
             </dl>
           </div>
           <p className="small mt-10 max-w-[60ch] text-charcoal-mute">Menus, prices and serving hours are confirmed by the hotel team at the time of your enquiry.</p>
+        </Section>
+
+        <Section tone="deep">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <p className="font-display text-[1.1rem] italic text-olive-deep">Dining out in Ahangama</p>
+              <h2 className="display-lg mt-3 text-forest">Five minutes by tuk-tuk, a whole village of flavour</h2>
+              <p className="lede mt-5">Our kitchen will always feed you well. But part of the joy of Ahangama is wandering out for the evening, and the village&rsquo;s most loved places are all within about five minutes of our gate.</p>
+              <p className="body mt-5">Just tell our team where you&rsquo;d like to go, and your tuk-tuk will be waiting.</p>
+            </div>
+            <dl className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+              {NEARBY.map((p) => (
+                <div key={p.name} className="rule-soft pt-4">
+                  <dt>
+                    <span className="font-display text-[1.35rem] text-forest">{p.name}</span>
+                    <span className="mt-1 block text-[13px] uppercase tracking-[0.08em] text-charcoal-soft">{p.kind}</span>
+                  </dt>
+                  <dd className="body mt-3">{p.story}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </Section>
 
         <Section tone="forest">

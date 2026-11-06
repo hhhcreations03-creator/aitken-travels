@@ -61,7 +61,7 @@ export default function WellnessPage() {
         <PageHero
           kicker="Wellness & Experiences"
           title="Slow mornings, golden afternoons"
-          intro="A pool at the heart of the house, yoga on the terrace and a wellness area for treatments on request. Here, time keeps no schedule but your own."
+          intro="Unroll a mat among the palm fronds. Swim a slow length before anyone else is awake. Let the afternoon go by on a lounger with nothing to do. At the Haven, the only schedule is the one you keep."
           image={{ src: "/images/wellness/yoga-balcony-reach.webp", alt: "A yoga pose on a first-floor balcony, palm fronds behind" }}
         >
           <a href={whatsappUrl("Hello The Lavish Haven, I'd like to ask about wellness and experiences during my stay.")} target="_blank" rel="noopener noreferrer" className="btn-ivory">Enquire on WhatsApp</a>

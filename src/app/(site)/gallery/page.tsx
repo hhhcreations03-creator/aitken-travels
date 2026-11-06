@@ -21,7 +21,7 @@ export default function GalleryPage() {
       <main id="main">
         <PageHero
           kicker="Gallery"
-          title="The Haven, in its own light"
+          title="A day at the Haven, in pictures"
           intro={`${total} photographs of the house, the rooms and the coast around Ahangama, from the pool by day to lanterns after dark.`}
           image={{ src: "/images/property/aerial-night-pool.webp", alt: "Night-time aerial view of the illuminated pool and courtyard" }}
         />

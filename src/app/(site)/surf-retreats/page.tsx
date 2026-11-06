@@ -27,7 +27,7 @@ export default function SurfRetreatsPage() {
         <PageHero
           kicker="Surf Retreats"
           title="Sleep two minutes from Kabalana"
-          intro="Ahangama's best-known break waits at the end of the lane. Here the days find their own rhythm: first light on the water, breakfast by the pool, and a second paddle out when the wind lies down."
+          intro="You hear it before you see it: the swell at Kabalana, two minutes down the lane. Paddle out at first light, come home to breakfast by the pool, sleep through the heat, and go again when the wind lies down. Repeat until you have to leave."
           image={{ src: "/images/property/aerial-coast-surf.webp", alt: "Aerial view of the Ahangama coastline, waves breaking along the reef beyond the palms" }}
         >
           <a href="#retreat-enquiry" className="btn-ivory">Enquire about a surf retreat</a>
@@ -39,11 +39,11 @@ export default function SurfRetreatsPage() {
               <h2 className="display-lg text-forest">The wave at the end of the road</h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
-              <p className="lede">Kabalana Beach, home to one of the south coast&rsquo;s most loved waves, is a short walk from our door. About two minutes on foot, close enough to hear the sets roll in.</p>
+              <p className="lede">Kabalana Beach, home to one of the south coast&rsquo;s most loved waves, is about two minutes from our door on foot. Close enough to check the surf in your sandals, and close enough to hear the sets from your bed.</p>
               <p className="body mt-5">
                 Around us, the village keeps surf shops, cafés and board hire within easy reach. We don&rsquo;t run a surf school of our own, but if you&rsquo;d like lessons, guiding or boards, mention it when you enquire and our team will let you know what they can help arrange locally for your dates.
               </p>
-              <p className="body mt-5">Salt-dried and sun-warmed, you come back to a quiet house: an outdoor pool to loosen tired limbs, a restaurant for a late breakfast, loungers in the garden, and yoga classes to keep shoulders and backs supple between sessions.</p>
+              <p className="body mt-5">Then comes the best part of any surf trip: coming home. Salt-dried and sun-warmed, you walk back into a quiet house, with a pool to loosen tired arms, a late breakfast waiting, a lounger in the shade, and yoga on the terrace to keep shoulders supple for tomorrow&rsquo;s session.</p>
             </div>
           </div>
           <div className="mt-16 grid gap-4 md:grid-cols-3">

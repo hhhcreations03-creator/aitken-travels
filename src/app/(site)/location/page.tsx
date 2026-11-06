@@ -22,7 +22,7 @@ export default function LocationPage() {
         <PageHero
           kicker="Location"
           title="Ahangama, on the south coast"
-          intro="Between Galle and Weligama, where the palms lean toward the sea, a short walk from Kabalana Beach."
+          intro="Between the old ramparts of Galle and the wide bay of Weligama lies a village where the palms lean toward the sea and life still keeps time with the tide. We are two minutes from its most famous beach."
           image={{ src: "/images/property/aerial-coastline.webp", alt: "Aerial view of the Ahangama coastline and village from above the hotel" }}
         >
           <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="btn-ivory">Open in Google Maps</a>
@@ -45,6 +45,7 @@ export default function LocationPage() {
 
               <h2 className="display-md mt-12 text-forest">Kabalana Beach</h2>
               <p className="body mt-4">Kabalana Beach is about a two-minute walk away, according to the hotel&rsquo;s listing, close enough to hear the swell. It&rsquo;s one of the south coast&rsquo;s best-known surf breaks: a sweep of sand, with cafés and surf shops along the road behind it.</p>
+              <p className="body mt-4">Ahangama&rsquo;s favourite places to eat, from sunset drinks at Cactus to rice and curry at Manori&rsquo;s Kitchen and pizza at Vertigo, are all within about five minutes by tuk-tuk. <Link href="/dining" className="textlink">See our nearby favourites</Link>.</p>
 
               <h2 className="display-md mt-12 text-forest">Getting here</h2>
               <ul className="body mt-4 space-y-3">
@@ -81,8 +82,8 @@ export default function LocationPage() {
         <Section>
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-8">
-              <h2 className="display-lg text-forest">Let us guide you here</h2>
-              <p className="lede mt-4">Our team can arrange your transfer and suggest the easiest route, so you arrive rested and ready for the coast.</p>
+              <h2 className="display-lg text-forest">Let your holiday start at the airport</h2>
+              <p className="lede mt-4">Our team can arrange your transfer from the airport and the easiest route down the coast, so the first thing you have to do on arrival is choose a lounger.</p>
             </div>
             <div className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
               <Link href="/contact" className="btn-forest">Contact the Haven</Link>
