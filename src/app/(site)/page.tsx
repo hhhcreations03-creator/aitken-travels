@@ -89,8 +89,8 @@ export default function HomePage() {
             </div>
           </div>
           <div className="mt-16 grid gap-4 md:grid-cols-12">
-            <ImageBlock src="/images/property/aerial-pool-building.webp" alt="Aerial view of The Lavish Haven: green roofs, the pool and surrounding palms" aspect="aspect-[16/10]" sizes="(min-width: 768px) 66vw, 100vw" className="md:col-span-8" />
-            <ImageBlock src="/images/property/lobby-staircase.webp" alt="Lobby with timber staircase, rattan chairs and a tree growing through the floor" aspect="aspect-[16/10] md:aspect-auto md:h-full" sizes="(min-width: 768px) 33vw, 100vw" className="md:col-span-4" />
+            <ImageBlock src="/images/property/garden-path-pool.webp" alt="Morning sun through the palms over a stone path leading to the pool" aspect="aspect-[16/10]" sizes="(min-width: 768px) 66vw, 100vw" className="md:col-span-8" />
+            <ImageBlock src="/images/wellness/poolside-hat.webp" alt="A guest in a straw hat relaxing on a striped lounger by the pool with a cold drink" aspect="aspect-[16/10] md:aspect-auto md:h-full" sizes="(min-width: 768px) 33vw, 100vw" className="md:col-span-4" />
           </div>
         </Section>
 
