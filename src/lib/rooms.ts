@@ -85,9 +85,11 @@ export const ROOMS: Room[] = [
     description:
       "The largest of our king rooms, with a deep covered balcony beneath the gabled roof. Settle into the timber chairs and look out across the palms to the pool below. Behind you, the bedroom keeps its stone feature wall and a soft, even light.",
     images: [
-      { src: "/images/rooms/superior-king/balcony-wide.webp", alt: "Covered first-floor balcony with timber chairs looking over the garden and pool" },
+      { src: "/images/rooms/superior-king/bed-front.webp", alt: "Superior king room with a king bed, green cushions and warm timber floors" },
+      { src: "/images/rooms/superior-king/room-overview.webp", alt: "The full room: king bed beside a stone feature wall and shelf" },
       { src: "/images/rooms/superior-king/bed-balcony-doors.webp", alt: "King bed with green cushions and doors opening onto the balcony" },
       { src: "/images/rooms/superior-king/stone-wall-shelf.webp", alt: "Stone feature wall and shelf in a superior king room" },
+      { src: "/images/rooms/superior-king/balcony-wide.webp", alt: "Covered first-floor balcony with timber chairs looking over the garden and pool" },
       { src: "/images/rooms/superior-king/balcony-palms.webp", alt: "Balcony seating framed by palm trees" },
       { src: "/images/rooms/superior-king/bathroom-rain-shower.webp", alt: "Wood-panelled bathroom with walk-in rain shower" },
     ],
@@ -234,10 +236,11 @@ export const ROOMS: Room[] = [
     description:
       "The largest room in the house. A timber staircase climbs from the main bedroom to a second bedroom on the mezzanine, with a sofa bed below for a fifth guest. Dark-green walls and the glow of lantern light make this the most atmospheric space at the Haven.",
     images: [
-      { src: "/images/rooms/two-bedroom-suite/stairs-mezzanine.webp", alt: "Timber staircase rising to a mezzanine bedroom" },
+      { src: "/images/rooms/two-bedroom-suite/bed-mezzanine.webp", alt: "Main bedroom of the two-bedroom suite: a king bed beneath the timber mezzanine" },
       { src: "/images/rooms/two-bedroom-suite/bed-balcony.webp", alt: "King bed with doors to a balcony in the two-bedroom suite" },
       { src: "/images/rooms/two-bedroom-suite/mezzanine-bed.webp", alt: "Mezzanine bedroom with king bed and dark-green walls" },
       { src: "/images/rooms/two-bedroom-suite/second-bedroom.webp", alt: "Second bedroom with king bed and lantern light" },
+      { src: "/images/rooms/two-bedroom-suite/stairs-mezzanine.webp", alt: "Timber staircase rising to a mezzanine bedroom" },
       { src: "/images/rooms/two-bedroom-suite/stairs-wide.webp", alt: "Lower bedroom with staircase and coat stand" },
       { src: "/images/rooms/two-bedroom-suite/bathroom.webp", alt: "Dark-tiled bathroom with walk-in shower" },
     ],
