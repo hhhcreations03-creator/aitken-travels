@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMeta({
 interface Experience {
   title: string;
   body: string;
-  image: { src: string; alt: string };
+  image: { src: string; alt: string; focus?: string };
   enquiry: string;
   confirmed: string;
 }
@@ -40,7 +40,7 @@ const EXPERIENCES: Experience[] = [
   {
     title: "Spa and wellness",
     body: "Our spa and wellness area is a place to be looked after. Treatments are arranged on request rather than from a fixed menu, so tell our team what you'd like and when, and they'll confirm what's available during your stay.",
-    image: { src: "/images/details/amenities-bottles.webp", alt: "Bathroom amenity bottles with the Haven's palm motif" },
+    image: { src: "/images/wellness/poolside-drink.webp", alt: "A rolled towel, a fresh king coconut and a frangipani flower beside the pool", focus: "object-[50%_85%]" },
     enquiry: "Hello The Lavish Haven, I'd like to enquire about spa or wellness treatments during my stay.\n\nDates: \nWhat I'm interested in: ",
     confirmed: "Arranged on request. Availability and pricing confirmed by the team.",
   },
@@ -71,7 +71,7 @@ export default function WellnessPage() {
           <Section key={x.title} tone={i % 2 === 0 ? "ivory" : "deep"}>
             <div className={`grid gap-10 lg:grid-cols-12 lg:items-center`}>
               <div className={`lg:col-span-6 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                <ImageBlock src={x.image.src} alt={x.image.alt} aspect="aspect-[4/3]" sizes="(min-width: 1024px) 50vw, 100vw" priority={i === 0} />
+                <ImageBlock src={x.image.src} alt={x.image.alt} focus={x.image.focus} aspect="aspect-[4/3]" sizes="(min-width: 1024px) 50vw, 100vw" priority={i === 0} />
               </div>
               <div className={`lg:col-span-5 ${i % 2 === 1 ? "lg:order-1" : "lg:col-start-8"}`}>
                 <h2 className="display-lg text-forest">{x.title}</h2>
