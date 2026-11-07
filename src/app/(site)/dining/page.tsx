@@ -11,7 +11,7 @@ import { NEARBY } from "@/lib/nearby";
 export const metadata: Metadata = pageMeta({
   title: "Restaurant & Breakfast in Ahangama | The Lavish Haven",
   socialTitle: "Dining at The Lavish Haven",
-  description: "Breakfast by the pool and dinner under the lanterns: Sri Lankan, Indian, Chinese, British and Mediterranean dishes at our open-air restaurant in Ahangama.",
+  description: "Our in-house restaurant in Ahangama: breakfast by the pool and dinner under the lanterns, with Sri Lankan, Indian, Chinese, British and Mediterranean dishes.",
   path: "/dining",
 });
 
@@ -33,7 +33,8 @@ export default function DiningPage() {
         <Section>
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <h2 className="display-lg text-forest">The restaurant</h2>
+              <h2 className="display-lg text-forest">Our in-house restaurant</h2>
+              <p className="body mt-4 max-w-[34ch]">The Lavish Haven has its own open-air restaurant beside the pool, so a good meal is never more than a few steps from your room.</p>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="lede">Our kitchen tells the island&rsquo;s story, and a few others besides. Sri Lankan and Indian curries share the table with Chinese, British and Mediterranean plates, so everyone can follow their own appetite and still pass the dishes around.</p>

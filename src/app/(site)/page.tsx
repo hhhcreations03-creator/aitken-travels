@@ -17,17 +17,18 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "The Lavish Haven | Luxury Boutique Hotel in Ahangama, Sri Lanka",
   socialTitle: "The Lavish Haven, Ahangama",
-  description: "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and a restaurant.",
+  description: "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and an in-house restaurant.",
   path: "/",
 });
 
 const FAQ: Array<[string, string]> = [
   ["What makes The Lavish Haven a luxury boutique hotel?", "With 23 rooms and suites around a single pool, the house stays small and personal. Rooms are finished with polished concrete, teak doors, crisp white linen and a walk-in shower, and every one opens onto its own patio or balcony among the palms."],
-  ["Are there good restaurants nearby?", "Yes. Cactus, Thileni's, Manori's Kitchen, Vertigo Pizzeria Italiana, The Protein House and Kai Ahangama are all within about five minutes by tuk-tuk, and our team will happily arrange the ride."],
   ["Where is The Lavish Haven?", `At ${SITE.address.street}, ${SITE.address.locality} ${SITE.address.postalCode}, on Sri Lanka's south coast between Galle and Weligama.`],
   ["How far is the hotel from the beach?", "Kabalana Beach, Ahangama's best-known surf break, is about two minutes' walk from the hotel."],
   ["What kinds of rooms are there?", "23 rooms and suites across twelve room types: king rooms with a patio or balcony, family suites, and a two-bedroom suite. Every room is appointed to luxury standards, with air conditioning, Wi-Fi, a walk-in shower and its own outdoor space."],
-  ["Is there a pool and a restaurant?", "Yes. The rooms gather around an outdoor pool, and the open-air restaurant serves breakfast and Sri Lankan, Indian, Chinese, British and Mediterranean dishes. Yoga classes run on the terrace."],
+  ["Does the hotel have its own restaurant?", "Yes. The Lavish Haven has an in-house, open-air restaurant beside the pool, serving breakfast and Sri Lankan, Indian, Chinese, British and Mediterranean dishes, and room service is available too."],
+  ["Is there a pool?", "Yes. The rooms gather around an outdoor pool in a garden of palms, and yoga classes run on the terrace."],
+  ["Are there good restaurants nearby?", "Yes. As well as our own restaurant, Cactus, Thileni's, Manori's Kitchen, Vertigo Pizzeria Italiana, The Protein House and Kai Ahangama are all within about five minutes by tuk-tuk, and our team will happily arrange the ride."],
   ["What time is check-in, and is there parking?", `Check-in is from ${SITE.checkIn}. Free private parking is available on site.`],
   ["How do I book?", "Choose your dates on our booking page and send a request. Our team confirms availability and your rate personally. No payment is taken online."],
 ];
@@ -149,9 +150,9 @@ export default function HomePage() {
             <div className="lg:col-span-4">
               <p className="font-display text-[1.1rem] italic text-olive-deep">Dusk</p>
               <h2 className="display-lg mt-3 text-forest">When the lanterns come on</h2>
-              <p className="lede mt-5">As the light turns gold, the woven lanterns over the open-air restaurant flicker on, one by one. The pool goes dark blue. Someone orders another round, and nobody is in a hurry to leave.</p>
+              <p className="lede mt-5">As the light turns gold, the woven lanterns over our own open-air restaurant flicker on, one by one. The pool goes dark blue. Someone orders another round, and nobody is in a hurry to leave.</p>
               <p className="body mt-5">Our kitchen cooks across the island and beyond: Sri Lankan and Indian curries beside Chinese, British and Mediterranean plates. Mornings bring continental, full English and vegetarian breakfasts with fresh fruit, and room service, packed lunches and kids&rsquo; meals are always on offer. Tell us about any dietary needs and we&rsquo;ll take care of them.</p>
-              <Link href="/dining" className="btn-outline mt-8">About the restaurant</Link>
+              <Link href="/dining" className="btn-outline mt-8">Our in-house restaurant</Link>
             </div>
             <div className="grid grid-cols-2 gap-4 lg:col-span-7 lg:col-start-6">
               <ImageBlock src="/images/dining/restaurant-lanterns.webp" alt="The restaurant at night, lit by woven lanterns" aspect="aspect-[4/5]" sizes="(min-width: 1024px) 30vw, 50vw" />

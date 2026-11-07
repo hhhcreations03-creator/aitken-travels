@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | The Lavish Haven",
   },
   description:
-    "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and a restaurant.",
+    "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and an in-house restaurant.",
   keywords: [
     "The Lavish Haven",
     "hotels in Ahangama",
@@ -59,14 +59,14 @@ export const metadata: Metadata = {
     url: "/",
     title: "The Lavish Haven, Ahangama",
     description:
-      "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and a restaurant.",
+      "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and an in-house restaurant.",
     images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "The Lavish Haven pool and courtyard at dusk, Ahangama", type: "image/jpeg" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Lavish Haven, Ahangama",
     description:
-      "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and a restaurant.",
+      "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach: 23 rooms and suites around a palm-shaded pool, with yoga and an in-house restaurant.",
     images: [{ url: DEFAULT_OG_IMAGE, alt: "The Lavish Haven pool and courtyard at dusk, Ahangama" }],
   },
   icons: {
@@ -110,7 +110,7 @@ const hotelSchema = {
   url: `${SITE.url}/`,
   sameAs: [SITE.bookingUrl],
   description:
-    "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach, with an outdoor pool, yoga classes and a restaurant.",
+    "Luxury boutique hotel in Ahangama, Sri Lanka, two minutes' walk from Kabalana Beach, with an outdoor pool, yoga classes and an in-house restaurant.",
   image: [`${SITE.url}/og.jpg?v=2`, `${SITE.url}/images/property/pool-dusk-wide.webp`],
   logo: `${SITE.url}/brand/logo.png`,
   hasMap: MAPS_LINK,
@@ -125,10 +125,17 @@ const hotelSchema = {
     addressCountry: SITE.address.countryCode,
   },
   checkinTime: "14:00",
+  containsPlace: {
+    "@type": "Restaurant",
+    name: `Restaurant at ${SITE.name}`,
+    servesCuisine: ["Sri Lankan", "Indian", "Chinese", "British", "Mediterranean"],
+    address: { "@type": "PostalAddress", streetAddress: SITE.address.street, addressLocality: SITE.address.locality, postalCode: SITE.address.postalCode, addressCountry: SITE.address.countryCode },
+  },
   containedInPlace: { "@type": "Place", name: "Ahangama, Sri Lanka" },
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "Outdoor swimming pool", value: true },
-    { "@type": "LocationFeatureSpecification", name: "Restaurant", value: true },
+    { "@type": "LocationFeatureSpecification", name: "On-site restaurant", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Room service", value: true },
     { "@type": "LocationFeatureSpecification", name: "Yoga classes", value: true },
     { "@type": "LocationFeatureSpecification", name: "Free Wi-Fi", value: true },
     { "@type": "LocationFeatureSpecification", name: "Free private parking", value: true },
