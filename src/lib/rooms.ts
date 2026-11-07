@@ -259,10 +259,11 @@ export const ROOMS: Room[] = [
     description:
       "A first-floor king room with a balcony above the pool. Inside, soft grey pillows, a long concrete shelf and a timber desk. Outside, the whole courtyard opens out beneath you, the water bright in the sun.",
     images: [
-      { src: "/images/rooms/king-balcony-pool/balcony-pool-view.webp", alt: "Covered balcony with chairs looking down onto the pool" },
+      { src: "/images/rooms/king-balcony-pool/bed-balcony-doors.webp", alt: "Deluxe king room: king bed beneath a high timber ceiling, with doors open to the balcony and palms" },
+      { src: "/images/rooms/king-balcony-pool/bed-front.webp", alt: "King bed with grey cushions, a timber headboard and a wall shelf" },
       { src: "/images/rooms/king-balcony-pool/bed-grey-pillows.webp", alt: "King bed with grey pillows beneath a vaulted ceiling" },
-      { src: "/images/rooms/king-balcony-pool/bed-balcony-doors.webp", alt: "King bed with timber doors opening to a balcony" },
       { src: "/images/rooms/king-balcony-pool/bed-shelf.webp", alt: "Bed and concrete wall shelf in a king room" },
+      { src: "/images/rooms/king-balcony-pool/balcony-pool-view.webp", alt: "Covered balcony with chairs looking down onto the pool" },
       { src: "/images/rooms/king-balcony-pool/bathroom.webp", alt: "Wood-panelled bathroom with walk-in shower" },
     ],
   },
