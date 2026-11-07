@@ -30,7 +30,7 @@ export const RATINGS: Rating[] = [
     source: "Google",
     score: 5,
     outOf: 5,
-    reviewCount: 22,
+    reviewCount: 27,
     url: "https://www.google.com/maps/search/?api=1&query=The+Lavish+Haven+166%2F2+Welhengoda+Road+Ahangama",
     linkLabel: "Read reviews on Google",
     asOf: "November 2026",
