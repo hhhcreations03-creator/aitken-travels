@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
+import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
 import { GroupForm } from "@/components/forms/GroupForm";
@@ -29,27 +29,24 @@ export default function GroupsPage() {
     <>
       <Header overlay />
       <main id="main">
-        <section className="relative overflow-hidden bg-forest text-ivory">
-          <Image src="/images/property/pool-evening.webp" alt="The courtyard and pool in the blue hour, lit balconies on both floors" fill priority sizes="100vw" className="object-cover animate-fade" />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/90 via-forest-deep/60 to-forest-deep/20" aria-hidden="true" />
-          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-forest-deep/55 to-transparent" aria-hidden="true" />
-          <div className="wrap relative flex min-h-[88svh] flex-col justify-end pb-14 pt-40 lg:pb-20">
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-              <div className="max-w-[40rem] animate-rise lg:col-span-8">
-                <p className="font-display text-[1.1rem] italic text-sand">Groups & Events</p>
-                <h1 className="display-xl mt-3">Take the whole house</h1>
-                <p className="lede mt-6 !text-ivory/85 max-w-[40ch]">Picture it: your people on every balcony, one pool in the middle, and long dinners under the lanterns that nobody wants to end. For a few days, the Haven can be your own private house by the sea.</p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <a href="#group-enquiry" className="btn-ivory">Send a group enquiry</a>
-                  <a href={groupWhatsApp} target="_blank" rel="noopener noreferrer" className="btn-outline-light">WhatsApp the team</a>
-                </div>
-              </div>
-              <ul className="hidden gap-2 text-[14px] text-sand lg:col-span-4 lg:flex lg:flex-col lg:items-end">
-                {GROUP_TYPES.slice(0, 4).map((t) => <li key={t} className="rounded-full border border-ivory/30 px-4 py-1.5">{t}</li>)}
-              </ul>
-            </div>
+        <PageHero
+          kicker="Groups & Events"
+          title="Take the whole house"
+          intro="Picture it: your people on every balcony, one pool in the middle, and long dinners under the lanterns that nobody wants to end. For a few days, the Haven can be your own private house by the sea."
+          image={{ src: "/images/property/pool-evening.webp", alt: "The courtyard and pool in the blue hour, lit balconies on both floors" }}
+        >
+          <a href="#group-enquiry" className="btn-ivory">Send a group enquiry</a>
+          <a href={groupWhatsApp} target="_blank" rel="noopener noreferrer" className="btn-outline-light">WhatsApp the team</a>
+        </PageHero>
+
+        <Section compact>
+          <div className="rule flex flex-col gap-4 pt-6 text-[14.5px] sm:flex-row sm:items-baseline sm:gap-8">
+            <p className="shrink-0 text-charcoal-mute">Made for</p>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+              {GROUP_TYPES.filter((t) => t !== "Other").map((t) => <li key={t} className="font-display text-[1.1rem] italic text-forest">{t}</li>)}
+            </ul>
           </div>
-        </section>
+        </Section>
 
         <Section>
           <div className="grid gap-12 lg:grid-cols-12">
