@@ -13,6 +13,7 @@ import { GALLERY } from "@/lib/gallery";
 import { MAPS_LINK, SITE, whatsappUrl } from "@/lib/site";
 import { NEARBY } from "@/lib/nearby";
 import { pageMeta } from "@/lib/seo";
+import { SunMark, TideLine } from "@/components/Motifs";
 
 export const metadata: Metadata = pageMeta({
   title: "The Lavish Haven | Luxury Boutique Hotel in Ahangama, Sri Lanka",
@@ -68,13 +69,14 @@ export default function HomePage() {
           <Link href="/rooms" className="btn-outline-light">Explore Rooms</Link>
         </PageHero>
 
+        <div className="bg-ivory pt-5 text-forest/35"><TideLine /></div>
         <GuestRatings />
 
         {/* Introduction */}
         <Section>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
-              <p className="font-display text-[1.1rem] italic text-olive-deep">Arrival</p>
+              <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="arrival" />Arrival</p>
               <h2 className="display-lg mt-3 text-forest">The moment the gate closes behind you</h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
@@ -113,7 +115,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-forest-deep/60" aria-hidden="true" />
           <div className="wrap relative py-24 lg:py-36">
             <div className="max-w-[44rem]">
-              <p className="font-display text-[1.1rem] italic text-sand">Dawn</p>
+              <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-sand"><SunMark phase="dawn" />Dawn</p>
               <h2 className="display-lg mt-3">First light, and the sets are rolling in</h2>
               <p className="lede mt-5 !text-ivory/85">
                 Before the village wakes, you can hear it from your room: the low, steady roll of the swell at Kabalana, Ahangama&rsquo;s best-known break, two minutes down the lane. Paddle out while the water is glass. Come back salt-dried and hungry. The pool will still be still, and breakfast will be waiting.
@@ -133,7 +135,7 @@ export default function HomePage() {
               <ImageBlock src="/images/wellness/pool-swim.webp" alt="A guest stepping into the pool" aspect="aspect-[3/4]" sizes="(min-width: 1024px) 30vw, 50vw" />
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
-              <p className="font-display text-[1.1rem] italic text-olive-deep">Midday</p>
+              <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="midday" />Midday</p>
               <h2 className="display-lg mt-3 text-forest">The hours that belong to no one</h2>
               <p className="lede mt-5">A mat unrolled on a balcony among the palm fronds. A slow length of the pool. A book you finally finish. This is the part of the day when nothing is asked of you.</p>
               <p className="body mt-5">
@@ -148,7 +150,7 @@ export default function HomePage() {
         <Section tone="deep">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-4">
-              <p className="font-display text-[1.1rem] italic text-olive-deep">Dusk</p>
+              <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="dusk" />Dusk</p>
               <h2 className="display-lg mt-3 text-forest">When the lanterns come on</h2>
               <p className="lede mt-5">As the light turns gold, the woven lanterns over our own open-air restaurant flicker on, one by one. The pool goes dark blue. Someone orders another round, and nobody is in a hurry to leave.</p>
               <p className="body mt-5">Our kitchen cooks across the island and beyond: Sri Lankan and Indian curries beside Chinese, British and Mediterranean plates. Mornings bring continental, full English and vegetarian breakfasts with fresh fruit, and room service, packed lunches and kids&rsquo; meals are always on offer. Tell us about any dietary needs and we&rsquo;ll take care of them.</p>
@@ -165,7 +167,7 @@ export default function HomePage() {
         <Section>
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <p className="font-display text-[1.1rem] italic text-olive-deep">Night</p>
+              <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="night" />Night</p>
               <h2 className="display-lg mt-3 text-forest">Or let a tuk-tuk carry you into the village</h2>
               <p className="lede mt-5">Some evenings call for adventure. Ahangama has become one of the south coast&rsquo;s most loved places to eat, and its best tables are all within about five minutes by tuk-tuk of our gate.</p>
               <p className="body mt-5">Tell our team where you&rsquo;d like to go and we&rsquo;ll call your ride. When the night is done, the Haven is waiting, quiet and lit by the pool.</p>
@@ -220,21 +222,24 @@ export default function HomePage() {
         </Section>
 
         {/* Location */}
-        <Section tone="deep">
+        <Section tone="lagoon">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <ImageBlock src="/images/property/aerial-ocean-horizon.webp" alt="Aerial view over the palms of Ahangama to the Indian Ocean" aspect="aspect-[16/10]" sizes="(min-width: 1024px) 58vw, 100vw" />
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
-              <h2 className="display-lg text-forest">Ahangama</h2>
-              <p className="lede mt-5">A fishing village that the surfers found, and never quite left. Between Galle and Weligama, it still keeps time with the tide: stilt fishermen at dawn, cafés by mid-morning, and sunsets that stop conversation.</p>
-              <address className="body mt-5 not-italic">
+              <h2 className="display-lg text-ivory">Ahangama</h2>
+              <p className="lede mt-5 !text-foam/90">A fishing village that the surfers found, and never quite left. Between Galle and Weligama, it still keeps time with the tide: stilt fishermen at dawn, cafés by mid-morning, and sunsets that stop conversation.</p>
+              <address className="body mt-5 not-italic !text-ivory/85">
                 166/2 Welhengoda Road<br />Ahangama 80650, Sri Lanka
               </address>
-              <p className="body mt-3">Kabalana Beach is a short walk away, and Galle Fort and Weligama are close by for a day of exploring.</p>
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[14.5px]">
-                <Link href="/location" className="textlink">Location and directions</Link>
-                <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="textlink">Open in Google Maps</a>
+              <p className="body mt-3 !text-ivory/75">Kabalana Beach is a short walk away, and Galle Fort and Weligama are close by for a day of exploring.</p>
+              <p className="mt-8 border-t border-ivory/15 pt-5 font-display text-[1.05rem] italic text-sand/90">
+                Along this shore, west to east: Galle Fort, Koggala, <span className="not-italic text-ivory">Ahangama</span>, Midigama, Weligama.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[14.5px]">
+                <Link href="/location" className="textlink !text-sand">Location and directions</Link>
+                <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="textlink !text-sand">Open in Google Maps</a>
               </div>
             </div>
           </div>
@@ -260,7 +265,7 @@ export default function HomePage() {
         </Section>
 
         {/* Final CTA */}
-        <Section tone="deep">
+        <Section tone="foam">
           <div className="mx-auto max-w-[48rem] text-center">
             <h2 className="display-lg text-forest">Your chapter starts here</h2>
             <p className="lede mt-5">Tell us your dates, who&rsquo;s coming and what you hope to find here. We&rsquo;ll reply personally, confirm your room, and have everything ready for the moment you arrive.</p>

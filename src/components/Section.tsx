@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 interface SectionProps {
   children: ReactNode;
   className?: string;
-  tone?: "ivory" | "deep" | "forest" | "sand";
+  tone?: "ivory" | "deep" | "forest" | "sand" | "lagoon" | "foam";
   id?: string;
   /** Tighter vertical rhythm for secondary sections. */
   compact?: boolean;
@@ -14,6 +14,8 @@ const TONES = {
   deep: "bg-ivory-deep text-charcoal",
   sand: "bg-sand text-charcoal",
   forest: "bg-forest text-ivory",
+  lagoon: "bg-lagoon text-ivory",
+  foam: "bg-foam text-charcoal",
 };
 
 export function Section({ children, className = "", tone = "ivory", id, compact = false }: SectionProps) {

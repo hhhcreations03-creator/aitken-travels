@@ -24,7 +24,7 @@ export function PageHero({ title, intro, image, kicker, kickerInTitle = false, c
         fill
         priority={priority}
         sizes="100vw"
-        className="object-cover animate-fade"
+        className="object-cover animate-drift"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/45 to-forest-deep/10 sm:via-forest-deep/25" aria-hidden="true" />
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-forest-deep/55 to-transparent" aria-hidden="true" />

@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { MAPS_LINK, NAV, SITE, whatsappUrl } from "@/lib/site";
+import { TideLine } from "./Motifs";
+import { AhangamaToday } from "./AhangamaToday";
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-forest text-ivory">
-      <div className="wrap py-16 lg:py-20">
+    <footer className="bg-lagoon text-ivory">
+      <div className="pt-6 text-sand/40"><TideLine /></div>
+      <div className="wrap py-14 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <Logo light stacked />
@@ -58,6 +61,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-ivory/10 pt-6 text-[13px] text-sand-deep/80 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {year} The Lavish Haven, Ahangama. All rights reserved.</p>
+          <AhangamaToday className="font-display text-[14.5px] italic text-sand/85" />
           <p>Enquiries are confirmed directly by the hotel team. This site does not take payments.</p>
         </div>
       </div>

@@ -10,6 +10,9 @@ const config: Config = {
         olive: { DEFAULT: "#7C8160", deep: "#5F6447" },
         forest: { DEFAULT: "#1E3A2F", deep: "#13261F" },
         charcoal: { DEFAULT: "#2A2A28", soft: "#5C5B55", mute: "#8B8A82" },
+        lagoon: { DEFAULT: "#0E3B43", deep: "#092A30" },
+        sea: "#2F6F74",
+        foam: { DEFAULT: "#E6EDE8", deep: "#D6E2DC" },
         whatsapp: "#1F9D55",
       },
       fontFamily: {
@@ -22,10 +25,12 @@ const config: Config = {
       keyframes: {
         rise: { from: { opacity: "0", transform: "translateY(14px)" }, to: { opacity: "1", transform: "translateY(0)" } },
         fade: { from: { opacity: "0" }, to: { opacity: "1" } },
+        drift: { "0%": { opacity: "0", transform: "scale(1.07)" }, "12%": { opacity: "1" }, "100%": { opacity: "1", transform: "scale(1)" } },
       },
       animation: {
         rise: "rise 1s cubic-bezier(0.22, 1, 0.36, 1) both",
         fade: "fade 1.4s ease both",
+        drift: "drift 16s cubic-bezier(0.22, 1, 0.36, 1) both",
       },
     },
   },
