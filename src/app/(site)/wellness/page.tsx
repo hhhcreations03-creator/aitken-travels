@@ -71,7 +71,7 @@ export default function WellnessPage() {
           <Section key={x.title} tone={i % 2 === 0 ? "ivory" : "deep"}>
             <div className={`grid gap-10 lg:grid-cols-12 lg:items-center`}>
               <div className={`lg:col-span-6 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                <ImageBlock src={x.image.src} alt={x.image.alt} focus={x.image.focus} aspect="aspect-[4/3]" sizes="(min-width: 1024px) 50vw, 100vw" priority={i === 0} />
+                <ImageBlock src={x.image.src} alt={x.image.alt} focus={x.image.focus} aspect="aspect-[4/3]" sizes="(min-width: 1024px) 50vw, 100vw" />
               </div>
               <div className={`lg:col-span-5 ${i % 2 === 1 ? "lg:order-1" : "lg:col-start-8"}`}>
                 <h2 className="display-lg text-forest">{x.title}</h2>

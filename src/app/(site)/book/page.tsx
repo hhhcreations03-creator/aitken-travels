@@ -11,7 +11,10 @@ import { bookingConfigured, HOTEL_TZ, LIMITS } from "@/lib/booking/config";
 import { todayIn } from "@/lib/booking/dates";
 import { getSettings } from "@/lib/booking/settings";
 
-export const dynamic = "force-dynamic";
+// Served from cache and rebuilt in the background. Saving booking settings in admin
+// refreshes it straight away; the booking form works out today's date and any
+// chosen room in the browser, so the cached page never goes stale for guests.
+export const revalidate = 600;
 
 export const metadata: Metadata = pageMeta({
   title: "Book Your Stay | The Lavish Haven, Ahangama",
@@ -31,10 +34,9 @@ async function loadSettings() {
   }
 }
 
-export default async function BookPage({ searchParams }: { searchParams: { room?: string } }) {
+export default async function BookPage() {
   const settings = await loadSettings();
   const rooms: FlowRoom[] = ROOMS.map((r) => ({ slug: r.slug, name: r.name, beds: r.beds, sizeSqm: r.sizeSqm, floor: r.floor, outdoor: r.outdoor, image: r.images[0] }));
-  const initialRoom = ROOMS.some((r) => r.slug === searchParams.room) ? searchParams.room : undefined;
 
   return (
     <>
@@ -52,8 +54,8 @@ export default async function BookPage({ searchParams }: { searchParams: { room?
           {settings ? (
             <BookingFlow
               rooms={rooms}
-              initialRoom={initialRoom}
               today={todayIn(HOTEL_TZ)}
+              timeZone={HOTEL_TZ}
               maxNights={LIMITS.maxNights}
               maxRooms={LIMITS.maxRoomsPerBooking}
               currency={settings.currency}

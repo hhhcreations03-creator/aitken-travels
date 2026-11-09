@@ -28,8 +28,9 @@ interface Offer {
 
 interface Props {
   rooms: FlowRoom[];
-  initialRoom?: string;
+  /** Today in the hotel's time zone when the page was built; refreshed in the browser. */
   today: string;
+  timeZone: string;
   maxNights: number;
   maxRooms: number;
   currency: string;
@@ -59,7 +60,16 @@ const STEPS: { id: Step; label: string }[] = [
   { id: "done", label: "Request sent" },
 ];
 
-export function BookingFlow({ rooms, initialRoom, today, maxNights, maxRooms, currency, policyNote }: Props) {
+export function BookingFlow({ rooms, today: builtToday, timeZone, maxNights, maxRooms, currency, policyNote }: Props) {
+  // The page is cached, so work out today's date and the room picked on the
+  // previous page (?room=slug) here in the browser rather than on the server.
+  const [today, setToday] = useState(builtToday);
+  const [initialRoom, setInitialRoom] = useState<string | undefined>(undefined);
+  useEffect(() => {
+    setToday(new Intl.DateTimeFormat("en-CA", { timeZone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()));
+    const room = new URLSearchParams(window.location.search).get("room");
+    if (room && rooms.some((r) => r.slug === room)) setInitialRoom(room);
+  }, [timeZone, rooms]);
   const [step, setStep] = useState<Step>("search");
   const [search, setSearch] = useState({ checkIn: "", checkOut: "", adults: "2", children: "0", rooms: "1" });
   const [searchErrors, setSearchErrors] = useState<Record<string, string>>({});
