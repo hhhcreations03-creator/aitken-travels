@@ -34,8 +34,9 @@ body::after {
   inset: 0;
   z-index: 70;
   pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.16 0 0 0 0 0.14 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
+  /* A pre-rendered noise tile (5% opacity baked in). A live SVG noise filter here
+     had to be redrawn on every repaint, which made phones feel sluggish. */
+  background-image: url("/images/grain.png");
   background-size: 160px 160px;
 }
 
