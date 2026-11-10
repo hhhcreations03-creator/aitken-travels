@@ -72,7 +72,7 @@ export default function LocationPage() {
         </Section>
 
         <Section tone="deep" compact>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="rail-md rail-photos grid gap-4 md:grid-cols-3">
             <ImageBlock src="/images/property/aerial-coast-surf.webp" alt="Waves breaking along the Ahangama reef" aspect="aspect-[4/3]" sizes="(min-width: 768px) 33vw, 100vw" />
             <ImageBlock src="/images/property/aerial-ocean-horizon.webp" alt="Palms and rooftops stretching to the ocean" aspect="aspect-[4/3]" sizes="(min-width: 768px) 33vw, 100vw" />
             <ImageBlock src="/images/property/aerial-palms.webp" alt="The hotel among coconut palms from above" aspect="aspect-[4/3]" sizes="(min-width: 768px) 33vw, 100vw" />

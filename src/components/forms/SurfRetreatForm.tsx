@@ -83,7 +83,7 @@ export function SurfRetreatForm() {
         <TextField id="phone" label="WhatsApp or telephone" type="tel" autoComplete="tel" placeholder="Include your country code" value={form.phone} onChange={set("phone")} />
         <TextField id="groupSize" label="Group size" type="number" required min={1} max={60} inputMode="numeric" value={form.groupSize} onChange={set("groupSize")} error={errors.groupSize} />
       </div>
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-3 sm:gap-5">
         <TextField id="checkIn" label="Preferred check-in" type="date" required min={today} value={form.checkIn} onChange={set("checkIn")} error={errors.checkIn} />
         <TextField id="checkOut" label="Preferred check-out" type="date" required min={form.checkIn ? addDaysISO(form.checkIn, 1) : addDaysISO(today, 1)} value={form.checkOut} onChange={set("checkOut")} error={errors.checkOut} />
       </div>

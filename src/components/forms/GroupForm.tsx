@@ -97,7 +97,7 @@ export function GroupForm({ defaultType }: { defaultType?: string }) {
         <TextField id="guests" label="Estimated number of guests" type="number" required min={2} max={60} inputMode="numeric" value={form.guests} onChange={set("guests")} error={errors.guests} />
         <TextField id="rooms" label="Number of rooms required" type="number" required min={1} max={14} inputMode="numeric" value={form.rooms} onChange={set("rooms")} error={errors.rooms} hint="An estimate is fine. The team will suggest a room mix." />
       </div>
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-3 sm:gap-5">
         <TextField id="checkIn" label="Check-in" type="date" required min={today} value={form.checkIn} onChange={set("checkIn")} error={errors.checkIn} />
         <TextField id="checkOut" label="Check-out" type="date" required min={form.checkIn ? addDaysISO(form.checkIn, 1) : addDaysISO(today, 1)} value={form.checkOut} onChange={set("checkOut")} error={errors.checkOut} />
       </div>

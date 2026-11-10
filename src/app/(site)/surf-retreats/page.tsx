@@ -46,7 +46,7 @@ export default function SurfRetreatsPage() {
               <p className="body mt-5">Then comes the best part of any surf trip: coming home. Salt-dried and sun-warmed, you walk back into a quiet house, with a pool to loosen tired arms, a late breakfast waiting, a lounger in the shade, and yoga on the terrace to keep shoulders supple for tomorrow&rsquo;s session.</p>
             </div>
           </div>
-          <div className="mt-16 grid gap-4 md:grid-cols-3">
+          <div className="rail-md rail-photos mt-10 grid gap-4 sm:mt-16 md:grid-cols-3">
             <ImageBlock src="/images/property/aerial-coastline.webp" alt="Aerial of the Ahangama coastline and village" aspect="aspect-[4/3]" sizes="(min-width: 768px) 33vw, 100vw" />
             <ImageBlock src="/images/property/pool-daytime.webp" alt="The hotel pool by day" aspect="aspect-[4/3]" sizes="(min-width: 768px) 33vw, 100vw" />
             <ImageBlock src="/images/wellness/yoga-poolside.webp" alt="Yoga beside the pool" aspect="aspect-[4/3]" sizes="(min-width: 768px) 33vw, 100vw" />
@@ -55,7 +55,7 @@ export default function SurfRetreatsPage() {
 
         <Section tone="deep">
           <Heading title="Rooms that suit a surf trip" lead="Ground-floor rooms with patios for slipping out at dawn, suites with two beds for friends sharing the trip, and the two-bedroom suite for a small crew under one roof." />
-          <div className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+          <div className="rail-md mt-10 grid gap-10 md:mt-12 md:grid-cols-2 xl:grid-cols-3">
             {rooms.map((room) => <RoomCard key={room.slug} room={room} />)}
           </div>
           <Link href="/rooms" className="btn-outline mt-12">All rooms and suites</Link>

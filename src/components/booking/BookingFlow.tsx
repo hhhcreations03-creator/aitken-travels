@@ -207,12 +207,12 @@ export function BookingFlow({ rooms, today: builtToday, timeZone, maxNights, max
       {step === "search" && (
         <form onSubmit={runSearch} noValidate className="grid gap-5">
           <h2 ref={headingRef} tabIndex={-1} className="display-md text-forest outline-none focus-visible:outline-none">When would you like to stay?</h2>
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5">
             <TextField id="checkIn" label="Check-in" type="date" required min={today} value={search.checkIn} onChange={(e) => { const v = e.target.value; setSearch((s) => ({ ...s, checkIn: v, checkOut: v && (!s.checkOut || s.checkOut <= v) ? addDays(v, 2) : s.checkOut })); setSearchErrors({}); }} error={searchErrors.checkIn} />
             <TextField id="checkOut" label="Check-out" type="date" required min={search.checkIn ? addDays(search.checkIn, 1) : addDays(today, 1)} value={search.checkOut} onChange={setS("checkOut")} error={searchErrors.checkOut}
               hint={search.checkIn && search.checkOut > search.checkIn ? `${nightsBetween(search.checkIn, search.checkOut)} night${nightsBetween(search.checkIn, search.checkOut) === 1 ? "" : "s"}` : undefined} />
           </div>
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid grid-cols-3 gap-3 sm:gap-5">
             <SelectField id="adults" label="Adults" required value={search.adults} onChange={setS("adults")} error={searchErrors.adults}>
               {Array.from({ length: 12 }, (_, i) => <option key={i + 1} value={i + 1}>{i + 1}</option>)}
             </SelectField>

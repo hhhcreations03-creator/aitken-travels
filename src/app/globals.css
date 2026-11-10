@@ -103,3 +103,44 @@ body::after {
   .display-xl { font-size: clamp(2.25rem, 5vw, 3.25rem); }
   .display-lg { font-size: clamp(1.9rem, 4vw, 2.6rem); }
 }
+
+/* ---------------------------------------------------------------------------
+   Phone layout
+   On phones, long stacks of photos and cards become a swipe rail: one item
+   fills most of the screen and the next one peeks in from the right, so a row
+   of six things costs one screen of scrolling instead of six. Tablet and
+   desktop keep their grids (the doubled class beats the grid utilities).
+   --------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .rail-md.rail-md {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-inline: -20px;
+    padding-inline: 20px;
+    scroll-padding-inline: 20px;
+  }
+  .rail-md.rail-md::-webkit-scrollbar { display: none; }
+  .rail-md.rail-md > * {
+    flex: 0 0 84%;
+    min-width: 0;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+  /* Narrow items, such as short text cards. */
+  .rail-md.rail-narrow > * { flex-basis: 74%; }
+  /* Photos in a rail share one frame shape, so the row stays level. */
+  .rail-md.rail-photos .img-frame { aspect-ratio: 4 / 5; height: auto; }
+}
+@media (min-width: 640px) and (max-width: 767px) {
+  .rail-md.rail-md { margin-inline: -32px; padding-inline: 32px; scroll-padding-inline: 32px; }
+  .rail-md.rail-md > * { flex-basis: 56%; }
+}
+
+/* Room for the phone booking bar, so it never covers the end of the page. */
+@media (max-width: 1023px) {
+  body.has-dock .site-footer { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+}

@@ -45,7 +45,7 @@ export default function DiningPage() {
         </Section>
 
         <Section tone="deep" compact>
-          <div className="grid gap-4 md:grid-cols-12">
+          <div className="rail-md rail-photos grid gap-4 md:grid-cols-12">
             <ImageBlock src="/images/dining/restaurant-terrace.webp" alt="The open-air restaurant terrace by day" aspect="aspect-[4/3]" sizes="(min-width: 768px) 58vw, 100vw" className="md:col-span-7" />
             <ImageBlock src="/images/dining/drink-service.webp" alt="A drink served poolside on a wooden tray" aspect="aspect-[4/3] md:aspect-auto md:h-full" sizes="(min-width: 768px) 42vw, 100vw" className="md:col-span-5" />
             <ImageBlock src="/images/dining/restaurant-tables.webp" alt="Restaurant tables beneath the white timber ceiling" aspect="aspect-[4/3]" sizes="(min-width: 768px) 42vw, 100vw" className="md:col-span-5" />
@@ -58,7 +58,7 @@ export default function DiningPage() {
             <div className="lg:col-span-5">
               <h2 className="display-lg text-forest">Good to know</h2>
             </div>
-            <dl className="lg:col-span-6 lg:col-start-7 grid gap-6 sm:grid-cols-2">
+            <dl className="lg:col-span-6 lg:col-start-7 grid grid-cols-2 gap-x-5 gap-y-6">
               {[
                 ["Breakfast", "Continental, full English and vegetarian options with fruit."],
                 ["Cuisines", "Sri Lankan, Indian, Chinese, British and Mediterranean."],
@@ -85,9 +85,9 @@ export default function DiningPage() {
               <p className="lede mt-5">Our kitchen will always feed you well. But part of the joy of Ahangama is wandering out for the evening, and the village&rsquo;s most loved places are all within about five minutes of our gate.</p>
               <p className="body mt-5">Just tell our team where you&rsquo;d like to go, and your tuk-tuk will be waiting.</p>
             </div>
-            <dl className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+            <dl className="rail-md rail-narrow grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
               {NEARBY.map((p) => (
-                <div key={p.name} className="rule-soft pt-4">
+                <div key={p.name} className="rule-soft pt-4 max-md:rounded-[2px] max-md:border-0 max-md:bg-white/60 max-md:p-5">
                   <dt>
                     <span className="font-display text-[1.35rem] text-forest">{p.name}</span>
                     <span className="mt-1 block text-[13px] uppercase tracking-[0.08em] text-charcoal-soft">{p.kind}</span>

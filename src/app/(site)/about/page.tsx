@@ -53,7 +53,7 @@ export default function AboutPage() {
         </Section>
 
         <Section tone="deep" compact>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="rail-md rail-photos grid gap-4 md:grid-cols-3">
             <ImageBlock src="/images/property/lobby-staircase.webp" alt="The lobby staircase with a tree growing through the floor" aspect="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" />
             <ImageBlock src="/images/rooms/superior-king/balcony-palms.webp" alt="Balcony chairs framed by palms" aspect="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" className="md:mt-12" />
             <ImageBlock src="/images/rooms/more/balcony-gable.webp" alt="A balcony beneath the white gabled roof" aspect="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" />

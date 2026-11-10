@@ -99,12 +99,12 @@ export function AvailabilityForm({ defaultRoom }: { defaultRoom?: string }) {
         {ROOMS.map((r) => <option key={r.slug} value={r.slug}>{r.name}</option>)}
       </SelectField>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-3 sm:gap-5">
         <TextField id="checkIn" label="Check-in" type="date" required min={today} value={form.checkIn} onChange={set("checkIn")} error={errors.checkIn} />
         <TextField id="checkOut" label="Check-out" type="date" required min={form.checkIn ? addDaysISO(form.checkIn, 1) : addDaysISO(today, 1)} value={form.checkOut} onChange={set("checkOut")} error={errors.checkOut} hint={nights > 0 ? `${nights} night${nights === 1 ? "" : "s"}` : undefined} />
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-3">
+      <div className="grid grid-cols-3 gap-3 sm:gap-5">
         <TextField id="adults" label="Adults" type="number" required min={1} max={40} inputMode="numeric" value={form.adults} onChange={set("adults")} error={errors.adults} />
         <TextField id="children" label="Children" type="number" required min={0} max={40} inputMode="numeric" value={form.children} onChange={set("children")} />
         <TextField id="rooms" label="Rooms" type="number" required min={1} max={14} inputMode="numeric" value={form.rooms} onChange={set("rooms")} error={errors.rooms} />

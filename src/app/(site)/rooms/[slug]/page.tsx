@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { GalleryGrid } from "@/components/GalleryGrid";
+import { SwipeHint } from "@/components/SwipeHint";
 import { RoomCard, roomEnquiryMessage } from "@/components/RoomCard";
 import { ROOMS, getRoom } from "@/lib/rooms";
 import { SITE, whatsappUrl } from "@/lib/site";
@@ -75,12 +76,12 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <p className="lede">{room.description}</p>
-              <dl className="rule mt-10 grid gap-y-5 pt-8 sm:grid-cols-2">
+              <dl className="rule mt-8 grid grid-cols-2 gap-x-5 gap-y-5 pt-6 sm:mt-10 sm:pt-8">
                 <div><dt className="small text-charcoal-mute">Beds</dt><dd className="mt-1 text-[16px]">{room.beds}</dd></div>
                 <div><dt className="small text-charcoal-mute">Size</dt><dd className="mt-1 text-[16px]">{room.sizeSqm} m²</dd></div>
                 <div><dt className="small text-charcoal-mute">Floor</dt><dd className="mt-1 text-[16px]">{room.floor}</dd></div>
                 <div><dt className="small text-charcoal-mute">Outdoor space</dt><dd className="mt-1 text-[16px]">{room.outdoor}</dd></div>
-                <div className="sm:col-span-2"><dt className="small text-charcoal-mute">Views</dt><dd className="mt-1 text-[16px]">{room.views.join(", ")}</dd></div>
+                <div className="col-span-2"><dt className="small text-charcoal-mute">Views</dt><dd className="mt-1 text-[16px]">{room.views.join(", ")}</dd></div>
               </dl>
               <h2 className="display-sm mt-10 text-forest">In the room</h2>
               <ul className="mt-4 grid gap-x-8 gap-y-2 text-[15px] text-charcoal-soft sm:grid-cols-2">
@@ -90,7 +91,7 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
               </ul>
             </div>
 
-            <aside className="lg:col-span-4 lg:col-start-9">
+            <aside className="hidden lg:col-span-4 lg:col-start-9 lg:block">
               <div className="sticky top-28 rounded-[2px] border border-[color:var(--line)] bg-white/50 p-6">
                 <h2 className="display-sm text-forest">Stay in this room</h2>
                 <p className="body mt-2">Share your dates and our team will confirm availability, your rate and the next steps with you personally. Nothing is confirmed until we reply.</p>
@@ -107,17 +108,18 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
         <Section tone="deep">
           <h2 className="display-md text-forest">Photographs</h2>
           <div className="mt-8">
-            <GalleryGrid images={room.images} />
+            <GalleryGrid images={room.images} railOnPhone />
           </div>
+          <SwipeHint>Swipe through {room.images.length} photographs, tap one to enlarge</SwipeHint>
         </Section>
 
         {others.length > 0 && (
           <Section>
             <h2 className="display-md text-forest">Similar rooms</h2>
-            <div className="mt-10 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+            <div className="rail-md mt-8 grid gap-10 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
               {others.map((r) => <RoomCard key={r.slug} room={r} />)}
             </div>
-            <Link href="/rooms" className="btn-outline mt-12">All rooms and suites</Link>
+            <Link href="/rooms" className="btn-outline mt-10 md:mt-12">All rooms and suites</Link>
           </Section>
         )}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([schema, breadcrumbs]) }} />

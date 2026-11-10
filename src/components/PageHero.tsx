@@ -36,7 +36,7 @@ export function PageHero({ title, intro, image, kicker, kickerInTitle = false, c
             {title}
           </h1>
           {intro && <p className={`lede mt-6 !text-ivory/85 ${tall ? "max-w-[46ch] text-[1.1rem] md:text-[1.2rem]" : "max-w-[42ch]"}`}>{intro}</p>}
-          {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
+          {children && <div className="mt-8 flex flex-wrap gap-3 max-sm:[&>*]:grow">{children}</div>}
         </div>
       </div>
     </section>

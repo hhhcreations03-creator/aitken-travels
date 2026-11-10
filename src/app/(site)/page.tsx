@@ -14,6 +14,7 @@ import { MAPS_LINK, SITE, whatsappUrl } from "@/lib/site";
 import { NEARBY } from "@/lib/nearby";
 import { pageMeta } from "@/lib/seo";
 import { SunMark, TideLine } from "@/components/Motifs";
+import { Faq } from "@/components/Faq";
 
 export const metadata: Metadata = pageMeta({
   title: "The Lavish Haven | Luxury Boutique Hotel in Ahangama, Sri Lanka",
@@ -83,7 +84,7 @@ export default function HomePage() {
               <p className="lede">
                 The tuk-tuks and the traffic fall away somewhere along Welhengoda Road. Then the gate opens onto a courtyard of stone and palms, and a long pool holds the sky still. Someone from our team is already there to take your bags. Somewhere above you, a balcony door stands open, waiting.
               </p>
-              <p className="body mt-6">
+              <p className="body mt-6 hidden md:block">
                 That is the feeling we built the Haven around: a small, private house where every room opens to the air and every day is yours to shape. Kabalana Beach is two minutes away on foot. Galle Fort and Weligama are an easy drive. Between them lies whatever kind of stay you came for: waves, rest, or long days with the people you love.
               </p>
               <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[14.5px]">
@@ -92,7 +93,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="mt-16 grid gap-4 md:grid-cols-12">
+          <div className="rail-md rail-photos mt-10 grid gap-4 sm:mt-16 md:grid-cols-12">
             <ImageBlock src="/images/property/garden-path-pool.webp" alt="Morning sun through the palms over a stone path leading to the pool" aspect="aspect-[16/10]" sizes="(min-width: 768px) 66vw, 100vw" className="md:col-span-8" />
             <ImageBlock src="/images/wellness/poolside-hat.webp" alt="A guest in a straw hat relaxing on a striped lounger by the pool with a cold drink" aspect="aspect-[16/10] md:aspect-auto md:h-full" sizes="(min-width: 768px) 33vw, 100vw" className="md:col-span-4" />
           </div>
@@ -104,7 +105,7 @@ export default function HomePage() {
             <Heading title="Rooms & Suites" lead="23 rooms and suites, each appointed to luxury standards: polished concrete, teak doors, high gabled ceilings, crisp white linen and a walk-in shower. Every one opens onto its own patio or balcony, so the first thing you see each morning is green, and the last thing you hear at night is the palms." />
             <Link href="/rooms" className="btn-outline shrink-0">See all rooms</Link>
           </div>
-          <div className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+          <div className="rail-md mt-10 grid gap-10 md:mt-12 md:grid-cols-2 xl:grid-cols-3">
             {featured.map((room, i) => <RoomCard key={room.slug} room={room} priority={i === 0} />)}
           </div>
         </Section>
@@ -138,7 +139,7 @@ export default function HomePage() {
               <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="midday" />Midday</p>
               <h2 className="display-lg mt-3 text-forest">The hours that belong to no one</h2>
               <p className="lede mt-5">A mat unrolled on a balcony among the palm fronds. A slow length of the pool. A book you finally finish. This is the part of the day when nothing is asked of you.</p>
-              <p className="body mt-5">
+              <p className="body mt-5 hidden md:block">
                 Yoga classes run on the terrace, and our spa and wellness area is there when you want to be looked after. Treatments are arranged around you rather than from a fixed menu: tell us what you have in mind and our team will confirm what&rsquo;s available during your stay.
               </p>
               <Link href="/wellness" className="btn-outline mt-8">Wellness at the Haven</Link>
@@ -153,7 +154,7 @@ export default function HomePage() {
               <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="dusk" />Dusk</p>
               <h2 className="display-lg mt-3 text-forest">When the lanterns come on</h2>
               <p className="lede mt-5">As the light turns gold, the woven lanterns over our own open-air restaurant flicker on, one by one. The pool goes dark blue. Someone orders another round, and nobody is in a hurry to leave.</p>
-              <p className="body mt-5">Our kitchen cooks across the island and beyond: Sri Lankan and Indian curries beside Chinese, British and Mediterranean plates. Mornings bring continental, full English and vegetarian breakfasts with fresh fruit, and room service, packed lunches and kids&rsquo; meals are always on offer. Tell us about any dietary needs and we&rsquo;ll take care of them.</p>
+              <p className="body mt-5 hidden md:block">Our kitchen cooks across the island and beyond: Sri Lankan and Indian curries beside Chinese, British and Mediterranean plates. Mornings bring continental, full English and vegetarian breakfasts with fresh fruit, and room service, packed lunches and kids&rsquo; meals are always on offer. Tell us about any dietary needs and we&rsquo;ll take care of them.</p>
               <Link href="/dining" className="btn-outline mt-8">Our in-house restaurant</Link>
             </div>
             <div className="grid grid-cols-2 gap-4 lg:col-span-7 lg:col-start-6">
@@ -170,12 +171,12 @@ export default function HomePage() {
               <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="night" />Night</p>
               <h2 className="display-lg mt-3 text-forest">Or let a tuk-tuk carry you into the village</h2>
               <p className="lede mt-5">Some evenings call for adventure. Ahangama has become one of the south coast&rsquo;s most loved places to eat, and its best tables are all within about five minutes by tuk-tuk of our gate.</p>
-              <p className="body mt-5">Tell our team where you&rsquo;d like to go and we&rsquo;ll call your ride. When the night is done, the Haven is waiting, quiet and lit by the pool.</p>
+              <p className="body mt-5 hidden md:block">Tell our team where you&rsquo;d like to go and we&rsquo;ll call your ride. When the night is done, the Haven is waiting, quiet and lit by the pool.</p>
               <a href={whatsappUrl("Hello The Lavish Haven, could you recommend a restaurant nearby and arrange a tuk-tuk?")} target="_blank" rel="noopener noreferrer" className="btn-outline mt-8">Ask us to book a tuk-tuk</a>
             </div>
-            <dl className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+            <dl className="rail-md rail-narrow grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
               {NEARBY.map((p) => (
-                <div key={p.name} className="rule-soft pt-4">
+                <div key={p.name} className="rule-soft pt-4 max-md:rounded-[2px] max-md:border-0 max-md:bg-white/60 max-md:p-5">
                   <dt>
                     <span className="font-display text-[1.35rem] text-forest">{p.name}</span>
                     <span className="mt-1 block text-[13px] uppercase tracking-[0.08em] text-charcoal-soft">{p.kind}</span>
@@ -196,7 +197,7 @@ export default function HomePage() {
               <p className="lede mt-5 !text-sand">
                 23 rooms and suites on two floors, one courtyard, one pool. Bring the whole party, a surf crew, a yoga retreat, three generations of one family, and for a few days the Haven becomes your private house by the sea.
               </p>
-              <p className="body mt-5 !text-ivory/80">
+              <p className="body mt-5 hidden !text-ivory/80 md:block">
                 Share your dates, the size of your group and how you&rsquo;d like to spend your time. Our team will shape a room plan around you and confirm what the house can offer for your dates.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -233,7 +234,7 @@ export default function HomePage() {
               <address className="body mt-5 not-italic !text-ivory/85">
                 166/2 Welhengoda Road<br />Ahangama 80650, Sri Lanka
               </address>
-              <p className="body mt-3 !text-ivory/75">Kabalana Beach is a short walk away, and Galle Fort and Weligama are close by for a day of exploring.</p>
+              <p className="body mt-3 hidden !text-ivory/75 md:block">Kabalana Beach is a short walk away, and Galle Fort and Weligama are close by for a day of exploring.</p>
               <p className="mt-8 border-t border-ivory/15 pt-5 font-display text-[1.05rem] italic text-sand/90">
                 Along this shore, west to east: Galle Fort, Koggala, <span className="not-italic text-ivory">Ahangama</span>, Midigama, Weligama.
               </p>
@@ -252,14 +253,9 @@ export default function HomePage() {
               <h2 className="display-lg text-forest">Staying in Ahangama</h2>
               <p className="body mt-5">A few things guests often ask before they arrive.</p>
             </div>
-            <dl className="lg:col-span-7 lg:col-start-6">
-              {FAQ.map(([q, a]) => (
-                <div key={q} className="border-b border-[color:var(--line-soft)] py-5 first:pt-0">
-                  <dt className="font-display text-[1.25rem] text-forest">{q}</dt>
-                  <dd className="body mt-2">{a}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="lg:col-span-7 lg:col-start-6">
+              <Faq items={FAQ} />
+            </div>
           </div>
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
         </Section>

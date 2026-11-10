@@ -20,7 +20,7 @@ const TONES = {
 
 export function Section({ children, className = "", tone = "ivory", id, compact = false }: SectionProps) {
   return (
-    <section id={id} className={`${TONES[tone]} ${compact ? "py-14 lg:py-20" : "py-20 lg:py-28"} ${className}`}>
+    <section id={id} className={`${TONES[tone]} ${compact ? "py-10 sm:py-14 lg:py-20" : "py-14 sm:py-20 lg:py-28"} ${className}`}>
       <div className="wrap">{children}</div>
     </section>
   );

@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { RoomCard } from "@/components/RoomCard";
+import { SwipeHint } from "@/components/SwipeHint";
 import { ROOMS } from "@/lib/rooms";
 import { SITE } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
@@ -44,38 +45,27 @@ export default function RoomsPage() {
         <Section className="!pt-0">
           <h2 className="display-md text-forest">King rooms</h2>
           <p className="body mt-3 max-w-[60ch]">One king bed in 38 to 47 square metres of calm. Choose the ground floor and a patio at garden level, or the first floor and a balcony among the palms.</p>
-          <div className="mt-10 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+          <div className="rail-md mt-8 grid gap-10 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
             {doubles.map((room, i) => <RoomCard key={room.slug} room={room} priority={i < 3} />)}
           </div>
+          <SwipeHint>Swipe through all {doubles.length} king rooms</SwipeHint>
         </Section>
 
         <Section tone="deep">
           <h2 className="display-md text-forest">Family suites and the two-bedroom suite</h2>
           <p className="body mt-3 max-w-[60ch]">Room for everyone, with two beds or two bedrooms across 39 to 93 square metres. Several have a kitchenette, and every one opens to a patio or balcony.</p>
-          <div className="mt-10 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+          <div className="rail-md mt-8 grid gap-10 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
             {families.map((room) => <RoomCard key={room.slug} room={room} />)}
           </div>
+          <SwipeHint>Swipe through all {families.length} suites</SwipeHint>
         </Section>
 
-        <Section>
+        {/* On phones the swipe rows above already show every room, so the register starts at tablet size. */}
+        <Section className="hidden md:block">
           <div className="rule pt-10">
             <h2 className="display-md text-forest">Room register</h2>
             <p className="body mt-3 max-w-[60ch]">All twelve room types at a glance, to help you find the right fit. Sizes and bed configurations are as published on the hotel&rsquo;s listing.</p>
-            <ul className="mt-8 grid gap-4 md:hidden">
-              {ROOMS.map((r) => (
-                <li key={r.slug} className="border-b border-[color:var(--line-soft)] pb-4">
-                  <Link href={`/rooms/${r.slug}`} className="textlink text-[15.5px]">{r.name}</Link>
-                  <dl className="mt-3 grid grid-cols-[5.5rem_1fr] gap-x-3 gap-y-1.5 text-[14px]">
-                    <dt className="text-charcoal-mute">Floor</dt><dd className="text-charcoal-soft">{r.floor}</dd>
-                    <dt className="text-charcoal-mute">Size</dt><dd className="text-charcoal-soft tabular-nums">{r.sizeSqm} m²</dd>
-                    <dt className="text-charcoal-mute">Beds</dt><dd className="text-charcoal-soft">{r.beds}</dd>
-                    <dt className="text-charcoal-mute">Outdoor</dt><dd className="text-charcoal-soft">{r.outdoor}</dd>
-                  </dl>
-                  <Link href={`/book?room=${r.slug}`} className="textlink mt-3 inline-block text-[14px]">Check availability</Link>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 hidden relative overflow-x-auto md:block">
+            <div className="relative mt-8 overflow-x-auto">
               <table className="w-full min-w-[680px] text-left text-[14.5px]">
                 <thead>
                   <tr className="border-b border-[color:var(--line)] text-charcoal-mute">

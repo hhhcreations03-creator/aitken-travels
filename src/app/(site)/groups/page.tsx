@@ -66,7 +66,7 @@ export default function GroupsPage() {
         </Section>
 
         <Section tone="deep" compact>
-          <div className="grid gap-4 md:grid-cols-12">
+          <div className="rail-md rail-photos grid gap-4 md:grid-cols-12">
             <ImageBlock src="/images/property/pool-daytime.webp" alt="The pool and balconies by day" aspect="aspect-[16/10]" sizes="(min-width: 768px) 66vw, 100vw" className="md:col-span-8" />
             <ImageBlock src="/images/property/lobby-lounge.webp" alt="Lounge seating in the lobby" aspect="aspect-[16/10] md:aspect-auto md:h-full" sizes="(min-width: 768px) 33vw, 100vw" className="md:col-span-4" />
             <ImageBlock src="/images/rooms/family-suite-balcony/two-beds-balcony.webp" alt="Family suite with two beds and a balcony" aspect="aspect-[4/3]" sizes="(min-width: 768px) 33vw, 100vw" className="md:col-span-4" />

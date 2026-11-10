@@ -28,7 +28,7 @@ export function Logo({ light = false, stacked = false, className = "", priority 
           width={Math.round((brand.logo.width / brand.logo.height) * h)}
           height={h}
           priority={priority}
-          className="h-[150px] w-auto"
+          className="h-[112px] w-auto lg:h-[150px]"
         />
       </Link>
     );
