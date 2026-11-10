@@ -1,13 +1,18 @@
 export type SubmitResult =
-  | { status: "sent" }
+  | { status: "sent"; ref?: string }
   | { status: "unconfigured" }
   | { status: "error"; message: string };
 
 export interface EnquiryPayload {
+  /** Which form sent it, so the hotel inbox can sort it. */
+  kind?: "contact" | "group" | "surf" | "availability";
   subject: string;
   body: string;
   replyTo?: string;
   name?: string;
+  phone?: string;
+  /** The form's answers as label/value pairs, shown as enquiry details in the admin. */
+  fields?: Array<[string, string]>;
   /** Honeypot. Leave empty. */
   website?: string;
 }
@@ -19,13 +24,21 @@ export async function submitEnquiry(payload: EnquiryPayload): Promise<SubmitResu
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-    if (res.ok) return { status: "sent" };
+    if (res.ok) {
+      const data = (await res.json().catch(() => ({}))) as { ref?: string };
+      return { status: "sent", ref: data.ref };
+    }
     if (res.status === 503) return { status: "unconfigured" };
     const data = (await res.json().catch(() => ({}))) as { error?: string };
     return { status: "error", message: data.error || "The message could not be sent." };
   } catch {
     return { status: "error", message: "The message could not be sent. Check your connection and try again." };
   }
+}
+
+/** The non-empty answers of a form, as plain label/value pairs. */
+export function answers(lines: Array<[string, string | number | undefined | null]>): Array<[string, string]> {
+  return lines.filter(([, v]) => v !== undefined && v !== null && String(v).trim() !== "").map(([k, v]) => [k, String(v).trim()]);
 }
 
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

@@ -4,6 +4,8 @@ import { HOTEL_TZ } from "@/lib/booking/config";
 import { addDays, todayIn, nights } from "@/lib/booking/dates";
 import { dashboardStats, listBookings, type Booking } from "@/lib/booking/bookings";
 import { Empty, LinkButton, PageTitle, Panel, StatusBadge, shortDate, dateTime } from "@/components/admin/ui";
+import { inboxCounts, listThreads } from "@/lib/inbox/threads";
+import { KindBadge } from "@/components/admin/inbox/Conversation";
 
 export const dynamic = "force-dynamic";
 
@@ -29,21 +31,24 @@ function Row({ b, show }: { b: Booking; show: "arrival" | "departure" | "created
 
 export default async function Dashboard() {
   const today = todayIn(HOTEL_TZ);
-  const [stats, pending, arrivals, departures, upcoming] = await Promise.all([
+  const [stats, pending, arrivals, departures, upcoming, counts, waiting] = await Promise.all([
     dashboardStats(today),
     listBookings({ status: "pending", sort: "arrival", limit: 20 }),
     listBookings({ status: "active", from: today, to: today, sort: "arrival", limit: 50 }),
     listBookings({ status: "active", from: addDays(today, -60), to: today, sort: "arrival", limit: 200 }),
     listBookings({ status: "active", from: addDays(today, 1), to: addDays(today, 7), sort: "arrival", limit: 50 }),
+    inboxCounts(),
+    listThreads({ view: "needs_reply", limit: 6 }),
   ]);
   const arrivingToday = arrivals.rows.filter((b) => b.check_in === today);
   const leavingToday = departures.rows.filter((b) => b.check_out === today);
   const nextWeek = upcoming.rows.filter((b) => b.check_in > today);
 
   const tiles = [
+    { label: "Need a reply", value: counts.needsReply, href: "/admin/inbox", strong: counts.needsReply > 0 },
     { label: "Awaiting confirmation", value: stats.pending, href: "/admin/bookings?status=pending", strong: stats.pending > 0 },
-    { label: "Arriving today", value: stats.arrivals, href: `/admin/bookings?status=active&from=${today}&to=${today}` },
-    { label: "Leaving today", value: stats.departures, href: "/admin/calendar" },
+    { label: "Arriving today", value: stats.arrivals, href: `/admin/bookings?status=active&arriving=${today}&sort=arrival` },
+    { label: "Leaving today", value: stats.departures, href: `/admin/bookings?status=active&departing=${today}&sort=arrival` },
     { label: "In house", value: stats.inhouse, href: "/admin/bookings?status=checked_in" },
     { label: "Arrivals in next 30 days", value: stats.upcoming, href: "/admin/bookings?status=active&sort=arrival" },
   ];
@@ -54,7 +59,7 @@ export default async function Dashboard() {
         <LinkButton href="/admin/bookings/new" primary>New booking</LinkButton>
         <LinkButton href="/admin/calendar">Calendar</LinkButton>
       </PageTitle>
-      <ul className="mb-8 grid grid-cols-2 gap-3 md:grid-cols-5">
+      <ul className="mb-8 grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
         {tiles.map((t) => (
           <li key={t.label}>
             <Link href={t.href} className={`block rounded-[4px] border p-4 hover:border-forest ${t.strong ? "border-[#E9C46A] bg-[#FBF3DF]" : "border-[color:var(--line)] bg-white"}`}>
@@ -64,6 +69,26 @@ export default async function Dashboard() {
           </li>
         ))}
       </ul>
+      <div className="mb-6">
+        <Panel title="Conversations that need a reply" action={<Link href="/admin/inbox" className="text-[13px] text-forest underline">Open inbox</Link>}>
+          {waiting.rows.length ? (
+            <ul className="-mx-2">
+              {waiting.rows.map((t) => (
+                <li key={t.id}>
+                  <Link href={`/admin/inbox/${t.id}`} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-[3px] px-2 py-2.5 hover:bg-ivory">
+                    <span className="min-w-0">
+                      <span className={`${t.unread ? "font-semibold" : "font-medium"} text-charcoal`}>{t.guest_name || t.guest_email || "Unknown guest"}</span>
+                      <span className="ml-2 text-[13px] text-charcoal-mute">{t.subject}</span>
+                      {t.last_snippet && <span className="block truncate text-[13px] text-charcoal-soft">{t.last_snippet}</span>}
+                    </span>
+                    <span className="flex items-center gap-3 text-[13px] text-charcoal-soft">{dateTime(t.last_message_at)}<KindBadge kind={t.kind} /></span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : <Empty>Every conversation has been answered.</Empty>}
+        </Panel>
+      </div>
       <div className="grid gap-6 lg:grid-cols-2">
         <Panel title="Awaiting confirmation" action={<Link href="/admin/bookings?status=pending" className="text-[13px] text-forest underline">View all</Link>}>
           {pending.rows.length ? <ul className="-mx-2">{pending.rows.map((b) => <Row key={b.id} b={b} show="created" />)}</ul> : <Empty>No requests waiting.</Empty>}

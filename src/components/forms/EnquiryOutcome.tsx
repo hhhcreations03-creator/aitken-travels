@@ -23,7 +23,8 @@ export function EnquiryOutcome({ result, subject, message, onReset }: Props) {
       <div role="status" className="rounded-[2px] border border-forest/20 bg-white/60 p-6">
         <h3 className="font-display text-[1.5rem] text-forest">Your enquiry has been sent</h3>
         <p className="body mt-2">
-          It&rsquo;s on its way to {SITE.email}. The hotel team will reply to confirm availability and arrangements directly. Nothing is reserved until they do.
+          {result.ref ? <>Our team has it, under reference <strong className="font-medium text-forest">{result.ref}</strong>. </> : <>It&rsquo;s on its way to {SITE.email}. </>}
+          We&rsquo;ll reply personally to confirm availability and arrangements. Nothing is reserved until we do.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <a href={whatsappUrl(message)} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">

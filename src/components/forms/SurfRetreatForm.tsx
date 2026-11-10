@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { composeMessage, whatsappUrl } from "@/lib/site";
-import { EMAIL_RE, addDaysISO, formatDateLong, submitEnquiry, todayISO, validateDates, type SubmitResult } from "@/lib/enquiry-client";
+import { EMAIL_RE, answers, addDaysISO, formatDateLong, submitEnquiry, todayISO, validateDates, type SubmitResult } from "@/lib/enquiry-client";
 import { EnquiryOutcome } from "./EnquiryOutcome";
 import { FormNote, Honeypot, TextField, TextareaField } from "./fields";
 
@@ -29,11 +29,7 @@ export function SurfRetreatForm() {
   const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const message = useMemo(
-    () =>
-      composeMessage(
-        "Hello The Lavish Haven, I'm planning a surf-focused stay in Ahangama and would like to enquire.",
-        [
+  const lines = useMemo((): Array<[string, string | number | undefined]> => [
           ["Name", form.name],
           ["Email", form.email],
           ["Phone", form.phone],
@@ -42,12 +38,8 @@ export function SurfRetreatForm() {
           ["Group size", form.groupSize],
           ["Accommodation requirements", form.accommodation],
           ["Requested surf experiences", form.surf],
-          ["Questions", form.questions],
-        ],
-        "Could you let me know what's possible and how to proceed? Thank you."
-      ),
-    [form]
-  );
+          ["Questions", form.questions]], [form]);
+  const message = useMemo(() => composeMessage("Hello The Lavish Haven, I'm planning a surf-focused stay in Ahangama and would like to enquire.", lines, "Could you let me know what's possible and how to proceed? Thank you."), [lines]);
   const subject = `Surf retreat enquiry${form.groupSize ? `: ${form.groupSize} guests` : ""}`;
 
   function validate(): boolean {
@@ -64,7 +56,7 @@ export function SurfRetreatForm() {
     if (!validate()) return;
     setSending(true);
     const honeypot = (new FormData(e.currentTarget).get("website") as string) || "";
-    setResult(await submitEnquiry({ subject, body: message, replyTo: form.email, name: form.name, website: honeypot }));
+    setResult(await submitEnquiry({ kind: "surf", subject, body: message, replyTo: form.email, name: form.name, phone: form.phone, fields: answers(lines), website: honeypot }));
     setSending(false);
   }
 

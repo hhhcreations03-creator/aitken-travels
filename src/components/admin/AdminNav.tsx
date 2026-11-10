@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const LINKS = [
   { href: "/admin", label: "Dashboard" },
+  { href: "/admin/inbox", label: "Inbox" },
   { href: "/admin/bookings", label: "Bookings" },
   { href: "/admin/calendar", label: "Calendar" },
   { href: "/admin/rooms", label: "Rooms & rates" },
@@ -13,7 +14,7 @@ const LINKS = [
   { href: "/admin/settings", label: "Settings" },
 ];
 
-export function AdminNav({ pending }: { pending: number }) {
+export function AdminNav({ pending, needsReply = 0 }: { pending: number; needsReply?: number }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const active = (href: string) => (href === "/admin" ? path === "/admin" : path.startsWith(href));
@@ -33,6 +34,9 @@ export function AdminNav({ pending }: { pending: number }) {
                 className={`flex items-center gap-2 rounded-[3px] px-3 py-2 text-[14px] ${active(l.href) ? "bg-ivory/15 text-ivory" : "text-ivory/75 hover:bg-ivory/10 hover:text-ivory"}`}
               >
                 {l.label}
+                {l.href === "/admin/inbox" && needsReply > 0 && (
+                  <span className="rounded-full bg-[#E9C46A] px-1.5 text-[11.5px] font-semibold text-forest-deep" aria-label={`${needsReply} need a reply`}>{needsReply}</span>
+                )}
                 {l.href === "/admin/bookings" && pending > 0 && (
                   <span className="rounded-full bg-[#E9C46A] px-1.5 text-[11.5px] font-semibold text-forest-deep" aria-label={`${pending} awaiting confirmation`}>{pending}</span>
                 )}

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ROOMS } from "@/lib/rooms";
 import { composeMessage, whatsappUrl } from "@/lib/site";
-import { EMAIL_RE, addDaysISO, formatDateLong, nightsBetween, submitEnquiry, todayISO, validateDates, type SubmitResult } from "@/lib/enquiry-client";
+import { EMAIL_RE, answers, addDaysISO, formatDateLong, nightsBetween, submitEnquiry, todayISO, validateDates, type SubmitResult } from "@/lib/enquiry-client";
 import { EnquiryOutcome } from "./EnquiryOutcome";
 import { FormNote, Honeypot, SelectField, TextField, TextareaField } from "./fields";
 
@@ -41,11 +41,7 @@ export function AvailabilityForm({ defaultRoom }: { defaultRoom?: string }) {
   const roomName = ROOMS.find((r) => r.slug === form.room)?.name ?? "Any suitable room";
   const nights = form.checkIn && form.checkOut ? nightsBetween(form.checkIn, form.checkOut) : 0;
 
-  const message = useMemo(
-    () =>
-      composeMessage(
-        "Hello The Lavish Haven, I'd like to check availability for a stay.",
-        [
+  const lines = useMemo((): Array<[string, string | number | undefined]> => [
           ["Room", roomName],
           ["Check-in", formatDateLong(form.checkIn)],
           ["Check-out", formatDateLong(form.checkOut)],
@@ -56,12 +52,8 @@ export function AvailabilityForm({ defaultRoom }: { defaultRoom?: string }) {
           ["Name", form.name],
           ["Email", form.email],
           ["Phone", form.phone],
-          ["Requests", form.requests],
-        ],
-        "Please let me know availability and how to confirm. Thank you."
-      ),
-    [roomName, form, nights]
-  );
+          ["Requests", form.requests]], [roomName, form, nights]);
+  const message = useMemo(() => composeMessage("Hello The Lavish Haven, I'd like to check availability for a stay.", lines, "Please let me know availability and how to confirm. Thank you."), [lines]);
   const subject = `Availability enquiry: ${roomName}${form.checkIn ? `, ${form.checkIn} to ${form.checkOut}` : ""}`;
 
   function validate(): boolean {
@@ -80,7 +72,7 @@ export function AvailabilityForm({ defaultRoom }: { defaultRoom?: string }) {
     if (!validate()) return;
     setSending(true);
     const honeypot = (new FormData(e.currentTarget).get("website") as string) || "";
-    const r = await submitEnquiry({ subject, body: message, replyTo: form.email, name: form.name, website: honeypot });
+    const r = await submitEnquiry({ kind: "availability", subject, body: message, replyTo: form.email, name: form.name, phone: form.phone, fields: answers(lines), website: honeypot });
     setResult(r);
     setSending(false);
   }

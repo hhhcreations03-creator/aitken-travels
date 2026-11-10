@@ -10,6 +10,11 @@ import { formatDate, nights } from "@/lib/booking/dates";
 import { STATUS_LABELS, type BookingStatus } from "@/lib/booking/validation";
 import { emailConfigured } from "@/lib/booking/config";
 import { getSettings } from "@/lib/booking/settings";
+import { HOTEL_TZ } from "@/lib/booking/config";
+import { todayIn } from "@/lib/booking/dates";
+import { threadForBooking, threadMessages } from "@/lib/inbox/threads";
+import { Conversation } from "@/components/admin/inbox/Conversation";
+import { ReplyBox } from "@/components/admin/inbox/ReplyBox";
 
 export const dynamic = "force-dynamic";
 
@@ -31,10 +36,14 @@ function waLink(phone: string, text: string) {
 export default async function BookingDetail({ params, searchParams }: { params: { id: string }; searchParams: { edit?: string } }) {
   const b = await getBookingById(params.id);
   if (!b) notFound();
-  const [events, settings] = await Promise.all([bookingEvents(b.id), getSettings()]);
+  const [events, settings, thread] = await Promise.all([bookingEvents(b.id), getSettings(), threadForBooking(b)]);
+  const messages = await threadMessages(thread.id);
+  const today = todayIn(HOTEL_TZ);
+  const transitions = TRANSITIONS[b.status].filter((to) => !(to === "checked_in" && b.check_in > today));
+  const checkInLater = TRANSITIONS[b.status].includes("checked_in") && b.check_in > today;
   const room = getRoom(b.room_slug);
   const n = nights(b.check_in, b.check_out);
-  const canEmail = emailConfigured();
+  const canEmail = emailConfigured() && Boolean(b.email);
   const confirmText = `Hello ${b.guest_name.split(" ")[0]}, this is The Lavish Haven about your booking ${b.ref} (${formatDate(b.check_in)} to ${formatDate(b.check_out)}, ${room?.name ?? b.room_slug}). `;
   const wa = b.phone ? waLink(b.phone, confirmText) : null;
 
@@ -59,6 +68,13 @@ export default async function BookingDetail({ params, searchParams }: { params: 
               <div className="sm:col-span-3"><dt className="text-[12.5px] text-charcoal-mute">Guest requests</dt><dd className="whitespace-pre-wrap">{b.requests || "–"}</dd></div>
               {b.internal_notes && <div className="sm:col-span-3"><dt className="text-[12.5px] text-charcoal-mute">Internal notes</dt><dd className="whitespace-pre-wrap">{b.internal_notes}</dd></div>}
             </dl>
+          </Panel>
+
+          <Panel title="Conversation with the guest" action={<Link href={`/admin/inbox/${thread.id}`} className="text-[13px] text-forest underline">Open in inbox</Link>}>
+            <div className="grid gap-4">
+              <Conversation thread={thread} messages={messages} />
+              <ReplyBox threadId={thread.id} subject={`Your booking ${b.ref} at The Lavish Haven`} guestName={b.guest_name} guestEmail={b.email || null} canEmail={emailConfigured()} returnTo={`/admin/bookings/${b.id}`} />
+            </div>
           </Panel>
 
           <details open={searchParams.edit === "1"} className="rounded-[4px] border border-[color:var(--line)] bg-white">
@@ -90,7 +106,7 @@ export default async function BookingDetail({ params, searchParams }: { params: 
           <Panel title="Status">
             <p className="mb-4 text-[14px] text-charcoal-soft">Currently <strong className="text-charcoal">{STATUS_LABELS[b.status]}</strong>.</p>
             <div className="grid gap-3">
-              {TRANSITIONS[b.status].map((to) => (
+              {transitions.map((to) => (
                 <form key={to} action={changeStatus} className="grid gap-2 rounded-[3px] border border-[color:var(--line-soft)] p-3">
                   <input type="hidden" name="id" value={b.id} />
                   <input type="hidden" name="to" value={to} />
@@ -100,13 +116,14 @@ export default async function BookingDetail({ params, searchParams }: { params: 
                       <textarea id={`msg-${to}`} name="message" rows={2} placeholder={to === "confirmed" ? "Optional message, for example the confirmed rate or payment details" : "Optional message to the guest"} className={adminInput} />
                       <label className="flex items-center gap-2 text-[13px] text-charcoal-soft">
                         <input type="checkbox" name="notify" defaultChecked={canEmail} disabled={!canEmail} className="h-4 w-4 accent-[#1E3A2F]" />
-                        {canEmail ? "Email the guest" : "Email isn't set up; contact the guest below"}
+                        {canEmail ? "Email the guest" : b.email ? "Email isn't set up; contact the guest below" : "No guest email; contact them below"}
                       </label>
                     </>
                   )}
                   <button className={to === "cancelled" || to === "declined" ? adminBtnDanger : to === "pending" ? adminBtnOutline : adminBtnPrimary}>{ACTION_LABEL[to]}</button>
                 </form>
               ))}
+              {checkInLater && <p className="text-[13px] text-charcoal-mute">Check-in opens on the arrival date, {formatDate(b.check_in)}.</p>}
             </div>
           </Panel>
 

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { composeMessage, whatsappUrl } from "@/lib/site";
-import { EMAIL_RE, submitEnquiry, type SubmitResult } from "@/lib/enquiry-client";
+import { EMAIL_RE, answers, submitEnquiry, type SubmitResult } from "@/lib/enquiry-client";
 import { EnquiryOutcome } from "./EnquiryOutcome";
 import { FormNote, Honeypot, SelectField, TextField, TextareaField } from "./fields";
 
@@ -20,10 +20,8 @@ export function ContactForm() {
   const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const message = useMemo(
-    () => composeMessage("Hello The Lavish Haven,", [["Name", form.name], ["Email", form.email], ["Phone", form.phone], ["Topic", form.topic], ["Message", form.message]]),
-    [form]
-  );
+  const lines = useMemo((): Array<[string, string | number | undefined]> => [["Name", form.name], ["Email", form.email], ["Phone", form.phone], ["Topic", form.topic], ["Message", form.message]], [form]);
+  const message = useMemo(() => composeMessage("Hello The Lavish Haven,", lines), [lines]);
   const subject = `Website message${form.topic ? `: ${form.topic}` : ""}${form.name ? ` from ${form.name}` : ""}`;
 
   function validate(): boolean {
@@ -40,7 +38,7 @@ export function ContactForm() {
     if (!validate()) return;
     setSending(true);
     const honeypot = (new FormData(e.currentTarget).get("website") as string) || "";
-    setResult(await submitEnquiry({ subject, body: message, replyTo: form.email, name: form.name, website: honeypot }));
+    setResult(await submitEnquiry({ kind: "contact", subject, body: message, replyTo: form.email, name: form.name, phone: form.phone, fields: answers(lines), website: honeypot }));
     setSending(false);
   }
 

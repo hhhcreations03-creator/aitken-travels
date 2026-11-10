@@ -15,6 +15,11 @@ import { db } from "@/lib/booking/db";
 import { ensureSchema } from "@/lib/booking/schema";
 import { syncFeed } from "@/lib/booking/ical";
 import { saveSettings } from "@/lib/booking/settings";
+import { HOTEL_TZ } from "@/lib/booking/config";
+import { todayIn, formatDate } from "@/lib/booking/dates";
+import { addMessage, getThread, linkBooking, markRead, setNeedsReply, setThreadStatus, threadForBooking } from "@/lib/inbox/threads";
+import { sendToGuest } from "@/lib/inbox/mailer";
+import { syncMailbox } from "@/lib/inbox/mailbox";
 
 const str = (f: FormData, k: string) => String(f.get(k) ?? "").trim();
 const num = (f: FormData, k: string) => Number(str(f, k));
@@ -100,7 +105,17 @@ export async function createManualBooking(formData: FormData) {
     quotedTotal: v.quotedTotal, currency: v.currency, internalNotes: v.internalNotes,
     status, source: str(formData, "source") || "phone", actor: admin.email, allowOverbook: v.allowOverbook,
   });
-  if (!result.ok) back("/admin/bookings/new", { error: "Not enough rooms free on those nights. Tick “Allow overbooking” to save it anyway." });
+  const fromThread = str(formData, "threadId");
+  if (!result.ok) back("/admin/bookings/new", { error: "Not enough rooms free on those nights. Tick “Allow overbooking” to save it anyway.", ...(fromThread ? { thread: fromThread } : {}) });
+  if (result.ok) {
+    const enquiry = fromThread ? await getThread(fromThread) : null;
+    if (enquiry && !enquiry.booking_id) {
+      await linkBooking(enquiry.id, result.booking.id);
+      await addMessage({ threadId: enquiry.id, direction: "note", channel: "system", author: admin.email, body: `Booking ${result.booking.ref} created from this enquiry.`, delivery: "logged" });
+    } else {
+      await threadForBooking(result.booking);
+    }
+  }
   revalidatePath("/admin", "layout");
   back(`/admin/bookings/${result.ok ? result.booking.id : ""}`, { msg: `Booking ${result.ok ? result.booking.ref : ""} created.` });
 }
@@ -132,6 +147,11 @@ export async function changeStatus(formData: FormData) {
   const notify = formData.get("notify") === "on";
   const message = str(formData, "message");
   if (!(BOOKING_STATUSES as readonly string[]).includes(to)) back(`/admin/bookings/${id}`, { error: "Unknown status." });
+  if (to === "checked_in") {
+    const current = await getBookingById(id);
+    const today = todayIn(HOTEL_TZ);
+    if (current && current.check_in > today) back(`/admin/bookings/${id}`, { error: `Check-in opens on the arrival date, ${formatDate(current.check_in)}. To change the dates, edit the booking.` });
+  }
   const result = await setStatus(id, to, admin.email, message || undefined);
   if (!result.ok) {
     back(`/admin/bookings/${id}`, {
@@ -139,7 +159,13 @@ export async function changeStatus(formData: FormData) {
     });
   }
   let sent = false;
-  if (notify && result.ok) sent = await emailStatusChange(result.booking, message || undefined);
+  if (notify && result.ok && result.booking.email) sent = await emailStatusChange(result.booking, message || undefined, admin.email);
+  // Deciding on a request answers it, whether the guest heard by email or by WhatsApp.
+  if (result.ok && ["confirmed", "declined", "cancelled"].includes(to)) {
+    const t = await threadForBooking(result.booking);
+    await setNeedsReply(t.id, false);
+    await markRead(t.id);
+  }
   revalidatePath("/admin", "layout");
   back(`/admin/bookings/${id}`, { msg: `Status updated.${notify ? (sent ? " Guest emailed." : " Email not sent; use WhatsApp or email below.") : ""}` });
 }
@@ -250,4 +276,96 @@ export async function removeFeed(formData: FormData) {
   await d.query(`DELETE FROM ical_feeds WHERE id = $1`, [str(formData, "id")]);
   revalidatePath("/admin", "layout");
   back("/admin/availability", { msg: "Calendar disconnected and its imported dates removed." });
+}
+
+/* ---------- inbox ---------- */
+
+const threadPath = (f: FormData, id: string) => {
+  const to = str(f, "returnTo");
+  return to.startsWith("/admin/") && !to.startsWith("//") ? to : `/admin/inbox/${id}`;
+};
+
+export async function sendReply(formData: FormData) {
+  assertSameOrigin();
+  const admin = await requireAdmin();
+  const id = str(formData, "threadId");
+  const path = threadPath(formData, id);
+  const body = str(formData, "body").slice(0, 20000);
+  const thread = await getThread(id);
+  if (!thread) back("/admin/inbox", { error: "Conversation not found." });
+  if (!body) back(path, { error: "Write a reply first." });
+  const subject = str(formData, "subject") || `Re: ${thread!.subject.replace(/^re:\s*/i, "")}`;
+  const r = await sendToGuest({ threadId: id, subject, text: body, author: admin.email });
+  if (r.sent && formData.get("close") === "on") await setThreadStatus(id, "closed");
+  revalidatePath("/admin", "layout");
+  if (r.sent) back(path, { msg: `Reply sent to ${thread!.guest_email}.` });
+  else back(path, {
+    error:
+      r.reason === "no_address"
+        ? "This guest has no email address, so nothing was sent. Your reply is kept in the conversation; send it on WhatsApp and log it."
+        : r.reason === "not_configured"
+          ? "Email sending isn't set up, so nothing was sent. Your reply is kept in the conversation. See Settings."
+          : `Gmail didn't accept the email, so nothing was sent: ${r.error ?? "unknown error"}. Your reply is kept in the conversation.`,
+  });
+}
+
+export async function logContact(formData: FormData) {
+  assertSameOrigin();
+  const admin = await requireAdmin();
+  const id = str(formData, "threadId");
+  const path = threadPath(formData, id);
+  const channel = str(formData, "channel") === "phone" ? "phone" : "whatsapp";
+  const direction = str(formData, "direction") === "in" ? "in" : "out";
+  const body = str(formData, "body").slice(0, 10000);
+  if (!body || !(await getThread(id))) back(path, { error: "Write what was said first." });
+  await addMessage({ threadId: id, direction, channel, author: admin.email, body, delivery: "logged" });
+  revalidatePath("/admin", "layout");
+  back(path, { msg: `${channel === "phone" ? "Call" : "WhatsApp message"} logged.` });
+}
+
+export async function addThreadNote(formData: FormData) {
+  assertSameOrigin();
+  const admin = await requireAdmin();
+  const id = str(formData, "threadId");
+  const path = threadPath(formData, id);
+  const body = str(formData, "body").slice(0, 4000);
+  if (body && (await getThread(id))) await addMessage({ threadId: id, direction: "note", channel: "system", author: admin.email, body, delivery: "logged" });
+  back(path, { msg: "Note added." });
+}
+
+export async function updateThread(formData: FormData) {
+  assertSameOrigin();
+  await requireAdmin();
+  const id = str(formData, "threadId");
+  const path = threadPath(formData, id);
+  if (!(await getThread(id))) back("/admin/inbox", { error: "Conversation not found." });
+  const action = str(formData, "do");
+  const done: Record<string, string> = {
+    close: "Conversation closed. It reopens by itself if the guest writes again.",
+    reopen: "Conversation reopened.",
+    spam: "Marked as spam.",
+    answered: "Marked as answered.",
+    needs_reply: "Marked as needing a reply.",
+    unread: "Marked as unread.",
+  };
+  if (action === "close") await setThreadStatus(id, "closed");
+  else if (action === "reopen") await setThreadStatus(id, "open");
+  else if (action === "spam") await setThreadStatus(id, "spam");
+  else if (action === "answered") await setNeedsReply(id, false);
+  else if (action === "needs_reply") await setNeedsReply(id, true);
+  else if (action === "unread") await markRead(id, true);
+  else back(path, { error: "Unknown action." });
+  revalidatePath("/admin", "layout");
+  back(action === "unread" || action === "spam" ? "/admin/inbox" : path, { msg: done[action] });
+}
+
+export async function checkMailNow() {
+  assertSameOrigin();
+  await requireAdmin();
+  const r = await syncMailbox({ force: true });
+  revalidatePath("/admin", "layout");
+  if (!r.ok) back("/admin/inbox", { error: `Couldn't read the mailbox: ${r.error}` });
+  if (r.ok && r.skipped === "not_configured") back("/admin/inbox", { error: "The mailbox isn't connected yet. See Settings for the two values to add." });
+  if (r.ok && r.skipped === "busy") back("/admin/inbox", { msg: "Mail is already being checked. Refresh in a moment." });
+  back("/admin/inbox", { msg: r.ok && r.imported ? `${r.imported} new email${r.imported === 1 ? "" : "s"} filed.` : "No new email." });
 }

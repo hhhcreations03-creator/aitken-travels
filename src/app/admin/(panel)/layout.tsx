@@ -8,6 +8,7 @@ import { ensureSchema } from "@/lib/booking/schema";
 import { AdminNav } from "@/components/admin/AdminNav";
 import { Flash } from "@/components/admin/Flash";
 import { logout } from "../actions";
+import { inboxCounts } from "@/lib/inbox/threads";
 
 export const dynamic = "force-dynamic";
 
@@ -22,9 +23,18 @@ async function pendingCount(): Promise<number> {
   }
 }
 
+async function needsReplyCount(): Promise<number> {
+  try {
+    return (await inboxCounts()).needsReply;
+  } catch {
+    return 0;
+  }
+}
+
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
   const admin = await requireAdmin();
   const configured = bookingConfigured();
+  const [pending, needsReply] = configured ? await Promise.all([pendingCount(), needsReplyCount()]) : [0, 0];
   return (
     <>
       <header className="relative bg-forest text-ivory">
@@ -40,7 +50,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
             </form>
           </div>
           <div className="lg:flex lg:flex-1 lg:justify-center">
-            <AdminNav pending={configured ? await pendingCount() : 0} />
+            <AdminNav pending={pending} needsReply={needsReply} />
           </div>
         </div>
       </header>

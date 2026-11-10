@@ -3,9 +3,27 @@ import type { Booking } from "@/lib/booking/bookings";
 import { BOOKING_SOURCES } from "@/lib/booking/validation";
 import { adminBtnPrimary, adminInput, adminLabel } from "./ui";
 
+/** Values to start a new booking with, e.g. from an enquiry. */
+export interface BookingPrefill {
+  roomSlug?: string;
+  checkIn?: string;
+  checkOut?: string;
+  rooms?: number;
+  adults?: number;
+  children?: number;
+  guestName?: string;
+  email?: string;
+  phone?: string;
+  requests?: string;
+  source?: string;
+}
+
 interface Props {
   action: (f: FormData) => Promise<void>;
   booking?: Booking;
+  prefill?: BookingPrefill;
+  /** The conversation this booking is created from; it gets linked. */
+  threadId?: string;
   currency: string;
   submitLabel: string;
   isNew?: boolean;
@@ -20,32 +38,33 @@ function Field({ id, label, children, className = "" }: { id: string; label: str
   );
 }
 
-export function BookingForm({ action, booking: b, currency, submitLabel, isNew = false }: Props) {
+export function BookingForm({ action, booking: b, prefill: p = {}, threadId, currency, submitLabel, isNew = false }: Props) {
   return (
     <form action={action} className="grid gap-5">
       {b && <input type="hidden" name="id" value={b.id} />}
+      {threadId && <input type="hidden" name="threadId" value={threadId} />}
       <fieldset className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <legend className="mb-3 text-[14px] font-semibold text-charcoal">Stay</legend>
         <Field id="roomSlug" label="Room type" className="sm:col-span-2">
-          <select id="roomSlug" name="roomSlug" required defaultValue={b?.room_slug} className={adminInput}>
+          <select id="roomSlug" name="roomSlug" required defaultValue={b?.room_slug ?? p.roomSlug} className={adminInput}>
             {ROOMS.map((r) => <option key={r.slug} value={r.slug}>{r.name}</option>)}
           </select>
         </Field>
-        <Field id="checkIn" label="Check-in"><input id="checkIn" name="checkIn" type="date" required defaultValue={b?.check_in} className={adminInput} /></Field>
-        <Field id="checkOut" label="Check-out"><input id="checkOut" name="checkOut" type="date" required defaultValue={b?.check_out} className={adminInput} /></Field>
-        <Field id="rooms" label="Rooms"><input id="rooms" name="rooms" type="number" min={1} max={20} required defaultValue={b?.rooms ?? 1} className={adminInput} /></Field>
-        <Field id="adults" label="Adults"><input id="adults" name="adults" type="number" min={1} max={60} required defaultValue={b?.adults ?? 2} className={adminInput} /></Field>
-        <Field id="children" label="Children"><input id="children" name="children" type="number" min={0} max={60} required defaultValue={b?.children ?? 0} className={adminInput} /></Field>
+        <Field id="checkIn" label="Check-in"><input id="checkIn" name="checkIn" type="date" required defaultValue={b?.check_in ?? p.checkIn} className={adminInput} /></Field>
+        <Field id="checkOut" label="Check-out"><input id="checkOut" name="checkOut" type="date" required defaultValue={b?.check_out ?? p.checkOut} className={adminInput} /></Field>
+        <Field id="rooms" label="Rooms"><input id="rooms" name="rooms" type="number" min={1} max={20} required defaultValue={b?.rooms ?? p.rooms ?? 1} className={adminInput} /></Field>
+        <Field id="adults" label="Adults"><input id="adults" name="adults" type="number" min={1} max={60} required defaultValue={b?.adults ?? p.adults ?? 2} className={adminInput} /></Field>
+        <Field id="children" label="Children"><input id="children" name="children" type="number" min={0} max={60} required defaultValue={b?.children ?? p.children ?? 0} className={adminInput} /></Field>
         <Field id="arrivalTime" label="Arrival time"><input id="arrivalTime" name="arrivalTime" defaultValue={b?.arrival_time ?? ""} className={adminInput} /></Field>
       </fieldset>
 
       <fieldset className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <legend className="mb-3 text-[14px] font-semibold text-charcoal">Guest</legend>
-        <Field id="guestName" label="Name" className="sm:col-span-2"><input id="guestName" name="guestName" required defaultValue={b?.guest_name} className={adminInput} /></Field>
-        <Field id="email" label="Email"><input id="email" name="email" type="email" defaultValue={b?.email} className={adminInput} /></Field>
-        <Field id="phone" label="Phone or WhatsApp"><input id="phone" name="phone" type="tel" defaultValue={b?.phone} className={adminInput} /></Field>
+        <Field id="guestName" label="Name" className="sm:col-span-2"><input id="guestName" name="guestName" required defaultValue={b?.guest_name ?? p.guestName} className={adminInput} /></Field>
+        <Field id="email" label="Email"><input id="email" name="email" type="email" defaultValue={b?.email ?? p.email} className={adminInput} /></Field>
+        <Field id="phone" label="Phone or WhatsApp"><input id="phone" name="phone" type="tel" defaultValue={b?.phone ?? p.phone} className={adminInput} /></Field>
         <Field id="country" label="Country"><input id="country" name="country" defaultValue={b?.country ?? ""} className={adminInput} /></Field>
-        <Field id="requests" label="Guest requests" className="sm:col-span-2 lg:col-span-3"><textarea id="requests" name="requests" rows={2} defaultValue={b?.requests ?? ""} className={adminInput} /></Field>
+        <Field id="requests" label="Guest requests" className="sm:col-span-2 lg:col-span-3"><textarea id="requests" name="requests" rows={2} defaultValue={b?.requests ?? p.requests ?? ""} className={adminInput} /></Field>
       </fieldset>
 
       <fieldset className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -55,7 +74,7 @@ export function BookingForm({ action, booking: b, currency, submitLabel, isNew =
         {isNew && (
           <>
             <Field id="source" label="Source">
-              <select id="source" name="source" defaultValue="phone" className={adminInput}>
+              <select id="source" name="source" defaultValue={p.source ?? "phone"} className={adminInput}>
                 {BOOKING_SOURCES.filter((s) => s !== "website").map((s) => <option key={s} value={s}>{s}</option>)}
               </select>
             </Field>

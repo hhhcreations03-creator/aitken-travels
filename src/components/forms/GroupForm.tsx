@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { composeMessage, whatsappUrl } from "@/lib/site";
-import { EMAIL_RE, addDaysISO, formatDateLong, submitEnquiry, todayISO, validateDates, type SubmitResult } from "@/lib/enquiry-client";
+import { EMAIL_RE, answers, addDaysISO, formatDateLong, submitEnquiry, todayISO, validateDates, type SubmitResult } from "@/lib/enquiry-client";
 import { EnquiryOutcome } from "./EnquiryOutcome";
 import { FormNote, Honeypot, SelectField, TextField, TextareaField } from "./fields";
 
@@ -32,11 +32,7 @@ export function GroupForm({ defaultType }: { defaultType?: string }) {
   const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const message = useMemo(
-    () =>
-      composeMessage(
-        "Hello The Lavish Haven, I'm organising a group stay and would like to enquire.",
-        [
+  const lines = useMemo((): Array<[string, string | number | undefined]> => [
           ["Organiser", form.name],
           ["Email", form.email],
           ["WhatsApp / phone", form.phone],
@@ -46,12 +42,8 @@ export function GroupForm({ defaultType }: { defaultType?: string }) {
           ["Check-out", formatDateLong(form.checkOut)],
           ["Rooms required", form.rooms],
           ["Requested experiences", form.experiences],
-          ["Additional requirements", form.requirements],
-        ],
-        "Could you let me know what the hotel can accommodate and how to proceed? Thank you."
-      ),
-    [form]
-  );
+          ["Additional requirements", form.requirements]], [form]);
+  const message = useMemo(() => composeMessage("Hello The Lavish Haven, I'm organising a group stay and would like to enquire.", lines, "Could you let me know what the hotel can accommodate and how to proceed? Thank you."), [lines]);
   const subject = `Group enquiry: ${form.groupType || "group stay"}${form.guests ? `, ${form.guests} guests` : ""}`;
 
   function validate(): boolean {
@@ -71,7 +63,7 @@ export function GroupForm({ defaultType }: { defaultType?: string }) {
     if (!validate()) return;
     setSending(true);
     const honeypot = (new FormData(e.currentTarget).get("website") as string) || "";
-    setResult(await submitEnquiry({ subject, body: message, replyTo: form.email, name: form.name, website: honeypot }));
+    setResult(await submitEnquiry({ kind: "group", subject, body: message, replyTo: form.email, name: form.name, phone: form.phone, fields: answers(lines), website: honeypot }));
     setSending(false);
   }
 

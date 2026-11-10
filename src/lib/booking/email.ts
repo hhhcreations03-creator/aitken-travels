@@ -1,23 +1,17 @@
 import "server-only";
-import nodemailer from "nodemailer";
 import { SITE } from "@/lib/site";
 import { getRoom } from "@/lib/rooms";
-import { emailConfigured } from "./config";
 import { formatDate, nights } from "./dates";
 import type { Booking } from "./bookings";
 import { logEvent } from "./bookings";
+import { addMessage, threadForBooking } from "@/lib/inbox/threads";
+import { notifyHotel, sendToGuest, type SendOutcome } from "@/lib/inbox/mailer";
 
-function transport() {
-  const port = Number(process.env.SMTP_PORT || 465);
-  return nodemailer.createTransport({
-    host: process.env.SMTP_HOST || "smtp.gmail.com",
-    port,
-    secure: port === 465,
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-  });
-}
-
-const hotelInbox = () => process.env.ENQUIRY_TO || SITE.email;
+/**
+ * Booking emails. Each one is stored in the booking's conversation in the
+ * admin inbox (see src/lib/inbox), and the outcome is noted in the booking's
+ * activity log so the team can see what the guest has and hasn't been sent.
+ */
 
 function summary(b: Booking): string {
   const room = getRoom(b.room_slug)?.name ?? b.room_slug;
@@ -33,22 +27,40 @@ function summary(b: Booking): string {
   ].join("\n");
 }
 
-async function send(bookingId: string, to: string, subject: string, text: string, replyTo?: string) {
-  if (!emailConfigured()) {
-    await logEvent(bookingId, "system", "email skipped", `Email is not configured; "${subject}" not sent to ${to}`);
-    return false;
-  }
-  try {
-    await transport().sendMail({ from: `"${SITE.name}" <${process.env.SMTP_USER}>`, to, subject, text, replyTo });
-    await logEvent(bookingId, "system", "email sent", `"${subject}" to ${to}`);
-    return true;
-  } catch (e) {
-    await logEvent(bookingId, "system", "email failed", `"${subject}" to ${to}: ${e instanceof Error ? e.message : "error"}`);
-    return false;
-  }
+async function noteOutcome(b: Booking, subject: string, r: SendOutcome) {
+  if (r.sent) await logEvent(b.id, "system", "email sent", `"${subject}" to ${b.email}`);
+  else if (r.reason === "not_configured") await logEvent(b.id, "system", "email skipped", `Email sending isn't set up; "${subject}" not sent`);
+  else if (r.reason === "no_address") await logEvent(b.id, "system", "email skipped", `No guest email; "${subject}" not sent`);
+  else await logEvent(b.id, "system", "email failed", `"${subject}" to ${b.email}: ${r.error ?? "error"}`);
 }
 
+/** A website booking request: file it in the inbox, acknowledge it to the guest, and tell the hotel. */
 export async function emailNewRequest(b: Booking, manageUrl: string) {
+  const thread = await threadForBooking(b);
+  const details = [
+    summary(b),
+    "",
+    `Guest: ${b.guest_name}`,
+    `Email: ${b.email}`,
+    `Phone: ${b.phone}`,
+    b.country ? `Country: ${b.country}` : "",
+    b.arrival_time ? `Arrival time: ${b.arrival_time}` : "",
+    b.requests ? `\nRequests:\n${b.requests}` : "",
+  ].filter(Boolean).join("\n");
+
+  await addMessage({
+    threadId: thread.id,
+    direction: "in",
+    channel: "web",
+    author: "guest",
+    fromName: b.guest_name,
+    fromAddr: b.email,
+    subject: `Booking request ${b.ref}`,
+    body: details,
+    delivery: "received",
+  });
+
+  const subject = `Booking request received: ${b.ref}`;
   const guest = `Dear ${b.guest_name},
 
 Thank you for choosing The Lavish Haven. We've received your booking request and are holding the room while our team confirms it.
@@ -68,21 +80,20 @@ ${SITE.address.street}, ${SITE.address.locality} ${SITE.address.postalCode}, ${S
 
   const hotel = `New booking request ${b.ref}
 
-${summary(b)}
+${details}
 
-Guest: ${b.guest_name}
-Email: ${b.email}
-Phone: ${b.phone}${b.country ? `\nCountry: ${b.country}` : ""}${b.arrival_time ? `\nArrival time: ${b.arrival_time}` : ""}${b.requests ? `\n\nRequests:\n${b.requests}` : ""}
-
+Reply to this email to answer the guest directly; the reply is filed under ${b.ref} in the admin inbox.
 Confirm or decline: ${SITE.url}/admin/bookings/${b.id}`;
 
-  await Promise.all([
-    send(b.id, b.email, `Booking request received: ${b.ref}`, guest, hotelInbox()),
-    send(b.id, hotelInbox(), `New booking request ${b.ref}: ${b.guest_name}, ${b.check_in} to ${b.check_out}`, hotel, b.email),
+  const [r] = await Promise.all([
+    sendToGuest({ threadId: thread.id, subject, text: guest, storedText: guest.replace(manageUrl, "[the guest's private link to view or cancel]"), automatic: true }),
+    notifyHotel(`New booking request ${b.ref}: ${b.guest_name}, ${b.check_in} to ${b.check_out}`, hotel, b.email),
   ]);
+  await noteOutcome(b, subject, r);
 }
 
-export async function emailStatusChange(b: Booking, message?: string) {
+/** The email that goes with a status change made in admin. `author` is the admin who made it. */
+export async function emailStatusChange(b: Booking, message?: string, author?: string): Promise<boolean> {
   const lines: Record<string, [string, string] | undefined> = {
     confirmed: [
       `Your stay is confirmed: ${b.ref}`,
@@ -100,9 +111,30 @@ export async function emailStatusChange(b: Booking, message?: string) {
   const entry = lines[b.status];
   if (!entry) return false;
   const [subject, body] = entry;
-  return send(b.id, b.email, subject, `Dear ${b.guest_name},\n\n${body}${message ? `\n\n${message}` : ""}\n\nThe Lavish Haven\n${SITE.whatsappDisplay}`, hotelInbox());
+  const thread = await threadForBooking(b);
+  const r = await sendToGuest({
+    threadId: thread.id,
+    subject,
+    text: `Dear ${b.guest_name},\n\n${body}${message ? `\n\n${message}` : ""}\n\nThe Lavish Haven\n${SITE.whatsappDisplay}`,
+    author,
+    automatic: !author,
+  });
+  await noteOutcome(b, subject, r);
+  return r.sent;
 }
 
+/** The guest cancelled from their manage link: record it in the conversation and tell the hotel. */
 export async function emailGuestCancelled(b: Booking) {
-  await send(b.id, hotelInbox(), `Guest cancelled ${b.ref}: ${b.guest_name}`, `The guest cancelled their booking request.\n\n${summary(b)}\n\n${SITE.url}/admin/bookings/${b.id}`);
+  const thread = await threadForBooking(b);
+  await addMessage({
+    threadId: thread.id,
+    direction: "in",
+    channel: "web",
+    author: "guest",
+    fromName: b.guest_name,
+    fromAddr: b.email,
+    body: `The guest cancelled booking ${b.ref} online.\n\n${summary(b)}`,
+    delivery: "received",
+  });
+  await notifyHotel(`Guest cancelled ${b.ref}: ${b.guest_name}`, `The guest cancelled their booking request.\n\n${summary(b)}\n\n${SITE.url}/admin/bookings/${b.id}`, b.email);
 }

@@ -96,6 +96,56 @@ const MIGRATIONS: string[] = [
   );
   CREATE INDEX IF NOT EXISTS rate_limits_bucket ON rate_limits (bucket, at);
   `,
+  // 2: one inbox for every guest conversation (bookings, website enquiries, email).
+  `
+  CREATE TABLE IF NOT EXISTS threads (
+    id              uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    ref             text NOT NULL UNIQUE,
+    kind            text NOT NULL CHECK (kind IN ('booking','contact','group','surf','availability','email')),
+    subject         text NOT NULL,
+    guest_name      text,
+    guest_email     text,
+    guest_phone     text,
+    booking_id      uuid REFERENCES bookings(id) ON DELETE SET NULL,
+    status          text NOT NULL DEFAULT 'open' CHECK (status IN ('open','closed','spam')),
+    needs_reply     boolean NOT NULL DEFAULT true,
+    unread          boolean NOT NULL DEFAULT true,
+    details         jsonb,
+    last_message_at timestamptz NOT NULL DEFAULT now(),
+    last_snippet    text,
+    created_at      timestamptz NOT NULL DEFAULT now()
+  );
+  CREATE INDEX IF NOT EXISTS threads_last ON threads (status, last_message_at DESC);
+  CREATE INDEX IF NOT EXISTS threads_email ON threads (lower(guest_email));
+  CREATE UNIQUE INDEX IF NOT EXISTS threads_booking ON threads (booking_id) WHERE booking_id IS NOT NULL;
+
+  CREATE TABLE IF NOT EXISTS messages (
+    id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    thread_id   uuid NOT NULL REFERENCES threads(id) ON DELETE CASCADE,
+    direction   text NOT NULL CHECK (direction IN ('in','out','note')),
+    channel     text NOT NULL CHECK (channel IN ('web','email','whatsapp','phone','system')),
+    author      text,
+    from_name   text,
+    from_addr   text,
+    to_addr     text,
+    subject     text,
+    body        text NOT NULL,
+    message_id  text,
+    in_reply_to text,
+    delivery    text CHECK (delivery IN ('received','sent','failed','not_sent','logged')),
+    error       text,
+    automatic   boolean NOT NULL DEFAULT false,
+    at          timestamptz NOT NULL DEFAULT now()
+  );
+  CREATE INDEX IF NOT EXISTS messages_thread ON messages (thread_id, at);
+  CREATE UNIQUE INDEX IF NOT EXISTS messages_message_id ON messages (message_id) WHERE message_id IS NOT NULL;
+
+  INSERT INTO threads (ref, kind, subject, guest_name, guest_email, guest_phone, booking_id, needs_reply, unread, last_message_at, last_snippet, created_at)
+  SELECT ref, 'booking', 'Booking ' || ref, guest_name, NULLIF(email, ''), NULLIF(phone, ''), id, status = 'pending', false, created_at,
+         'Booking created before the inbox existed', created_at
+    FROM bookings
+  ON CONFLICT DO NOTHING;
+  `,
 ];
 
 export const SCHEMA_VERSION = MIGRATIONS.length;

@@ -17,6 +17,8 @@ export default async function BookingsPage({ searchParams }: { searchParams: Rec
     q: searchParams.q || undefined,
     from: searchParams.from || undefined,
     to: searchParams.to || undefined,
+    arriving: searchParams.arriving && /^\d{4}-\d{2}-\d{2}$/.test(searchParams.arriving) ? searchParams.arriving : undefined,
+    departing: searchParams.departing && /^\d{4}-\d{2}-\d{2}$/.test(searchParams.departing) ? searchParams.departing : undefined,
     sort: (searchParams.sort === "arrival" ? "arrival" : "created") as "arrival" | "created",
   };
   const { rows, total } = await listBookings({ ...filter, limit: PAGE, offset: (page - 1) * PAGE });
@@ -43,6 +45,12 @@ export default async function BookingsPage({ searchParams }: { searchParams: Rec
           </Link>
         ))}
       </nav>
+
+      {(filter.arriving || filter.departing) && (
+        <p className="mb-4 text-[13.5px] text-charcoal-soft">
+          Showing bookings {filter.arriving ? `arriving on ${shortDate(filter.arriving)}` : `leaving on ${shortDate(filter.departing!)}`}. <Link href="/admin/bookings" className="text-forest underline">Show all</Link>
+        </p>
+      )}
 
       <details className="group mb-6 rounded-[4px] border border-[color:var(--line)] bg-white md:hidden" open={Boolean(filter.q || filter.from || filter.to)}>
         <summary className="flex min-h-[44px] cursor-pointer items-center justify-between px-4 text-[14px] font-medium text-charcoal">

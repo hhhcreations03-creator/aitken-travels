@@ -149,6 +149,10 @@ export interface ListFilter {
   q?: string;
   from?: string;
   to?: string;
+  /** Exactly this check-in date. */
+  arriving?: string;
+  /** Exactly this check-out date. */
+  departing?: string;
   limit?: number;
   offset?: number;
   sort?: "created" | "arrival";
@@ -171,6 +175,8 @@ export async function listBookings(f: ListFilter = {}): Promise<{ rows: Booking[
   }
   if (f.from) where.push(`check_out > ${p(f.from)}::date`);
   if (f.to) where.push(`check_in <= ${p(f.to)}::date`);
+  if (f.arriving) where.push(`check_in = ${p(f.arriving)}::date`);
+  if (f.departing) where.push(`check_out = ${p(f.departing)}::date`);
   const w = where.length ? `WHERE ${where.join(" AND ")}` : "";
   const order = f.sort === "arrival" ? "check_in ASC, created_at ASC" : "created_at DESC";
   const total = Number((await d.query<{ n: number }>(`SELECT count(*)::int AS n FROM bookings ${w}`, params))[0]?.n ?? 0);
