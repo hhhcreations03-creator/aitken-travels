@@ -66,7 +66,7 @@ export function MobileDock({ rooms }: { rooms: DockRoom[] }) {
       <div className="wrap flex h-[68px] items-center gap-3">
         <div className="min-w-0 flex-1">
           <p className="truncate font-display text-[1.05rem] leading-tight text-forest">{room ? room.name : "The Lavish Haven"}</p>
-          <p className="truncate text-[12.5px] text-charcoal-mute">{room ? `${room.sizeSqm} m², ${room.beds}` : "Luxury boutique hotel, Ahangama"}</p>
+          <p className="truncate text-[12.5px] text-charcoal-mute">{room ? `${room.sizeSqm} m², ${room.beds}` : "Ahangama, Sri Lanka"}</p>
         </div>
         <a
           href={whatsappUrl(message)}
