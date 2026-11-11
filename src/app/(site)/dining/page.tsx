@@ -7,9 +7,8 @@ import { ImageBlock } from "@/components/ImageBlock";
 import { whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 import { NEARBY } from "@/lib/nearby";
-import { BreakfastMenu } from "@/components/BreakfastMenu";
-import { BREAKFAST, BREAKFAST_DISH_COUNT } from "@/lib/breakfast";
-import { PlateRow } from "@/components/BreakfastMenu";
+import { BREAKFAST_DISH_COUNT } from "@/lib/breakfast";
+import { BreakfastMenu, BreakfastTable } from "@/components/BreakfastMenu";
 
 export const metadata: Metadata = pageMeta({
   title: "Restaurant & Breakfast in Ahangama | The Lavish Haven",
@@ -17,9 +16,6 @@ export const metadata: Metadata = pageMeta({
   description: "Complimentary breakfast cooked to order at our open-air restaurant in Ahangama, from coconut roti and egg hoppers to a full English. Our all-day menu is coming soon.",
   path: "/dining",
 });
-
-/** One plate from each course, for the row of photos beside the breakfast introduction. */
-const PLATES = BREAKFAST.map((c) => c.dishes[0]);
 
 export default function DiningPage() {
   const diningEnquiry = whatsappUrl("Hello The Lavish Haven, I'd like to ask about dining at the restaurant.\n\nDates: \nNumber of guests: \nDietary needs or requests: ");
@@ -38,18 +34,8 @@ export default function DiningPage() {
         </PageHero>
 
         <Section tone="forest" id="breakfast" className="scroll-mt-16">
-          <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-6">
-              <p className="font-display text-[1.1rem] italic text-sand">Breakfast is on us</p>
-              <h2 className="display-lg mt-3">A breakfast unlike any other in Ahangama</h2>
-            </div>
-            <div className="lg:col-span-5 lg:col-start-8">
-              <p className="lede !text-ivory/85">Every morning of your stay, choose from {BREAKFAST_DISH_COUNT} dishes, each cooked to order by our professional chef and served with fresh fruit, juice or king coconut, and Ceylon tea or coffee. It&rsquo;s all complimentary.</p>
-              <p className="body mt-5 !text-ivory/75">Our head chef comes out to the tables to ask how you enjoyed it, and takes what you say back to the kitchen.</p>
-              <PlateRow dishes={PLATES} ring="ring-forest" className="mt-8 [&>*:nth-child(n+5)]:max-sm:hidden" />
-            </div>
-          </div>
-          <div className="mt-10 md:mt-14">
+          <BreakfastTable dishCount={BREAKFAST_DISH_COUNT} />
+          <div className="mt-12 md:mt-16 xl:mt-20">
             <BreakfastMenu />
           </div>
           <div className="mt-6 flex flex-col gap-5 md:mt-8 md:flex-row md:items-center md:justify-between">
