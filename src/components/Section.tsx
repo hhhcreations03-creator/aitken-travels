@@ -32,13 +32,15 @@ interface HeadingProps {
   as?: "h1" | "h2" | "h3";
   light?: boolean;
   className?: string;
+  /** Extra classes for the lead, e.g. to keep a long one off phones. */
+  leadClassName?: string;
 }
 
-export function Heading({ title, lead, as: Tag = "h2", light = false, className = "" }: HeadingProps) {
+export function Heading({ title, lead, as: Tag = "h2", light = false, className = "", leadClassName = "" }: HeadingProps) {
   return (
     <div className={`max-w-[46rem] ${className}`}>
       <Tag className={`display-lg ${light ? "text-ivory" : "text-forest"}`}>{title}</Tag>
-      {lead && <p className={`lede mt-5 ${light ? "!text-sand" : ""}`}>{lead}</p>}
+      {lead && <p className={`lede mt-5 ${light ? "!text-sand" : ""} ${leadClassName}`}>{lead}</p>}
     </div>
   );
 }

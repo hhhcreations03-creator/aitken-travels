@@ -58,10 +58,10 @@ body::after {
   .wrap { @apply mx-auto w-full max-w-site px-5 sm:px-8 lg:px-12; }
 
   .display-xl { @apply font-display font-light tracking-snug leading-[1.02]; font-size: clamp(2.4rem, 5vw, 4.25rem); }
-  .display-lg { @apply font-display font-light tracking-snug leading-[1.08]; font-size: clamp(2.25rem, 4.6vw, 3.9rem); }
+  .display-lg { @apply font-display font-light tracking-snug leading-[1.08]; font-size: clamp(2rem, 4.6vw, 3.9rem); }
   .display-md { @apply font-display font-normal tracking-snug leading-[1.15]; font-size: clamp(1.6rem, 2.6vw, 2.25rem); }
   .display-sm { @apply font-display font-normal leading-[1.25]; font-size: clamp(1.3rem, 1.8vw, 1.6rem); }
-  .lede { @apply font-display text-[1.25rem] md:text-[1.45rem] leading-[1.5] text-charcoal-soft; }
+  .lede { @apply font-display text-[1.125rem] md:text-[1.45rem] leading-[1.5] text-charcoal-soft; }
   .body { @apply text-[15.5px] md:text-[16.5px] leading-[1.7] text-charcoal-soft; }
   .small { @apply text-[13.5px] leading-[1.6]; }
 

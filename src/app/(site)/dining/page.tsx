@@ -47,7 +47,8 @@ export default function DiningPage() {
           </div>
         </Section>
 
-        <Section>
+        {/* Repeats the breakfast story above, so phones skip it. */}
+        <Section className="hidden md:block">
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 className="display-lg text-forest">Our in-house restaurant</h2>
@@ -92,13 +93,13 @@ export default function DiningPage() {
           <p className="small mt-10 max-w-[60ch] text-charcoal-mute">Breakfast serving hours are confirmed by the hotel team. We&rsquo;ll share the all-day menu here as soon as it launches.</p>
         </Section>
 
-        <Section tone="deep">
+        <Section tone="deep" id="nearby">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <p className="font-display text-[1.1rem] italic text-olive-deep">Dining out in Ahangama</p>
               <h2 className="display-lg mt-3 text-forest">Five minutes by tuk-tuk, a whole village of flavour</h2>
               <p className="lede mt-5">Our kitchen will always feed you well. But part of the joy of Ahangama is wandering out for the evening, and the village&rsquo;s most loved places are all within about five minutes of our gate.</p>
-              <p className="body mt-5">Just tell our team where you&rsquo;d like to go, and your tuk-tuk will be waiting.</p>
+              <p className="body mt-5 hidden md:block">Just tell our team where you&rsquo;d like to go, and your tuk-tuk will be waiting.</p>
             </div>
             <dl className="rail-md rail-narrow grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
               {NEARBY.map((p) => (

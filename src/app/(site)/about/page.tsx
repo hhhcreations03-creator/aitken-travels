@@ -5,6 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { ImageBlock } from "@/components/ImageBlock";
 import { pageMeta } from "@/lib/seo";
+import { ReadMore } from "@/components/ReadMore";
 
 export const metadata: Metadata = pageMeta({
   title: "Our Story | The Lavish Haven, Luxury Boutique Hotel in Ahangama",
@@ -45,9 +46,10 @@ export default function AboutPage() {
               <h2 className="display-lg text-forest">{STORY.heading}</h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
-              {STORY.paragraphs.map((p, i) => (
-                <p key={i} className={i === 0 ? "lede" : "body mt-5"}>{p}</p>
-              ))}
+              <p className="lede">{STORY.paragraphs[0]}</p>
+              <ReadMore label="Read the whole story">
+                {STORY.paragraphs.slice(1).map((p, i) => <p key={i} className="body mt-5">{p}</p>)}
+              </ReadMore>
             </div>
           </div>
         </Section>
@@ -66,7 +68,7 @@ export default function AboutPage() {
               <h2 className="display-lg text-forest">How we take care of you</h2>
               <p className="body mt-5">Luxury, to us, is never having to ask twice. These are the small things we have ready before you arrive.</p>
             </div>
-            <dl className="lg:col-span-6 lg:col-start-7 grid gap-6 sm:grid-cols-2">
+            <dl className="grid grid-cols-2 gap-x-5 gap-y-6 lg:col-span-6 lg:col-start-7">
               {[
                 ["Front desk", "Someone is always here for you, day and night, with luggage storage and laundry."],
                 ["Getting here", "Airport pick-up and shuttle services can be arranged for a charge; car rental on request."],

@@ -79,7 +79,7 @@ export default function WellnessPage() {
                 <p className="small mt-4 text-charcoal-mute">{x.confirmed}</p>
                 <div className="mt-7 flex flex-wrap gap-3">
                   <a href={whatsappUrl(x.enquiry)} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">Enquire on WhatsApp</a>
-                  <Link href="/contact" className="btn-outline">Ask by email</Link>
+                  <Link href="/contact" className="btn-outline max-md:hidden">Ask by email</Link>
                 </div>
               </div>
             </div>

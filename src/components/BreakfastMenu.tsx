@@ -91,17 +91,24 @@ export function BreakfastMenu() {
           Swipe through all {BREAKFAST.length} courses
         </p>
 
-        <div className="mt-8 grid gap-px overflow-hidden rounded-[2px] border-y border-[color:var(--line)] bg-[color:var(--line)] sm:grid-cols-3 md:mt-2">
+        <div className="mt-6 rounded-[2px] bg-ivory p-5 text-charcoal md:hidden">
+          <p className="text-[12.5px] text-olive-deep">With every breakfast</p>
+          <ul className="mt-2 grid gap-1.5 font-display text-[1.1rem] leading-snug text-forest">
+            {WITH_EVERY_BREAKFAST.map((x) => <li key={x.title}>{x.title === "One fresh drink" ? "Fresh juice or king coconut" : x.title === "Tea or coffee" ? "Ceylon tea or black coffee" : x.title}</li>)}
+          </ul>
+        </div>
+
+        <div className="mt-2 hidden gap-px overflow-hidden rounded-[2px] border-y border-[color:var(--line)] bg-[color:var(--line)] md:grid md:grid-cols-3">
           {WITH_EVERY_BREAKFAST.map((x) => (
-            <div key={x.title} className="bg-sand p-5 md:bg-ivory md:px-6 md:py-6 md:text-center">
-              <p className="text-[12.5px] text-olive-deep md:text-charcoal-mute">With every breakfast</p>
+            <div key={x.title} className="bg-ivory px-6 py-6 text-center">
+              <p className="text-[12.5px] text-charcoal-mute">With every breakfast</p>
               <p className="mt-1 font-display text-[1.2rem] text-forest">{x.title}</p>
               <p className="mt-1 text-[14px] leading-[1.55] text-charcoal-soft">{x.note}</p>
             </div>
           ))}
         </div>
 
-        <p className="mt-8 text-[14px] leading-[1.6] text-charcoal-soft md:text-center">
+        <p className="mt-6 text-[14px] leading-[1.6] text-charcoal-soft md:mt-8 md:text-center">
           Every breakfast is freshly prepared to order. Please tell our team about any dietary requirements or allergies.
         </p>
       </div>

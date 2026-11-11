@@ -15,6 +15,7 @@ import { NEARBY } from "@/lib/nearby";
 import { pageMeta } from "@/lib/seo";
 import { SunMark, TideLine } from "@/components/Motifs";
 import { Faq } from "@/components/Faq";
+import { SwipeHint } from "@/components/SwipeHint";
 import { BREAKFAST, BREAKFAST_DISH_COUNT } from "@/lib/breakfast";
 import { PlateRow } from "@/components/BreakfastMenu";
 
@@ -25,20 +26,21 @@ export const metadata: Metadata = pageMeta({
   path: "/",
 });
 
+/** Most-asked first: phones show the first five and keep the rest one tap away. */
 const FAQ: Array<[string, string]> = [
-  ["What makes The Lavish Haven a luxury boutique hotel?", "With 23 rooms and suites around a single pool, the house stays small and personal. Rooms are finished with polished concrete, teak doors, crisp white linen and a walk-in shower, and every one opens onto its own patio or balcony among the palms."],
   ["Where is The Lavish Haven?", `At ${SITE.address.street}, ${SITE.address.locality} ${SITE.address.postalCode}, on Sri Lanka's south coast between Galle and Weligama.`],
   ["How far is the hotel from the beach?", "Kabalana Beach, Ahangama's best-known surf break, is about two minutes' walk from the hotel."],
-  ["What kinds of rooms are there?", "23 rooms and suites across twelve room types: king rooms with a patio or balcony, family suites, and a two-bedroom suite. Every room is appointed to luxury standards, with air conditioning, Wi-Fi, a walk-in shower and its own outdoor space."],
-  ["Does the hotel have its own restaurant?", "Yes. The Lavish Haven has an open-air restaurant beside the pool. It serves a complimentary breakfast, cooked to order, for every guest, and our all-day menu with lunch and dinner is coming soon."],
   ["Is breakfast included?", "Yes. Breakfast is complimentary for every guest. Choose from Sri Lankan, Indian, English and lighter dishes, each cooked to order by our professional chef and served with a seasonal fruit platter, a fresh juice or king coconut, and Ceylon tea or coffee. Our head chef also comes out to the tables to ask how you enjoyed it."],
+  ["What kinds of rooms are there?", "23 rooms and suites across twelve room types: king rooms with a patio or balcony, family suites, and a two-bedroom suite. Every room is appointed to luxury standards, with air conditioning, Wi-Fi, a walk-in shower and its own outdoor space."],
+  ["How do I book?", "Choose your dates on our booking page and send a request. Our team confirms availability and your rate personally. No payment is taken online."],
+  ["What makes The Lavish Haven a luxury boutique hotel?", "With 23 rooms and suites around a single pool, the house stays small and personal. Rooms are finished with polished concrete, teak doors, crisp white linen and a walk-in shower, and every one opens onto its own patio or balcony among the palms."],
+  ["Does the hotel have its own restaurant?", "Yes. The Lavish Haven has an open-air restaurant beside the pool. It serves a complimentary breakfast, cooked to order, for every guest, and our all-day menu with lunch and dinner is coming soon."],
   ["Is there daily housekeeping?", "Yes. Every room is cleaned daily by our housekeeping team, whatever the length of your stay."],
   ["Is bed linen provided?", "Yes. Fresh bed linen is provided for every type of stay, from a single night to a long stay, so there is nothing you need to bring."],
   ["What toiletries are in the rooms?", "Each room has toiletries made with handmade, natural fragrances, provided by us as part of your stay."],
   ["Is there a pool?", "Yes. The rooms gather around an outdoor pool in a garden of palms, and yoga classes run on the terrace."],
   ["Are there good restaurants nearby?", "Yes. As well as our own restaurant, Cactus, Thileni's, Manori's Kitchen, Vertigo Pizzeria Italiana, The Protein House and Kai Ahangama are all within about five minutes by tuk-tuk, and our team will happily arrange the ride."],
   ["What time is check-in, and is there parking?", `Check-in is from ${SITE.checkIn}. Free private parking is available on site.`],
-  ["How do I book?", "Choose your dates on our booking page and send a request. Our team confirms availability and your rate personally. No payment is taken online."],
 ];
 
 const faqSchema = {
@@ -46,6 +48,15 @@ const faqSchema = {
   "@type": "FAQPage",
   mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
 };
+
+/** Phones only: the homepage's later sections, each folded into one card. */
+const DAY: Array<{ href: string; image: string; alt: string; phase?: "midday" | "dusk" | "night"; kicker: string; title: string; line: string; cta: string }> = [
+  { href: "/wellness", image: "/images/wellness/yoga-balcony-reach.webp", alt: "Yoga on a first-floor balcony among palm fronds", phase: "midday", kicker: "Midday", title: "The hours that belong to no one", line: "Yoga on the terrace, a slow length of the pool, spa treatments on request.", cta: "Wellness" },
+  { href: "/dining", image: "/images/dining/restaurant-lanterns.webp", alt: "The restaurant at night, lit by woven lanterns", phase: "dusk", kicker: "Dusk", title: "When the lanterns come on", line: "Our open-air restaurant by the pool. All-day menu coming soon.", cta: "Dining" },
+  { href: "/location", image: "/images/property/aerial-ocean-horizon.webp", alt: "Aerial view over the palms of Ahangama to the Indian Ocean", phase: "night", kicker: "Night", title: "Into the village after dark", line: "The village's best restaurants by tuk-tuk, and Kabalana Beach two minutes on foot.", cta: "Location" },
+  { href: "/groups", image: "/images/property/pool-daytime.webp", alt: "The pool and courtyard by day, balconies on two floors", kicker: "Groups", title: "Take the whole house", line: "Surf crews, yoga retreats and families, around one pool.", cta: "Group stays" },
+  { href: "/gallery", image: "/images/property/pool-evening.webp", alt: "The courtyard and pool in the blue hour", kicker: "Gallery", title: "See the house", line: "The rooms, the pool and the coast, just as they'll be waiting for you.", cta: "Open the gallery" },
+];
 
 const FEATURED = ["superior-king-balcony-garden-pool-view", "family-suite-patio", "two-bedroom-suite"];
 
@@ -99,7 +110,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="rail-md rail-photos mt-10 grid gap-4 sm:mt-16 md:grid-cols-12">
+          <div className="mt-16 hidden gap-4 md:grid md:grid-cols-12">
             <ImageBlock src="/images/property/garden-path-pool.webp" alt="Morning sun through the palms over a stone path leading to the pool" aspect="aspect-[16/10]" sizes="(min-width: 768px) 66vw, 100vw" className="md:col-span-8" />
             <ImageBlock src="/images/wellness/poolside-hat.webp" alt="A guest in a straw hat relaxing on a striped lounger by the pool with a cold drink" aspect="aspect-[16/10] md:aspect-auto md:h-full" sizes="(min-width: 768px) 33vw, 100vw" className="md:col-span-4" />
           </div>
@@ -108,12 +119,15 @@ export default function HomePage() {
         {/* Rooms */}
         <Section tone="deep">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <Heading title="Rooms & Suites" lead="23 rooms and suites, each appointed to luxury standards: polished concrete, teak doors, high gabled ceilings, crisp white linen and a walk-in shower. Every one opens onto its own patio or balcony, so the first thing you see each morning is green, and the last thing you hear at night is the palms." />
-            <Link href="/rooms" className="btn-outline shrink-0">See all rooms</Link>
+            <Heading title="Rooms & Suites" leadClassName="hidden md:block" lead="23 rooms and suites, each appointed to luxury standards: polished concrete, teak doors, high gabled ceilings, crisp white linen and a walk-in shower. Every one opens onto its own patio or balcony, so the first thing you see each morning is green, and the last thing you hear at night is the palms." />
+            <Link href="/rooms" className="btn-outline shrink-0 max-md:hidden">See all rooms</Link>
           </div>
-          <div className="rail-md mt-10 grid gap-10 md:mt-12 md:grid-cols-2 xl:grid-cols-3">
+          <p className="lede -mt-1 md:hidden">23 rooms and suites, each with its own patio or balcony among the palms.</p>
+          <div className="rail-md mt-8 grid gap-10 md:mt-12 md:grid-cols-2 xl:grid-cols-3">
             {featured.map((room, i) => <RoomCard key={room.slug} room={room} priority={i === 0} />)}
           </div>
+          <SwipeHint>Swipe for more rooms</SwipeHint>
+          <Link href="/rooms" className="btn-outline mt-6 md:hidden">See all 23 rooms</Link>
         </Section>
 
         {/* Surf */}
@@ -125,7 +139,7 @@ export default function HomePage() {
               <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-sand"><SunMark phase="dawn" />Dawn</p>
               <h2 className="display-lg mt-3">First light, and the sets are rolling in</h2>
               <p className="lede mt-5 !text-ivory/85">
-                Before the village wakes, you can hear it from your room: the low, steady roll of the swell at Kabalana, Ahangama&rsquo;s best-known break, two minutes down the lane. Paddle out while the water is glass. Come back salt-dried and hungry. The pool will still be still, and breakfast will be waiting.
+                Before the village wakes, you can hear it from your room: the low, steady roll of the swell at Kabalana, Ahangama&rsquo;s best-known break, two minutes down the lane.<span className="hidden md:inline"> Paddle out while the water is glass. Come back salt-dried and hungry. The pool will still be still, and breakfast will be waiting.</span>
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/surf-retreats" className="btn-ivory">Plan a surf retreat</Link>
@@ -141,17 +155,18 @@ export default function HomePage() {
               <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="morning" />Morning</p>
               <h2 className="display-lg mt-3 text-forest">Breakfast is on us, and it&rsquo;s a feast</h2>
               <p className="lede mt-5">Choose from {BREAKFAST_DISH_COUNT} dishes, each cooked to order by our professional chef. It&rsquo;s complimentary every morning, a breakfast unlike any other in Ahangama, and our head chef will come by your table to ask how you enjoyed it.</p>
-              <PlateRow dishes={["coconut-roti", "shakshuka", "banana-pancakes", "full-english", "tropical-smoothie-bowl"].map((f) => BREAKFAST.flatMap((c) => c.dishes).find((d) => d.image.includes(f))!)} ring="ring-sand" size={72} className="mt-8" />
+              <PlateRow dishes={["coconut-roti", "shakshuka", "banana-pancakes", "full-english", "tropical-smoothie-bowl"].map((f) => BREAKFAST.flatMap((c) => c.dishes).find((d) => d.image.includes(f))!)} ring="ring-sand" size={64} className="mt-8 md:hidden" />
+              <PlateRow dishes={["coconut-roti", "shakshuka", "banana-pancakes", "full-english", "tropical-smoothie-bowl"].map((f) => BREAKFAST.flatMap((c) => c.dishes).find((d) => d.image.includes(f))!)} ring="ring-sand" size={72} className="mt-8 max-md:hidden" />
               <Link href="/dining#breakfast" className="btn-forest mt-8">See the breakfast menu</Link>
             </div>
-            <ul className="rail-md rail-narrow grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:col-span-6 lg:col-start-7 lg:self-center">
+            <ul className="hidden gap-x-10 gap-y-7 md:grid md:grid-cols-2 lg:col-span-6 lg:col-start-7 lg:self-center">
               {BREAKFAST.filter((c) => ["Sri Lankan favourites", "Indian options", "Eggs & classics", "Sweet morning"].includes(c.title)).map((c) => (
-                <li key={c.title} className="rule-soft pt-4 max-md:rounded-[2px] max-md:border-0 max-md:bg-ivory/70 max-md:p-5">
+                <li key={c.title} className="rule-soft pt-4">
                   <p className="font-display text-[1.05rem] italic text-olive-deep">{c.title}</p>
                   <ul className="mt-2 grid gap-1 font-display text-[1.2rem] leading-snug text-forest">{c.dishes.map((d) => <li key={d.name}>{d.name}</li>)}</ul>
                 </li>
               ))}
-              <li className="rule-soft pt-4 max-md:rounded-[2px] max-md:border-0 max-md:bg-ivory/70 max-md:p-5 sm:col-span-2">
+              <li className="rule-soft pt-4 md:col-span-2">
                 <p className="font-display text-[1.05rem] italic text-olive-deep">With every breakfast</p>
                 <p className="mt-2 font-display text-[1.2rem] leading-snug text-forest">A seasonal fruit platter, fresh juice or king coconut, and Ceylon tea or coffee</p>
               </li>
@@ -159,8 +174,31 @@ export default function HomePage() {
           </div>
         </Section>
 
+        {/* Phones: the rest of the day, one swipe row instead of six sections */}
+        <Section tone="deep" className="md:hidden">
+          <h2 className="display-lg text-forest">The rest of your day</h2>
+          <ul className="rail-md mt-7">
+            {DAY.map((d) => (
+              <li key={d.href}>
+                <Link href={d.href} className="group relative block overflow-hidden rounded-[2px] text-ivory">
+                  <div className="img-frame aspect-[4/5]">
+                    <Image src={d.image} alt={d.alt} fill sizes="84vw" className="object-cover" />
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/60 to-transparent p-5 pt-16">
+                    <p className="flex items-center gap-2.5 font-display text-[1rem] italic text-sand">{d.phase && <SunMark phase={d.phase} />}{d.kicker}</p>
+                    <p className="mt-1.5 font-display text-[1.45rem] leading-tight">{d.title}</p>
+                    <p className="mt-2 text-[14px] leading-[1.55] text-ivory/85">{d.line}</p>
+                    <span className="mt-3 inline-block text-[13.5px] font-medium underline underline-offset-4">{d.cta}</span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <SwipeHint>Swipe through all {DAY.length}</SwipeHint>
+        </Section>
+
         {/* Wellness */}
-        <Section>
+        <Section className="hidden md:block">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="grid grid-cols-2 gap-4 lg:col-span-7">
               <ImageBlock src="/images/wellness/yoga-balcony-reach.webp" alt="Yoga on a first-floor balcony among palm fronds" aspect="aspect-[3/4]" sizes="(min-width: 1024px) 30vw, 50vw" className="mt-10" />
@@ -179,7 +217,7 @@ export default function HomePage() {
         </Section>
 
         {/* Dining */}
-        <Section tone="deep">
+        <Section tone="deep" className="hidden md:block">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-4">
               <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="dusk" />Dusk</p>
@@ -196,7 +234,7 @@ export default function HomePage() {
         </Section>
 
         {/* Nearby restaurants */}
-        <Section>
+        <Section className="hidden md:block">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="night" />Night</p>
@@ -220,7 +258,7 @@ export default function HomePage() {
         </Section>
 
         {/* Groups */}
-        <Section tone="forest">
+        <Section tone="forest" className="hidden md:block">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <p className="font-display text-[1.1rem] italic text-sand">Groups & Events</p>
@@ -243,7 +281,7 @@ export default function HomePage() {
         </Section>
 
         {/* Gallery */}
-        <Section>
+        <Section className="hidden md:block">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <Heading title="Gallery" lead="No staging, no filters: the house, the rooms and the coast, just as they'll be waiting for you." />
             <Link href="/gallery" className="btn-outline shrink-0">Open the gallery</Link>
@@ -254,7 +292,7 @@ export default function HomePage() {
         </Section>
 
         {/* Location */}
-        <Section tone="lagoon">
+        <Section tone="lagoon" className="hidden md:block">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <ImageBlock src="/images/property/aerial-ocean-horizon.webp" alt="Aerial view over the palms of Ahangama to the Indian Ocean" aspect="aspect-[16/10]" sizes="(min-width: 1024px) 58vw, 100vw" />
@@ -282,10 +320,10 @@ export default function HomePage() {
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <h2 className="display-lg text-forest">Staying in Ahangama</h2>
-              <p className="body mt-5">A few things guests often ask before they arrive.</p>
+              <p className="body mt-5 hidden md:block">A few things guests often ask before they arrive.</p>
             </div>
             <div className="lg:col-span-7 lg:col-start-6">
-              <Faq items={FAQ} />
+              <Faq items={FAQ} phoneShows={5} />
             </div>
           </div>
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

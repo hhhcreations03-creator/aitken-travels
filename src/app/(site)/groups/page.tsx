@@ -52,11 +52,11 @@ export default function GroupsPage() {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 className="display-lg text-forest">Why groups choose the Haven</h2>
-              <p className="lede mt-5">Our rooms and suites gather around a single pool on Welhengoda Road, a natural home for a party that wants to be together, from morning swims to dinners that run late.</p>
+              <p className="lede mt-5 hidden md:block">Our rooms and suites gather around a single pool on Welhengoda Road, a natural home for a party that wants to be together, from morning swims to dinners that run late.</p>
             </div>
-            <div className="lg:col-span-6 lg:col-start-7 grid gap-8 sm:grid-cols-2">
+            <div className="rail-md rail-narrow grid gap-8 sm:grid-cols-2 lg:col-span-6 lg:col-start-7">
               {WHY.map((w) => (
-                <div key={w.h} className="rule pt-5">
+                <div key={w.h} className="rule pt-5 max-md:rounded-[2px] max-md:border-0 max-md:bg-ivory-deep max-md:p-5">
                   <h3 className="display-sm text-forest">{w.h}</h3>
                   <p className="body mt-2">{w.p}</p>
                 </div>
@@ -80,14 +80,14 @@ export default function GroupsPage() {
             <div className="lg:col-span-5">
               <h2 className="display-lg text-forest">Kinds of group stay</h2>
             </div>
-            <dl className="lg:col-span-6 lg:col-start-7 grid gap-7">
+            <dl className="rail-md rail-narrow grid gap-7 lg:col-span-6 lg:col-start-7">
               {[
                 ["Surf retreat", "Early starts at Kabalana, patio rooms for sandy feet, and a pool to wind down in after the last wave. Ask us about help arranging lessons or boards locally."],
                 ["Wellness retreat", "Yoga classes at the house, spa treatments on request, quiet rooms around the garden and a restaurant that caters to your dietary needs."],
                 ["Friends and family", "A mix of king rooms and family suites, so couples, children and grandparents each have their own space and one courtyard to share."],
                 ["Organised group trip", "Tour groups, clubs and teams. Send us your numbers and dates and our team will propose a room plan and meal arrangements."],
               ].map(([k, v]) => (
-                <div key={k} className="rule-soft pt-5">
+                <div key={k} className="rule-soft pt-5 max-md:rounded-[2px] max-md:border-0 max-md:bg-ivory-deep max-md:p-5">
                   <dt className="display-sm text-forest">{k}</dt>
                   <dd className="body mt-2">{v}</dd>
                 </div>
@@ -101,7 +101,7 @@ export default function GroupsPage() {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <h2 className="display-lg text-forest">Group enquiry</h2>
-              <p className="lede mt-5">Tell us about your group and our team will come back to you with what the house can offer for your dates.</p>
+              <p className="lede mt-5 hidden md:block">Tell us about your group and our team will come back to you with what the house can offer for your dates.</p>
               <p className="body mt-4">Prefer to talk it through? <a href={groupWhatsApp} target="_blank" rel="noopener noreferrer" className="textlink">WhatsApp the team</a> with your dates and numbers.</p>
               <div className="mt-8 hidden lg:block">
                 <ImageBlock src="/images/property/aerial-green-roofs.webp" alt="Aerial view over the palms to the hotel's green roofs and pool" aspect="aspect-[4/5]" sizes="30vw" />
