@@ -56,9 +56,9 @@ export default function AboutPage() {
 
         <Section tone="deep" compact>
           <div className="rail-md rail-photos grid gap-4 md:grid-cols-3">
-            <ImageBlock src="/images/property/lobby-staircase.webp" alt="The lobby staircase with a tree growing through the floor" aspect="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" />
-            <ImageBlock src="/images/rooms/superior-king/balcony-palms.webp" alt="Balcony chairs framed by palms" aspect="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" className="md:mt-12" />
-            <ImageBlock src="/images/rooms/more/balcony-gable.webp" alt="A balcony beneath the white gabled roof" aspect="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" />
+            <ImageBlock src="/images/property/pool-night-balconies.webp" alt="The pool at night, with lit balconies on two floors beneath the palms" aspect="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" />
+            <ImageBlock src="/images/wellness/poolside-reading-coconut.webp" alt="A guest reading on a striped lounger by the pool, with a fresh coconut" aspect="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" className="md:mt-12" />
+            <ImageBlock src="/images/details/amenity-bottle-leaf.webp" alt="A Lavish Haven toiletry bottle beside a potted plant" aspect="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" />
           </div>
         </Section>
 
