@@ -46,7 +46,10 @@ const COMMON_FEATURES = [
   "Desk and seating area",
   "Wardrobe and safety deposit box",
   "Electric kettle",
-  "Hairdryer and toiletries",
+  "Hairdryer",
+  "Toiletries with handmade, natural fragrances",
+  "Daily housekeeping and fresh bed linen",
+  "Complimentary breakfast, cooked to order",
 ];
 
 export const ROOMS: Room[] = [

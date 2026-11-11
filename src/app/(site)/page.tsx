@@ -15,6 +15,7 @@ import { NEARBY } from "@/lib/nearby";
 import { pageMeta } from "@/lib/seo";
 import { SunMark, TideLine } from "@/components/Motifs";
 import { Faq } from "@/components/Faq";
+import { BREAKFAST, BREAKFAST_DISH_COUNT } from "@/lib/breakfast";
 
 export const metadata: Metadata = pageMeta({
   title: "The Lavish Haven | Luxury Boutique Hotel in Ahangama, Sri Lanka",
@@ -28,7 +29,11 @@ const FAQ: Array<[string, string]> = [
   ["Where is The Lavish Haven?", `At ${SITE.address.street}, ${SITE.address.locality} ${SITE.address.postalCode}, on Sri Lanka's south coast between Galle and Weligama.`],
   ["How far is the hotel from the beach?", "Kabalana Beach, Ahangama's best-known surf break, is about two minutes' walk from the hotel."],
   ["What kinds of rooms are there?", "23 rooms and suites across twelve room types: king rooms with a patio or balcony, family suites, and a two-bedroom suite. Every room is appointed to luxury standards, with air conditioning, Wi-Fi, a walk-in shower and its own outdoor space."],
-  ["Does the hotel have its own restaurant?", "Yes. The Lavish Haven has an in-house, open-air restaurant beside the pool, serving breakfast and Sri Lankan, Indian, Chinese, British and Mediterranean dishes, and room service is available too."],
+  ["Does the hotel have its own restaurant?", "Yes. The Lavish Haven has an in-house, open-air restaurant beside the pool, serving a complimentary breakfast and Sri Lankan, Indian, Chinese, British and Mediterranean dishes, and room service is available too."],
+  ["Is breakfast included?", "Yes. Breakfast is complimentary for every guest. Choose from Sri Lankan, Indian, English and lighter dishes, each cooked to order by our professional chef and served with a seasonal fruit platter, a fresh juice or king coconut, and Ceylon tea or coffee. Our head chef also comes out to the tables to ask how you enjoyed it."],
+  ["Is there daily housekeeping?", "Yes. Every room is cleaned daily by our housekeeping team, whatever the length of your stay."],
+  ["Is bed linen provided?", "Yes. Fresh bed linen is provided for every type of stay, from a single night to a long stay, so there is nothing you need to bring."],
+  ["What toiletries are in the rooms?", "Each room has toiletries made with handmade, natural fragrances, provided by us as part of your stay."],
   ["Is there a pool?", "Yes. The rooms gather around an outdoor pool in a garden of palms, and yoga classes run on the terrace."],
   ["Are there good restaurants nearby?", "Yes. As well as our own restaurant, Cactus, Thileni's, Manori's Kitchen, Vertigo Pizzeria Italiana, The Protein House and Kai Ahangama are all within about five minutes by tuk-tuk, and our team will happily arrange the ride."],
   ["What time is check-in, and is there parking?", `Check-in is from ${SITE.checkIn}. Free private parking is available on site.`],
@@ -128,6 +133,30 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Breakfast */}
+        <Section tone="sand">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="morning" />Morning</p>
+              <h2 className="display-lg mt-3 text-forest">Breakfast is on us, and it&rsquo;s a feast</h2>
+              <p className="lede mt-5">Choose from {BREAKFAST_DISH_COUNT} dishes, each cooked to order by our professional chef. It&rsquo;s complimentary every morning, a breakfast unlike any other in Ahangama, and our head chef will come by your table to ask how you enjoyed it.</p>
+              <Link href="/dining#breakfast" className="btn-forest mt-8">See the breakfast menu</Link>
+            </div>
+            <ul className="rail-md rail-narrow grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:col-span-6 lg:col-start-7 lg:self-center">
+              {BREAKFAST.filter((c) => ["Sri Lankan favourites", "Indian options", "Eggs & classics", "Sweet morning"].includes(c.title)).map((c) => (
+                <li key={c.title} className="rule-soft pt-4 max-md:rounded-[2px] max-md:border-0 max-md:bg-ivory/70 max-md:p-5">
+                  <p className="font-display text-[1.05rem] italic text-olive-deep">{c.title}</p>
+                  <ul className="mt-2 grid gap-1 font-display text-[1.2rem] leading-snug text-forest">{c.dishes.map((d) => <li key={d.name}>{d.name}</li>)}</ul>
+                </li>
+              ))}
+              <li className="rule-soft pt-4 max-md:rounded-[2px] max-md:border-0 max-md:bg-ivory/70 max-md:p-5 sm:col-span-2">
+                <p className="font-display text-[1.05rem] italic text-olive-deep">With every breakfast</p>
+                <p className="mt-2 font-display text-[1.2rem] leading-snug text-forest">A seasonal fruit platter, fresh juice or king coconut, and Ceylon tea or coffee</p>
+              </li>
+            </ul>
+          </div>
+        </Section>
+
         {/* Wellness */}
         <Section>
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
@@ -154,7 +183,7 @@ export default function HomePage() {
               <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="dusk" />Dusk</p>
               <h2 className="display-lg mt-3 text-forest">When the lanterns come on</h2>
               <p className="lede mt-5">As the light turns gold, the woven lanterns over our own open-air restaurant flicker on, one by one. The pool goes dark blue. Someone orders another round, and nobody is in a hurry to leave.</p>
-              <p className="body mt-5 hidden md:block">Our kitchen cooks across the island and beyond: Sri Lankan and Indian curries beside Chinese, British and Mediterranean plates. Mornings bring continental, full English and vegetarian breakfasts with fresh fruit, and room service, packed lunches and kids&rsquo; meals are always on offer. Tell us about any dietary needs and we&rsquo;ll take care of them.</p>
+              <p className="body mt-5 hidden md:block">Our kitchen cooks across the island and beyond: Sri Lankan and Indian curries beside Chinese, British and Mediterranean plates. Breakfast each morning is complimentary and cooked to order, and room service, packed lunches and kids&rsquo; meals are always on offer. Tell us about any dietary needs and we&rsquo;ll take care of them.</p>
               <Link href="/dining" className="btn-outline mt-8">Our in-house restaurant</Link>
             </div>
             <div className="grid grid-cols-2 gap-4 lg:col-span-7 lg:col-start-6">

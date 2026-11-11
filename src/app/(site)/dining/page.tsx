@@ -7,11 +7,13 @@ import { ImageBlock } from "@/components/ImageBlock";
 import { whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 import { NEARBY } from "@/lib/nearby";
+import { BreakfastMenu } from "@/components/BreakfastMenu";
+import { BREAKFAST_DISH_COUNT } from "@/lib/breakfast";
 
 export const metadata: Metadata = pageMeta({
   title: "Restaurant & Breakfast in Ahangama | The Lavish Haven",
   socialTitle: "Dining at The Lavish Haven",
-  description: "Our in-house restaurant in Ahangama: breakfast by the pool and dinner under the lanterns, with Sri Lankan, Indian, Chinese, British and Mediterranean dishes.",
+  description: "Complimentary breakfast cooked to order, from coconut roti and egg hoppers to a full English, and an open-air restaurant in Ahangama serving Sri Lankan, Indian, Chinese, British and Mediterranean dishes.",
   path: "/dining",
 });
 
@@ -27,8 +29,28 @@ export default function DiningPage() {
           intro="It starts with coffee and fruit in the morning light, and ends with the lanterns glowing above timber tables while the garden breathes in the evening air. In between, the restaurant is wherever you want it to be: the courtyard, the lounge, or your own balcony."
           image={{ src: "/images/dining/restaurant-lanterns.webp", alt: "The restaurant at night, lit by woven lanterns above timber tables" }}
         >
-          <a href={diningEnquiry} target="_blank" rel="noopener noreferrer" className="btn-ivory">Enquire about dining</a>
+          <a href="#breakfast" className="btn-ivory">See the breakfast menu</a>
+          <a href={diningEnquiry} target="_blank" rel="noopener noreferrer" className="btn-outline-light">Enquire about dining</a>
         </PageHero>
+
+        <Section tone="forest" id="breakfast" className="scroll-mt-16">
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-6">
+              <p className="font-display text-[1.1rem] italic text-sand">Breakfast is on us</p>
+              <h2 className="display-lg mt-3">A breakfast unlike any other in Ahangama</h2>
+            </div>
+            <div className="lg:col-span-5 lg:col-start-8">
+              <p className="lede !text-ivory/85">Every morning of your stay, choose from {BREAKFAST_DISH_COUNT} dishes, each cooked to order by our professional chef and served with fresh fruit, juice or king coconut, and Ceylon tea or coffee. It&rsquo;s all complimentary.</p>
+              <p className="body mt-5 !text-ivory/75">Our head chef comes out to the tables to ask how you enjoyed it, and takes what you say back to the kitchen.</p>
+            </div>
+          </div>
+          <div className="mt-10 md:mt-14">
+            <BreakfastMenu />
+          </div>
+          <div className="mt-6">
+            <a href="/images/dining/breakfast-menu.webp" target="_blank" rel="noopener" className="text-[14.5px] text-ivory underline decoration-ivory/40 underline-offset-4 hover:decoration-ivory">See the printed menu</a>
+          </div>
+        </Section>
 
         <Section>
           <div className="grid gap-12 lg:grid-cols-12">
@@ -38,7 +60,7 @@ export default function DiningPage() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="lede">Our kitchen tells the island&rsquo;s story, and a few others besides. Sri Lankan and Indian curries share the table with Chinese, British and Mediterranean plates, so everyone can follow their own appetite and still pass the dishes around.</p>
-              <p className="body mt-5">Mornings begin with breakfast: continental, full English and vegetarian options, with fresh fruit. Kids&rsquo; meals are available, packed lunches can be arranged for early surf starts or days out, and room service is offered if you&rsquo;d rather linger on your balcony. There&rsquo;s also a coffee house, and a bar and lounge for when the day softens into evening.</p>
+              <p className="body mt-5">Mornings begin with our complimentary breakfast, cooked to order: Sri Lankan, Indian and English plates, eggs any way, bowls and pancakes, always with fresh fruit. Kids&rsquo; meals are available, packed lunches can be arranged for early surf starts or days out, and room service is offered if you&rsquo;d rather linger on your balcony. There&rsquo;s also a coffee house, and a bar and lounge for when the day softens into evening.</p>
               <p className="body mt-5">Share any dietary requirements when you enquire and our team will confirm what the kitchen can prepare for you.</p>
             </div>
           </div>
@@ -60,7 +82,7 @@ export default function DiningPage() {
             </div>
             <dl className="lg:col-span-6 lg:col-start-7 grid grid-cols-2 gap-x-5 gap-y-6">
               {[
-                ["Breakfast", "Continental, full English and vegetarian options with fruit."],
+                ["Breakfast", "Complimentary for hotel guests, cooked to order from the menu above."],
                 ["Cuisines", "Sri Lankan, Indian, Chinese, British and Mediterranean."],
                 ["Families", "Kids' meals available."],
                 ["On the move", "Packed lunches and room service on request."],

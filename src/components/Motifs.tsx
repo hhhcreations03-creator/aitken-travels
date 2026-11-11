@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-export type SunPhase = "arrival" | "dawn" | "midday" | "dusk" | "night";
+export type SunPhase = "arrival" | "dawn" | "morning" | "midday" | "dusk" | "night";
 
 /**
  * A small sun over a horizon line, drawn at the height it holds at that
@@ -9,7 +9,7 @@ export type SunPhase = "arrival" | "dawn" | "midday" | "dusk" | "night";
 export function SunMark({ phase, className = "" }: { phase: SunPhase; className?: string }) {
   const id = useId();
   const clip = `sun-${id}`;
-  const sun = { arrival: { cx: 17, cy: 6 }, dawn: { cx: 7, cy: 12.5 }, midday: { cx: 12, cy: 4.5 }, dusk: { cx: 17, cy: 12.5 }, night: null }[phase];
+  const sun = { arrival: { cx: 17, cy: 6 }, dawn: { cx: 7, cy: 12.5 }, morning: { cx: 9, cy: 8 }, midday: { cx: 12, cy: 4.5 }, dusk: { cx: 17, cy: 12.5 }, night: null }[phase];
   return (
     <svg viewBox="0 0 24 16" width="24" height="16" aria-hidden="true" className={`inline-block shrink-0 ${className}`} fill="none" stroke="currentColor" strokeWidth="1">
       <defs>
