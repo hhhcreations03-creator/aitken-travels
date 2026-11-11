@@ -8,7 +8,7 @@ import { whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 import { NEARBY } from "@/lib/nearby";
 import { BREAKFAST_DISH_COUNT } from "@/lib/breakfast";
-import { BreakfastMenu, BreakfastTable } from "@/components/BreakfastMenu";
+import { BreakfastMenu, BreakfastIntro } from "@/components/BreakfastMenu";
 
 export const metadata: Metadata = pageMeta({
   title: "Restaurant & Breakfast in Ahangama | The Lavish Haven",
@@ -33,17 +33,17 @@ export default function DiningPage() {
           <a href={diningEnquiry} target="_blank" rel="noopener noreferrer" className="btn-outline-light">Enquire about dining</a>
         </PageHero>
 
-        <Section tone="forest" id="breakfast" className="scroll-mt-16">
-          <BreakfastTable dishCount={BREAKFAST_DISH_COUNT} />
-          <div className="mt-12 md:mt-16 xl:mt-20">
+        <Section tone="sand" id="breakfast" className="scroll-mt-16">
+          <BreakfastIntro dishCount={BREAKFAST_DISH_COUNT} />
+          <div className="mt-10 md:mt-14">
             <BreakfastMenu />
           </div>
           <div className="mt-6 flex flex-col gap-5 md:mt-8 md:flex-row md:items-center md:justify-between">
-            <p className="flex items-center gap-3 font-display text-[1.15rem] italic text-sand">
+            <p className="flex items-center gap-3 font-display text-[1.15rem] italic text-olive-deep">
               <span aria-hidden="true" className="h-px w-8 bg-current opacity-60" />
               Coming soon: our all-day menu, with lunch and dinner by the pool
             </p>
-            <a href="/images/dining/breakfast-menu.webp" target="_blank" rel="noopener" className="text-[14.5px] text-ivory underline decoration-ivory/40 underline-offset-4 hover:decoration-ivory">See the printed menu</a>
+            <a href="/images/dining/breakfast-menu.webp" target="_blank" rel="noopener" className="textlink text-[14.5px]">See the printed menu</a>
           </div>
         </Section>
 
