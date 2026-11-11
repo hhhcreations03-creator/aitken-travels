@@ -36,7 +36,8 @@ import {
 
 const MAX_PER_FOLDER = 150;
 const TIME_BUDGET_MS = 40_000;
-const MIN_INTERVAL_MS = 60_000;
+/** Open admin pages ask every 30 seconds; the server reads Gmail at most this often. */
+const MIN_INTERVAL_MS = 20_000;
 
 export function mailboxConfigured(): boolean {
   return Boolean((process.env.IMAP_USER || process.env.SMTP_USER) && (process.env.IMAP_PASS || process.env.SMTP_PASS));
@@ -73,6 +74,21 @@ export async function mailboxStatus(): Promise<MailboxStatus> {
   return { configured: mailboxConfigured(), lastSyncAt, lastError: lastError || null, lastImported: lastImported ? Number(lastImported) : null };
 }
 
+/**
+ * Changes whenever a conversation gets a new message or changes state, from
+ * email, the website or the team, so open admin pages know to refresh.
+ */
+export async function inboxStamp(): Promise<string> {
+  await ensureSchema();
+  const d = await db();
+  const [r] = await d.query<{ stamp: string }>(
+    `SELECT count(*)::text || ':' || COALESCE(max(last_message_at)::text, '') || ':' ||
+            count(*) FILTER (WHERE needs_reply AND status = 'open')::text || ':' || count(*) FILTER (WHERE unread)::text AS stamp
+       FROM threads`
+  );
+  return r?.stamp ?? "";
+}
+
 /** Takes a short lease so two syncs (two admin tabs, or the daily job) don't read the same mail at once. */
 async function takeLease(ms: number): Promise<boolean> {
   const d = await db();
@@ -95,7 +111,7 @@ export type SyncResult =
   | { ok: true; imported: number; skipped?: "recent" | "busy" | "not_configured" }
   | { ok: false; error: string };
 
-/** Reads new mail. Without `force`, does nothing if the mailbox was read in the last minute. */
+/** Reads new mail. Without `force`, does nothing if the mailbox was read in the last 20 seconds. */
 export async function syncMailbox({ force = false }: { force?: boolean } = {}): Promise<SyncResult> {
   if (!mailboxConfigured()) return { ok: true, imported: 0, skipped: "not_configured" };
   await ensureSchema();

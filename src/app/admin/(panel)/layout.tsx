@@ -6,6 +6,7 @@ import { db } from "@/lib/booking/db";
 import { ensureSchema } from "@/lib/booking/schema";
 import { Sidebar } from "@/components/admin/Sidebar";
 import { Flash } from "@/components/admin/Flash";
+import { MailSync } from "@/components/admin/inbox/MailSync";
 import { logout } from "../actions";
 import { inboxCounts } from "@/lib/inbox/threads";
 
@@ -59,6 +60,8 @@ export default async function PanelLayout({ children }: { children: React.ReactN
       </header>
       <main id="main" className="mx-auto max-w-[1400px] px-4 py-7 sm:px-6">
         <Suspense><Flash /></Suspense>
+        {/* Keeps every admin page current with new email and website messages. */}
+        {configured && <MailSync quiet />}
         {configured ? (
           children
         ) : (

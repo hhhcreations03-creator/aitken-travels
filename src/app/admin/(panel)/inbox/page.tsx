@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { KIND_LABELS, inboxCounts, listThreads, type InboxView } from "@/lib/inbox/threads";
-import { mailboxStatus } from "@/lib/inbox/mailbox";
 import { checkMailNow } from "@/app/admin/actions";
 import { Empty, PageTitle, StatusBadge, adminBtnOutline, adminBtnPrimary, adminInput, dateTime } from "@/components/admin/ui";
 import { KindBadge } from "@/components/admin/inbox/Conversation";
@@ -24,10 +23,9 @@ export default async function InboxPage({ searchParams }: { searchParams: Record
   const kind = searchParams.kind && searchParams.kind in KIND_LABELS ? searchParams.kind : undefined;
   const q = searchParams.q?.trim() || undefined;
   const page = Math.max(1, Number(searchParams.page) || 1);
-  const [{ rows, total }, counts, mail] = await Promise.all([
+  const [{ rows, total }, counts] = await Promise.all([
     listThreads({ view: q ? "all" : view, kind, q, limit: PAGE, offset: (page - 1) * PAGE }),
     inboxCounts(),
-    mailboxStatus(),
   ]);
   const qs = (extra: Record<string, string | number | undefined>) => {
     const p = new URLSearchParams();
@@ -40,7 +38,7 @@ export default async function InboxPage({ searchParams }: { searchParams: Record
       <PageTitle title="Inbox">
         <form action={checkMailNow}><button className={adminBtnOutline}>Check mail now</button></form>
       </PageTitle>
-      <div className="-mt-5 mb-6"><MailSync lastSyncLabel={mail.lastSyncAt ? dateTime(mail.lastSyncAt) : null} /></div>
+      <div className="-mt-5 mb-6"><MailSync /></div>
 
       <nav aria-label="Inbox views" className="mb-3 flex flex-wrap gap-1.5">
         {VIEWS.map((t) => (
