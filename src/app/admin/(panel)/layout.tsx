@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { requireAdmin } from "@/lib/booking/auth";
 import { bookingConfigured } from "@/lib/booking/config";
 import { db } from "@/lib/booking/db";
 import { ensureSchema } from "@/lib/booking/schema";
-import { AdminNav } from "@/components/admin/AdminNav";
+import { Sidebar } from "@/components/admin/Sidebar";
 import { Flash } from "@/components/admin/Flash";
 import { logout } from "../actions";
 import { inboxCounts } from "@/lib/inbox/threads";
@@ -35,26 +34,30 @@ export default async function PanelLayout({ children }: { children: React.ReactN
   const admin = await requireAdmin();
   const configured = bookingConfigured();
   const [pending, needsReply] = configured ? await Promise.all([pendingCount(), needsReplyCount()]) : [0, 0];
+  const account = (
+    <div className="flex items-center justify-between gap-3">
+      <span className="min-w-0 truncate text-[12.5px] text-ivory/70" title={admin.email}>{admin.email}</span>
+      <form action={logout}>
+        <button type="submit" className="whitespace-nowrap rounded-[3px] border border-ivory/30 px-2.5 py-1 text-[12.5px] text-ivory hover:bg-ivory/10">Sign out</button>
+      </form>
+    </div>
+  );
   return (
-    <>
-      <header className="relative bg-forest text-ivory">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-3 sm:px-6">
-          <Link href="/admin" className="mr-auto flex items-center gap-2.5 lg:mr-0" aria-label="Bookings admin home">
-            <Image src="/brand/symbol-light.png" alt="" width={36} height={33} className="h-[30px] w-auto" />
-            <span className="whitespace-nowrap font-display text-[1.15rem]"><span className="hidden min-[420px]:inline">Lavish Haven </span><span className="text-sand-deep">Admin</span></span>
-          </Link>
-          <div className="flex items-center gap-3 lg:order-last">
-            <span className="hidden text-[12.5px] text-ivory/70 md:inline">{admin.email}</span>
-            <form action={logout}>
-              <button type="submit" className="whitespace-nowrap rounded-[3px] border border-ivory/30 px-3 py-1.5 text-[13px] text-ivory hover:bg-ivory/10">Sign out</button>
-            </form>
-          </div>
-          <div className="lg:flex lg:flex-1 lg:justify-center">
-            <AdminNav pending={pending} needsReply={needsReply} />
-          </div>
+    <div className="lg:pl-[248px]">
+      <header className="sticky top-0 z-20 border-b border-[color:var(--line)] bg-[#F3F1EC]">
+        <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-4 py-3 sm:px-6">
+          <Sidebar counts={{ pending, needsReply }} account={account} />
+          <Link href="/admin" className="hidden whitespace-nowrap font-display text-[1.1rem] text-forest sm:inline lg:hidden">Lavish Haven</Link>
+          <form action="/admin/bookings" method="get" role="search" className="ml-auto w-full max-w-[22rem]">
+            <label htmlFor="admin-search" className="sr-only">Search reservations</label>
+            <div className="relative">
+              <svg className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-charcoal-mute" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
+              <input id="admin-search" name="q" type="search" placeholder="Search guest, email, phone or LH- ref" className="w-full rounded-[4px] border border-[color:var(--line)] bg-white py-2 pl-9 pr-3 text-[14px] text-charcoal placeholder:text-charcoal-mute focus:border-forest" />
+            </div>
+          </form>
         </div>
       </header>
-      <main id="main" className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6">
+      <main id="main" className="mx-auto max-w-[1400px] px-4 py-7 sm:px-6">
         <Suspense><Flash /></Suspense>
         {configured ? (
           children
@@ -70,6 +73,6 @@ export default async function PanelLayout({ children }: { children: React.ReactN
           </div>
         )}
       </main>
-    </>
+    </div>
   );
 }

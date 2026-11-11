@@ -26,7 +26,7 @@ export function PageTitle({ title, children }: { title: string; children?: React
 
 export function Panel({ title, children, action }: { title?: string; children: React.ReactNode; action?: React.ReactNode }) {
   return (
-    <section className="rounded-[4px] border border-[color:var(--line)] bg-white">
+    <section className="min-w-0 rounded-[6px] border border-[color:var(--line)] bg-white">
       {title && (
         <div className="flex items-center justify-between gap-3 border-b border-[color:var(--line-soft)] px-5 py-3.5">
           <h2 className="text-[15px] font-semibold text-charcoal">{title}</h2>
@@ -64,4 +64,52 @@ export function shortDate(iso: string) {
 
 export function dateTime(ts: string) {
   return new Date(ts).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Colombo" });
+}
+
+export function pct(n: number | null, digits = 0) {
+  return n === null || n === undefined ? "–" : `${(n * 100).toFixed(digits)}%`;
+}
+
+/** A headline figure. `delta` is the change against a comparison period, as a fraction. */
+export function StatCard({ label, value, hint, href, tone = "plain", delta, children }: {
+  label: string;
+  value: React.ReactNode;
+  hint?: React.ReactNode;
+  href?: string;
+  tone?: "plain" | "attention";
+  delta?: { value: number | null; label: string };
+  children?: React.ReactNode;
+}) {
+  const body = (
+    <>
+      <span className="block text-[12.5px] font-medium text-charcoal-soft">{label}</span>
+      <span className="mt-2 block font-display text-[1.9rem] leading-none text-forest tabular-nums">{value}</span>
+      {delta && delta.value !== null && Number.isFinite(delta.value) && (
+        <span className={`mt-2 inline-flex items-center gap-1 text-[12px] ${delta.value >= 0 ? "text-[#2F6B4F]" : "text-[#9B3B2E]"}`}>
+          <span aria-hidden="true">{delta.value >= 0 ? "▲" : "▼"}</span>
+          {Math.abs(delta.value * 100).toFixed(0)}% {delta.label}
+        </span>
+      )}
+      {hint && <span className="mt-2 block text-[12.5px] text-charcoal-mute">{hint}</span>}
+      {children}
+    </>
+  );
+  const cls = `block h-full rounded-[6px] border p-4 transition-colors ${tone === "attention" ? "border-[#E9C46A] bg-[#FBF3DF]" : "border-[color:var(--line)] bg-white"}`;
+  return href ? <Link href={href} className={`${cls} hover:border-forest`}>{body}</Link> : <div className={cls}>{body}</div>;
+}
+
+/** A panel for charts: title, optional figure on the right, then the chart. */
+export function ChartPanel({ title, subtitle, figure, children }: { title: string; subtitle?: string; figure?: React.ReactNode; children: React.ReactNode }) {
+  return (
+    <section className="min-w-0 rounded-[6px] border border-[color:var(--line)] bg-white p-5">
+      <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 className="text-[15px] font-semibold text-charcoal">{title}</h2>
+          {subtitle && <p className="mt-0.5 text-[12.5px] text-charcoal-mute">{subtitle}</p>}
+        </div>
+        {figure}
+      </div>
+      {children}
+    </section>
+  );
 }

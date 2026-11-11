@@ -32,7 +32,7 @@ export default async function BookingsPage({ searchParams }: { searchParams: Rec
 
   return (
     <div>
-      <PageTitle title="Bookings">
+      <PageTitle title="Reservations">
         <a href={`/admin/export${qs({})}`} className={adminBtnOutline}>Export CSV</a>
         <LinkButton href="/admin/bookings/new" primary>New booking</LinkButton>
       </PageTitle>
