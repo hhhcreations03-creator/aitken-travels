@@ -70,7 +70,7 @@ export default function AboutPage() {
               {[
                 ["Front desk", "Someone is always here for you, day and night, with luggage storage and laundry."],
                 ["Getting here", "Airport pick-up and shuttle services can be arranged for a charge; car rental on request."],
-                ["Families", "Family suites, kids' meals, cots on request and an outdoor play area, so little ones feel at home too."],
+                ["Families", "Family suites, cots on request and an outdoor play area, so little ones feel at home too."],
                 ["Accessibility", "Wheelchair access and facilities for guests with reduced mobility. Share your needs when you enquire and we'll prepare for you."],
                 ["Parking", "Free private parking on site."],
                 ["House rules", "Check-in from 2:00 PM. No pets. A designated smoking area outside."],

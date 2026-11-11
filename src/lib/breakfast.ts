@@ -5,6 +5,8 @@
  */
 export interface Dish {
   name: string;
+  /** A square photo cut from the hotel's printed breakfast menu. */
+  image: string;
   note: string;
 }
 
@@ -17,52 +19,52 @@ export const BREAKFAST: Course[] = [
   {
     title: "Fresh & light",
     dishes: [
-      { name: "Tropical smoothie bowl", note: "Banana, mango and pineapple, topped with fresh tropical fruit and mixed seeds." },
-      { name: "Overnight oats", note: "Slow-soaked oats with banana, cinnamon and seasonal fruit." },
-      { name: "Hummus toast", note: "Whole-grain toast with creamy hummus, crumbled feta, mixed seeds and microgreens." },
+      { name: "Tropical smoothie bowl", image: "/images/dining/breakfast/tropical-smoothie-bowl.webp", note: "Banana, mango and pineapple, topped with fresh tropical fruit and mixed seeds." },
+      { name: "Overnight oats", image: "/images/dining/breakfast/overnight-oats.webp", note: "Slow-soaked oats with banana, cinnamon and seasonal fruit." },
+      { name: "Hummus toast", image: "/images/dining/breakfast/hummus-toast.webp", note: "Whole-grain toast with creamy hummus, crumbled feta, mixed seeds and microgreens." },
     ],
   },
   {
     title: "Sri Lankan favourites",
     dishes: [
-      { name: "Coconut roti & island relishes", note: "Fresh coconut roti with creamy dhal curry, caramelised onion sambol and house-made tomato relish." },
-      { name: "Avocado hoppers", note: "Traditional egg hoppers with smashed avocado, fresh herbs and a squeeze of lime." },
+      { name: "Coconut roti & island relishes", image: "/images/dining/breakfast/coconut-roti.webp", note: "Fresh coconut roti with creamy dhal curry, caramelised onion sambol and house-made tomato relish." },
+      { name: "Avocado hoppers", image: "/images/dining/breakfast/avocado-hoppers.webp", note: "Traditional egg hoppers with smashed avocado, fresh herbs and a squeeze of lime." },
     ],
   },
   {
     title: "Indian options",
     dishes: [
-      { name: "Dosa with sambar & coconut chutney", note: "Crisp dosa with flavourful sambar and fresh coconut chutney." },
-      { name: "Chapati with butter chicken", note: "Soft chapati with creamy butter chicken." },
+      { name: "Dosa with sambar & coconut chutney", image: "/images/dining/breakfast/dosa.webp", note: "Crisp dosa with flavourful sambar and fresh coconut chutney." },
+      { name: "Chapati with butter chicken", image: "/images/dining/breakfast/chapati-butter-chicken.webp", note: "Soft chapati with creamy butter chicken." },
     ],
   },
   {
     title: "Wholesome & energising",
     dishes: [
-      { name: "Grilled chicken & quinoa bowl", note: "Grilled chicken with quinoa, seasonal vegetables and a light house dressing." },
-      { name: "Avocado & egg sourdough toast", note: "Sourdough with smashed avocado, eggs as you like them, herbs and cracked black pepper." },
+      { name: "Grilled chicken & quinoa bowl", image: "/images/dining/breakfast/chicken-quinoa-bowl.webp", note: "Grilled chicken with quinoa, seasonal vegetables and a light house dressing." },
+      { name: "Avocado & egg sourdough toast", image: "/images/dining/breakfast/avocado-egg-toast.webp", note: "Sourdough with smashed avocado, eggs as you like them, herbs and cracked black pepper." },
     ],
   },
   {
     title: "Eggs & classics",
     dishes: [
-      { name: "Eggs with caramelised onion & mushrooms", note: "Eggs as you like them, with caramelised onion, sautéed mushrooms and toasted brown bread." },
-      { name: "Creamy scrambled eggs", note: "Soft, buttery scrambled eggs on toast with fresh herbs." },
-      { name: "Garden omelette", note: "A fluffy omelette filled with seasonal vegetables and fresh herbs." },
-      { name: "Shakshuka", note: "Eggs poached in a spiced tomato and sweet pepper sauce, with crusty bread." },
+      { name: "Eggs with caramelised onion & mushrooms", image: "/images/dining/breakfast/eggs-onion-mushroom.webp", note: "Eggs as you like them, with caramelised onion, sautéed mushrooms and toasted brown bread." },
+      { name: "Creamy scrambled eggs", image: "/images/dining/breakfast/scrambled-eggs.webp", note: "Soft, buttery scrambled eggs on toast with fresh herbs." },
+      { name: "Garden omelette", image: "/images/dining/breakfast/garden-omelette.webp", note: "A fluffy omelette filled with seasonal vegetables and fresh herbs." },
+      { name: "Shakshuka", image: "/images/dining/breakfast/shakshuka.webp", note: "Eggs poached in a spiced tomato and sweet pepper sauce, with crusty bread." },
     ],
   },
   {
     title: "Sweet morning",
     dishes: [
-      { name: "Coconut & banana pancakes", note: "Fluffy pancakes with coconut and banana, finished with kithul treacle." },
-      { name: "French toast with Sri Lankan strawberries", note: "Golden French toast with fresh Sri Lankan strawberries and a drizzle of honey." },
+      { name: "Coconut & banana pancakes", image: "/images/dining/breakfast/banana-pancakes.webp", note: "Fluffy pancakes with coconut and banana, finished with kithul treacle." },
+      { name: "French toast with Sri Lankan strawberries", image: "/images/dining/breakfast/french-toast.webp", note: "Golden French toast with fresh Sri Lankan strawberries and a drizzle of honey." },
     ],
   },
   {
     title: "The full English",
     dishes: [
-      { name: "Full English breakfast", note: "Eggs as you like them, crispy bacon, breakfast sausages, toast, roasted tomatoes, golden fried potatoes and sautéed mushrooms." },
+      { name: "Full English breakfast", image: "/images/dining/breakfast/full-english.webp", note: "Eggs as you like them, crispy bacon, breakfast sausages, toast, roasted tomatoes, golden fried potatoes and sautéed mushrooms." },
     ],
   },
 ];
@@ -70,8 +72,8 @@ export const BREAKFAST: Course[] = [
 export const BREAKFAST_DISH_COUNT = BREAKFAST.reduce((n, c) => n + c.dishes.length, 0);
 
 /** What comes with every breakfast. */
-export const WITH_EVERY_BREAKFAST = [
-  { title: "Seasonal fruit platter", note: "Freshly cut tropical fruit, with every breakfast." },
+export const WITH_EVERY_BREAKFAST: Array<{ title: string; note: string; image?: string }> = [
+  { title: "Seasonal fruit platter", image: "/images/dining/breakfast/fruit-platter.webp", note: "Freshly cut tropical fruit, with every breakfast." },
   { title: "One fresh drink", note: "Freshly squeezed seasonal juice or a king coconut." },
   { title: "Tea or coffee", note: "Ceylon tea or freshly brewed black coffee." },
 ];

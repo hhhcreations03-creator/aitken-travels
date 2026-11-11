@@ -46,7 +46,7 @@ const EXPERIENCES: Experience[] = [
   },
   {
     title: "Slow afternoons",
-    body: "A book on a lounger, a fresh king coconut from the restaurant, an early dinner as the lanterns come on. Ahangama's cafés and surf shops are a short walk away whenever you want them, and Galle Fort and Weligama are close enough for a day of wandering.",
+    body: "A book on a lounger, a fresh king coconut, an early dinner in the village as the lanterns come on. Ahangama's cafés and surf shops are a short walk away whenever you want them, and Galle Fort and Weligama are close enough for a day of wandering.",
     image: { src: "/images/wellness/poolside-reading-coconut.webp", alt: "Reading with a fresh coconut beside the pool" },
     enquiry: "Hello The Lavish Haven, I'd like some help planning days out during my stay.",
     confirmed: "Ask the team for local recommendations and transport options.",

@@ -1,4 +1,31 @@
-import { BREAKFAST, WITH_EVERY_BREAKFAST } from "@/lib/breakfast";
+import Image from "next/image";
+import { BREAKFAST, WITH_EVERY_BREAKFAST, type Dish } from "@/lib/breakfast";
+
+/** Where the second desktop column begins, so the two columns come out about even. */
+const RIGHT_COLUMN_STARTS = "Eggs & classics";
+
+/**
+ * A dish photo, cut round like a plate seen from above. The photos come from
+ * the hotel's printed menu and are small, so they are only ever shown small.
+ */
+export function Plate({ dish, size = 72, className = "" }: { dish: Pick<Dish, "name" | "image">; size?: number; className?: string }) {
+  return (
+    <span className={`relative block shrink-0 overflow-hidden rounded-full bg-sand ${className}`} style={{ width: size, height: size }}>
+      <Image src={dish.image} alt="" fill sizes={`${size}px`} className="object-cover" />
+    </span>
+  );
+}
+
+/** A loose row of overlapping plates, like dishes set down along a table. */
+export function PlateRow({ dishes, size = 76, ring = "ring-ivory", className = "" }: { dishes: Array<Pick<Dish, "name" | "image">>; size?: number; ring?: string; className?: string }) {
+  return (
+    <div className={`flex items-center ${className}`} role="img" aria-label={`Breakfast dishes: ${dishes.map((d) => d.name).join(", ")}`}>
+      {dishes.map((d, i) => (
+        <Plate key={d.name} dish={d} size={size} className={`${i ? "-ml-3" : ""} ring-[3px] ${ring} shadow-[0_8px_20px_-10px_rgba(0,0,0,0.5)]`} />
+      ))}
+    </div>
+  );
+}
 
 /**
  * The complimentary breakfast menu, set like a printed card on the table.
@@ -6,10 +33,6 @@ import { BREAKFAST, WITH_EVERY_BREAKFAST } from "@/lib/breakfast";
  * Phone: each course becomes its own card in a swipe rail, so the menu
  * costs one screen instead of five.
  */
-
-/** Where the second desktop column begins, so the two columns come out about even. */
-const RIGHT_COLUMN_STARTS = "Eggs & classics";
-
 export function BreakfastMenu() {
   return (
     <div className="md:bg-ivory md:p-3 md:text-charcoal">
@@ -27,11 +50,15 @@ export function BreakfastMenu() {
                 {course.title}
                 <span aria-hidden="true" className="h-px flex-1 translate-y-[-0.3em] bg-[color:var(--line)]" />
               </h4>
-              <ul className="mt-4 grid gap-4">
+              <ul className="mt-5 grid gap-5">
                 {course.dishes.map((d) => (
-                  <li key={d.name}>
-                    <p className="font-display text-[1.2rem] leading-snug text-forest">{d.name}</p>
-                    <p className="mt-1 text-[14.5px] leading-[1.6] text-charcoal-soft">{d.note}</p>
+                  <li key={d.name} className="flex items-start gap-4 md:gap-5">
+                    <Plate dish={d} size={56} className="md:hidden" />
+                    <Plate dish={d} size={76} className="max-md:hidden" />
+                    <div className="min-w-0 md:pt-1.5">
+                      <p className="font-display text-[1.15rem] leading-snug text-forest md:text-[1.2rem]">{d.name}</p>
+                      <p className="mt-1 text-[14px] leading-[1.6] text-charcoal-soft md:text-[14.5px]">{d.note}</p>
+                    </div>
                   </li>
                 ))}
               </ul>

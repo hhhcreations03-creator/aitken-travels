@@ -8,14 +8,18 @@ import { whatsappUrl } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 import { NEARBY } from "@/lib/nearby";
 import { BreakfastMenu } from "@/components/BreakfastMenu";
-import { BREAKFAST_DISH_COUNT } from "@/lib/breakfast";
+import { BREAKFAST, BREAKFAST_DISH_COUNT } from "@/lib/breakfast";
+import { PlateRow } from "@/components/BreakfastMenu";
 
 export const metadata: Metadata = pageMeta({
   title: "Restaurant & Breakfast in Ahangama | The Lavish Haven",
   socialTitle: "Dining at The Lavish Haven",
-  description: "Complimentary breakfast cooked to order, from coconut roti and egg hoppers to a full English, and an open-air restaurant in Ahangama serving Sri Lankan, Indian, Chinese, British and Mediterranean dishes.",
+  description: "Complimentary breakfast cooked to order at our open-air restaurant in Ahangama, from coconut roti and egg hoppers to a full English. Our all-day menu is coming soon.",
   path: "/dining",
 });
+
+/** One plate from each course, for the row of photos beside the breakfast introduction. */
+const PLATES = BREAKFAST.map((c) => c.dishes[0]);
 
 export default function DiningPage() {
   const diningEnquiry = whatsappUrl("Hello The Lavish Haven, I'd like to ask about dining at the restaurant.\n\nDates: \nNumber of guests: \nDietary needs or requests: ");
@@ -25,9 +29,9 @@ export default function DiningPage() {
       <main id="main">
         <PageHero
           kicker="Dining"
-          title="Breakfast by the pool, dinner under the lanterns"
-          intro="It starts with coffee and fruit in the morning light, and ends with the lanterns glowing above timber tables while the garden breathes in the evening air. In between, the restaurant is wherever you want it to be: the courtyard, the lounge, or your own balcony."
-          image={{ src: "/images/dining/restaurant-lanterns.webp", alt: "The restaurant at night, lit by woven lanterns above timber tables" }}
+          title="Breakfast by the pool, on the house"
+          intro="Mornings at the Haven begin at a timber table beside the pool, with a breakfast cooked to order and served with our compliments. Our all-day menu is coming soon, and with it, lunch and dinner under the lanterns."
+          image={{ src: "/images/dining/restaurant-terrace.webp", alt: "The open-air restaurant terrace by day" }}
         >
           <a href="#breakfast" className="btn-ivory">See the breakfast menu</a>
           <a href={diningEnquiry} target="_blank" rel="noopener noreferrer" className="btn-outline-light">Enquire about dining</a>
@@ -42,12 +46,17 @@ export default function DiningPage() {
             <div className="lg:col-span-5 lg:col-start-8">
               <p className="lede !text-ivory/85">Every morning of your stay, choose from {BREAKFAST_DISH_COUNT} dishes, each cooked to order by our professional chef and served with fresh fruit, juice or king coconut, and Ceylon tea or coffee. It&rsquo;s all complimentary.</p>
               <p className="body mt-5 !text-ivory/75">Our head chef comes out to the tables to ask how you enjoyed it, and takes what you say back to the kitchen.</p>
+              <PlateRow dishes={PLATES} ring="ring-forest" className="mt-8 [&>*:nth-child(n+5)]:max-sm:hidden" />
             </div>
           </div>
           <div className="mt-10 md:mt-14">
             <BreakfastMenu />
           </div>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-col gap-5 md:mt-8 md:flex-row md:items-center md:justify-between">
+            <p className="flex items-center gap-3 font-display text-[1.15rem] italic text-sand">
+              <span aria-hidden="true" className="h-px w-8 bg-current opacity-60" />
+              Coming soon: our all-day menu, with lunch and dinner by the pool
+            </p>
             <a href="/images/dining/breakfast-menu.webp" target="_blank" rel="noopener" className="text-[14.5px] text-ivory underline decoration-ivory/40 underline-offset-4 hover:decoration-ivory">See the printed menu</a>
           </div>
         </Section>
@@ -59,16 +68,16 @@ export default function DiningPage() {
               <p className="body mt-4 max-w-[34ch]">The Lavish Haven has its own open-air restaurant beside the pool, so a good meal is never more than a few steps from your room.</p>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
-              <p className="lede">Our kitchen tells the island&rsquo;s story, and a few others besides. Sri Lankan and Indian curries share the table with Chinese, British and Mediterranean plates, so everyone can follow their own appetite and still pass the dishes around.</p>
-              <p className="body mt-5">Mornings begin with our complimentary breakfast, cooked to order: Sri Lankan, Indian and English plates, eggs any way, bowls and pancakes, always with fresh fruit. Kids&rsquo; meals are available, packed lunches can be arranged for early surf starts or days out, and room service is offered if you&rsquo;d rather linger on your balcony. There&rsquo;s also a coffee house, and a bar and lounge for when the day softens into evening.</p>
-              <p className="body mt-5">Share any dietary requirements when you enquire and our team will confirm what the kitchen can prepare for you.</p>
+              <p className="lede">For now, our kitchen does one thing and puts everything into it: breakfast. Sixteen dishes, from coconut roti and egg hoppers to shakshuka and a full English, each cooked to order and complimentary for every guest.</p>
+              <p className="body mt-5">Our all-day menu is coming soon, bringing lunch and dinner to the same tables by the pool. Until then, some of the south coast&rsquo;s best-loved restaurants are about five minutes from our gate by tuk-tuk, and our team will gladly arrange the ride.</p>
+              <p className="body mt-5">Share any dietary requirements before you arrive and our team will confirm what the kitchen can prepare for you.</p>
             </div>
           </div>
         </Section>
 
         <Section tone="deep" compact>
           <div className="rail-md rail-photos grid gap-4 md:grid-cols-12">
-            <ImageBlock src="/images/dining/restaurant-terrace.webp" alt="The open-air restaurant terrace by day" aspect="aspect-[4/3]" sizes="(min-width: 768px) 58vw, 100vw" className="md:col-span-7" />
+            <ImageBlock src="/images/dining/restaurant-lanterns.webp" alt="The restaurant at night, lit by woven lanterns above timber tables" aspect="aspect-[4/3]" sizes="(min-width: 768px) 58vw, 100vw" className="md:col-span-7" />
             <ImageBlock src="/images/dining/drink-service.webp" alt="A drink served poolside on a wooden tray" aspect="aspect-[4/3] md:aspect-auto md:h-full" sizes="(min-width: 768px) 42vw, 100vw" className="md:col-span-5" />
             <ImageBlock src="/images/dining/restaurant-tables.webp" alt="Restaurant tables beneath the white timber ceiling" aspect="aspect-[4/3]" sizes="(min-width: 768px) 42vw, 100vw" className="md:col-span-5" />
             <ImageBlock src="/images/dining/restaurant-evening.webp" alt="The restaurant terrace lit in the evening" aspect="aspect-[4/3] md:aspect-auto md:h-full" sizes="(min-width: 768px) 58vw, 100vw" className="md:col-span-7" />
@@ -83,10 +92,8 @@ export default function DiningPage() {
             <dl className="lg:col-span-6 lg:col-start-7 grid grid-cols-2 gap-x-5 gap-y-6">
               {[
                 ["Breakfast", "Complimentary for hotel guests, cooked to order from the menu above."],
-                ["Cuisines", "Sri Lankan, Indian, Chinese, British and Mediterranean."],
-                ["Families", "Kids' meals available."],
-                ["On the move", "Packed lunches and room service on request."],
-                ["Drinks", "Coffee house, bar and lounge."],
+                ["All-day menu", "Coming soon, with lunch and dinner by the pool."],
+                ["Eating out", "Ahangama's favourite restaurants are about five minutes away by tuk-tuk."],
                 ["Dietary needs", "Tell the team in advance and they'll confirm."],
               ].map(([k, v]) => (
                 <div key={k} className="rule-soft pt-4">
@@ -96,7 +103,7 @@ export default function DiningPage() {
               ))}
             </dl>
           </div>
-          <p className="small mt-10 max-w-[60ch] text-charcoal-mute">Menus, prices and serving hours are confirmed by the hotel team at the time of your enquiry.</p>
+          <p className="small mt-10 max-w-[60ch] text-charcoal-mute">Breakfast serving hours are confirmed by the hotel team. We&rsquo;ll share the all-day menu here as soon as it launches.</p>
         </Section>
 
         <Section tone="deep">
@@ -124,8 +131,8 @@ export default function DiningPage() {
         <Section tone="forest">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
-              <h2 className="display-lg">Group dinners and long tables</h2>
-              <p className="lede mt-4 !text-sand">Travelling together? The restaurant can seat your group around one table, for evenings of shared plates and long conversation. Let our team know your numbers and dates and they&rsquo;ll confirm the arrangements.</p>
+              <h2 className="display-lg">Long tables for groups</h2>
+              <p className="lede mt-4 !text-sand">Travelling together? The restaurant can seat your group around one table for breakfast, and once the all-day menu launches, for long lunches and dinners too. Let our team know your numbers and dates and they&rsquo;ll confirm the arrangements.</p>
             </div>
             <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
               <a href={diningEnquiry} target="_blank" rel="noopener noreferrer" className="btn-ivory">Enquire on WhatsApp</a>

@@ -16,6 +16,7 @@ import { pageMeta } from "@/lib/seo";
 import { SunMark, TideLine } from "@/components/Motifs";
 import { Faq } from "@/components/Faq";
 import { BREAKFAST, BREAKFAST_DISH_COUNT } from "@/lib/breakfast";
+import { PlateRow } from "@/components/BreakfastMenu";
 
 export const metadata: Metadata = pageMeta({
   title: "The Lavish Haven | Luxury Boutique Hotel in Ahangama, Sri Lanka",
@@ -29,7 +30,7 @@ const FAQ: Array<[string, string]> = [
   ["Where is The Lavish Haven?", `At ${SITE.address.street}, ${SITE.address.locality} ${SITE.address.postalCode}, on Sri Lanka's south coast between Galle and Weligama.`],
   ["How far is the hotel from the beach?", "Kabalana Beach, Ahangama's best-known surf break, is about two minutes' walk from the hotel."],
   ["What kinds of rooms are there?", "23 rooms and suites across twelve room types: king rooms with a patio or balcony, family suites, and a two-bedroom suite. Every room is appointed to luxury standards, with air conditioning, Wi-Fi, a walk-in shower and its own outdoor space."],
-  ["Does the hotel have its own restaurant?", "Yes. The Lavish Haven has an in-house, open-air restaurant beside the pool, serving a complimentary breakfast and Sri Lankan, Indian, Chinese, British and Mediterranean dishes, and room service is available too."],
+  ["Does the hotel have its own restaurant?", "Yes. The Lavish Haven has an open-air restaurant beside the pool. It serves a complimentary breakfast, cooked to order, for every guest, and our all-day menu with lunch and dinner is coming soon."],
   ["Is breakfast included?", "Yes. Breakfast is complimentary for every guest. Choose from Sri Lankan, Indian, English and lighter dishes, each cooked to order by our professional chef and served with a seasonal fruit platter, a fresh juice or king coconut, and Ceylon tea or coffee. Our head chef also comes out to the tables to ask how you enjoyed it."],
   ["Is there daily housekeeping?", "Yes. Every room is cleaned daily by our housekeeping team, whatever the length of your stay."],
   ["Is bed linen provided?", "Yes. Fresh bed linen is provided for every type of stay, from a single night to a long stay, so there is nothing you need to bring."],
@@ -140,6 +141,7 @@ export default function HomePage() {
               <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="morning" />Morning</p>
               <h2 className="display-lg mt-3 text-forest">Breakfast is on us, and it&rsquo;s a feast</h2>
               <p className="lede mt-5">Choose from {BREAKFAST_DISH_COUNT} dishes, each cooked to order by our professional chef. It&rsquo;s complimentary every morning, a breakfast unlike any other in Ahangama, and our head chef will come by your table to ask how you enjoyed it.</p>
+              <PlateRow dishes={["coconut-roti", "shakshuka", "banana-pancakes", "full-english", "tropical-smoothie-bowl"].map((f) => BREAKFAST.flatMap((c) => c.dishes).find((d) => d.image.includes(f))!)} ring="ring-sand" size={72} className="mt-8" />
               <Link href="/dining#breakfast" className="btn-forest mt-8">See the breakfast menu</Link>
             </div>
             <ul className="rail-md rail-narrow grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:col-span-6 lg:col-start-7 lg:self-center">
@@ -182,8 +184,8 @@ export default function HomePage() {
             <div className="lg:col-span-4">
               <p className="flex items-center gap-3 font-display text-[1.1rem] italic text-olive-deep"><SunMark phase="dusk" />Dusk</p>
               <h2 className="display-lg mt-3 text-forest">When the lanterns come on</h2>
-              <p className="lede mt-5">As the light turns gold, the woven lanterns over our own open-air restaurant flicker on, one by one. The pool goes dark blue. Someone orders another round, and nobody is in a hurry to leave.</p>
-              <p className="body mt-5 hidden md:block">Our kitchen cooks across the island and beyond: Sri Lankan and Indian curries beside Chinese, British and Mediterranean plates. Breakfast each morning is complimentary and cooked to order, and room service, packed lunches and kids&rsquo; meals are always on offer. Tell us about any dietary needs and we&rsquo;ll take care of them.</p>
+              <p className="lede mt-5">As the light turns gold, the woven lanterns over our open-air restaurant flicker on, one by one, and the pool goes dark blue. Nobody is in a hurry to be anywhere.</p>
+              <p className="body mt-5 hidden md:block">Our all-day menu is coming soon, bringing lunch and dinner to the tables by the pool. Until it arrives, mornings belong to our complimentary breakfast, and evenings to the village&rsquo;s restaurants, five minutes away.</p>
               <Link href="/dining" className="btn-outline mt-8">Our in-house restaurant</Link>
             </div>
             <div className="grid grid-cols-2 gap-4 lg:col-span-7 lg:col-start-6">

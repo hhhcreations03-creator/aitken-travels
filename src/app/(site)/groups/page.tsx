@@ -20,7 +20,7 @@ const WHY = [
   { h: "One house, one pool", p: "Rooms and suites on two floors look onto the same courtyard, so your group stays close, with everyone a few steps from the water and each other." },
   { h: "A mix of room types", p: "King rooms for couples, family suites with two beds, kitchenette rooms for those who like to make their own, and a two-bedroom suite for a small household." },
   { h: "Surf and yoga on the doorstep", p: "Kabalana Beach is a short walk away, and yoga classes can be arranged at the house. Spa treatments are available on request." },
-  { h: "Meals together", p: "The restaurant serves breakfast and an international menu, and can bring your whole group together around one table." },
+  { h: "Meals together", p: "Breakfast is complimentary and cooked to order, our all-day menu is coming soon, and the restaurant can bring your whole group together around one table." },
 ];
 
 export default function GroupsPage() {

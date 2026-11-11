@@ -70,7 +70,7 @@ export default function SurfRetreatsPage() {
               {[
                 "Outdoor pool, open year-round",
                 "Sun terrace, garden and loungers",
-                "In-house restaurant with breakfast and all-day dining",
+                "Complimentary breakfast, cooked to order (all-day menu coming soon)",
                 "Yoga classes on request",
                 "Spa and wellness area, treatments on request",
                 "Free Wi-Fi throughout",

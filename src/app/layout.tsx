@@ -128,7 +128,7 @@ const hotelSchema = {
   containsPlace: {
     "@type": "Restaurant",
     name: `Restaurant at ${SITE.name}`,
-    servesCuisine: ["Sri Lankan", "Indian", "Chinese", "British", "Mediterranean"],
+    servesCuisine: ["Breakfast", "Sri Lankan", "Indian", "British"],
     address: { "@type": "PostalAddress", streetAddress: SITE.address.street, addressLocality: SITE.address.locality, postalCode: SITE.address.postalCode, addressCountry: SITE.address.countryCode },
   },
   containedInPlace: { "@type": "Place", name: "Ahangama, Sri Lanka" },
